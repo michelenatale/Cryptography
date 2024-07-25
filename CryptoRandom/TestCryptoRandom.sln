@@ -1,0 +1,41 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.35027.167
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestCryptoRandom", "TestCryptoRandom\TestCryptoRandom.csproj", "{CC64423C-0D2D-4740-866B-1365B4BB62CC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CryptoRandom", "CryptoRandom\CryptoRandom.csproj", "{7CAEB13D-63DA-4C24-99C0-0D9DC16D1150}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
+		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CC64423C-0D2D-4740-866B-1365B4BB62CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC64423C-0D2D-4740-866B-1365B4BB62CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC64423C-0D2D-4740-866B-1365B4BB62CC}.Debug|x64.ActiveCfg = Debug|x64
+		{CC64423C-0D2D-4740-866B-1365B4BB62CC}.Debug|x64.Build.0 = Debug|x64
+		{CC64423C-0D2D-4740-866B-1365B4BB62CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC64423C-0D2D-4740-866B-1365B4BB62CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CC64423C-0D2D-4740-866B-1365B4BB62CC}.Release|x64.ActiveCfg = Release|x64
+		{CC64423C-0D2D-4740-866B-1365B4BB62CC}.Release|x64.Build.0 = Release|x64
+		{7CAEB13D-63DA-4C24-99C0-0D9DC16D1150}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7CAEB13D-63DA-4C24-99C0-0D9DC16D1150}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7CAEB13D-63DA-4C24-99C0-0D9DC16D1150}.Debug|x64.ActiveCfg = Debug|x64
+		{7CAEB13D-63DA-4C24-99C0-0D9DC16D1150}.Debug|x64.Build.0 = Debug|x64
+		{7CAEB13D-63DA-4C24-99C0-0D9DC16D1150}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7CAEB13D-63DA-4C24-99C0-0D9DC16D1150}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7CAEB13D-63DA-4C24-99C0-0D9DC16D1150}.Release|x64.ActiveCfg = Release|x64
+		{7CAEB13D-63DA-4C24-99C0-0D9DC16D1150}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2AE360C0-011B-4B2C-86B3-32E6073773FA}
+	EndGlobalSection
+EndGlobal
