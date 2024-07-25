@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Library</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+    <Platforms>AnyCPU;x64</Platforms>
+    <IsPublishable>False</IsPublishable>
+
+    <Authors>© Michele Natale 2020</Authors>
+    <Product>© MyEcCurveDsaDh 2020</Product>
+    <Company>© Michele Natale 2020</Company>
+    <Description>
+    Shows in a simple way how the sender and receiver function of Alice and Bob works in encrypted form. 
+    The ECDiffieHellman (ec key exchange) and ECDSA (ec digital signing) algorithms are used here.
+    The elliptic curves are always selected randomly so that everything in the temporary area is used.
+    </Description>
+    <Copyright>© MyEcCurveDsaDh 2020 created by © Michele Natale 2020. Update to DotNet8.0.</Copyright>
+  </PropertyGroup>
+</Project>
