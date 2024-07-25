@@ -25,7 +25,7 @@ The elliptic curves are always selected randomly so that everything in the tempo
 
 https://github.com/michelenatale/Cryptography/tree/main/Elliptic-Curve
 
-## Signatures Schnnorr
+## Signatures Schnorr
 
 Shows how the Schnorr Signature works as a concept.
 
