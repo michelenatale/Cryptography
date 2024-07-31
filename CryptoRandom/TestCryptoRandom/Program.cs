@@ -1,21 +1,25 @@
 ﻿
 
-using System.Diagnostics;
+using System.Diagnostics; 
 using michele.natale.Cryptography.Randoms;
 
 namespace CryptoRandomTest;
 
 public class Program
 {
+  private readonly static object TLock = new();
   private static CryptoRandom Rand { get; } = CryptoRandom.Instance;
 
   public static void Main()
   {
-    var rounds = 1000;
+    var r = Random.Shared;
+
+    var rounds = 100;
     var sw = Stopwatch.StartNew();
     for (int i = 0; i < rounds; i++)
     {
       TestCryptoRandom();
+      TestThreadSave();
       if ((i % (rounds / 10)) == 0)
         Console.Write(".");
     }
@@ -62,6 +66,13 @@ public class Program
     var double0 = Rand.NextCryptoDouble();
     var double1 = Rand.NextCryptoDouble();
     var double2 = Rand.NextCryptoDouble(-316542.0, 316542.0);
+    var double3 = Rand.NextCryptoDouble(-316542.0, -310000.0);
+    for (var i = 0; i < 10; i++)
+    {
+      var dbl = Rand.NextCryptoDouble(-316542.0, -310000.0);
+      if (dbl < -316542.0 || dbl >= -310000.0)
+        throw new Exception();
+    }
 
     var buffer = new double[1000];
     Rand.FillCryptoDoubles(buffer);
@@ -283,5 +294,104 @@ public class Program
 
     var alum = ICryptoRandom.AlphaLowerUpperNumeric;
     Rand.Shuffle(ref alum);
+  }
+
+
+  private static void TestThreadSave()
+  {
+    TestParallelFor();
+    TestTaskFactor();
+    TestMultiThread();
+  }
+
+  private static void TestParallelFor()
+  {
+    var cnt = 10;
+    var crand = CryptoRandom.Shared;
+    var parallelOptions = new ParallelOptions
+    {
+      MaxDegreeOfParallelism = Environment.ProcessorCount
+    };
+
+    var rarray = Enumerable.Range(0, cnt).Select(x => new int[10]).ToArray();
+
+    Parallel.For(0, cnt, parallelOptions,
+    (i) =>
+    {
+      lock (TLock)
+        crand.FillCryptoInts<int>(rarray[i]);
+    });
+    if (rarray[crand.NextCryptoInt(rarray.Length)][crand.NextCryptoInt(rarray.First().Length)] == 0)
+      throw new Exception();
+  }
+
+  private static void TestTaskFactor()
+  {
+
+    var cnt = 10;
+    var crand = CryptoRandom.Shared;
+    var cts = new CancellationTokenSource();
+    var rarray1 = Enumerable.Range(0, cnt).Select(x => new int[10]).ToArray();
+    var rarray2 = Enumerable.Range(0, cnt).Select(x => new int[10]).ToArray();
+    var rarray3 = Enumerable.Range(0, cnt).Select(x => new int[10]).ToArray();
+
+    var tasks = new[]
+    {
+      Task.Factory.StartNew(() => FWorker(rarray1), cts.Token, TaskCreationOptions.LongRunning, TaskScheduler.Default),
+      Task.Factory.StartNew(() => FWorker(rarray2), cts.Token, TaskCreationOptions.LongRunning, TaskScheduler.Default),
+      Task.Factory.StartNew(() => FWorker(rarray3), cts.Token, TaskCreationOptions.LongRunning, TaskScheduler.Default),
+    };
+
+     Task.WaitAll(tasks);
+    if (rarray1[crand.NextCryptoInt(rarray1.Length)][crand.NextCryptoInt( rarray1.First().Length)] == 0)
+      throw new Exception();
+    if (rarray2[crand.NextCryptoInt(rarray2.Length)][crand.NextCryptoInt(rarray2.First().Length)] == 0)
+      throw new Exception();
+    if (rarray3[crand.NextCryptoInt(rarray3.Length)][crand.NextCryptoInt(rarray3.First().Length)] == 0)
+      throw new Exception();
+  }
+
+  private static void TestMultiThread()
+  {
+    var cnt = 10;
+    var crand = CryptoRandom.Shared;
+    var rarray1 = Enumerable.Range(0, cnt).Select(x => new int[10]).ToArray();
+    var rarray2 = Enumerable.Range(0, cnt).Select(x => new int[10]).ToArray();
+    var rarray3 = Enumerable.Range(0, cnt).Select(x => new int[10]).ToArray();
+    Thread t1 = new Thread(TWorker!);
+    Thread t2 = new Thread(TWorker!);
+    Thread t3 = new Thread(TWorker!);
+    t1.Start(rarray1);
+    t2.Start(rarray2);
+    t3.Start(rarray3);
+
+    t1.Join();
+    t2.Join();
+    t3.Join();
+
+    if (rarray1[crand.NextCryptoInt(rarray1.Length)][crand.NextCryptoInt(rarray1.First().Length)] == 0)
+      throw new Exception();
+    if (rarray2[crand.NextCryptoInt(rarray2.Length)][crand.NextCryptoInt(rarray2.First().Length)] == 0)
+      throw new Exception();
+    if (rarray3[crand.NextCryptoInt(rarray3.Length)][crand.NextCryptoInt(rarray3.First().Length)] == 0)
+      throw new Exception();
+  }
+
+
+  private static void FWorker(int[][] rarray)
+  {
+    var crand = CryptoRandom.Shared;
+    for (var i = 0; i < rarray.Length; i++)
+      lock (TLock)
+        crand.FillCryptoInts<int>(rarray[i]);
+  }
+
+  private static void TWorker(object obj)
+  {
+    var rarray = (int[][])obj;
+    var crand = CryptoRandom.Shared;
+    for (var i = 0; i < rarray.Length; i++)
+      lock (TLock)
+        crand.FillCryptoInts<int>(rarray[i]);
   }
 }
