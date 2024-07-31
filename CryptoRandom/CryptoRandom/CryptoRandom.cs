@@ -640,14 +640,14 @@ public class CryptoRandom : ICryptoRandom
   private sealed class TSCryptoRandom : CryptoRandom
   {
     [ThreadStatic]
-    private static RandomNumberGenerator? t_random;
+    private static RandomNumberGenerator? TSRand;
 
     public TSCryptoRandom() : base(is_thread_save: true) { }
 
-    private static RandomNumberGenerator LocalRandom => t_random ?? Create();
+    private static RandomNumberGenerator LocalRand => TSRand ?? Create();
 
     [MethodImpl(MethodImplOptions.NoInlining)]
-    private static RandomNumberGenerator Create() => t_random = RandomNumberGenerator.Create();
+    private static RandomNumberGenerator Create() => TSRand = RandomNumberGenerator.Create();
     #region Author
 
     /// <summary>
@@ -717,8 +717,8 @@ public class CryptoRandom : ICryptoRandom
     public override byte NextCryptoByte(bool no_zeros = true)
     {
       var result = new byte[1];
-      if (!no_zeros) LocalRandom.GetBytes(result);
-      else LocalRandom.GetNonZeroBytes(result);
+      if (!no_zeros) LocalRand.GetBytes(result);
+      else LocalRand.GetNonZeroBytes(result);
       return result.First();
     }
 
@@ -755,8 +755,8 @@ public class CryptoRandom : ICryptoRandom
     public override byte[] RngCryptoBytes(int size, bool no_zeros = true)
     {
       var result = new byte[size];
-      if (!no_zeros) LocalRandom.GetBytes(result);
-      else LocalRandom.GetNonZeroBytes(result);
+      if (!no_zeros) LocalRand.GetBytes(result);
+      else LocalRand.GetNonZeroBytes(result);
       return result;
     }
 
@@ -781,8 +781,8 @@ public class CryptoRandom : ICryptoRandom
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public override void FillCryptoBytes(Span<byte> bytes, bool no_zeros = true)
     {
-      if (!no_zeros) LocalRandom.GetBytes(bytes);
-      else LocalRandom.GetNonZeroBytes(bytes);
+      if (!no_zeros) LocalRand.GetBytes(bytes);
+      else LocalRand.GetNonZeroBytes(bytes);
     }
 
     /// <summary>
@@ -938,7 +938,7 @@ public class CryptoRandom : ICryptoRandom
       var length = ints.Length;
       var type_bits = Unsafe.SizeOf<T>();
       var bytes = new byte[type_bits * length];
-      LocalRandom.GetNonZeroBytes(bytes);
+      LocalRand.GetNonZeroBytes(bytes);
       if (typeof(T).IsPrimitive)
       {
         for (int i = 0; i < length; i++)
