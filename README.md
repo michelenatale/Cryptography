@@ -3,7 +3,7 @@
 
 ## CryptoRandom
 
-CryptoRandom is a very fast, easy to use and cryptographically secure random number generator for everyday use.
+CryptoRandom is a very fast, easy-to-use and cryptographically as well as thread-safe random number generator for everyday use.
 
 CryptoRandom is based on the RandomNumberGenerator provided by Dotnet. The most important data types are available for quick use.
 
