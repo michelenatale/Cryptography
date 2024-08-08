@@ -215,7 +215,7 @@ partial class AppServices
   private void ToAppLoginSetting(RegistDataInfo rdi)
   {
     rdi.CorrectExecution = true;
-    if (PKey is not null || PKey != UsIPtr<byte>.Empty)
+    if (PKey is not null && !PKey.IsEmpty)
       if (TryToMPwSetting(PKey!, null, out var mpw))
       {
         rdi.AppSettings = ToDataSetting(mpw, null);
@@ -231,7 +231,7 @@ partial class AppServices
   private void SetAppLoginSetting(RegistDataInfo rdi)
   {
     rdi.CorrectExecution = true;
-    if (PKey is not null || PKey != UsIPtr<byte>.Empty)
+    if (PKey is not null && !PKey.IsEmpty)
       if (TryToMPwSetting(PKey!, null, out var mpw))
       {
         rdi.AppSettings.LastTimeStamp = DateTimeOffset.UtcNow.Ticks;
