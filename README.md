@@ -34,3 +34,11 @@ The Schnorrgroup and Elliptic Curve are used here.
 A test for (multi-) signing and verification is available for both variants.
 
 https://github.com/michelenatale/Cryptography/tree/main/Signatures
+
+## LoginSystem
+
+LoginSystem is a simple way that shows how to perform a local login for your application.
+
+In order for © LoginSystem 2024 to work, a registration must first be made. Only then can a login be made.
+
+https://github.com/michelenatale/Cryptography/tree/main/LoginSystem
