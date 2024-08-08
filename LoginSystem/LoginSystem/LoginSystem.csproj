@@ -1,13 +1,22 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <OutputType>Library</OutputType>
-    <TargetFramework>net8.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
+    <OutputType>Library</OutputType>
+    <Platforms>AnyCPU;x64</Platforms>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
-    <Platforms>AnyCPU;x64</Platforms>
     <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+    <TargetFramework>net8.0-windows</TargetFramework>
+
+    <Authors>© Michele Natale 2024</Authors>
+    <Product>© LoginSystem 2024</Product>
+    <Company>© Michele Natale 2024</Company>
+    <Description>
+      LoginSystem is a simple way that shows how to perform a local login for your application.
+      In order for © LoginSystem 2024 to work, a registration must first be made. Only then can a login be made.
+    </Description>
+    <Copyright>© LoginSystem 2024 created by © Michele Natale 2024. Update of Version 2.</Copyright>
   </PropertyGroup>
 
   <ItemGroup>
