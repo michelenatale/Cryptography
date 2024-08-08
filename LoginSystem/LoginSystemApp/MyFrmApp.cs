@@ -26,7 +26,7 @@ using Properties;
 //once you have the information in AppLoginSettings.
 
 
-public partial class MyFrmApp : FrmBase
+public partial class MyFrmApp : FrmCustomerBase
 {
 
   public MyFrmApp()
@@ -35,7 +35,7 @@ public partial class MyFrmApp : FrmBase
     this.BtToLI.Enabled = true;
     this.BtSetLI.Enabled = false;
 
-    this.FrmAppCTor();
+    this.FrmAppCustomerCTor();
 
     this.Icon = Resources.MyLogo64;
   }
@@ -43,13 +43,13 @@ public partial class MyFrmApp : FrmBase
   private void MyFrmApp_FormClosed(
     object sender, FormClosedEventArgs e)
   {
-    this.FrmAppClose();
+    this.FrmAppCustomerClose();
   }
 
   private void BtToLI_Click(object sender, EventArgs e)
   {
     this.TbMPw.Text = "[ ... ]";
-    if (this.To_App_Login_Setting())
+    if (this.To_App_Customer_Login_Setting())
     {
       this.BtSetLI.Enabled = true;
       this.TbMPw.Text = Convert.ToHexString(this.MyMasterPassword.ToArray());
@@ -59,7 +59,7 @@ public partial class MyFrmApp : FrmBase
   private void BtSetLI_Click(object sender, EventArgs e)
   {
     this.TbMPw.Text = "[ ... ]";
-    if (this.Set_App_Login_Setting())
+    if (this.Set_App_Customer_Login_Setting())
       this.TbMPw.Text = Convert.ToHexString(this.MyMasterPassword.ToArray());
   }
 

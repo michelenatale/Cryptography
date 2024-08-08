@@ -11,7 +11,7 @@ using michele.natale.LoginSystems.Apps;
 /// The abstract class intended for the customer for
 /// communication between MyFrmApp and loginSystem.
 /// </summary>
-public class FrmBase : Form
+public class FrmCustomerBase : Form
 {
   public const int MASTER_PASSWORD_SIZE = 48;
   public const int MASTER_PASSWORD_MAX_SIZE = 128;
@@ -27,7 +27,7 @@ public class FrmBase : Form
   /// <summary>
   /// Intended for the C-Tor
   /// </summary>
-  protected void FrmAppCTor()
+  protected void FrmAppCustomerCTor()
   {
     var new_master_password = this.NewRngMasterPassword(MASTER_PASSWORD_SIZE);
     this.MyMasterPassword = new UsIPtr<byte>(new_master_password);
@@ -36,7 +36,7 @@ public class FrmBase : Form
   /// <summary>
   /// Vorgesehen für das Schliessen von MyFrmApp 
   /// </summary>
-  protected void FrmAppClose()
+  protected void FrmAppCustomerClose()
   {
     if (!AppLoginSettings.IsNullOrEmpty(this.App_Login_Setting))
       this.App_Login_Setting.Reset();
@@ -50,7 +50,7 @@ public class FrmBase : Form
   /// retrieving the AppLoginSettings protocol.
   /// </summary>
   /// <returns></returns>
-  protected bool To_App_Login_Setting()
+  protected bool To_App_Customer_Login_Setting()
   {
     if (this.Login_System is not null)
     {
@@ -71,7 +71,7 @@ public class FrmBase : Form
   /// setting the AppLoginSettings protocol.
   /// </summary>
   /// <returns></returns>
-  protected bool Set_App_Login_Setting()
+  protected bool Set_App_Customer_Login_Setting()
   {
     if (this.Login_System is not null)
     {
@@ -98,7 +98,7 @@ public class FrmBase : Form
   /// <summary>
   /// For correctly disposing and saving the data in LoginSystem.
   /// </summary>
-  protected void FrmDispose()
+  protected void FrmCustomerDispose()
   {
     //see also Dispose(bool)
     this.Login_System.FrmClose();
