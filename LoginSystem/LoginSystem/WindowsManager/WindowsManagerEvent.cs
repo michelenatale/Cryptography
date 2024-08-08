@@ -6,6 +6,12 @@ using static Services.AppServices;
 
 partial class WindowsManager
 {
+
+  /// <summary>
+  /// The interface provided for the customer for fetching the AppLoginSettings protocol.
+  /// </summary>
+  /// <param name="result">AppLoginSettings protocol</param>
+  /// <returns></returns>
   public bool To_App_Login_Setting(out AppLoginSettings result)
   {
     result = AppLoginSettings.Empty;
@@ -26,6 +32,11 @@ partial class WindowsManager
     return false;
   }
 
+  /// <summary>
+  /// The interface provided for the customer for saving the AppLoginSettings protocol.
+  /// </summary>
+  /// <param name="app_settings">AppLoginSettings protocol</param>
+  /// <returns></returns>
   public bool Set_App_Login_Setting(AppLoginSettings app_settings)
   {
     if (this.FrmMain.DialogResult != DialogResult.OK)
@@ -41,6 +52,10 @@ partial class WindowsManager
     return rsi.CorrectExecution;
   }
 
+  /// <summary>
+  /// This ensures that all data that needs to be saved has also been saved.
+  /// </summary>
+  public void FrmClose() => this.FrmMain.Dispose();
 
 
 }
