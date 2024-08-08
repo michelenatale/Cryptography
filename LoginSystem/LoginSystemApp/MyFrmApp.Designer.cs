@@ -17,6 +17,7 @@ partial class MyFrmApp
     {
       components.Dispose();
     }
+      this.FrmDispose();
     base.Dispose(disposing);
   }
 

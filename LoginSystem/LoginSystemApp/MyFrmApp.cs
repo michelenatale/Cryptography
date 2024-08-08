@@ -1,12 +1,8 @@
 ﻿
 
-using System.Security.Cryptography;
 
 namespace LoginSystemApp;
 
-using michele.natale.LoginSystems;
-using michele.natale.LoginSystems.Apps;
-using michele.natale.Pointers;
 using Properties;
 
 //The AppLoginSettings class is your customer class.
@@ -30,18 +26,8 @@ using Properties;
 //once you have the information in AppLoginSettings.
 
 
-public partial class MyFrmApp : Form
+public partial class MyFrmApp : FrmBase
 {
-  public const int MASTER_PASSWORD_SIZE = 48;
-  public const int MASTER_PASSWORD_MAX_SIZE = 128;
-
-  private readonly RandomNumberGenerator Rand
-    = RandomNumberGenerator.Create();
-
-  public WindowsManager Login_System = null!;
-  public AppLoginSettings App_Login_Setting { get; private set; } = null!;
-
-  public UsIPtr<byte> MyMasterPassword = UsIPtr<byte>.Empty;
 
   public MyFrmApp()
   {
@@ -49,8 +35,7 @@ public partial class MyFrmApp : Form
     this.BtToLI.Enabled = true;
     this.BtSetLI.Enabled = false;
 
-    var new_master_password = NewRngMasterPassword(MASTER_PASSWORD_SIZE);
-    this.MyMasterPassword = new UsIPtr<byte>(new_master_password);
+    this.FrmAppCTor();
 
     this.Icon = Resources.MyLogo64;
   }
@@ -58,51 +43,25 @@ public partial class MyFrmApp : Form
   private void MyFrmApp_FormClosed(
     object sender, FormClosedEventArgs e)
   {
-    if (!AppLoginSettings.IsNullOrEmpty(this.App_Login_Setting))
-      this.App_Login_Setting.Reset();
-
-    this.MyMasterPassword?.Dispose();
+    this.FrmAppClose();
   }
 
   private void BtToLI_Click(object sender, EventArgs e)
   {
     this.TbMPw.Text = "[ ... ]";
-    if (this.Login_System is not null)
+    if (this.To_App_Login_Setting())
     {
-      if (this.Login_System.To_App_Login_Setting(out var result))
-      {
-        this.App_Login_Setting = result;
-        if (result.MasterPassword.Length != 0)
-          this.MyMasterPassword = new UsIPtr<byte>(this.App_Login_Setting.MasterPassword);
-
-        this.BtSetLI.Enabled = true;
-        this.TbMPw.Text = Convert.ToHexString(this.MyMasterPassword.ToArray());
-      }
+      this.BtSetLI.Enabled = true;
+      this.TbMPw.Text = Convert.ToHexString(this.MyMasterPassword.ToArray());
     }
   }
 
   private void BtSetLI_Click(object sender, EventArgs e)
   {
     this.TbMPw.Text = "[ ... ]";
-    if (this.Login_System is not null)
-    {
-      if (!AppLoginSettings.IsNullOrEmpty(this.App_Login_Setting))
-      {
-        var new_master_password = NewRngMasterPassword(MASTER_PASSWORD_SIZE);
-        this.MyMasterPassword = new UsIPtr<byte>(new_master_password);
-
-        this.App_Login_Setting.MasterPassword = this.MyMasterPassword.ToArray();
-        if (this.Login_System.Set_App_Login_Setting(this.App_Login_Setting))
-          this.TbMPw.Text = Convert.ToHexString(this.MyMasterPassword.ToArray());
-      }
-    }
-  }
-
-  private byte[] NewRngMasterPassword(int size)
-  {
-    var result = new byte[size];
-    Rand.GetNonZeroBytes(result);
-    return result;
+    if (this.Set_App_Login_Setting())
+      this.TbMPw.Text = Convert.ToHexString(this.MyMasterPassword.ToArray());
   }
 
 }
+
