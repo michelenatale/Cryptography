@@ -19,10 +19,14 @@ public static class Program
 
     ApplicationConfiguration.Initialize();
 
-    CheckFrmIsOpen("LoginSystemApp");
+    //Declare it directly after initializing
+    //the ApplicationConfiguration.
+    AppChecks.CheckFrmIsOpen("LoginSystemApp");
 
     var author = WindowsManager.AuthorInfo;
 
+    //Sets or checks the superordinate
+    //configurations of LoginSystem.
     WindowsManager.SetStartConfig();
 
     //Start here © LoginSystem 2024
@@ -39,30 +43,6 @@ public static class Program
       Login_System = wm_frm_main,
     };
     Application.Run(my_frm_app);
-  }
-
-  private static void CheckFrmIsOpen(string app_name)
-  {
-    while (true)
-    {
-      var count = Process.GetProcessesByName(AppDomain.CurrentDomain.FriendlyName).Length;
-      if (count > 1)
-      {
-        var processes = Process.GetProcesses()
-          .Where(p => p.ProcessName.ToLower().Trim().Contains(app_name.ToLower().Trim()));
-
-        foreach (var hprocess in processes)
-        {
-          var handle = Win32Api.FindWindow(null!, hprocess.MainWindowTitle);
-          if (!handle.Equals(IntPtr.Zero))
-            _ = Win32Api.SendMessage((int)handle, Win32Api.WM_SYSCOMMAND, Win32Api.SC_CLOSE, 0);
-        }
-      }
-      else
-      {
-        break;
-      }
-    }
-  }
+  } 
 }
 
