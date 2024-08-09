@@ -55,7 +55,7 @@ partial class WindowsManager
   /// <summary>
   /// This ensures that all data that needs to be saved has also been saved.
   /// </summary>
-  public void FrmClose() => this.FrmMain.Dispose();
+  public void FrmClose() => this.FrmMain.Close();
 
 
 }
