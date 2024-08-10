@@ -1,7 +1,7 @@
 
 # LoginSystem
 
-LoginSystem is a simple project that shows how to perform a local login for your application. It is based on the **Winform-Mvvm-Disign** Pattern.
+LoginSystem is a simple project that shows how to perform a local login for your application. It is based on the **Winform-Mvvm-Disign** Pattern and UserControls.
 
 In order for © LoginSystem 2024 to work, a registration must first be made. Only then can a login be made. 
 
