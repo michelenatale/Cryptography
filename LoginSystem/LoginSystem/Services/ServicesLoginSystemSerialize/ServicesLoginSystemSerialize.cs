@@ -14,7 +14,7 @@ partial class AppServices
   /// <param name="input">Input</param>
   /// <returns></returns>
   public byte[] SerializeJson<T>(T input) =>
-     JsonSerializer.SerializeToUtf8Bytes(input!, JOption);
+     JsonSerializer.SerializeToUtf8Bytes(input!, this.JOption);
 
   /// <summary>
   /// Json Deserialize
@@ -24,7 +24,7 @@ partial class AppServices
   /// <returns></returns>
   public T? DeserializeJson<T>(byte[] input) =>
     input == Array.Empty<byte>() ? default :
-      JsonSerializer.Deserialize<T>(input, JOption);
+      JsonSerializer.Deserialize<T>(input, this.JOption);
 
 
   /// <summary>

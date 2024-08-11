@@ -3,17 +3,17 @@ using LoginSystem.Properties;
 
 namespace michele.natale.LoginSystems.Apps;
 
+using Views;
 using Models;
 using Services;
 using ViewModels;
-using Views;
 using static Services.AppServices;
 
 public partial class FrmMain : Form
 {
 
-  public FrmCommands Frm_Cmd = FrmCommands.None;
   public object PVmUc { get; set; } = null!;
+  public FrmCommands Frm_Cmd = FrmCommands.None;
   private readonly AppServices Services = AppServicesHolder;
 
   public FrmMain()
@@ -31,9 +31,9 @@ public partial class FrmMain : Form
   {
     base.OnLoad(e);
     if (this.Frm_Cmd == FrmCommands.UcRegist)
-      Services.SetUcBinding(this, this.UcRegist, this.PVmUc);
+      this.Services.SetUcBinding(this, this.UcRegist, this.PVmUc);
     else if (this.Frm_Cmd == FrmCommands.UcLogin)
-      Services.SetUcBinding(this, this.UcLogin, this.PVmUc);
+      this.Services.SetUcBinding(this, this.UcLogin, this.PVmUc);
   }
 
   private void InitializeViewModel(out VmMain vm_main)
@@ -73,14 +73,14 @@ public partial class FrmMain : Form
       case FrmCommands.UcPwForget:
         {
           var uc = this.ToAndSetUserControl(cmd);
-          Services.SetFrmUserControl(this, uc, vm_frm);
+          this.Services.SetFrmUserControl(this, uc, vm_frm);
         }
         break;
 
       case FrmCommands.Close:
         {
           this.DialogResult = DialogResult.Abort;
-          var uc = Services.CurrentUserControl(this);
+          var uc = this.Services.CurrentUserControl(this);
           uc?.Dispose(); this.Close();
         }
         break;
@@ -98,7 +98,7 @@ public partial class FrmMain : Form
 
   private UserControl ToAndSetUserControl(FrmCommands cmd)
   {
-    var uc = Services.ToNewUserControl(cmd);
+    var uc = this.Services.ToNewUserControl(cmd);
     switch (uc.GetType())
     {
       case var obj when obj == typeof(UcMainEx): this.UcMain = (UcMainEx)uc; break;

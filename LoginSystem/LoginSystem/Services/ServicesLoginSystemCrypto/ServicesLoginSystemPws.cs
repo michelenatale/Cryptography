@@ -33,7 +33,7 @@ partial class AppServices
   public bool IsValidUserName(string username)
   {
     if (username.Contains('@')) return false;
-    return IsValidUserName(Encoding.UTF8.GetBytes(username.Trim()));
+    return this.IsValidUserName(Encoding.UTF8.GetBytes(username.Trim()));
   }
 
   /// <summary>
@@ -54,7 +54,7 @@ partial class AppServices
   /// <returns></returns>
   public bool IsValidPw(string pw)
   {
-    return IsValidPw(Encoding.UTF8.GetBytes(pw.Trim()));
+    return this.IsValidPw(Encoding.UTF8.GetBytes(pw.Trim()));
   }
 
   /// <summary>
@@ -75,7 +75,7 @@ partial class AppServices
   /// <returns></returns>
   public bool IsValidPw(UsIPtr<byte> bytes)
   {
-    return IsValidPw(bytes.ToArray());
+    return this.IsValidPw(bytes.ToArray());
   }
 
   ///// <summary>
@@ -104,9 +104,9 @@ partial class AppServices
   public bool IsValidUnPwMail(
   string un, UsIPtr<byte> pw, string mail)
   {
-    if (IsValidPw(pw))
-      if (IsValidUserName(un))
-        return IsValidEmail(mail);
+    if (this.IsValidPw(pw))
+      if (this.IsValidUserName(un))
+        return this.IsValidEmail(mail);
     return false;
   }
 
@@ -140,8 +140,8 @@ partial class AppServices
     if (!string.IsNullOrEmpty(un) && !string.IsNullOrEmpty(mail)) return false;
     if (string.IsNullOrEmpty(un) && string.IsNullOrEmpty(mail)) return false;
 
-    if (!string.IsNullOrEmpty(un) && !IsValidUserName(un)) return false;
-    if (!string.IsNullOrEmpty(mail) && !IsValidEmail(mail)) return false;
-    return IsValidPw(pw);
+    if (!string.IsNullOrEmpty(un) && !this.IsValidUserName(un)) return false;
+    if (!string.IsNullOrEmpty(mail) && !this.IsValidEmail(mail)) return false;
+    return this.IsValidPw(pw);
   }
 }

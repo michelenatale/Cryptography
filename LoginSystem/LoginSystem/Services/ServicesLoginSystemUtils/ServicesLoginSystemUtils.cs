@@ -1,4 +1,5 @@
 ﻿
+using michele.natale.Pointers;
 using System.Numerics;
 using System.Text;
 
@@ -27,7 +28,7 @@ partial class AppServices
     where T : INumber<T>, IMinMaxValue<T>
   {
     for (var i = 0; i < nums.Length; i++)
-      ClearPrimitives(nums[i]);
+      this.ClearPrimitives(nums[i]);
   }
 
   /// <summary>
@@ -51,7 +52,7 @@ partial class AppServices
       where T : INumber<T>, IMinMaxValue<T>
   {
     foreach (var lines in numbers)
-      if (!IsNullOrEmpty(lines))
+      if (!this.IsNullOrEmpty(lines))
         return false;
     return true;
   }
@@ -79,7 +80,7 @@ partial class AppServices
       where T : INumber<T>, IMinMaxValue<T>
   {
     foreach (var lines in numbers)
-      if (!IsNullOrEmpty(lines))
+      if (!this.IsNullOrEmpty(lines))
         return false;
     return true;
   }
@@ -96,6 +97,17 @@ partial class AppServices
     if (numbers is null) return true;
     if (numbers.Length == 0) return true;
     return new T[numbers.Length].SequenceEqual(numbers);
+  }
+  
+  /// <summary>
+  /// Check is reference null or empty or zeros
+  /// </summary>
+  /// <param name="instance"></param>
+  /// <returns></returns>
+  public bool IsNullOrEmpty(UsIPtr<byte> instance)
+  {
+    if (instance is null) return true;
+    return instance.IsEmpty;
   }
 
   /// <summary>

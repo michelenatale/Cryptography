@@ -51,7 +51,7 @@ partial class AppServices
   {
     AssertAesEnc(bytes, key);
     var iv = Instance.RngBytes(AES_IV_SIZE);
-    var associat = ToAssociated(associated, key);
+    var associat = this.ToAssociated(associated, key);
 
     var sw = Stopwatch.StartNew();
     var cipher = EncryptionAesSingle(
@@ -88,7 +88,7 @@ partial class AppServices
    ReadOnlySpan<byte> associated)
   {
     AssertAesDec(key);
-    var associat = ToAssociated(associated, key);
+    var associat = this.ToAssociated(associated, key);
     var tag = bytes.Slice(0, AES_TAG_SIZE).ToArray();
     var iv = bytes.Slice(AES_TAG_SIZE, AES_IV_SIZE).ToArray();
     var cipher = bytes.Slice(AES_TAG_SIZE + AES_IV_SIZE).ToArray();
@@ -99,8 +99,8 @@ partial class AppServices
         return DecryptionAesSingle(
           cipher, key.ToArray(), iv, associat);
     }
-    catch { ClearPrimitives(associat, tag, iv, cipher); }
-    finally { ClearPrimitives(associat, tag, iv, cipher); }
+    catch { this.ClearPrimitives(associat, tag, iv, cipher); }
+    finally { this.ClearPrimitives(associat, tag, iv, cipher); }
 
     throw new CryptographicException($"Verifiy {nameof(DecryptionAes)} failed!");
   }

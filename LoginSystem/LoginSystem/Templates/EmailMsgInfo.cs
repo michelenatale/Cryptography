@@ -136,13 +136,13 @@ internal sealed class EmailMsgInfo
   }
 
   public void SetSubject() =>
-    this.Subject = ToSubject();
+    this.Subject = this.ToSubject();
 
   public void GenerateNewGuidForBody()
   {
     var g = Guid.NewGuid();
     this.MGuid = g.ToByteArray();
-    this.Body = ToMsgText(g);
+    this.Body = this.ToMsgText(g);
   }
 
   public EmailMsgInfo CopyThis()

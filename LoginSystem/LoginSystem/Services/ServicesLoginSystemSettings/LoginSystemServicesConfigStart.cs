@@ -59,7 +59,7 @@ partial class AppServices
   {
     get
     {
-      var folder = Path.Combine(ToCurrentFolder, Current_Config_Folder);
+      var folder = Path.Combine(this.ToCurrentFolder, Current_Config_Folder);
       var file = Path.Combine(folder, Current_Frm_Start_Setting_File);
       CreateFolder(folder);
       return file;
@@ -73,7 +73,7 @@ partial class AppServices
   {
     get
     {
-      var folder = Path.Combine(ToCurrentFolder, Current_Config_Folder);
+      var folder = Path.Combine(this.ToCurrentFolder, Current_Config_Folder);
       var file = Path.Combine(folder, Current_Frm_Salt_Setting_File);
       CreateFolder(folder);
       return file;
@@ -87,7 +87,7 @@ partial class AppServices
   {
     get
     {
-      var folder = Path.Combine(ToCurrentFolder, Current_Config_Folder);
+      var folder = Path.Combine(this.ToCurrentFolder, Current_Config_Folder);
       var file = Path.Combine(folder, Current_Frm_Data_Setting_File);
       CreateFolder(folder);
       return file;
@@ -101,7 +101,7 @@ partial class AppServices
   {
     get
     {
-      var folder = Path.Combine(ToCurrentFolder, Current_Config_Folder);
+      var folder = Path.Combine(this.ToCurrentFolder, Current_Config_Folder);
       var file = Path.Combine(folder, Current_Frm_RTable_Setting_File);
       CreateFolder(folder);
       return file;
@@ -115,7 +115,7 @@ partial class AppServices
   {
     get
     {
-      var folder = Path.Combine(ToCurrentFolder, Current_Config_Folder);
+      var folder = Path.Combine(this.ToCurrentFolder, Current_Config_Folder);
       var file = Path.Combine(folder, Current_Frm_MPw_Setting_File);
       CreateFolder(folder);
       return file;
@@ -131,7 +131,7 @@ partial class AppServices
   public void SetStartDefaultConfiguration()
   {
     var data = new StartSettings();
-    SaveToFileBytesUtf8(StartConfigFile, SerializeJson(data));
+    this.SaveToFileBytesUtf8(this.StartConfigFile, this.SerializeJson(data));
   }
 
   /// <summary>
@@ -142,7 +142,7 @@ partial class AppServices
     FrmCommands fcrt)
   {
     var data = new StartSettings(fcrt);
-    SaveToFileBytesUtf8(StartConfigFile, SerializeJson(data));
+    this.SaveToFileBytesUtf8(this.StartConfigFile, this.SerializeJson(data));
   }
 
   /// <summary>
@@ -151,9 +151,9 @@ partial class AppServices
   /// <returns></returns>
   public StartSettings ToStartConfiguration()
   {
-    if (File.Exists(StartConfigFile))
-      return DeserializeJson<StartSettings>(
-        LoadFromFileBytesUtf8(StartConfigFile))!;
+    if (File.Exists(this.StartConfigFile))
+      return this.DeserializeJson<StartSettings>(
+        this.LoadFromFileBytesUtf8(this.StartConfigFile))!;
     return default!;
   }
   #endregion Start Config
@@ -170,7 +170,7 @@ partial class AppServices
        Guid.NewGuid().ToByteArray(),
        Guid.NewGuid().ToByteArray(),
     }.ToList();
-    SaveToFileBytesUtf8(SaltSettingFile, SerializeJson(data.ToArray()));
+    this.SaveToFileBytesUtf8(this.SaltSettingFile, this.SerializeJson(data.ToArray()));
   }
 
   /// <summary>
@@ -179,7 +179,7 @@ partial class AppServices
   /// <param name="data"></param>
   public void SetSaltSetting(byte[][] data)
   {
-    SaveToFileBytesUtf8(SaltSettingFile, SerializeJson(data));
+    this.SaveToFileBytesUtf8(this.SaltSettingFile, this.SerializeJson(data));
   }
 
   /// <summary>
@@ -188,9 +188,9 @@ partial class AppServices
   /// <returns></returns>
   public byte[][] ToSaltSetting()
   {
-    if (File.Exists(SaltSettingFile))
-      return DeserializeJson<byte[][]>(
-        LoadFromFileBytesUtf8(SaltSettingFile))!;
+    if (File.Exists(this.SaltSettingFile))
+      return this.DeserializeJson<byte[][]>(
+        this.LoadFromFileBytesUtf8(this.SaltSettingFile))!;
     return default!;
   }
   #endregion Salt Config
@@ -206,8 +206,8 @@ partial class AppServices
   public void SetDataSetting(
     AppLoginSettings settings, UsIPtr<byte> key, ReadOnlySpan<byte> associated)
   {
-    var data = EncryptionAesGcm(SerializeJson(settings), key.ToArray(), associated);
-    SaveToFileBytesUtf8(DataSettingFile, data);
+    var data = this.EncryptionAesGcm(this.SerializeJson(settings), key.ToArray(), associated);
+    this.SaveToFileBytesUtf8(this.DataSettingFile, data);
   }
 
   /// <summary>
@@ -220,7 +220,7 @@ partial class AppServices
     AppLoginSettings settings, ReadOnlySpan<byte> key, ReadOnlySpan<byte> associated)
   {
     using var k = new UsIPtr<byte>(key.ToArray());
-    SetDataSetting(settings, k, associated);
+    this.SetDataSetting(settings, k, associated);
   }
 
   /// <summary>
@@ -229,9 +229,9 @@ partial class AppServices
   /// <returns></returns>
   public AppLoginSettings ToDataSetting()
   {
-    if (File.Exists(DataSettingFile))
-      return DeserializeJson<AppLoginSettings>(
-        LoadFromFileBytesUtf8(DataSettingFile))!;
+    if (File.Exists(this.DataSettingFile))
+      return this.DeserializeJson<AppLoginSettings>(
+        this.LoadFromFileBytesUtf8(this.DataSettingFile))!;
     return default!;
   }
 
@@ -245,7 +245,7 @@ partial class AppServices
     ReadOnlySpan<byte> key, ReadOnlySpan<byte> associated)
   {
     using var k = new UsIPtr<byte>(key.ToArray());
-    return ToDataSetting(k, associated);
+    return this.ToDataSetting(k, associated);
   }
 
   /// <summary>
@@ -257,9 +257,9 @@ partial class AppServices
   public AppLoginSettings ToDataSetting(
     UsIPtr<byte> key, ReadOnlySpan<byte> associated)
   {
-    if (File.Exists(DataSettingFile))
-      return DeserializeJson<AppLoginSettings>(
-        DecryptionAesGcm(LoadFromFileBytesUtf8(DataSettingFile), key.ToArray(), associated))!;
+    if (File.Exists(this.DataSettingFile))
+      return this.DeserializeJson<AppLoginSettings>(
+        this.DecryptionAesGcm(this.LoadFromFileBytesUtf8(this.DataSettingFile), key.ToArray(), associated))!;
     return default!;
   }
 
@@ -274,7 +274,7 @@ partial class AppServices
   {
     var rand = RandomHolder.Instance;
     var size = rand.NextInt32(1200, 2500);
-    SetRTable(size);
+    this.SetRTable(size);
   }
 
   /// <summary>
@@ -286,7 +286,7 @@ partial class AppServices
     var data = new byte[size];
     var rand = RandomHolder.Instance;
     rand.FillBytes(data);
-    SaveToFileBytesUtf8(RTableSettingFile, SerializeJson(data));
+    this.SaveToFileBytesUtf8(this.RTableSettingFile, this.SerializeJson(data));
   }
 
   /// <summary>
@@ -295,7 +295,7 @@ partial class AppServices
   /// <returns></returns>
   public byte[] ToRTableValue()
   {
-    var rt = LoadRTable();
+    var rt = this.LoadRTable();
     var size = rt.Length;
     var start = size / 3 - 1;
 
@@ -305,7 +305,7 @@ partial class AppServices
       start = (start & 1) == 0 ? start / 2 : 3 * start + 1;
       result.Add(rt[start % size]);
     }
-    return HashDataAlgo(result.ToArray(), DEFAULT_H_NAME);
+    return this.HashDataAlgo(result.ToArray(), DEFAULT_H_NAME);
   }
 
   /// <summary>
@@ -314,9 +314,9 @@ partial class AppServices
   /// <returns></returns>
   private byte[] LoadRTable()
   {
-    if (File.Exists(RTableSettingFile))
-      return DeserializeJson<byte[]>(
-        LoadFromFileBytesUtf8(RTableSettingFile))!;
+    if (File.Exists(this.RTableSettingFile))
+      return this.DeserializeJson<byte[]>(
+        this.LoadFromFileBytesUtf8(this.RTableSettingFile))!;
     return default!;
   }
   #endregion RTable  Config
@@ -335,16 +335,16 @@ partial class AppServices
     ReadOnlySpan<byte> sypassword, bool new_sypw = false)
   {
     var sdi = new SecureDataInfo(scd);
-    var sypw = new_sypw ? CreateLoginSecretData(sdi) : sypassword.ToArray();
+    var sypw = new_sypw ? this.CreateLoginSecretData(sdi) : sypassword.ToArray();
     var (unpw, empw) = sdi!.ToHashes(HashAlgorithmName.SHA256);
     sdi.Reset();
 
     //Die komplette SecureDataInfo wird abgespeichert.
-    var a = EncryptionChaCha20Poly1305(scd.ToArray(), unpw, associated);
-    var b = EncryptionChaCha20Poly1305(scd.ToArray(), empw, associated);
-    var c = EncryptionChaCha20Poly1305(scd.ToArray(), sypw, associated);
-    ClearPrimitives(unpw, empw, sypw);
-    SaveToFileBytesUtf8(MPwSettingFile, SerializeJson<byte[][]>([a, b, c]));
+    var a = this.EncryptionChaCha20Poly1305(scd.ToArray(), unpw, associated);
+    var b = this.EncryptionChaCha20Poly1305(scd.ToArray(), empw, associated);
+    var c = this.EncryptionChaCha20Poly1305(scd.ToArray(), sypw, associated);
+    this.ClearPrimitives(unpw, empw, sypw);
+    this.SaveToFileBytesUtf8(this.MPwSettingFile, this.SerializeJson<byte[][]>([a, b, c]));
   }
 
   /// <summary>
@@ -353,9 +353,9 @@ partial class AppServices
   /// <returns></returns>
   public byte[][] ToMPwSettings()
   {
-    if (File.Exists(MPwSettingFile))
-      return DeserializeJson<byte[][]>(
-        LoadFromFileBytesUtf8(MPwSettingFile))!;
+    if (File.Exists(this.MPwSettingFile))
+      return this.DeserializeJson<byte[][]>(
+        this.LoadFromFileBytesUtf8(this.MPwSettingFile))!;
     return default!;
   }
 
@@ -370,7 +370,7 @@ partial class AppServices
     ReadOnlySpan<byte> key, ReadOnlySpan<byte> associated, out UsIPtr<byte> result)
   {
     using var k = new UsIPtr<byte>(key.ToArray());
-    return TryToMPwSetting(k, associated, out result);
+    return this.TryToMPwSetting(k, associated, out result);
   }
 
   /// <summary>
@@ -384,11 +384,11 @@ partial class AppServices
     UsIPtr<byte> key, ReadOnlySpan<byte> associated, out UsIPtr<byte> result)
   {
     result = UsIPtr<byte>.Empty;
-    foreach (var mpw in ToMPwSettings())
+    foreach (var mpw in this.ToMPwSettings())
     {
       try
       {
-        var decipher = DecryptionChaCha20Poly1305(mpw, key.ToValues(), associated);
+        var decipher = this.DecryptionChaCha20Poly1305(mpw, key.ToValues(), associated);
         if (decipher is not null)
         {
           using var ptr = new UsIPtr<byte>(decipher);
@@ -412,7 +412,7 @@ partial class AppServices
   /// <returns></returns>
   private byte[] CreateLoginSecretData(SecureDataInfo data)
   {
-    var cfolder = ToCurrentFolder;
+    var cfolder = this.ToCurrentFolder;
     var email = Encoding.UTF8.GetString(data.EMail);
     var password = Encoding.UTF8.GetString(data.Password.ToArray());
     var username = Encoding.UTF8.GetString(data.Username);
@@ -433,7 +433,7 @@ partial class AppServices
     File.WriteAllText(filename, sb.ToString());
     sb.Clear();
 
-    ShowMessageSecretFile(filename);
+    this.ShowMessageSecretFile(filename);
 
     return Encoding.UTF8.GetBytes(ls_spw_f);
   }

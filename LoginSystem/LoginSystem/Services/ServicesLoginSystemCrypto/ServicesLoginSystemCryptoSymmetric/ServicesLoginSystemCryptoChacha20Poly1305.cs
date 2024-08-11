@@ -55,7 +55,7 @@ partial class AppServices
       ReadOnlySpan<byte> associated)
   {
     AssertChaChaPolyEnc(bytes, key);
-    var associat = ToAssociated(associated, key);
+    var associat = this.ToAssociated(associated, key);
     var cipher = EncChaCha20Poly1305Single(bytes, key, associat, out var tag, out var nonce);
     var result = new byte[cipher.Length + CHACHA_POLY_TAG_SIZE + CHACHA_POLY_NONCE_SIZE];
 
@@ -83,7 +83,7 @@ partial class AppServices
     var tag = bytes[..CHACHA_POLY_TAG_SIZE];
     var nonce = bytes.Slice(CHACHA_POLY_TAG_SIZE, CHACHA_POLY_NONCE_SIZE);
 
-    var associat = ToAssociated(associated, key);
+    var associat = this.ToAssociated(associated, key);
     var tnlength = CHACHA_POLY_TAG_SIZE + CHACHA_POLY_NONCE_SIZE;
     var decipher = DecChaCha20Poly1305Single(bytes[tnlength..], key, associat, tag, nonce);
 

@@ -1,0 +1,253 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="LoginSystem.Properties.Resources">
+    <Position X="31.75" Y="4" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAAABEAAAAQAAAAAQAAAAAABAAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="michele.natale.LoginSystems.AuthorInfos">
+    <Position X="28.25" Y="4.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Author\AuthorInfos.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="michele.natale.LoginSystems.RelayCommand" BaseTypeListCollapsed="true">
+    <Position X="3.75" Y="10" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAwAACAAQAAEAAAAAAAAAAAAAAAAABAAAAAAA=</HashCode>
+      <FileName>RelayCommand\RelayCommand.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="michele.natale.LoginSystems.AppLoginSettings">
+    <Position X="28.25" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABBAAgAIBABAAAAAAAAABAQAABAAAAAA=</HashCode>
+      <FileName>Settings\AppLoginSettings.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="michele.natale.LoginSystems.EmailMsgInfo">
+    <Position X="25.75" Y="5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AggBgAABAgAABAAABYIBABAADgAICAACAgCAAAAAQEA=</HashCode>
+      <FileName>Templates\EmailMsgInfo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="michele.natale.LoginSystems.RegistDataInfo">
+    <Position X="28.25" Y="9.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAAAAAgAAAAAAIAgAAAAAAAAAAAAAAAAAAAQAA=</HashCode>
+      <FileName>Templates\RegistDataInfo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="michele.natale.LoginSystems.SecureDataInfo">
+    <Position X="25.75" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAQAAAAAgAiJAAAASAEAAAAEAAAA=</HashCode>
+      <FileName>Templates\SecureDataInfo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="michele.natale.LoginSystems.Models.FrmMainCommandsEventArgs">
+    <Position X="28.25" Y="7.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Mvvm\Models\EventHandler\FrmMainCommandsEventArgs.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="michele.natale.LoginSystems.Views.FrmInfo">
+    <Position X="22" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAACIAAAAEAICAAEAyAAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>Mvvm\ViewElements\Forms\FrmInfo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="michele.natale.LoginSystems.Views.UcPwForgetExBase">
+    <Position X="16.75" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAgAA=</HashCode>
+      <FileName>Mvvm\ViewElements\UserControl\BasesAndInterfaces\UcPwForgetExBase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="michele.natale.LoginSystems.Views.UcLoginEx">
+    <Position X="10" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AhCAAAAAACAZAAAEAACAAAYCAAAEAAAAAAIAAAEDAAA=</HashCode>
+      <FileName>Mvvm\ViewElements\UserControl\UcLoginEx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="michele.natale.LoginSystems.Views.UcMainEx">
+    <Position X="12.25" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAABACAIARQEAACAAAACAAAAAAAAAAJAAAAAAAA=</HashCode>
+      <FileName>Mvvm\ViewElements\UserControl\UcMainEx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="michele.natale.LoginSystems.Views.UcPwChangeEx">
+    <Position X="14.5" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AgAAAIEAACAIAAIEAAKAAAAGAAAAAAAAAAIAAAACACA=</HashCode>
+      <FileName>Mvvm\ViewElements\UserControl\UcPwChange.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="michele.natale.LoginSystems.Views.UcPwForgetEx">
+    <Position X="16.75" Y="3" Width="2" />
+    <InheritanceLine Type="michele.natale.LoginSystems.Views.UcPwForgetExBase" ManuallyRouted="true">
+      <Path>
+        <Point X="17.75" Y="2.184" />
+        <Point X="17.75" Y="3.106" />
+        <Point X="17.75" Y="3.106" />
+        <Point X="17.75" Y="3" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAQAAAACCAYQBYAAACgAIYCAIAAwAAAAAMAwCAKAAA=</HashCode>
+      <FileName>Mvvm\ViewElements\UserControl\UcPwForgetEx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="michele.natale.LoginSystems.Views.UcRegistEx">
+    <Position X="19.25" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AwCAAAAAACQJAAQAAACAAAQCAAEAgIAAAIIAACEDAgg=</HashCode>
+      <FileName>Mvvm\ViewElements\UserControl\UcRegistEx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="michele.natale.LoginSystems.Apps.FrmMain">
+    <Position X="7.75" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>wAQAgBAEADAAAAAAAYCAEAACQAAYAAEAgAAAAAAAAAA=</HashCode>
+      <FileName>Mvvm\ViewElements\FrmMain.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="michele.natale.LoginSystems.Apps.WindowsManager" BaseTypeListCollapsed="true">
+    <Position X="3.75" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAEAAAAAAAAAEAAAAAAAAAEEAAAAAAAAQAKAAAA=</HashCode>
+      <FileName>WindowsManager\WindowsManager.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="michele.natale.LoginSystems.Apps.WindowsService">
+    <Position X="3.75" Y="7.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAACAAAEA=</HashCode>
+      <FileName>WindowsManager\WindowsService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="michele.natale.LoginSystems.ViewModels.VmBase" Collapsed="true">
+    <Position X="13.25" Y="12.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAIAAAAAAAgAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Mvvm\ViewModels\Base\VmBase.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="michele.natale.LoginSystems.ViewModels.VmMain">
+    <Position X="7.75" Y="13.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>IBAEEEECAiAIAACDAAAAABAYAAgCAEEAAAACAURAIQg=</HashCode>
+      <FileName>Mvvm\ViewModels\VmMain.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="michele.natale.LoginSystems.ViewModels.VmUcLogin">
+    <Position X="10" Y="13.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAACABAIAAAAAEABAAAAAAAAgRAQEAAABAAAA=</HashCode>
+      <FileName>Mvvm\ViewModels\VmUcLogin.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="michele.natale.LoginSystems.ViewModels.VmUcMain">
+    <Position X="12.25" Y="13.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAACAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAA=</HashCode>
+      <FileName>Mvvm\ViewModels\VmUcMain.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="michele.natale.LoginSystems.ViewModels.VmUcPwChange">
+    <Position X="14.5" Y="13.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAACAgAAACAAAAAAAAACABBAAAAAAAABAAEAAABAAAA=</HashCode>
+      <FileName>Mvvm\ViewModels\VmUcPwChange.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="michele.natale.LoginSystems.ViewModels.VmUcPwForget">
+    <Position X="16.75" Y="13.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAACAgAAACAAAIAAAAQCABAEDCgKCAARAwEAAQBAAAg=</HashCode>
+      <FileName>Mvvm\ViewModels\VmUcPwForget.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="michele.natale.LoginSystems.ViewModels.VmUcRegist">
+    <Position X="19" Y="13.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAACAgAAACAAAIAAAAQCABAEACAAAAgBEQEAAABAAAA=</HashCode>
+      <FileName>Mvvm\ViewModels\VmUcRegist.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="michele.natale.Pointers.UsIPtr&lt;T&gt;" BaseTypeListCollapsed="true">
+    <Position X="34" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AQBAQJAAgCAAAAAADAIAAHBAQgAAAAAAAAAAAABAAAA=</HashCode>
+      <FileName>Pointers\UsIPtr.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="michele.natale.LoginSystems.Services.AppServices">
+    <Position X="0.5" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>jI9pMI7jNmojB0xOSK7vYECF70sV4INnYQjVppjJV4o=</HashCode>
+      <FileName>Services\ServicesLoginSystemApps\ServicesLoginSystemApp.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="michele.natale.LoginSystems.Services.RandomHolder">
+    <Position X="31.75" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>gEAAAEAgAIABAAAgAAAAAAAAAAAAAAAAQAAAIAAIAAA=</HashCode>
+      <FileName>Services\ServicesLoginSystemCrypto\ServicesLoginSystemCryptoRandom\ServicesLoginSystemCryptoRandom.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="michele.natale.LoginSystems.Settings.StartSettings">
+    <Position X="28.25" Y="5.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Settings\StartSettings.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="michele.natale.LoginSystems.Apps.IWindowsManager" Collapsed="true">
+    <Position X="3.75" Y="6" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>WindowsManager\Interfaces\IWindowsManager.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="michele.natale.LoginSystems.Apps.IWinManager">
+    <Position X="3.75" Y="4" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAEAAAAAAAAAAEAAAAAAAAAACAAAA=</HashCode>
+      <FileName>WindowsManager\Interfaces\IWinManager.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="michele.natale.LoginSystems.Models.AppSettingsInfo">
+    <Position X="36.25" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAAAAAAgAAAAgAAAAAAAAAAAACAQAAAAEAAAg=</HashCode>
+      <FileName>Mvvm\Models\Enums\AppSettingsInfo.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="michele.natale.LoginSystems.Models.ConfigSetter">
+    <Position X="36.25" Y="2.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAACEAAAA=</HashCode>
+      <FileName>Mvvm\Models\Enums\ConfigSetter.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="michele.natale.LoginSystems.Models.FrmCommands">
+    <Position X="36.25" Y="4.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>QAAAABAEAAAAAAAAAIAAAAAAAAAQAAAABAAAAAGAAAA=</HashCode>
+      <FileName>Mvvm\Models\Enums\FrmCommands.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -57,7 +57,7 @@ partial class AppServices
   {
     AssertAesGcmEnc(bytes, key);
 
-    var associat = ToAssociated(associated, key);
+    var associat = this.ToAssociated(associated, key);
     var cipher = EncAesGcmSingle(bytes, key, associat, out var tag, out var nonce);
     var result = new byte[cipher.Length + AES_GCM_TAG_SIZE + AES_GCM_NONCE_SIZE];
 
@@ -86,7 +86,7 @@ partial class AppServices
     var tag = bytes[..AES_GCM_TAG_SIZE];
     var nonce = bytes.Slice(AES_GCM_TAG_SIZE, AES_GCM_NONCE_SIZE);
 
-    var associat = ToAssociated(associated, key);
+    var associat = this.ToAssociated(associated, key);
     var tnlength = AES_GCM_TAG_SIZE + AES_GCM_NONCE_SIZE;
     var decipher = DecAesGcmSingle(bytes[tnlength..], key, associat, tag, nonce);
 

@@ -21,15 +21,15 @@ internal sealed class VmMain : VmBase
   #endregion Properties
 
   #region C-Tor
-  public VmMain() => Init();
+  public VmMain() => this.Init();
 
   public void Init()
   {
-    VmUcMain = VmUcMainInit();
-    VmUcLogin = VmUcLoginInit();
-    VmUcRegist = VmUcRegistInit();
-    VmUcPwForget = VmUcPwForgetInit();
-    VmUcPwChange = VmUcPwChangeInit();
+    this.VmUcMain = this.VmUcMainInit();
+    this.VmUcLogin = this.VmUcLoginInit();
+    this.VmUcRegist = this.VmUcRegistInit();
+    this.VmUcPwForget = this.VmUcPwForgetInit();
+    this.VmUcPwChange = this.VmUcPwChangeInit();
   }
   #endregion C-Tor
 
@@ -41,7 +41,7 @@ internal sealed class VmMain : VmBase
       HasWorked = false,
       Commands = cmd,
     };
-    RaiseEvent(arg);
+    this.RaiseEvent(arg);
   }
   #endregion Public Methodes
 
@@ -84,7 +84,7 @@ internal sealed class VmMain : VmBase
 
   private void BtLogin()
   {
-    var vm = VmUcLogin;
+    var vm = this.VmUcLogin;
     var uname = vm.UserName.ToLower().Trim();
     using var pw = new UsIPtr<byte>(Encoding.UTF8.GetBytes(vm.PassWord.Trim()));
     if (AppServicesHolder.CheckValuesLogin(uname, pw, out var result))
@@ -144,7 +144,7 @@ internal sealed class VmMain : VmBase
 
   private void BtRegist()
   {
-    var vm = VmUcRegist;
+    var vm = this.VmUcRegist;
     var email = vm.EMail.ToLower().Trim();
     var uname = vm.UserName.ToLower().Trim();
     using var pw = new UsIPtr<byte>(Encoding.UTF8.GetBytes(vm.PassWord.Trim()));
@@ -165,7 +165,7 @@ internal sealed class VmMain : VmBase
       AppServicesHolder.ToRegistDataInfo(arg);
 
       if (arg.CorrectExecution)
-        LlLoginUcRegist();
+        this.LlLoginUcRegist();
 
       return;
     }
@@ -204,7 +204,7 @@ internal sealed class VmMain : VmBase
 
   private void BtPwForget()
   {
-    var vm = VmUcPwForget;
+    var vm = this.VmUcPwForget;
     var port = vm.Port;
     var is_iss = vm.IsSsl;
     var delivery = vm.Delivery;
@@ -251,6 +251,7 @@ internal sealed class VmMain : VmBase
   }
   #endregion VmUcPwForget
 
+
   #region VmUcPwChange
   private VmUcPwChange VmUcPwChangeInit()
   {
@@ -260,9 +261,10 @@ internal sealed class VmMain : VmBase
       IcBtCancel = new RelayCommand(this.BtCancelUcPwChange),
     };
   }
+
   private void BtPwChange()
   {
-    var vm = VmUcPwChange;
+    var vm = this.VmUcPwChange;
     using var pw = new UsIPtr<byte>(Encoding.UTF8.GetBytes(vm.PassWord.Trim()));
     using var pwr = new UsIPtr<byte>(Encoding.UTF8.GetBytes(vm.RPassWord.Trim()));
     if (AppServicesHolder.CheckValuesPwChange(pw, pwr))
@@ -282,7 +284,7 @@ internal sealed class VmMain : VmBase
 
   private void BtCancelUcPwChange()
   {
-    var cmd = FrmCommands.Close;
+    var cmd = FrmCommands.UcMain;
     this.RaiseEvent(cmd);
   }
 
@@ -299,7 +301,7 @@ internal sealed class VmMain : VmBase
       Commands = cmd,
       HasWorked = false,
     };
-    RaiseEvent(arg);
+    this.RaiseEvent(arg);
   }
 
   private void RaiseEvent(FrmMainCommandsEventArgs e)
@@ -316,41 +318,41 @@ internal sealed class VmMain : VmBase
   }
   internal void Dispose(bool disposing)
   {
-    if (!IsDisposed)
+    if (!this.IsDisposed)
     {
       if (disposing)
       {
-        Clear();
+        this.Clear();
       }
-      IsDisposed = true;
+      this.IsDisposed = true;
     }
   }
 
-  ~VmMain() => Dispose(false);
+  ~VmMain() => this.Dispose(false);
 
   public override void Dispose()
   {
-    Dispose(true);
+    this.Dispose(true);
     GC.SuppressFinalize(this);
   }
 
   public void Clear()
   {
-    if (IsDisposed)
+    if (this.IsDisposed)
       return;
 
-    VmUcMain?.Dispose();
-    VmUcLogin?.Dispose();
-    VmUcRegist?.Dispose();
-    VmUcPwForget?.Dispose();
-    VmUcPwChange?.Dispose();
+    this.VmUcMain?.Dispose();
+    this.VmUcLogin?.Dispose();
+    this.VmUcRegist?.Dispose();
+    this.VmUcPwForget?.Dispose();
+    this.VmUcPwChange?.Dispose();
     AppServicesHolder.DisposeKey();
 
-    VmUcMain = null!;
-    VmUcLogin = null!;
-    VmUcRegist = null!;
-    VmUcPwForget = null!;
-    VmUcPwChange = null!;
+    this.VmUcMain = null!;
+    this.VmUcLogin = null!;
+    this.VmUcRegist = null!;
+    this.VmUcPwForget = null!;
+    this.VmUcPwChange = null!;
   }
   #endregion Disposing
 }

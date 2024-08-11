@@ -20,8 +20,8 @@ partial class AppServices
     var uname = uname_email.ToLower()?.Trim()!;
     if (uname.Contains('@')) { email = uname; uname = string.Empty; }
 
-    if (CheckValuesLogin(uname, pw, email, out result))
-      return ShowMessageLogin(uname, email) == DialogResult.OK;
+    if (this.CheckValuesLogin(uname, pw, email, out result))
+      return this.ShowMessageLogin(uname, email) == DialogResult.OK;
 
     MessageBox.Show("Not all inputs are correct.");
     return false;
@@ -40,7 +40,7 @@ partial class AppServices
   out (string UName, UsIPtr<byte> Pw, string EMail, UsIPtr<byte> _) result)
   {
     result = default;
-    if (IsValidUnPwMailLogin(username, pw, email))
+    if (this.IsValidUnPwMailLogin(username, pw, email))
     {
       result = (username, pw, email, UsIPtr<byte>.Empty);
       return true;

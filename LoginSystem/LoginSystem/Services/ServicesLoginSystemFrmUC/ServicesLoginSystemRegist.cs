@@ -17,6 +17,6 @@ partial class AppServices
     string username, UsIPtr<byte> pw,
     UsIPtr<byte> pwr, string email)
   {
-    return pw.Equality(pwr) && IsValidUnPwMail(username, pw, email);
+    return pw.Equality(pwr) && this.IsValidUnPwMail(username, pw, email);
   }
 }

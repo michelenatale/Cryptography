@@ -19,9 +19,9 @@ partial class AppServices
   /// <param name="vm_frm">Viewmodel-Main</param>
   public void SetFrmUserControl(Form frm, UserControl uc, VmMain vm_frm)
   {
-    ClearAllUserControls(frm);  //First here for UC-Disposing
-    SetProperty(frm, uc, vm_frm);
-    ClearSetUserControl(frm, uc);
+    this.ClearAllUserControls(frm);  //First here for UC-Disposing
+    this.SetProperty(frm, uc, vm_frm);
+    this.ClearSetUserControl(frm, uc);
   }
 
   /// <summary>
@@ -29,9 +29,9 @@ partial class AppServices
   /// </summary>
   internal void DisposeKey()
   {
-    if (PKey is null) return;
-    if (PKey == UsIPtr<byte>.Empty) return;
-    using var k = PKey;
+    if (this.PKey is null) return;
+    if (this.PKey == UsIPtr<byte>.Empty) return;
+    using var k = this.PKey;
   }
 
   /// <summary>
@@ -72,7 +72,7 @@ partial class AppServices
   /// <exception cref="NotImplementedException"></exception>
   public VmBase CurrentViewModel(Form frm)
   {
-    var uc = CurrentUserControl(frm);
+    var uc = this.CurrentUserControl(frm);
     var bs_frm = (BindingSource)frm.GetType().GetField(
       $"BsViewModel", BindingFlags.NonPublic | BindingFlags.Instance)?.GetValue(frm)!;
     var vm_main = (VmMain)bs_frm.DataSource;
@@ -142,7 +142,7 @@ partial class AppServices
   /// <param name="frm">FrmMain</param>
   public void ClearAllUserControls(Form frm)
   {
-    ClearAllTypeControls(frm, typeof(UserControl));
+    this.ClearAllTypeControls(frm, typeof(UserControl));
   }
 
   /// <summary>
@@ -178,7 +178,7 @@ partial class AppServices
   public void ClearSetUserControl(Form frm, UserControl uc)
   {
     ArgumentNullException.ThrowIfNull(uc, nameof(uc));
-    ClearAllUserControls(frm);
+    this.ClearAllUserControls(frm);
     frm.SuspendLayout();
     frm.Controls.Add(uc);
     uc.Dock = DockStyle.Fill;

@@ -33,19 +33,19 @@ partial class AppServices
       case AppSettingsInfo.SetRegistData: SetRegistData(rdi); return;
 
       //Login
-      case AppSettingsInfo.CheckRegistData: CheckRegistData(rdi); return;
+      case AppSettingsInfo.CheckRegistData: this.CheckRegistData(rdi); return;
 
       //PwForget
-      case AppSettingsInfo.SetNewRegistData: SetNewRegistData(rdi); return;
+      case AppSettingsInfo.SetNewRegistData: this.SetNewRegistData(rdi); return;
 
       //PwChange
-      case AppSettingsInfo.ChangeRegistData: ChangeRegistData(rdi); return;
+      case AppSettingsInfo.ChangeRegistData: this.ChangeRegistData(rdi); return;
 
       //Get AppLoginSettings
-      case AppSettingsInfo.GetAppLoginSetting: ToAppLoginSetting(rdi); return;
+      case AppSettingsInfo.GetAppLoginSetting: this.ToAppLoginSetting(rdi); return;
 
       //Set AppLoginSettings
-      case AppSettingsInfo.SetAppLoginSetting: SetAppLoginSetting(rdi); return;
+      case AppSettingsInfo.SetAppLoginSetting: this.SetAppLoginSetting(rdi); return;
     }
   }
 
@@ -99,14 +99,14 @@ partial class AppServices
       var (unpw, empw) = sci!.ToHashes(HashAlgorithmName.SHA256);
       sci.Reset();
 
-      var k = IsNullOrEmpty(empw) ? unpw : empw;
-      if (TryToMPwSetting(k, null, out var mpw))
+      var k = this.IsNullOrEmpty(empw) ? unpw : empw;
+      if (this.TryToMPwSetting(k, null, out var mpw))
       {
-        PKey = new UsIPtr<byte>(k);
-        var app_data = ToDataSetting(mpw, null);
+        this.PKey = new UsIPtr<byte>(k);
+        var app_data = this.ToDataSetting(mpw, null);
         app_data.LastTimeStamp = DateTimeOffset.UtcNow.Ticks;
 
-        SetDataSetting(app_data, mpw, null);
+        this.SetDataSetting(app_data, mpw, null);
         rdi.AppSettings = app_data;
         return;
       }
@@ -126,15 +126,15 @@ partial class AppServices
     using var data = rdi.Tag as UsIPtr<byte>;
     if (data is not null)
     {
-      var str_sypw = ToInputBox(ToInputBoxText);
+      var str_sypw = this.ToInputBox(this.ToInputBoxText);
       if (!string.IsNullOrEmpty(str_sypw))
       {
-        var backupfile = $"{MPwSettingFile}.backup";
-        File.Copy(MPwSettingFile, backupfile, true);
+        var backupfile = $"{this.MPwSettingFile}.backup";
+        File.Copy(this.MPwSettingFile, backupfile, true);
         var sypw = Encoding.UTF8.GetBytes(str_sypw);
-        var mpws = ToMPwSettings();
+        var mpws = this.ToMPwSettings();
         using var mpw_full = new UsIPtr<byte>(
-          DecryptionChaCha20Poly1305(mpws[2], sypw, associated));
+          this.DecryptionChaCha20Poly1305(mpws[2], sypw, associated));
 
         var emi = new EmailMsgInfo(data);
         var sdi = new SecureDataInfo(mpw_full);
@@ -143,17 +143,17 @@ partial class AppServices
           if (Encoding.UTF8.GetBytes(emi.To).SequenceEqual(sdi.EMail))
           {
             sdi.Password = new UsIPtr<byte>(Encoding.UTF8.GetBytes(new Guid(emi.MGuid).ToString()));
-            SetMPwSetting(sdi.Serialize(), default, sypw);
-            ClearPrimitives(sypw);
+            this.SetMPwSetting(sdi.Serialize(), default, sypw);
+            this.ClearPrimitives(sypw);
 
             // TEST NOCH MACHEN
             //ChangeSySetting(); //works :-)
             //TryCheckSetMPwSettings(data);
 
-            var app_data = ToDataSetting(sdi.MPw, null);
+            var app_data = this.ToDataSetting(sdi.MPw, null);
             app_data.LastTimeStamp = DateTimeOffset.UtcNow.Ticks;
-            SetDataSetting(app_data, sdi.MPw, null);
-            if (SendEmailMessage(emi))
+            this.SetDataSetting(app_data, sdi.MPw, null);
+            if (this.SendEmailMessage(emi))
             {
               emi.Reset(); sdi.Reset();
               if (File.Exists(backupfile))
@@ -162,7 +162,7 @@ partial class AppServices
             }
           }
           emi?.Reset(); sdi?.Reset();
-          File.Copy(backupfile, MPwSettingFile, true);
+          File.Copy(backupfile, this.MPwSettingFile, true);
           if (File.Exists(backupfile))
             File.Delete(backupfile);
         }
@@ -183,23 +183,23 @@ partial class AppServices
     using var data = rdi.Tag as UsIPtr<byte>;
     if (data is not null)
     {
-      var str_sypw = ToInputBox(ToInputBoxText);
+      var str_sypw = this.ToInputBox(this.ToInputBoxText);
       if (str_sypw is not null)
       {
         var sypw = Encoding.UTF8.GetBytes(str_sypw);
-        var mpws = ToMPwSettings();
+        var mpws = this.ToMPwSettings();
         using var mpw_full = new UsIPtr<byte>(
-          DecryptionChaCha20Poly1305(mpws[2], sypw, associated));
+          this.DecryptionChaCha20Poly1305(mpws[2], sypw, associated));
 
         var sdi = new SecureDataInfo(mpw_full);
         if (sdi is not null)
         {
           sdi.Password = data.Copy;
-          SetMPwSetting(sdi.Serialize(), default, sypw);
+          this.SetMPwSetting(sdi.Serialize(), default, sypw);
 
-          var app_data = ToDataSetting(sdi.MPw, null);
+          var app_data = this.ToDataSetting(sdi.MPw, null);
           app_data.LastTimeStamp = DateTimeOffset.UtcNow.Ticks;
-          SetDataSetting(app_data, sdi.MPw, null);
+          this.SetDataSetting(app_data, sdi.MPw, null);
 
           rdi.Tag = app_data;
           sdi.Reset();
@@ -215,10 +215,10 @@ partial class AppServices
   private void ToAppLoginSetting(RegistDataInfo rdi)
   {
     rdi.CorrectExecution = true;
-    if (PKey is not null && !PKey.IsEmpty)
-      if (TryToMPwSetting(PKey!, null, out var mpw))
+    if (this.PKey is not null && !this.PKey.IsEmpty)
+      if (this.TryToMPwSetting(this.PKey!, null, out var mpw))
       {
-        rdi.AppSettings = ToDataSetting(mpw, null);
+        rdi.AppSettings = this.ToDataSetting(mpw, null);
         return;
       }
     rdi.CorrectExecution = false;
@@ -231,11 +231,11 @@ partial class AppServices
   private void SetAppLoginSetting(RegistDataInfo rdi)
   {
     rdi.CorrectExecution = true;
-    if (PKey is not null && !PKey.IsEmpty)
-      if (TryToMPwSetting(PKey!, null, out var mpw))
+    if (this.PKey is not null && !this.PKey.IsEmpty)
+      if (this.TryToMPwSetting(this.PKey!, null, out var mpw))
       {
         rdi.AppSettings.LastTimeStamp = DateTimeOffset.UtcNow.Ticks;
-        SetDataSetting(rdi.AppSettings, mpw, null);
+        this.SetDataSetting(rdi.AppSettings, mpw, null);
         rdi.AppSettings = null!;
         return;
       }

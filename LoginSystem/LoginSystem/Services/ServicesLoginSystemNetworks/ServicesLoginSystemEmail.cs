@@ -48,7 +48,7 @@ partial class AppServices
   /// <returns></returns>
   public bool SendEmailMessage(EmailMsgInfo emi)
   {
-    return SendEmailMessage(
+    return this.SendEmailMessage(
       emi.To, emi.From, emi.Port, emi.Subject,
       emi.Body, emi.Host, emi.Username, emi.Password,
       emi.IsSsl, emi.SmtpMethode);
@@ -74,7 +74,7 @@ partial class AppServices
     string user_name, byte[] pass_word, bool is_ssl,
     SmtpDeliveryMethod smtp_methode = SmtpDeliveryMethod.Network)
   {
-    return SendEmailMessage(
+    return this.SendEmailMessage(
        new MailAddress(sto), new MailAddress(sfrom), port, subject,
        body, host, user_name, pass_word, is_ssl, smtp_methode);
   }
@@ -99,7 +99,7 @@ partial class AppServices
     string user_name, UsIPtr<byte> pass_word, bool is_ssl,
     SmtpDeliveryMethod smtp_methode = SmtpDeliveryMethod.Network)
   {
-    return SendEmailMessage(
+    return this.SendEmailMessage(
       new MailAddress(sto), new MailAddress(sfrom), port, subject,
       body, host, user_name, pass_word.ToArray(), is_ssl, smtp_methode);
   }

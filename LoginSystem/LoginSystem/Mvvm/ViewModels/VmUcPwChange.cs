@@ -9,6 +9,7 @@ using System.Windows.Input;
 namespace michele.natale.LoginSystems.ViewModels;
 
 using Pointers;
+using static Services.AppServices;
 
 internal sealed class VmUcPwChange : VmBase
 {
@@ -16,22 +17,26 @@ internal sealed class VmUcPwChange : VmBase
   private UsIPtr<byte> MPassWord = UsIPtr<byte>.Empty;
   public string PassWord
   {
-    get => Encoding.UTF8.GetString(MPassWord.ToArray());
+    get => Encoding.UTF8.GetString(this.MPassWord.ToArray());
     set
     {
-      MPassWord = new UsIPtr<byte>(Encoding.UTF8.GetBytes(value));
-      OnPropertyChanged(nameof(PassWord));
+      if (!AppServicesHolder.IsNullOrEmpty(this.MPassWord))
+        this.MPassWord.Dispose();
+      this.MPassWord = new UsIPtr<byte>(Encoding.UTF8.GetBytes(value));
+      this.OnPropertyChanged(nameof(this.PassWord));
     }
   }
 
   private UsIPtr<byte> MRPassWord = UsIPtr<byte>.Empty;
   public string RPassWord
   {
-    get => Encoding.UTF8.GetString(MRPassWord.ToArray());
+    get => Encoding.UTF8.GetString(this.MRPassWord.ToArray());
     set
     {
-      MRPassWord = new UsIPtr<byte>(Encoding.UTF8.GetBytes(value));
-      OnPropertyChanged(nameof(RPassWord));
+      if (!AppServicesHolder.IsNullOrEmpty(this.MRPassWord))
+        this.MRPassWord?.Dispose();
+      this.MRPassWord = new UsIPtr<byte>(Encoding.UTF8.GetBytes(value));
+      this.OnPropertyChanged(nameof(this.RPassWord));
     }
   }
 
@@ -46,32 +51,30 @@ internal sealed class VmUcPwChange : VmBase
 
   internal void Dispose(bool disposing)
   {
-    if (!IsDisposed)
+    if (!this.IsDisposed)
     {
       if (disposing)
       {
-        Clear();
+        this.Clear();
       }
-      IsDisposed = true;
+      this.IsDisposed = true;
     }
   }
 
-  ~VmUcPwChange() => Dispose(false);
+  ~VmUcPwChange() => this.Dispose(false);
 
   public override void Dispose()
   {
-    Dispose(true);
+    this.Dispose(true);
     GC.SuppressFinalize(this);
   }
 
   public void Clear()
   {
+    this.MPassWord?.Dispose();
+    this.MPassWord = UsIPtr<byte>.Empty;
 
-    MPassWord.Dispose();
-    MPassWord = UsIPtr<byte>.Empty;
-
-    MRPassWord.Dispose();
-    MRPassWord = UsIPtr<byte>.Empty;
-
+    this.MRPassWord?.Dispose();
+    this.MRPassWord = UsIPtr<byte>.Empty;
   }
 }

@@ -2,8 +2,8 @@
 
 
 
-using System.Net.Mail;
 using System.Text;
+using System.Net.Mail;
 using System.Windows.Input;
 
 namespace michele.natale.LoginSystems.ViewModels;
@@ -16,77 +16,81 @@ internal sealed class VmUcPwForget : VmBase
   private string MEMail = string.Empty;
   public string EMail
   {
-    get => MEMail;
+    get => this.MEMail;
     set
     {
-      MEMail = value;
-      OnPropertyChanged(nameof(EMail));
+      this.MEMail = value;
+      this.OnPropertyChanged(nameof(this.EMail));
     }
   }
 
   private string MUserName = string.Empty;
   public string UserName
   {
-    get => MUserName;
+    get => this.MUserName;
     set
     {
-      MUserName = value;
-      OnPropertyChanged(nameof(UserName));
+      this.MUserName = value;
+      this.OnPropertyChanged(nameof(this.UserName));
     }
   }
 
   private UsIPtr<byte> MPassWord = UsIPtr<byte>.Empty;
   public string PassWord
   {
-    get => Encoding.UTF8.GetString(MPassWord.ToArray());
+    get => Encoding.UTF8.GetString(this.MPassWord.ToArray());
     set
     {
-      MPassWord = new UsIPtr<byte>(Encoding.UTF8.GetBytes(value));
-      OnPropertyChanged(nameof(PassWord));
+      if (!AppServicesHolder.IsNullOrEmpty(MPassWord))
+        this.MPassWord?.Dispose();
+      this.MPassWord = new UsIPtr<byte>(Encoding.UTF8.GetBytes(value));
+      this.OnPropertyChanged(nameof(this.PassWord));
     }
   }
 
   private UsIPtr<byte> MRPassWord = UsIPtr<byte>.Empty;
   public string RPassWord
   {
-    get => Encoding.UTF8.GetString(MRPassWord.ToArray());
+    get => Encoding.UTF8.GetString(this.MRPassWord.ToArray());
     set
     {
-      MRPassWord = new UsIPtr<byte>(Encoding.UTF8.GetBytes(value));
-      OnPropertyChanged(nameof(RPassWord));
+      if (!AppServicesHolder.IsNullOrEmpty(MRPassWord))
+        this.MRPassWord?.Dispose();
+      this.MRPassWord = new UsIPtr<byte>(Encoding.UTF8.GetBytes(value));
+      this.OnPropertyChanged(nameof(this.RPassWord));
     }
   }
 
   private int MPort = -1;
   public int Port
   {
-    get => MPort;
+    get => this.MPort;
     set
     {
-      MPort = value;
-      OnPropertyChanged(nameof(RPassWord));
+      this.MPort = value;
+      this.OnPropertyChanged(nameof(this.RPassWord));
     }
   }
 
   private string MHost = string.Empty;
   public string Host
   {
-    get => MHost;
+    get => this.MHost;
     set
     {
-      MHost = value;
-      OnPropertyChanged(nameof(Host));
+      this.MHost = value;
+      this.OnPropertyChanged(nameof(this.Host));
     }
   }
 
   private bool MSsl = true;
   public bool IsSsl
   {
-    get => MSsl;
+    get => this.MSsl;
     set
     {
-      MSsl = value;
-      OnPropertyChanged(nameof(IsSsl));
+      this.MSsl = value;
+      this.OnPropertyChanged(nameof(this.IsSsl));
     }
   }
 
@@ -94,11 +98,11 @@ internal sealed class VmUcPwForget : VmBase
     SmtpDeliveryMethod.Network;
   public SmtpDeliveryMethod Delivery
   {
-    get => MDelivery;
+    get => this.MDelivery;
     set
     {
-      MDelivery = value;
-      OnPropertyChanged(nameof(Delivery));
+      this.MDelivery = value;
+      this.OnPropertyChanged(nameof(this.Delivery));
     }
   }
 
@@ -115,47 +119,47 @@ internal sealed class VmUcPwForget : VmBase
   }
   internal void Dispose(bool disposing)
   {
-    if (!IsDisposed)
+    if (!this.IsDisposed)
     {
       if (disposing)
       {
-        Clear();
+        this.Clear();
       }
-      IsDisposed = true;
+      this.IsDisposed = true;
     }
   }
 
-  ~VmUcPwForget() => Dispose(false);
+  ~VmUcPwForget() => this.Dispose(false);
 
   public override void Dispose()
   {
-    Dispose(true);
+    this.Dispose(true);
     GC.SuppressFinalize(this);
   }
 
   public void Clear()
   {
-    if (IsDisposed)
+    if (this.IsDisposed)
       return;
 
-    MPort = -1;
-    MSsl = true;
-    MDelivery = SmtpDeliveryMethod.Network;
+    this.MPort = -1;
+    this.MSsl = true;
+    this.MDelivery = SmtpDeliveryMethod.Network;
 
-    AppServicesHolder.ResetText(MHost);
-    MHost = string.Empty;
+    AppServicesHolder.ResetText(this.MHost);
+    this.MHost = string.Empty;
 
-    AppServicesHolder.ResetText(MEMail);
-    MEMail = string.Empty;
+    AppServicesHolder.ResetText(this.MEMail);
+    this.MEMail = string.Empty;
 
-    AppServicesHolder.ResetText(MUserName);
-    MUserName = string.Empty;
+    AppServicesHolder.ResetText(this.MUserName);
+    this.MUserName = string.Empty;
 
-    MPassWord.Dispose();
-    MPassWord = UsIPtr<byte>.Empty;
+    this.MPassWord?.Dispose();
+    this.MPassWord = UsIPtr<byte>.Empty;
 
-    MRPassWord.Dispose();
-    MRPassWord = UsIPtr<byte>.Empty;
+    this.MRPassWord?.Dispose();
+    this.MRPassWord = UsIPtr<byte>.Empty;
 
   }
 }

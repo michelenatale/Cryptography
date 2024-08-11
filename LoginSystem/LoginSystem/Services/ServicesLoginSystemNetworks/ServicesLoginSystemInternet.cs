@@ -30,7 +30,7 @@ partial class AppServices
       };
 
       if (!string.IsNullOrEmpty(url))
-        return await CheckInternetConnectionAsync(url);
+        return await this.CheckInternetConnectionAsync(url);
     }
     catch
     {

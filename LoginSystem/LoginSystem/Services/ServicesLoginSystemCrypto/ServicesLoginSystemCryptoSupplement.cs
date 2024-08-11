@@ -19,7 +19,7 @@ partial class AppServices
     ReadOnlySpan<byte> bytes, int offset, int size)
   {
     var key = Guid.NewGuid().ToByteArray();
-    var result = RngNewKey(key, bytes, offset, size);
+    var result = this.RngNewKey(key, bytes, offset, size);
     return (key, result);
   }
 
@@ -60,7 +60,7 @@ partial class AppServices
   {
     var a = associat.IsEmpty ? AssociatedSuggestion : MD5.HashData(associat.ToArray());
     var k = MD5.HashData(a.Concat(SHA256.HashData(key)).ToArray());
-    return RngNewKey(k, a, 0, 32);
+    return this.RngNewKey(k, a, 0, 32);
   }
 
   /// <summary>

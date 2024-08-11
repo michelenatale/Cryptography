@@ -12,22 +12,24 @@ internal sealed class VmUcLogin : VmBase
   private string MUserName = string.Empty;
   public string UserName
   {
-    get => MUserName;
+    get => this.MUserName;
     set
     {
-      MUserName = value;
-      OnPropertyChanged(nameof(UserName));
+      this.MUserName = value;
+      this.OnPropertyChanged(nameof(this.UserName));
     }
   }
 
   private UsIPtr<byte> MPassWord = UsIPtr<byte>.Empty;
   public string PassWord
   {
-    get => Encoding.UTF8.GetString(MPassWord.ToArray());
+    get => Encoding.UTF8.GetString(this.MPassWord.ToArray());
     set
     {
-      MPassWord = new UsIPtr<byte>(Encoding.UTF8.GetBytes(value));
-      OnPropertyChanged(nameof(PassWord));
+      if(!AppServicesHolder.IsNullOrEmpty(this.MPassWord))
+        this.MPassWord.Dispose();
+      this.MPassWord = new UsIPtr<byte>(Encoding.UTF8.GetBytes(value));
+      this.OnPropertyChanged(nameof(this.PassWord));
     }
   }
 
@@ -42,41 +44,42 @@ internal sealed class VmUcLogin : VmBase
   {
     get; private set;
   }
+
   internal void Dispose(bool disposing)
   {
-    if (!IsDisposed)
+    if (!this.IsDisposed)
     {
       if (disposing)
       {
-        Clear();
+        this.Clear();
       }
-      IsDisposed = true;
+      this.IsDisposed = true;
     }
   }
 
-  ~VmUcLogin() => Dispose(false);
+  ~VmUcLogin() => this.Dispose(false);
 
   public override void Dispose()
   {
-    Dispose(true);
+    this.Dispose(true);
     GC.SuppressFinalize(this);
   }
 
   public void ClearTextBoxes()
   {
-    Clear();
+    this.Clear();
   }
 
   public void Clear()
   {
-    if (IsDisposed)
+    if (this.IsDisposed)
       return;
 
-    AppServicesHolder.ResetText(MUserName);
-    UserName = string.Empty;
+    AppServicesHolder.ResetText(this.MUserName);
+    this.UserName = string.Empty;
 
-    MPassWord.Dispose();
-    MPassWord = UsIPtr<byte>.Empty;
+    this.MPassWord?.Dispose();
+    this.MPassWord = UsIPtr<byte>.Empty;
 
   }
   #endregion Disposing

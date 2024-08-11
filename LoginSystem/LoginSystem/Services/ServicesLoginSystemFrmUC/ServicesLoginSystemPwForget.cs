@@ -25,8 +25,8 @@ partial class AppServices
     if (port < 0 || port > short.MaxValue) return false;
 
     if (string.IsNullOrEmpty(email)) return false;
-    if (!IsValidEmail(email)) return false;
-    if (ShowMessagePwForgetChange(ToStringPwForget(input)) == DialogResult.OK)
+    if (!this.IsValidEmail(email)) return false;
+    if (this.ShowMessagePwForgetChange(this.ToStringPwForget(input)) == DialogResult.OK)
     {
       result = new EmailMsgInfo
       {

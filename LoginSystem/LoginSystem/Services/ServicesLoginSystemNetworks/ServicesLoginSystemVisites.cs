@@ -14,7 +14,7 @@ partial class AppServices
   public void MyHomePageUrl()
   {
     string url_address = LinkValue;
-    OpenUrl(url_address);
+    this.OpenUrl(url_address);
   }
 
   /// <summary>
@@ -25,7 +25,7 @@ partial class AppServices
   {
     try
     {
-      VisitLink(url_address);
+      this.VisitLink(url_address);
     }
     catch (Exception ex)
     {

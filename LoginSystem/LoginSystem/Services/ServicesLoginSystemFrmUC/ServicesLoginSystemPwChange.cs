@@ -13,7 +13,7 @@ partial class AppServices
     if (pw is null || pw.IsEmpty) return false;
     if (pwr is null || pwr.IsEmpty) return false;
     if (!pw.Equality(pwr)) return false;
-    return ShowMessagePwForgetChange(ToStringPwChange(pw)) == DialogResult.OK;
+    return this.ShowMessagePwForgetChange(this.ToStringPwChange(pw)) == DialogResult.OK;
   }
 
   private string ToStringPwChange(UsIPtr<byte> pw)

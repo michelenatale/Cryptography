@@ -3,7 +3,6 @@
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-
 namespace michele.natale.LoginSystems.ViewModels;
 
 public abstract class VmBase : INotifyPropertyChanged, IDisposable
