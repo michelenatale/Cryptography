@@ -11,7 +11,8 @@ public class Program
   private static CryptoRandom Rand { get; } = CryptoRandom.Instance;
 
   public static void Main()
-  {
+  { 
+
     var rounds = 100;
     var sw = Stopwatch.StartNew();
     for (int i = 0; i < rounds; i++)

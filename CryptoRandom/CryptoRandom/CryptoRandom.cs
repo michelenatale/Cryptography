@@ -17,7 +17,7 @@ namespace michele.natale.Cryptography.Randoms;
 public class CryptoRandom : ICryptoRandom
 {
 
-  public bool IsThreadSave{ get; private set; } = false;
+  public bool IsThreadSave { get; private set; } = false;
 
   /// <summary>
   /// RandomNumberGenerator-instance
@@ -37,9 +37,13 @@ public class CryptoRandom : ICryptoRandom
   /// <summary>
   /// ThreadSave CryptoRandom Instance and Holder.
   /// </summary>
-  public static CryptoRandom Shared { get; } = new TSCryptoRandom();
+  public static CryptoRandom Shared { get; } = new TSCryptoRandom().ThreadSave;
 
-  private protected CryptoRandom(bool is_thread_save) => 
+  /// <summary>
+  /// Private ThreadSave EntryPoint
+  /// </summary>
+  /// <param name="is_thread_save"></param>
+  private protected CryptoRandom(bool is_thread_save) : this() =>
     this.IsThreadSave = is_thread_save;
 
   #region C-Tor
@@ -644,26 +648,31 @@ public class CryptoRandom : ICryptoRandom
   private sealed class TSCryptoRandom : TSCryptoRandomBase
   {
     [ThreadStatic]
-    private static CryptoRandom? TSRand; 
+    private static CryptoRandom? TSRand;
+
+    internal CryptoRandom ThreadSave { get; private set; } = null!;
 
     public TSCryptoRandom() : base(is_thread_save: true)
-    { 
+    {
+      LocalRand = TSRand ?? Create();
+      this.ThreadSave = LocalRand ?? Create();
     }
 
-    private static CryptoRandom LocalRand => TSRand ?? Create();
+    private static CryptoRandom LocalRand { get; set; } = null!;
 
     [MethodImpl(MethodImplOptions.NoInlining)]
-    private static CryptoRandom Create() => TSRand = new CryptoRandom();
+    private static CryptoRandom Create() => TSRand = new CryptoRandom(true);
   }
 
-  private abstract class TSCryptoRandomBase:CryptoRandom
-  { 
-
+  private abstract class TSCryptoRandomBase : CryptoRandom
+  {
     private protected TSCryptoRandomBase(bool is_thread_save)
-    { 
+    {
       this.IsThreadSave = is_thread_save;
     }
   }
+
+
   #endregion ThreadSaveCryptoRandom
 
 }
