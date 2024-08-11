@@ -12,8 +12,6 @@ public class Program
 
   public static void Main()
   {
-    var r = Random.Shared;
-
     var rounds = 100;
     var sw = Stopwatch.StartNew();
     for (int i = 0; i < rounds; i++)

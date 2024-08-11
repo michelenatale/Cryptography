@@ -1,9 +1,12 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
+    <Nullable>enable</Nullable>
     <OutputType>Exe</OutputType>
-    <RootNamespace>TestCryptoRandomVb</RootNamespace>
+    <Platforms>AnyCPU;x64</Platforms>
+    <ImplicitUsings>enable</ImplicitUsings>
     <TargetFramework>net8.0</TargetFramework>
+    <RootNamespace>TestCryptoRandomVb</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
