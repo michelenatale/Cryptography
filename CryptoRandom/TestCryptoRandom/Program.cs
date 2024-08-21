@@ -11,8 +11,7 @@ public class Program
   private static CryptoRandom Rand { get; } = CryptoRandom.Instance;
 
   public static void Main()
-  { 
-
+  {
     var rounds = 100;
     var sw = Stopwatch.StartNew();
     for (int i = 0; i < rounds; i++)
@@ -24,6 +23,8 @@ public class Program
     }
     Console.WriteLine();
     Console.WriteLine($"rounds = {rounds}; t = {sw.ElapsedMilliseconds}ms");
+
+    Console.ReadLine();
   }
 
   private static void TestCryptoRandom()

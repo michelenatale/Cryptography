@@ -9,9 +9,9 @@ using System.Runtime.CompilerServices;
 namespace michele.natale.Cryptography.Randoms;
 
 /// <summary>
-/// A fast, cryptographically secure random number 
-/// generator for all data types that need to be handled 
-/// randomly in some way. 
+/// A fast, cryptographically and thread-secure random 
+/// number generator for all data types that need to be 
+/// handled randomly in some way. 
 /// <para>Created by © Michele Natale 2017</para>
 /// </summary>
 public class CryptoRandom : ICryptoRandom
@@ -354,32 +354,18 @@ public class CryptoRandom : ICryptoRandom
     ArgumentOutOfRangeException.ThrowIfGreaterThanOrEqual(min, max);
 
     var d = max - min;
-    var tmp = new T[1];
+    //var tmp = new T[1];
     var length = ints.Length;
     var type_bits = Unsafe.SizeOf<T>();
     var bytes = new byte[type_bits * length];
     this.Rand.GetNonZeroBytes(bytes);
-    if (typeof(T).IsPrimitive)
-    {
+    //DataTypes Int128 and UInt128 are not yet recognized as primitives. 
+    if (typeof(T).IsPrimitive || typeof(T) == typeof(Int128) || typeof(T) == typeof(UInt128))
       for (int i = 0; i < length; i++)
       {
-        Buffer.BlockCopy(bytes, i * type_bits, tmp, 0, type_bits);
-        ints[i] = T.Abs(tmp.First());
-        ints[i] %= d;
-        ints[i] += min;
+        var tmp = Unsafe.ReadUnaligned<T>(ref bytes[i * type_bits]);
+        ints[i] = T.Abs(tmp); ints[i] %= d; ints[i] += min;
       }
-    }
-    else if (typeof(T) == typeof(Int128) || typeof(T) == typeof(UInt128))
-    {
-      for (int i = 0; i < length; i++)
-      {
-        Span<T> span;
-        var b = bytes.AsSpan().Slice(i, type_bits);
-        fixed (byte* ptr = b) span = new Span<T>(ptr, 1);
-        ints[i] = T.Abs(span.ToArray().First());
-        ints[i] %= d; ints[i] += min;
-      }
-    }
   }
 
   #endregion Ints

@@ -24,6 +24,8 @@ Namespace CryptoRandomTest
       Next
       Console.WriteLine()
       Console.WriteLine($"rounds = {rounds}; t = {sw.ElapsedMilliseconds}ms")
+
+      Console.ReadLine()
     End Sub
 
     Private Sub TestCryptoRandom()
@@ -301,7 +303,7 @@ Namespace CryptoRandomTest
             .MaxDegreeOfParallelism = Environment.ProcessorCount
         }
 
-      Dim rarray As Int32()() = Enumerable.Range(0, cnt).Select(Function(x) New Int32(9) {}).ToArray()
+      Dim rarray As Int32()() = Enumerable.Range(0, cnt).Select(Function(x) Ints(cnt)).ToArray()
 
       Parallel.For(0, cnt, parallelOptions,
         Sub(i)
@@ -319,9 +321,9 @@ Namespace CryptoRandomTest
       Dim cnt As Int32 = 10
       Dim crand = CryptoRandom.Shared
       Dim cts As New CancellationTokenSource()
-      Dim rarray1 As Int32()() = Enumerable.Range(0, cnt).Select(Function(x) New Int32(9) {}).ToArray()
-      Dim rarray2 As Int32()() = Enumerable.Range(0, cnt).Select(Function(x) New Int32(9) {}).ToArray()
-      Dim rarray3 As Int32()() = Enumerable.Range(0, cnt).Select(Function(x) New Int32(9) {}).ToArray()
+      Dim rarray1 As Int32()() = Enumerable.Range(0, cnt).Select(Function(x) Ints(cnt)).ToArray()
+      Dim rarray2 As Int32()() = Enumerable.Range(0, cnt).Select(Function(x) Ints(cnt)).ToArray()
+      Dim rarray3 As Int32()() = Enumerable.Range(0, cnt).Select(Function(x) Ints(cnt)).ToArray()
 
       Dim tasks As Task() = {
             Task.Factory.StartNew(Sub() FWorker(rarray1), cts.Token, TaskCreationOptions.LongRunning, TaskScheduler.Default),
@@ -344,9 +346,9 @@ Namespace CryptoRandomTest
     Private Sub TestMultiThread()
       Dim cnt As Int32 = 10
       Dim crand = CryptoRandom.Shared
-      Dim rarray1 As Int32()() = Enumerable.Range(0, cnt).Select(Function(x) New Int32(9) {}).ToArray()
-      Dim rarray2 As Int32()() = Enumerable.Range(0, cnt).Select(Function(x) New Int32(9) {}).ToArray()
-      Dim rarray3 As Int32()() = Enumerable.Range(0, cnt).Select(Function(x) New Int32(9) {}).ToArray()
+      Dim rarray1 As Int32()() = Enumerable.Range(0, cnt).Select(Function(x) Ints(cnt)).ToArray()
+      Dim rarray2 As Int32()() = Enumerable.Range(0, cnt).Select(Function(x) Ints(cnt)).ToArray()
+      Dim rarray3 As Int32()() = Enumerable.Range(0, cnt).Select(Function(x) Ints(cnt)).ToArray()
       Dim t1 As New Thread(AddressOf TWorker)
       Dim t2 As New Thread(AddressOf TWorker)
       Dim t3 As New Thread(AddressOf TWorker)
@@ -387,6 +389,10 @@ Namespace CryptoRandomTest
         End SyncLock
       Next
     End Sub
+
+    Private Function Ints(size As Int32) As Int32()
+      Return New Int32(size - 1) {}
+    End Function
   End Module
 
 End Namespace
