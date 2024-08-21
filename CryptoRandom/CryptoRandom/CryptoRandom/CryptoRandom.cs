@@ -9,9 +9,9 @@ using System.Runtime.CompilerServices;
 namespace michele.natale.Cryptography.Randoms;
 
 /// <summary>
-/// A fast, cryptographically secure random number 
-/// generator for all data types that need to be handled 
-/// randomly in some way. 
+/// A fast, cryptographically and thread-secure random 
+/// number generator for all data types that need to be 
+/// handled randomly in some way. 
 /// <para>Created by © Michele Natale 2017</para>
 /// </summary>
 public class CryptoRandom : ICryptoRandom
