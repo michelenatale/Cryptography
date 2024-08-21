@@ -354,7 +354,6 @@ public class CryptoRandom : ICryptoRandom
     ArgumentOutOfRangeException.ThrowIfGreaterThanOrEqual(min, max);
 
     var d = max - min;
-    //var tmp = new T[1];
     var length = ints.Length;
     var type_bits = Unsafe.SizeOf<T>();
     var bytes = new byte[type_bits * length];
