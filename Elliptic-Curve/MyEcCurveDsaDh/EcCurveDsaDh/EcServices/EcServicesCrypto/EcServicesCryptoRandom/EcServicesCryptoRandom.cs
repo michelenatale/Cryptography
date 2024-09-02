@@ -2,6 +2,7 @@
 
 using System.Numerics;
 using System.Security.Cryptography;
+using System.Runtime.CompilerServices;
 
 namespace michele.natale.EcCurveDsaDh;
 
@@ -91,9 +92,9 @@ partial class EcService
   }
 
 
-  private unsafe static T[] RngCryptoIntX<T>(int size, T min, T max) where T : INumber<T>, IMinMaxValue<T>
+  private static T[] RngCryptoIntX<T>(int size, T min, T max) where T : INumber<T>, IMinMaxValue<T>
   {
-    var tsize = sizeof(T);
+    var tsize = Unsafe.SizeOf<T>();
     var result = new T[size];
     var buffer = new byte[size * tsize];
     var maxmin = double.CreateSaturating(max - min);
