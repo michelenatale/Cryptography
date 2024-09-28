@@ -46,7 +46,7 @@ public class Program
     var sw = Stopwatch.StartNew();
 
     var keyseed = RngBytes(SS.SEED_SIZE);
-    var (privkey, pubkey) = SS.CreateKeyPair(keyseed, 128);
+    var (privkey, pubkey) = SS.CreateKeyPair(keyseed, 129);
 
     var message = RngBytes(32);
 
@@ -73,7 +73,7 @@ public class Program
 
     var txt = "This is my message. ";
 
-    var message = RepeateForMessage(5, txt);
+    var message = RepeateForMessage(50, txt);
 
     var sw = Stopwatch.StartNew();
 

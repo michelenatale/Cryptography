@@ -36,15 +36,14 @@ public class SignVerifyInfo
 
     var max_length = signs.Max(x => x.Length);
     var result = new byte[max_length];
-    foreach (var sn in multi_sign_infos)
+    foreach (var sn in signs)
     {
-      var sgn = Convert.FromHexString(sn.Sign);
       for (var i = 0; i < max_length; i++)
-        result[i % result.Length] ^= sgn[i % sgn.Length];
+        result[i % result.Length] ^= sn[i % sn.Length];
     }
-    var half_length = signs.Length / 2;
-    return SHA512.HashData(result.Take(half_length).ToArray())
-      .Concat(SHA512.HashData(result.Skip(half_length).ToArray())).ToArray();
+    var third_length = signs.First().Length / 3;
+    return SHA512.HashData(result.Take(2 * third_length).ToArray())
+      .Concat(SHA512.HashData(result.Skip(third_length).ToArray())).ToArray();
   }
 
 

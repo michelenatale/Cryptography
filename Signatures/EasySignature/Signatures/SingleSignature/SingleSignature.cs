@@ -42,8 +42,6 @@ public class SingleSignature
     ReadOnlySpan<byte> seed, int size = 128)
   {
     AssertCreatePair(seed, size);
-    //CreatePrivateKey(seed, size);
-
     var privkey = CreatePrivateKey(seed, size);
     var pubkey = CreatePublicKey(privkey);
 

@@ -23,7 +23,7 @@ public class MultiSignature
       var name = $"Name_{i}";
       var seed = RngBytes(SingleSignature.SEED_SIZE);
       var (privk, pubk) = SingleSignature.CreateKeyPair(seed, keysize);
-      var sign = SingleSignature.Sign(privk, pubk);
+      var sign = SingleSignature.Sign(privk, Encoding.UTF8.GetBytes(msg));
       result[i] = new SignInfo(name, seed, msg, pubk, sign);
     }
     return result;
