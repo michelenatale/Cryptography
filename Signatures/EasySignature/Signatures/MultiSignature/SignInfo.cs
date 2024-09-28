@@ -10,6 +10,7 @@ using SignatureServices;
 public class SignInfo
 {
   public Guid ID { get; set; } = Guid.Empty;
+  public int KeySize { get; internal set; } = 0;
   public string Name { get; set; } = string.Empty;
   public string Sign { get; set; } = string.Empty;
   public string Seed { get; set; } = string.Empty;
@@ -22,6 +23,7 @@ public class SignInfo
   {
     this.Message = msg;
     this.ID = Guid.NewGuid();
+    this.KeySize = pupkey.Length; 
     this.Sign = Convert.ToHexString(sign);
     this.Seed = Convert.ToHexString(seed);
     this.PublicKey = Convert.ToHexString(pupkey);
@@ -37,6 +39,7 @@ public class SignInfo
       Name = Name,
       Sign = Sign,
       Message = Message,
+      KeySize = KeySize,
       PublicKey = PublicKey,
     };
   }

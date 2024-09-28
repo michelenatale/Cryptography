@@ -8,8 +8,6 @@ using static Cryptography.Randoms.CryptoRandom;
 public class MultiSignature
 {
 
-
-
   public static SignInfo[] SignInfoSamples(int size, byte[] message) =>
     SignInfoSamples(size, Encoding.UTF8.GetString(message));
 

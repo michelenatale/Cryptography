@@ -1,5 +1,5 @@
 ﻿
- 
+
 using System.Text;
 using System.Diagnostics;
 
@@ -18,7 +18,6 @@ public class Program
     //EasySignature 2024 has neither been tested nor
     //verified by me. 
     //However, it is freely available to the community.
-
 
     var sw = Stopwatch.StartNew();
 
@@ -66,6 +65,11 @@ public class Program
 
   private static void TestMultiSignature()
   {
+    //There are two options for creating the signature
+    //  1) Normal force
+    //  2) Extra Force
+
+
     Console.Write($"{nameof(TestMultiSignature)}:\t");
 
     //number of signatories
@@ -81,6 +85,7 @@ public class Program
     //The order in 'sign_infos' does not matter here.
     var max_key_force = SingleSignature.MAX_KEY_SIZE;
     var sign_infos = MultiSignature.SignInfoSamples(cnt, message, max_key_force);
+    //.OrderBy(_=> Random.Shared.Next());
 
     //Extract the public, shared customer class 'MultiSignInfo'.
     //Here too, in 'multi_infos' the order does not matter.
@@ -90,17 +95,21 @@ public class Program
     //sign_verify_infos.MultiVerify = true !!!
     var sign_verify_infos = new SignVerifyInfo(multi_infos);
 
-    //Once again, one after the other. The signature is calculated.
-    var msign = SignVerifyInfo.Multi_Sign(multi_infos);
+    if (!sign_verify_infos.MultiVerify) throw new Exception();
 
+    //Or in this way, including ExtraForce = true.
+    //Once again, one after the other. The signature is calculated.
+    var msign_force = SignVerifyInfo.Multi_Sign(multi_infos, true);
+
+    //Or in this way, including ExtraForce = true.
     //And here the Verify is performed again.
-    var mverify = SignVerifyInfo.Multi_Verifiy(multi_infos, msign);
+    var mverify_force = SignVerifyInfo.Multi_Verifiy(multi_infos, msign_force, true);
 
     sw.Stop();
 
-    if (!mverify) throw new Exception();
+    if (!mverify_force) throw new Exception();
 
-    Console.Write($"count = {cnt}; result = {mverify}; t = {sw.ElapsedMilliseconds}ms\n\n");
+    Console.Write($"count = {cnt}; result = {mverify_force}; t = {sw.ElapsedMilliseconds}ms\n\n");
 
   }
 
@@ -120,4 +129,3 @@ public class Program
     return result.ToString();
   }
 }
- 
