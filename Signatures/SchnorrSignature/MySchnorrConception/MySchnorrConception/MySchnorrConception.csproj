@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <Platforms>AnyCPU;x64</Platforms>
+    <IsPublishable>False</IsPublishable>
+    <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
+
+    <Authors>© Michele Natale 2024</Authors>
+    <Product>© MySchnorrConception 2024</Product>
+    <Company>© Michele Natale 2024</Company>
+    <Description>
+      Shows how the Schnorr signature works as a concept. 
+      The Schnorrgroup is used here. 
+      A test for signing as well as for verification is available.
+    </Description>
+    <Copyright>© MySchnorrConception 2024 created by © Michele Natale 2024.</Copyright>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MySchnorrServices\MySchnorrServices.csproj" />
+  </ItemGroup>
+
+</Project>
