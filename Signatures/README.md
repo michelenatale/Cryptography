@@ -10,7 +10,7 @@ https://github.com/michelenatale/Cryptography/tree/main/Signatures/SchnorrSignat
 
 # EasySignature
 
-EasySignature 2024 is a very fast and very simple signature creator. Multi-signatures can also be created.
+EasySignature 2024 is a very fast and very simple signature creator. Es können Keys erstellt werden mit Length = 64 - 2048. Multi-signatures can also be created.
 
 Note: Very high standards are set in cryptography for the creation of signatures with verification. 
 
