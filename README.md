@@ -25,13 +25,15 @@ The elliptic curves are always selected randomly so that everything in the tempo
 
 https://github.com/michelenatale/Cryptography/tree/main/Elliptic-Curve
 
-## Signatures Schnorr
+## Signatures 
 
-Shows how the Schnorr Signature works as a concept.
+There are two signature creators. 
 
-The Schnorrgroup and Elliptic Curve are used here.
+The **Schnorr Signature** was published by the German mathematician Claus Peter Schnorr in 1991. It shows how the Schnorr signature works as a concept. The Schnorrgroup and Elliptic Curve are used here.
 
-A test for (multi-) signing and verification is available for both variants.
+**EasySignature** is a very fast and simple signature creator. However, it has not been tested by me. 
+
+Multi-signatures can also be created and verified with both signature creators.
 
 https://github.com/michelenatale/Cryptography/tree/main/Signatures
 
