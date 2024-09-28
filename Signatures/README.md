@@ -5,6 +5,7 @@ Shows how the Schnorr Signature works as a concept.
 The Schnorrgroup and Elliptic Curve are used here.
 
 A test for (multi-) signing and verification is available for both variants.
+https://github.com/michelenatale/Cryptography/tree/main/Signatures/SchnorrSignature
 
 # EasySignature
 
@@ -15,3 +16,4 @@ Note: Very high standards are set in cryptography for the creation of signatures
 EasySignature 2024 has neither been tested nor verified by me. 
 
 However, it is freely available to the community.
+https://github.com/michelenatale/Cryptography/tree/main/Signatures/EasySignature
