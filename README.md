@@ -31,7 +31,7 @@ There are two signature creators.
 
 The **Schnorr Signature** was published by the German mathematician Claus Peter Schnorr in 1991. It shows how the Schnorr signature works as a concept. The Schnorrgroup and Elliptic Curve are used here.
 
-**EasySignature** is a very fast and simple signature creator. However, it has not been tested by me. 
+**EasySignature** is a very fast and simple signature creator. However, it has not been tested by me. Keys can be created with Length = 64 - 2048.
 
 Multi-signatures can also be created and verified with both signature creators.
 
