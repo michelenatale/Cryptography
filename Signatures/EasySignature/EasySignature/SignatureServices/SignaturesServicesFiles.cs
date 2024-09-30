@@ -10,13 +10,7 @@ partial class SignatureServices
   /// Returns the current working directory.
   /// </summary>
   public static string ToCurrentFolder => Directory.GetCurrentDirectory();
-
-  //public static string LoadFromFile(string filename)
-  //{
-  //  using var fs = new FileStream(filename, FileMode.Open, FileAccess.Read);
-  //  using var sr = new StreamReader(fs);
-  //  return sr.ReadToEnd();
-  //}
+ 
 
   /// <summary>
   /// Returns the data of a file.
@@ -32,13 +26,6 @@ partial class SignatureServices
     return ms.ToArray();
   }
 
-  //public static void SaveToFile(string filename, string data)
-  //{
-
-  //  using FileStream fs = new FileStream(filename, FileMode.Create, FileAccess.Write);
-  //  using var sw = new StreamWriter(fs);
-  //  sw.Write(data);
-  //}
 
   /// <summary>
   /// Saves the data to a file.
