@@ -45,7 +45,7 @@ partial class SignatureServices
       if (extra_force)
         sign = SingleSignature.Sign(privk, Encoding.UTF8.GetBytes(msg), seed);
       else sign = SingleSignature.Sign(privk, Encoding.UTF8.GetBytes(msg));
-      result[i] = new SignInfo(name, seed, msg, pubk, sign);
+      result[i] = new SignInfo(name, seed, msg, pubk, sign, extra_force);
     }
     return result;
   }

@@ -18,6 +18,11 @@ public class MultiSignInfo
   public Guid ID { get; set; } = Guid.Empty;
 
   /// <summary>
+  /// True if extra force, ortherwise false.
+  /// </summary>
+  public bool ExtraForce { get; set; } = false;
+
+  /// <summary>
   /// Desired key strength. 
   /// </summary>
   public int KeySize { get; internal set; } = 0;
@@ -58,10 +63,11 @@ public class MultiSignInfo
   /// <param name="sign">Desired Sign</param>
   public MultiSignInfo(
     string name, byte[] msg,
-    byte[] pupkey, byte[] sign)
+    byte[] pupkey, byte[] sign, bool extra_force)
   {
     this.ID = Guid.NewGuid();
     this.KeySize = pupkey.Length;
+    this.ExtraForce = extra_force;
     this.Sign = Convert.ToHexString(sign);
     this.Message = Convert.ToHexString(msg);
     this.PublicKey = Convert.ToHexString(pupkey);

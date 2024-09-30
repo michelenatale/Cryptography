@@ -31,6 +31,7 @@ public class UnitTest
     var keyseed = RngBytes(SS.SEED_SIZE);
     var (privkey, pubkey) = SS.CreateKeyPair(keyseed, 129);
 
+    //See too, SingleSignature.MIN_MESSAGE_SIZE = 10
     var message = RngBytes(32);
 
     //For Sign: PrivateKey + Message
@@ -79,6 +80,7 @@ public class UnitTest
     //number of signatories
     var cnt = 15;
 
+    //See too, MultiSignature.MIN_MESSAGE_SIZE
     var message = RngBytes(180);
 
     var sw = Stopwatch.StartNew();
@@ -110,6 +112,7 @@ public class UnitTest
     //number of signatories
     var cnt = 15;
 
+    //See too, MultiSignature.MIN_MESSAGE_SIZE
     var message = RngBytes(180);
 
     var sw = Stopwatch.StartNew();
@@ -117,13 +120,13 @@ public class UnitTest
     //An example is put together at random, with keylength = 2048.
     //The order in 'sign_infos' does not matter here.
     var max_key_force = MultiSignature.MAX_KEY_SIZE;
-    var sign_infos = SignInfoSamples(cnt, message, max_key_force);
+    var sign_infos = SignInfoSamples(cnt, message, max_key_force, true);
 
     //Extract the public, shared customer class 'MultiSignInfo'.
     //Here too, in 'multi_infos' the order does not matter.
     var multi_infos = sign_infos.Select(x => x.ToMultiSignInfo()).ToArray();
 
-    //Or in this way, including ExtraForce = true.
+    //In this way, including ExtraForce = true.
     //Once again, one after the other. The signature is calculated.
     var msign_force = SignVerifyInfo.Multi_Sign(multi_infos, true);
 
@@ -163,19 +166,25 @@ public class UnitTest
   private static SignInfo[] SignInfoSamples(
     int size, byte[] message, int keysize = 128, bool extra_force = false)
   {
+    if (size < 2 || message.Length < MultiSignature.MIN_MESSAGE_SIZE)
+      throw new ArgumentOutOfRangeException(nameof(size));
+
+    if (keysize < MultiSignature.MIN_MESSAGE_SIZE || keysize > MultiSignature.MAX_KEY_SIZE)
+      throw new ArgumentOutOfRangeException(nameof(keysize));
+
     var result = new SignInfo[size];
     for (int i = 0; i < size; i++)
     {
       var name = $"Name_{i}";
       var msg = Convert.ToHexString(message);
       var seed = RngBytes(SingleSignature.SEED_SIZE);
-      var (privk, pubk) = SingleSignature.CreateKeyPair(seed, keysize);
+      var (privk, pubk) = SingleSignature.CreateKeyPair(seed, keysize, extra_force);
 
       byte[] sign;
       if (extra_force)
         sign = SingleSignature.Sign(privk, Encoding.UTF8.GetBytes(msg), seed);
       else sign = SingleSignature.Sign(privk, Encoding.UTF8.GetBytes(msg));
-      result[i] = new SignInfo(name, seed, msg, pubk, sign);
+      result[i] = new SignInfo(name, seed, msg, pubk, sign, extra_force);
     }
     return result;
   }

@@ -1,5 +1,7 @@
 ﻿
 
+using System.Drawing;
+using System.Reflection;
 using System.Security.Cryptography;
 
 namespace michele.natale.Cryptography.Signatures;
@@ -26,6 +28,16 @@ public class SingleSignature
   public const int MAX_KEY_SIZE = 2048;
 
   /// <summary>
+  /// Sign size.
+  /// </summary>
+  private const int SIGN_SIZE = 128;
+
+  /// <summary>
+  /// The minimum message length.
+  /// </summary>
+  public const int MIN_MESSAGE_SIZE = 10;
+
+  /// <summary>
   /// Creates a Signature.
   /// </summary>
   /// <param name="key">Desired Key (PrivateKey)</param>
@@ -34,14 +46,26 @@ public class SingleSignature
   public static byte[] Sign(
     ReadOnlySpan<byte> key, ReadOnlySpan<byte> message)
   {
+    AssertSign(key, message, null, false);
+
     var pk = CreatePublicKey(key);
     var hpk = SHA512.HashData(pk);
     var msg = SHA512.HashData(message);
-    var result = HMACSHA512.HashData(pk, msg)
+    var tmp = HMACSHA512.HashData(pk, msg)
       .Concat(HMACSHA512.HashData(hpk, msg))
       .Select((x, i) => (byte)(x ^ hpk[i % hpk.Length])).ToArray();
-    MemoryClear(msg, pk);
-    return result;
+
+    MemoryClear(msg, hpk);
+
+    if (tmp.Length == SIGN_SIZE)
+    {
+      var result = Xor(tmp, pk);
+      MemoryClear(tmp, pk);
+      return result;
+    }
+
+    MemoryClear(tmp, pk);
+    throw new OutOfMemoryException(nameof(Sign));
   }
 
   /// <summary>
@@ -52,17 +76,28 @@ public class SingleSignature
   /// <param name="seed">Desired Seed</param>
   /// <returns>Array of byte</returns>
   public static byte[] Sign(
-      ReadOnlySpan<byte> key, ReadOnlySpan<byte> message, 
+      ReadOnlySpan<byte> key, ReadOnlySpan<byte> message,
       ReadOnlySpan<byte> seed)
   {
+    AssertSign(key, message, seed, true);
+
     var pk = CreatePublicKey(key, seed);
     var hpk = SHA512.HashData(pk);
     var msg = SHA512.HashData(message);
-    var result = HMACSHA512.HashData(pk, msg)
+    var tmp = HMACSHA512.HashData(pk, msg)
       .Concat(HMACSHA512.HashData(hpk, msg))
       .Select((x, i) => (byte)(x ^ hpk[i % hpk.Length])).ToArray();
-    MemoryClear(msg, pk);
-    return result;
+    MemoryClear(msg, hpk);
+
+    if (tmp.Length == SIGN_SIZE)
+    {
+      var result = Xor(tmp, pk);
+      MemoryClear(tmp, pk);
+      return result;
+    }
+
+    MemoryClear(tmp, pk);
+    throw new OutOfMemoryException(nameof(Sign));
   }
 
   /// <summary>
@@ -75,14 +110,17 @@ public class SingleSignature
   public static bool Verify(
     ReadOnlySpan<byte> key, ReadOnlySpan<byte> sign, ReadOnlySpan<byte> message)
   {
+    AssertVerify(key, sign, message);
+
     var hpk = SHA512.HashData(key);
     var msg = SHA512.HashData(message);
     var shash = HMACSHA512.HashData(key, msg)
       .Concat(HMACSHA512.HashData(hpk, msg))
       .Select((x, i) => (byte)(x ^ hpk[i % hpk.Length])).ToArray();
 
-    var result = sign.SequenceEqual(shash);
+    var result = key.ToArray().SequenceEqual(Xor(sign, shash));
     MemoryClear(hpk, msg, shash);
+
     return result;
   }
 
@@ -100,7 +138,7 @@ public class SingleSignature
 
     byte[] pubkey;
     var privkey = CreatePrivateKey(seed, size);
-    if(extra_force)
+    if (extra_force)
       pubkey = CreatePublicKey(privkey, seed);
     else pubkey = CreatePublicKey(privkey);
 
@@ -175,4 +213,35 @@ public class SingleSignature
       throw new ArgumentOutOfRangeException(nameof(size));
   }
 
+  private static void AssertSign(
+    ReadOnlySpan<byte> key, ReadOnlySpan<byte> message,
+    ReadOnlySpan<byte> seed, bool force)
+  {
+
+    if (force && seed.Length != SEED_SIZE)
+      throw new ArgumentOutOfRangeException(nameof(seed));
+
+    if (message.Length < MIN_MESSAGE_SIZE)
+      throw new ArgumentOutOfRangeException(nameof(message));
+
+    if (key.Length < MIN_KEY_SIZE || key.Length > MAX_KEY_SIZE)
+      throw new ArgumentOutOfRangeException(nameof(key.Length));
+  }
+
+  private static void AssertVerify(
+    ReadOnlySpan<byte> key, ReadOnlySpan<byte> sign, ReadOnlySpan<byte> message)
+  {
+
+    //if (sign.Length != SIGN_SIZE)
+    //  throw new ArgumentOutOfRangeException(nameof(sign));
+
+    if (sign.Length < SEED_SIZE)
+      throw new ArgumentOutOfRangeException(nameof(sign));
+
+    if (message.Length < MIN_MESSAGE_SIZE)
+      throw new ArgumentOutOfRangeException(nameof(message));
+
+    if (key.Length < MIN_KEY_SIZE || key.Length > MAX_KEY_SIZE)
+      throw new ArgumentOutOfRangeException(nameof(key.Length));
+  }
 }

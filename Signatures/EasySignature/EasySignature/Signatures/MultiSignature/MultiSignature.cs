@@ -23,4 +23,13 @@ public class MultiSignature
   /// </summary>
   public const int MAX_KEY_SIZE = 2048;
 
+  /// <summary>
+  /// Sign size.
+  /// </summary>
+  internal const int SIGN_SIZE = 128;
+
+  /// <summary>
+  /// The minimum message length.
+  /// </summary>
+  public const int MIN_MESSAGE_SIZE = 10;
 }

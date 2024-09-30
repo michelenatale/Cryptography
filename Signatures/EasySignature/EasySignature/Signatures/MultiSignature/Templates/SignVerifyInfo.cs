@@ -75,6 +75,11 @@ public class SignVerifyInfo
 
     var max_length = signs.Max(x => x.Length);
 
+    //if (max_length != MultiSignature.SIGN_SIZE)
+    //  throw new ArgumentOutOfRangeException(
+    //    $"{nameof(max_length)} has failed!",
+    //    new Exception($"{nameof(max_length)} != {MultiSignature.SIGN_SIZE}"));
+
     if (extra_force)
     {
       var buffer = new byte[max_length + 8];
@@ -82,7 +87,7 @@ public class SignVerifyInfo
       for (var i = 0; i < signs.Length; i++)
       {
         var sum = signs[i].Sum(x => x);
-        var sum_bytes = BitConverter.GetBytes(i);
+        var sum_bytes = BitConverter.GetBytes(sum);
         if (BitConverter.IsLittleEndian) Array.Reverse(sum_bytes);
         var cnt_bytes = BitConverter.GetBytes(i);
         if (BitConverter.IsLittleEndian) Array.Reverse(cnt_bytes);
@@ -106,10 +111,8 @@ public class SignVerifyInfo
     {
       var result = new byte[max_length];
       foreach (var sn in signs)
-      {
         for (var i = 0; i < max_length; i++)
           result[i % result.Length] ^= sn[i % sn.Length];
-      }
       var third_length = signs.First().Length / 3;
       return SHA512.HashData(result.Take(2 * third_length).ToArray())
         .Concat(SHA512.HashData(result.Skip(third_length).ToArray())).ToArray();

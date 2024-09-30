@@ -1,7 +1,8 @@
 ﻿
 
-using michele.natale.Authors;
 using System.Diagnostics;
+using michele.natale.Authors;
+
 
 namespace michele.natale.EasySignatureTest;
 
@@ -21,8 +22,8 @@ public class Program
     var author = AuthorsHolder.ToAuthor;
     Console.WriteLine(author);
 
-    UnitTest.Start();
-    SampleEasySignature.Start();
+    for (int i = 0; i < 5; i++)
+      UnitTest.Start();
 
     sw.Stop();
 
@@ -32,6 +33,5 @@ public class Program
     Console.WriteLine("FINISH");
     Console.ReadLine();
     Console.WriteLine();
-
   }
 }
