@@ -7,6 +7,6 @@ namespace michele.natale.Cryptography.Signatures.Services;
 /// (multi-) signatures and (multi-) verifications.
 /// </summary>
 public partial class SignatureServices
-{ 
-  
+{
+
 }

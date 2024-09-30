@@ -1,8 +1,4 @@
-﻿
-
-using System.Drawing;
-using System.Reflection;
-using System.Security.Cryptography;
+﻿using System.Security.Cryptography;
 
 namespace michele.natale.Cryptography.Signatures;
 
@@ -59,7 +55,7 @@ public class SingleSignature
 
     if (tmp.Length == SIGN_SIZE)
     {
-      var result = Xor(tmp, pk);
+      var result = Xor(tmp, pk, pk.Length);
       MemoryClear(tmp, pk);
       return result;
     }
@@ -91,7 +87,7 @@ public class SingleSignature
 
     if (tmp.Length == SIGN_SIZE)
     {
-      var result = Xor(tmp, pk);
+      var result = Xor(tmp, pk, pk.Length);
       MemoryClear(tmp, pk);
       return result;
     }
@@ -118,7 +114,7 @@ public class SingleSignature
       .Concat(HMACSHA512.HashData(hpk, msg))
       .Select((x, i) => (byte)(x ^ hpk[i % hpk.Length])).ToArray();
 
-    var result = key.ToArray().SequenceEqual(Xor(sign, shash));
+    var result = key.ToArray().SequenceEqual(Xor(sign, shash, key.Length));
     MemoryClear(hpk, msg, shash);
 
     return result;

@@ -10,7 +10,7 @@ partial class SignatureServices
   /// Returns the current working directory.
   /// </summary>
   public static string ToCurrentFolder => Directory.GetCurrentDirectory();
- 
+
 
   /// <summary>
   /// Returns the data of a file.

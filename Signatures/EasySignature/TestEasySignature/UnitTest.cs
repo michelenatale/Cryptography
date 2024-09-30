@@ -5,10 +5,10 @@ using System.Diagnostics;
 
 namespace michele.natale.EasySignatureTest;
 
-using static RandomHolder;
 using Cryptography.Signatures;
-using SS = Cryptography.Signatures.SingleSignature;
 using System.Text;
+using static RandomHolder;
+using SS = Cryptography.Signatures.SingleSignature;
 
 public class UnitTest
 {
@@ -55,7 +55,7 @@ public class UnitTest
 
     var keyseed = RngBytes(SS.SEED_SIZE);
 
-    var (privkey, pubkey) = SS.CreateKeyPair(keyseed, 2048, true);
+    var (privkey, pubkey) = SS.CreateKeyPair(keyseed, 129, true);
 
     var message = RngBytes(32);
 

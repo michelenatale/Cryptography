@@ -1,8 +1,9 @@
 ﻿
-using System.Security.Cryptography;
+using System.Security.Cryptography; 
 
 namespace michele.natale.Cryptography.Signatures;
 
+using static Services.SignatureServices;
 
 /// <summary>
 /// Customer-Class for Multi-Sign and Multi-Verify
@@ -75,15 +76,10 @@ public class SignVerifyInfo
 
     var max_length = signs.Max(x => x.Length);
 
-    //if (max_length != MultiSignature.SIGN_SIZE)
-    //  throw new ArgumentOutOfRangeException(
-    //    $"{nameof(max_length)} has failed!",
-    //    new Exception($"{nameof(max_length)} != {MultiSignature.SIGN_SIZE}"));
-
     if (extra_force)
     {
       var buffer = new byte[max_length + 8];
-      var result = new byte[signs.Length * max_length];
+      var result = new byte[signs.Length * MultiSignature.SIGN_SIZE];
       for (var i = 0; i < signs.Length; i++)
       {
         var sum = signs[i].Sum(x => x);
@@ -99,7 +95,7 @@ public class SignVerifyInfo
         var h1 = SHA512.HashData(signs[i]);
         var h2 = HMACSHA512.HashData(signs[i], buffer)
           .Concat(HMACSHA512.HashData(h1, buffer))
-          .Select((x, i) => (byte)(x ^ h1[i % h1.Length])).ToArray();
+          .Select((x, i) => (byte)(x ^ h1[i % h1.Length])).ToArray(); 
         h2.CopyTo(result, i * h2.Length);
       }
 

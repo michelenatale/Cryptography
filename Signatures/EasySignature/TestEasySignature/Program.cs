@@ -1,7 +1,7 @@
 ﻿
 
-using System.Diagnostics;
 using michele.natale.Authors;
+using System.Diagnostics;
 
 
 namespace michele.natale.EasySignatureTest;
