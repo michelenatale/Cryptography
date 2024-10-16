@@ -1,7 +1,7 @@
 # Cryptographie
 
 
-## BitHacksOperations (Fill Generic)
+## BitHacksOperations (Full Generic)
 
 Shows a few BitHacks that I have collected over and over again, depending on the problem.
 
