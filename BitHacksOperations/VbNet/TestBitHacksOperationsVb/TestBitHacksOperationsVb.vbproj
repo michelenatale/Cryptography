@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+
+    <Nullable>enable</Nullable>
+    <OutputType>Exe</OutputType>
+    <Platforms>AnyCPU;x64</Platforms>
+    <IsPublishable>False</IsPublishable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <TargetFramework>net8.0</TargetFramework>
+
+    <Authors>© Michele Natale 2024</Authors>
+    <Description>Very quick and simple Bit Hacks Methodes. See Link.</Description>
+    <Copyright>BitHacksOperations</Copyright>
+    
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\CSharp\BitHacksOperations\BitHacksOperations.csproj" />
+  </ItemGroup>
+
+</Project>
