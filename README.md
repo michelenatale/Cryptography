@@ -1,18 +1,6 @@
 # Cryptographie
 
 
-## BitHacksOperations (Full Generic)
-
-Shows a few BitHacks that I have collected over and over again, depending on the problem.
-
-I have deliberately put the whole thing together programmatically as a unit test so that the project can be tested.
-
-I will certainly find a few more interesting BitHacks, which I will then add here.
-
-https://github.com/michelenatale/Cryptography/tree/main/BitHacksOperations
-
-
-
 ## CryptoRandom
 
 CryptoRandom is a very fast, easy-to-use and cryptographically as well as thread-safe random number generator for everyday use.
