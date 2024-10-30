@@ -1,4 +1,6 @@
-﻿using System.Security.Cryptography;
+﻿
+
+using System.Security.Cryptography;
 
 namespace michele.natale.Cryptography.Signatures;
 
@@ -46,21 +48,26 @@ public class SingleSignature
 
     var pk = CreatePublicKey(key);
     var hpk = SHA512.HashData(pk);
+
+    var xor = XorSpec<byte>(hpk, pk, SIGN_SIZE);
+    var mseed = HMACSHA512.HashData(hpk, xor);
+
     var msg = SHA512.HashData(message);
-    var tmp = HMACSHA512.HashData(pk, msg)
+    var hsign = HMACSHA512.HashData(pk, msg)
       .Concat(HMACSHA512.HashData(hpk, msg))
-      .Select((x, i) => (byte)(x ^ hpk[i % hpk.Length])).ToArray();
+      .Select((x, i) => (byte)(x ^ xor[i % xor.Length])).ToArray();
 
-    MemoryClear(msg, hpk);
+    MemoryClear(msg, hpk, xor);
 
-    if (tmp.Length == SIGN_SIZE)
+    if (hsign.Length == SIGN_SIZE)
     {
-      var result = Xor(tmp, pk, pk.Length);
-      MemoryClear(tmp, pk);
+      var hseed = ToEntropie(pk, mseed, pk.Length);
+      var result = Xor(hsign, hseed, pk.Length);
+      MemoryClear(hsign, pk, hseed, mseed);
       return result;
     }
 
-    MemoryClear(tmp, pk);
+    MemoryClear(hsign, pk);
     throw new OutOfMemoryException(nameof(Sign));
   }
 
@@ -79,20 +86,26 @@ public class SingleSignature
 
     var pk = CreatePublicKey(key, seed);
     var hpk = SHA512.HashData(pk);
-    var msg = SHA512.HashData(message);
-    var tmp = HMACSHA512.HashData(pk, msg)
-      .Concat(HMACSHA512.HashData(hpk, msg))
-      .Select((x, i) => (byte)(x ^ hpk[i % hpk.Length])).ToArray();
-    MemoryClear(msg, hpk);
 
-    if (tmp.Length == SIGN_SIZE)
+    var xor = XorSpec<byte>(hpk, pk, SIGN_SIZE);
+    var mseed = HMACSHA512.HashData(hpk, xor);
+
+    var msg = SHA512.HashData(message);
+    var hsign = HMACSHA512.HashData(pk, msg)
+      .Concat(HMACSHA512.HashData(hpk, msg))
+      .Select((x, i) => (byte)(x ^ xor[i % xor.Length])).ToArray();
+
+    MemoryClear(msg, hpk, xor);
+
+    if (hsign.Length == SIGN_SIZE)
     {
-      var result = Xor(tmp, pk, pk.Length);
-      MemoryClear(tmp, pk);
+      var hseed = ToEntropie(pk, mseed, pk.Length);
+      var result = Xor(hsign, hseed, pk.Length);
+      MemoryClear(hsign, pk, hseed, mseed);
       return result;
     }
 
-    MemoryClear(tmp, pk);
+    MemoryClear(hsign, pk);
     throw new OutOfMemoryException(nameof(Sign));
   }
 
@@ -110,12 +123,16 @@ public class SingleSignature
 
     var hpk = SHA512.HashData(key);
     var msg = SHA512.HashData(message);
-    var shash = HMACSHA512.HashData(key, msg)
-      .Concat(HMACSHA512.HashData(hpk, msg))
-      .Select((x, i) => (byte)(x ^ hpk[i % hpk.Length])).ToArray();
+    var xor = XorSpec(hpk, key, SIGN_SIZE);
+    var mseed = HMACSHA512.HashData(hpk, xor);
 
-    var result = key.ToArray().SequenceEqual(Xor(sign, shash, key.Length));
-    MemoryClear(hpk, msg, shash);
+    var hsign = HMACSHA512.HashData(key, msg)
+      .Concat(HMACSHA512.HashData(hpk, msg))
+      .Select((x, i) => (byte)(x ^ xor[i % xor.Length])).ToArray();
+
+    var hseed = ToEntropie(key.ToArray(), mseed, key.Length);
+    var result = hseed.SequenceEqual(Xor(sign, hsign, key.Length));
+    MemoryClear(hpk, msg, hsign);
 
     return result;
   }

@@ -1,10 +1,10 @@
 ﻿
-
-using michele.natale.Authors;
 using System.Diagnostics;
 
 
 namespace michele.natale.EasySignatureTest;
+
+using Authors;
 
 public class Program
 {

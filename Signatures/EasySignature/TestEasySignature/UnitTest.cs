@@ -44,7 +44,7 @@ public class UnitTest
 
     if (!verify) throw new Exception();
 
-    Console.Write($"result = {verify}; t = {sw.ElapsedMilliseconds}ms\n");
+    Console.Write($"verify = {verify}; t = {sw.ElapsedMilliseconds}ms\n");
   }
 
   private static void TestSingleSignatureForce()
@@ -69,7 +69,7 @@ public class UnitTest
 
     if (!verify) throw new Exception();
 
-    Console.Write($"result = {verify}; t = {sw.ElapsedMilliseconds}ms\n");
+    Console.Write($"verify = {verify}; t = {sw.ElapsedMilliseconds}ms\n");
   }
 
 
@@ -101,7 +101,7 @@ public class UnitTest
 
     if (!sign_verify_infos.MultiVerify) throw new Exception();
 
-    Console.Write($"count = {cnt}; result = {sign_verify_infos.MultiVerify}; t = {sw.ElapsedMilliseconds}ms\n");
+    Console.Write($"signers = {cnt}; verify = {sign_verify_infos.MultiVerify}; t = {sw.ElapsedMilliseconds}ms\n");
 
   }
 
@@ -138,7 +138,7 @@ public class UnitTest
 
     if (!mverify_force) throw new Exception();
 
-    Console.Write($"count = {cnt}; result = {mverify_force}; t = {sw.ElapsedMilliseconds}ms\n\n");
+    Console.Write($"signers = {cnt}; verify = {mverify_force}; t = {sw.ElapsedMilliseconds}ms\n\n");
 
   }
 

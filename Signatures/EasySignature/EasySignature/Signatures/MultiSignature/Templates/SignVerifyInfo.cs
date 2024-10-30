@@ -1,9 +1,9 @@
 ﻿
-using System.Security.Cryptography; 
+
+using System.Security.Cryptography;
 
 namespace michele.natale.Cryptography.Signatures;
 
-using static Services.SignatureServices;
 
 /// <summary>
 /// Customer-Class for Multi-Sign and Multi-Verify
@@ -64,21 +64,23 @@ public class SignVerifyInfo
   /// <param name="multi_sign_infos">Desired MultiSignInfo</param>
   /// <param name="extra_force">Desired Signature Force</param>
   /// <returns>Signature as Array of byte</returns>
-  public static byte[] Multi_Sign(MultiSignInfo[] multi_sign_infos, bool extra_force = false)
+  public static byte[] Multi_Sign(
+    MultiSignInfo[] multi_sign_infos, bool extra_force = false)
   {
     var msg = multi_sign_infos.First().Message;
     var istrue = multi_sign_infos.All(x => x.Message.SequenceEqual(msg));
     if (!istrue) return [];
 
     var sgns = multi_sign_infos.OrderBy(x => x.Sign).ToArray();
-    var signs = sgns
-      .Select(s => Convert.FromHexString(s.Sign)).ToArray();
+    var signs = sgns.Select(s => Convert.FromHexString(s.Sign)).ToArray();
 
     var max_length = signs.Max(x => x.Length);
+    var n_bytes = BitConverter.GetBytes(signs.Length * max_length);
+    if (BitConverter.IsLittleEndian) Array.Reverse(n_bytes);
 
     if (extra_force)
     {
-      var buffer = new byte[max_length + 8];
+      var buffer = new byte[max_length + 8 + n_bytes.Length];
       var result = new byte[signs.Length * MultiSignature.SIGN_SIZE];
       for (var i = 0; i < signs.Length; i++)
       {
@@ -91,11 +93,12 @@ public class SignVerifyInfo
         signs[i].CopyTo(buffer, 0);
         sum_bytes.CopyTo(buffer, signs[i].Length);
         cnt_bytes.CopyTo(buffer, signs[i].Length + sum_bytes.Length);
+        n_bytes.CopyTo(buffer, signs[i].Length + sum_bytes.Length + cnt_bytes.Length);
 
         var h1 = SHA512.HashData(signs[i]);
         var h2 = HMACSHA512.HashData(signs[i], buffer)
           .Concat(HMACSHA512.HashData(h1, buffer))
-          .Select((x, i) => (byte)(x ^ h1[i % h1.Length])).ToArray(); 
+          .Select((x, i) => (byte)(x ^ h1[i % h1.Length])).ToArray();
         h2.CopyTo(result, i * h2.Length);
       }
 
@@ -106,6 +109,8 @@ public class SignVerifyInfo
     else
     {
       var result = new byte[max_length];
+      for (var i = 0; i < max_length; i++)
+        result[i % result.Length] ^= n_bytes[i % n_bytes.Length];
       foreach (var sn in signs)
         for (var i = 0; i < max_length; i++)
           result[i % result.Length] ^= sn[i % sn.Length];
