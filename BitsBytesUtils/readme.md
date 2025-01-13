@@ -20,6 +20,6 @@ The following tests are performed:
   Returns the BitString or the BitBytes as a representation of the number.
 
 - #### TestBytes:
-  Jede beliebige Zahl kann in eine Array of byte umgewandelt werden.
+  Any number can be converted into an array of bytes.
 
 I will add more tests at a later time.
