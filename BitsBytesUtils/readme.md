@@ -7,19 +7,19 @@ The following tests are performed:
 - #### TestBitLength:
   Returns the exact bit length that a number has in the binary representation.
   
-- TestLeadingZerosCount:
+- #### TestLeadingZerosCount:
   Returns the exact number of leading zeros.
   
-- TestTwosComplementBigInteger:
+- #### TestTwosComplementBigInteger:
   Returns the TwosComplement for the BigInteger. Is mainly used if the range is not known.
   
-- TestBits:
+- #### TestBits:
   Returns the binary representation of a number as a bool array. There is a choice between big and little endian.
   
-- TestBitStringBytes:
+- #### TestBitStringBytes:
   Returns the BitString or the BitBytes as a representation of the number.
 
-- TestBytes:
+- #### TestBytes:
   Jede beliebige Zahl kann in eine Array of byte umgewandelt werden.
 
 I will add more tests at a later time.
