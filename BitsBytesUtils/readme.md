@@ -4,7 +4,7 @@ BitsBytesUtils is a small project that allows you to cast all numeric data types
 
 The following tests are performed:
 
-- TestBitLength:
+- ## TestBitLength:
   Returns the exact bit length that a number has in the binary representation.
   
 - TestLeadingZerosCount:
