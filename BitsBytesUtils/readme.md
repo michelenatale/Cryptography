@@ -1,6 +1,6 @@
 # BitsBytesUtils
 
-BitsBytesUtils is a small project that allows you to cast all numeric data types into their bytes or bits and cast them back to the original data type. In addition, further information can be queried, such as BitLength, LeadingZero, TwosComplement, PowTwo etc. Feel free to test the possibilities.
+BitsBytesUtils is a small project (full generic) that can be used to convert all numeric data types into their bytes or bits and convert them back to the original data type. In addition, further information can be queried, such as BitLength, LeadingZero, TwosComplement, PowTwo etc. Feel free to try out the possibilities.
 
 The following tests are performed:
 
