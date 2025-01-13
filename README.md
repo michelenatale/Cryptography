@@ -44,3 +44,10 @@ LoginSystem is a simple project that shows how to perform a local login for your
 In order for © LoginSystem 2024 to work, a registration must first be made. Only then can a login be made. 
 
 https://github.com/michelenatale/Cryptography/tree/main/LoginSystem
+
+## BitsBytesUtils
+
+BitsBytesUtils is a small project that allows you to cast all numeric data types into their bytes or bits and cast them back to the original data type. In addition, further information can be queried, such as BitLength, LeadingZero, TwosComplement, PowTwo etc. Feel free to test the possibilities.
+
+https://github.com/michelenatale/Cryptography/tree/main/BitsBytesUtils
+
