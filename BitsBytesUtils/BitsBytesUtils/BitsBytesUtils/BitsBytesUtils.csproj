@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <Nullable>enable</Nullable>
+    <Platforms>AnyCPU;x64</Platforms>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <TargetFramework>net8.0</TargetFramework>
+
+    <Authors>© Michele Natale 2025</Authors>
+    <Product>© BitsBytesUtils 2025</Product>
+    <Company>© Michele Natale 2025</Company>
+    <Description>
+      BitsBytesUtils is a small project (full generic) that can be used to convert all numeric data types into their bytes or bits and convert them back to the original data type.
+    </Description>
+    <Copyright>© BitsBytesUtils 2025 created by © Michele Natale 2025.</Copyright>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="BitsBytesUtils\SubBits\" />
+  </ItemGroup>
+
+</Project>
