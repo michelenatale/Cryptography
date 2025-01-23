@@ -21,7 +21,7 @@ Shows in a simple way how the sender and receiver function of Alice and Bob work
 
 The [ECDiffieHellman](https://learn.microsoft.com/en-us/dotnet/api/system.security.cryptography.ecdiffiehellman) (ec key exchange) and [ECDSA](https://learn.microsoft.com/en-us/dotnet/api/system.security.cryptography.ecdsa) (ec digital signing) algorithms are used here.
 
-The elliptic curves are always selected randomly so that everything in the temporary area is used.
+The [Elliptic Curves](https://en.wikipedia.org/wiki/Elliptic_curve) are always selected randomly so that everything in the temporary area is used.
 
 https://github.com/michelenatale/Cryptography/tree/main/Elliptic-Curve
 
