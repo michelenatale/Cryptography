@@ -53,7 +53,7 @@ https://github.com/michelenatale/Cryptography/tree/main/BitsBytesUtils
 
 ## PQC
 
-Under Construction.See Here: [Wikipedia](https://en.wikipedia.org/wiki/Post-quantum_cryptography)
+Under Construction. See Here: [Wikipedia](https://en.wikipedia.org/wiki/Post-quantum_cryptography)
 
 https://github.com/michelenatale/Cryptography/tree/main/PQC
 
