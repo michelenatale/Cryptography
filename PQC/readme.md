@@ -1,4 +1,4 @@
-# PQC Post-quantum cryptography
+# PQC Post-Quantum Cryptography
 
 Under construction. 
 
