@@ -13,13 +13,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="TestBcPqcSignatur\Test-XMSS\" />
-    <Folder Include="TestBcPqcSignatur\Test-LMS\" />
-    <Folder Include="TestBcPqcSignatur\Test-SLH-DSA\" />
-    <Folder Include="TestBcPqcSignatur\Test-ML-DSA\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\MyBcPQC\MyBcPQC.csproj" />
   </ItemGroup>
 

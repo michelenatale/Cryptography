@@ -1,23 +1,26 @@
 ﻿
 
 using Org.BouncyCastle.Crypto;
-using Org.BouncyCastle.Security;
-using Org.BouncyCastle.Crypto.Kems;
 using Org.BouncyCastle.Crypto.Generators;
+using Org.BouncyCastle.Crypto.Kems;
 using Org.BouncyCastle.Crypto.Parameters;
+using Org.BouncyCastle.Security;
 
 namespace michele.natale.TestBcPqcs;
 
 using Pointers;
 using Services;
 
-public class BobMLKEM:IDisposable
+public class BobMLKEM : IDisposable
 {
   public byte[] PubKey { get; private set; } = null!;
   public bool IsDisposed { get; private set; } = true;
   public byte[] CapsulationKey { get; private set; } = null!;
   public MLKemParameters Parameter { get; private set; } = null!;
-  public byte[] Associated { get; private set; } =
+  public byte[] Associated
+  {
+    get; private set;
+  } =
     "© michele natale 2025"u8.ToArray();
 
   private SecureRandom Rand = new();
@@ -30,7 +33,7 @@ public class BobMLKEM:IDisposable
   }
 
   public BobMLKEM(MLKemParameters parameter)
-  { 
+  {
     this.Parameter = parameter;
 
     var generator = new MLKemKeyGenerationParameters(
@@ -49,9 +52,12 @@ public class BobMLKEM:IDisposable
   {
     if (this.IsDisposed) return;
 
-    Array.Clear(this.PubKey);
-    Array.Clear(this.Associated);
-    Array.Clear(this.CapsulationKey);
+    if (this.PubKey is not null)
+      Array.Clear(this.PubKey);
+    if (this.Associated is not null)
+      Array.Clear(this.Associated);
+    if (this.CapsulationKey is not null)
+      Array.Clear(this.CapsulationKey);
 
     this.SharedKey.Dispose();
 
@@ -72,10 +78,10 @@ public class BobMLKEM:IDisposable
     ReadOnlySpan<byte> capsulationkey,
     ReadOnlySpan<byte> associated,
     CryptionAlgorithm cryptoalgo)
-  { 
+  {
     var associat = associated.IsEmpty ? this.Associated : associated;
     var sharedkey = this.ToSharedKey(capsulationkey);
-     
+
     return BcPqcServices.EncryptionWithCryptionAlgo(
       bytes, sharedkey, associat, cryptoalgo);
   }
@@ -85,7 +91,7 @@ public class BobMLKEM:IDisposable
     ReadOnlySpan<byte> associated,
     CryptionAlgorithm cryptoalgo)
   {
-    var associat = associated.IsEmpty ? this.Associated : associated; 
+    var associat = associated.IsEmpty ? this.Associated : associated;
 
     return BcPqcServices.DecryptionWithCryptionAlgo(
       bytes, this.SharedKey, associat, cryptoalgo);
@@ -122,7 +128,7 @@ public class BobMLKEM:IDisposable
     encapsulator.Encapsulate(capsulationkey, 0, capsulationkey.Length, skey, 0, skey.Length);
 
     this.SharedKey = new UsIPtr<byte>(skey);
-    this.CapsulationKey = capsulationkey; 
+    this.CapsulationKey = capsulationkey;
 
     return [.. capsulationkey];
   }
@@ -132,10 +138,10 @@ public class BobMLKEM:IDisposable
     if (this.SharedKey is not null && !this.SharedKey.IsDisposed)
     {
       this.SharedKey.Dispose();
-      Array.Clear(this.CapsulationKey); 
+      Array.Clear(this.CapsulationKey);
       this.CapsulationKey = null!;
     }
-  } 
+  }
 
   private static MLKemParameters ToRngParameter()
   {

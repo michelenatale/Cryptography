@@ -16,13 +16,22 @@ public class Program
 
   private static void TestBcPqc()
   {
+    //ServicesTest
     TestBcPqcService();
 
-    TestBcCrypto(); 
+    //Asymmetric Crypto
+    TestBcCrypto();
+
+    //Signature
+    TestBcSignatureStateless();
+
+    //Signature
+    TestBcSignatureStateful();
   }
 
   private static void TestBcPqcService()
   {
+    //Asymmetric Crypto
     TestBcPqcServices.Start();
   }
 
@@ -31,11 +40,19 @@ public class Program
     TestMLKEM.Start();
   }
 
-  private static void TestBcSignature()
+  private static void TestBcSignatureStateless()
   {
+    //Signature Stateless
     TestMLDSA.Start();
     TestSLHDSA.Start();
-    TestXMSS.Start();
+  }
+
+  private static void TestBcSignatureStateful()
+  {
+    //Signature Stateful
     TestLMS.Start();
+
+    //Not yet available in the C# version.
+    //TestXMSS.Start();
   }
 }

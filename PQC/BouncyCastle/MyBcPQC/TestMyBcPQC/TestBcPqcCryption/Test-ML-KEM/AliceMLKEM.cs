@@ -1,23 +1,26 @@
 ﻿
 
 using Org.BouncyCastle.Crypto;
-using Org.BouncyCastle.Security;
+using Org.BouncyCastle.Crypto.Generators;
 using Org.BouncyCastle.Crypto.Kems;
 using Org.BouncyCastle.Crypto.Parameters;
-using Org.BouncyCastle.Crypto.Generators;
+using Org.BouncyCastle.Security;
 
 namespace michele.natale.TestBcPqcs;
 
 using Pointers;
 using Services;
 
-public class AliceMLKEM: IDisposable
+public class AliceMLKEM : IDisposable
 {
   public byte[] PubKey { get; private set; } = null!;
   public bool IsDisposed { get; private set; } = true;
   public byte[] CapsulationKey { get; private set; } = null!;
   public MLKemParameters Parameter { get; private set; } = null!;
-  public byte[] Associated { get; private set; } =    
+  public byte[] Associated
+  {
+    get; private set;
+  } =
     "© michele natale 2025"u8.ToArray();
 
   private SecureRandom Rand = new();
@@ -49,9 +52,12 @@ public class AliceMLKEM: IDisposable
   {
     if (this.IsDisposed) return;
 
-    Array.Clear(this.PubKey);
-    Array.Clear(this.Associated);
-    Array.Clear(this.CapsulationKey);
+    if (this.PubKey is not null)
+      Array.Clear(this.PubKey);
+    if (this.Associated is not null)
+      Array.Clear(this.Associated);
+    if (this.CapsulationKey is not null)
+      Array.Clear(this.CapsulationKey);
 
     this.SharedKey.Dispose();
 
@@ -61,7 +67,7 @@ public class AliceMLKEM: IDisposable
     this.Parameter = null!;
     this.CapsulationKey = null!;
     this.SharedKey = UsIPtr<byte>.Empty;
-    this.Associated =  "© michele natale 2025"u8.ToArray();
+    this.Associated = "© michele natale 2025"u8.ToArray();
   }
 
   public MLKemPublicKeyParameters ToPubKey() =>
@@ -101,7 +107,7 @@ public class AliceMLKEM: IDisposable
     decapsulator.Init(this.KeyPair.Private);
 
     var sharedkey = new byte[decapsulator.SecretLength];
-    decapsulator.Decapsulate(capsulationkey.ToArray(), 0, 
+    decapsulator.Decapsulate(capsulationkey.ToArray(), 0,
       capsulationkey.Length, sharedkey, 0, sharedkey.Length);
 
     return new UsIPtr<byte>(sharedkey);
@@ -134,10 +140,13 @@ public class AliceMLKEM: IDisposable
     if (this.SharedKey is not null && !this.SharedKey.IsDisposed)
     {
       this.SharedKey.Dispose();
+      this.SharedKey = UsIPtr<byte>.Empty;
+
       Array.Clear(this.CapsulationKey);
       this.CapsulationKey = null!;
     }
   }
+
   private static MLKemParameters ToRngParameter()
   {
     var rand = new SecureRandom();
@@ -159,7 +168,7 @@ public class AliceMLKEM: IDisposable
     }
   }
 
-  ~AliceMLKEM() => 
+  ~AliceMLKEM() =>
     Dispose(false);
 
   public void Dispose()

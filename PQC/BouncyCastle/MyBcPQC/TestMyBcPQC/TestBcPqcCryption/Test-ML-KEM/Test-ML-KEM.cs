@@ -3,13 +3,14 @@
 //ML-KEM (Kyber)
 //Module-Lattice-Based
 //FIPS PUB 203
+//https://pq-crystals.org/kyber/index.shtml
 //https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.203.ipd.pdf
 
 
-using System.Diagnostics;
-using Org.BouncyCastle.Security;
-using System.Security.Cryptography;
 using Org.BouncyCastle.Crypto.Parameters;
+using Org.BouncyCastle.Security;
+using System.Diagnostics;
+using System.Security.Cryptography;
 
 namespace michele.natale.TestBcPqcs;
 
@@ -34,16 +35,15 @@ public class TestMLKEM
   private static void Test_ML_KEM_SharedKey(int rounds)
   {
     //A new key pair is always created and saved. This takes time. 
-    //In practice, I prefer the temporary exchange, as no keys
-    //have to be saved for this, but the exchange of all newly
-    //generated keys is carried out per session.
+    //For the temporary exchange, it would not be necessary to save
+    //the keys, as all generated keys are only required for the
+    //respective session.
 
     //Es wird immer wieder ein neuer Schlüsselpaar erstellt und
     //abgespeichert. Das braucht seine Zeit. 
-    //In der Praxis bevorzuge ich den temporären Austausch, da 
-    //dafür keine Schlüssel abgespeichert werden müssen, sondern
-    //der Austausch aller neu generierter Schlüssel, pro Sitzung
-    //durchgeführt wird.
+    //Für den temporären Austausch, wäre das Abspeichern der
+    //Schlüssel nicht notwending, da alle generierten Schlüssel
+    //nur für die jeweilige Sitzung benötigt werden.
 
     Console.Write($"{nameof(Test_ML_KEM_SharedKey)}: ");
 
@@ -54,7 +54,7 @@ public class TestMLKEM
     var sw = Stopwatch.StartNew();
     for (var i = 0; i < rounds; i++)
     {
-      //ML-KEM Parameter select
+      //ML-KEM Parameter select. Only the first 3 parameters
       var idx = rand.Next(parameters.Length);
       var parameter = parameters[idx];
 
@@ -66,6 +66,7 @@ public class TestMLKEM
       //Create and Save a legal ML-KEM-KeyPair
       var kpfile = "mlkem_keypair.key";
       var (privk, pubk) = MLKEM.ToKeyPair(rand, parameter);
+
       var mlkeminfo = new MlKemKeyPairInfo(
         pubk, privk, parameter, cryptoalgo);
       mlkeminfo.SaveKeyPair(kpfile, true);
@@ -77,7 +78,7 @@ public class TestMLKEM
 
       //ML-KEM Encapsulation
       cryptoalgo = info.CryptAlgo;
-      parameter = info.ToParameter;
+      parameter = info.ToParameter();
 
       //Encapsulation
       var pubkey = MLKemPublicKeyParameters
@@ -88,7 +89,7 @@ public class TestMLKEM
 
       //Decapsulation 
       var privkey = MLKemPrivateKeyParameters
-        .FromEncoding(parameter, info.PrivKey);
+        .FromEncoding(parameter, info.ToPrivKey().ToBytes());
 
       var sharedkey2 = MLKEM.ToSharedKey(
         privkey, parameter, capsulationkey);
@@ -109,16 +110,15 @@ public class TestMLKEM
   private static void Test_ML_KEM_Single_Cryption(int rounds)
   {
     //A new key pair is always created and saved. This takes time. 
-    //In practice, I prefer the temporary exchange, as no keys
-    //have to be saved for this, but the exchange of all newly
-    //generated keys is carried out per session.
+    //For the temporary exchange, it would not be necessary to save
+    //the keys, as all generated keys are only required for the
+    //respective session.
 
     //Es wird immer wieder ein neuer Schlüsselpaar erstellt und
     //abgespeichert. Das braucht seine Zeit. 
-    //In der Praxis bevorzuge ich den temporären Austausch, da 
-    //dafür keine Schlüssel abgespeichert werden müssen, sondern
-    //der Austausch aller neu generierter Schlüssel, pro Sitzung
-    //durchgeführt wird.
+    //Für den temporären Austausch, wäre das Abspeichern der
+    //Schlüssel nicht notwending, da alle generierten Schlüssel
+    //nur für die jeweilige Sitzung benötigt werden.
 
     Console.Write($"{nameof(Test_ML_KEM_Single_Cryption)}: ");
 
@@ -133,7 +133,7 @@ public class TestMLKEM
     {
       //Create a RngMessage
       var size = rand.Next(10, 128);
-      var message = RngBytes(rand, size);
+      var message = BcPqcServices.RngCryptoBytes(size);
 
       //Create a associated 
       //size = rand.Next(8, 128);
@@ -176,6 +176,17 @@ public class TestMLKEM
 
   private static void Test_ML_KEM_Single_Cryption_File(int rounds)
   {
+    //A new key pair is always created and saved. This takes time. 
+    //For the temporary exchange, it would not be necessary to save
+    //the keys, as all generated keys are only required for the
+    //respective session.
+
+    //Es wird immer wieder ein neuer Schlüsselpaar erstellt und
+    //abgespeichert. Das braucht seine Zeit. 
+    //Für den temporären Austausch, wäre das Abspeichern der
+    //Schlüssel nicht notwending, da alle generierten Schlüssel
+    //nur für die jeweilige Sitzung benötigt werden.
+
     Console.Write($"{nameof(Test_ML_KEM_Single_Cryption_File)}: ");
 
     if (rounds < 10) rounds = 10;
@@ -195,7 +206,7 @@ public class TestMLKEM
 
       //Create a associated 
       size = rand.Next(8, 128);
-      var associated = RngBytes(rand, size);
+      var associated = BcPqcServices.RngCryptoBytes(size);
       //var associated = "© michele natale 2025"u8;
 
       //ML-KEM Parameter select
@@ -235,13 +246,15 @@ public class TestMLKEM
   private static void Test_ML_KEM_Alice_Bob_Cryption(int rounds)
   {
     //*****************************************************
-    //The KeyPair is not saved here. Everything remains in
-    //temporary exchange, which is why it is so fast.
+    //The KeyPair is not stored on any hardware here.
+    //Everything remains in temporary exchange, which
+    //is why it is so fast.
     //*****************************************************
 
     Console.Write($"{nameof(Test_ML_KEM_Alice_Bob_Cryption)}: ");
 
     if (rounds < 10) rounds = 10;
+    //rounds = rounds < 10 ? 10 : 10 * rounds;
 
     var sym_algo = string.Empty;
     var rand = new SecureRandom();
@@ -253,7 +266,7 @@ public class TestMLKEM
     {
       //Create a RngMessage
       var size = rand.Next(10, 128);
-      var message = RngBytes(rand, size);
+      var message = BcPqcServices.RngCryptoBytes(size);
 
       //Create a associated 
       //size = rand.Next(8, 128);
@@ -270,16 +283,16 @@ public class TestMLKEM
       sym_algo = cryptoalgo.ToString();
 
       //Alice needs the MLKEMParameter for the PublicKey.
-      var alice = new AliceMLKEM(parameter);
+      using var alice = new AliceMLKEM(parameter);
 
       //Bob holt sich den PublicKey und den MLKEMParameter von Alice,
       //wählt einen CryptoAlgo, und lässt sich einen Sharedkey wie 
       //auch einen CapsulationKey generieren (Encapsulation), ...
 
-      //Bob gets the PublicKey and the MLKEM parameter from Alice,
+      //Bob gets the PublicKey and the MLKEMParameter from Alice,
       //selects a CryptoAlgo, and generates a Sharedkey as well
       //as a CapsulationKey (Encapsulation), ...
-      var bob = new BobMLKEM(parameter);
+      using var bob = new BobMLKEM(parameter);
       var capsulationkey = bob.GenerateSharedKey(alice.PubKey);
 
       // ... womit Alice den Sharedkey aus der CapsulationKey holt. 
@@ -299,7 +312,6 @@ public class TestMLKEM
       //Check for equality.
       if (!decipher.SequenceEqual(message))
         throw new Exception();
-
 
       if (i % (rounds / 10) == 0)
         Console.Write(".");
@@ -322,7 +334,7 @@ public class TestMLKEM
 
     while (length > 0)
     {
-      fsout.Write(RngBytes(length));
+      fsout.Write(BcPqcServices.RngCryptoBytes(length));
       size -= length; length = size < 1024 * 1024 ? size : 1024 * 1024;
     }
   }
@@ -334,22 +346,22 @@ public class TestMLKEM
     return SHA256.HashData(fsleft).SequenceEqual(SHA256.HashData(fsright));
   }
 
-  private static byte[] RngBytes(SecureRandom rand, int size)
-  {
-    var result = new byte[size];
-    rand.NextBytes(result);
-    if (result[0] == 0) result[0]++;
-    return result;
-  }
+  //private static byte[] RngBytes(SecureRandom rand, int size)
+  //{
+  //  var result = new byte[size];
+  //  rand.NextBytes(result);
+  //  if (result[0] == 0) result[0]++;
+  //  return result;
+  //}
 
-  private static byte[] RngBytes(int size)
-  {
-    var rand = Random.Shared;
-    var result = new byte[size];
-    rand.NextBytes(result);
-    if (result[0] == 0) result[0]++;
-    return result;
-  }
+  //private static byte[] RngBytes(int size)
+  //{
+  //  var rand = Random.Shared;
+  //  var result = new byte[size];
+  //  rand.NextBytes(result);
+  //  if (result[0] == 0) result[0]++;
+  //  return result;
+  //}
 
   #endregion  Utils
 }
