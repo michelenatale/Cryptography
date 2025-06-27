@@ -1,5 +1,4 @@
 ﻿
-using Org.BouncyCastle.Crypto.Parameters;
 using System.Text;
 using System.Text.Json.Serialization;
 
@@ -9,9 +8,9 @@ using Pointers;
 using Services;
 
 /// <summary>
-/// Provides keypair methods around the ML-KEM algorithm.
+/// Provides keypair methods around the LMS algorithm.
 /// </summary>
-public sealed class MlKemKeyPairInfo : IMlKemKeyPairInfo
+public sealed class LmsKeyPairInfo : ILmsKeyPairInfo
 {
   [JsonInclude]
   public Guid Id
@@ -29,65 +28,52 @@ public sealed class MlKemKeyPairInfo : IMlKemKeyPairInfo
     get; set;
   } = [];
   [JsonInclude]
-  private MLKemParam Parameter
+  public LmsParam Parameter
   {
     get; set;
-  } = MLKemParam.Ml_Kem_512;
-  [JsonInclude]
-  public CryptionAlgorithm CryptAlgo
-  {
-    get; set;
-  } = CryptionAlgorithm.AES_GCM;
+  } = LmsParam.lms_sha256_h5_w1;
 
-  /// <summary>
-  /// C-Tor
-  /// </summary>
-  public MlKemKeyPairInfo()
+/// <summary>
+/// C-Tor
+/// </summary>
+  public LmsKeyPairInfo()
   {
   }
 
   /// <summary>
   /// C-Tor
   /// </summary>
-  /// <param name="info">Desired MlKemKeyPairInfo-Instance</param>
-  public MlKemKeyPairInfo(MlKemKeyPairInfo info) =>
+  /// <param name="info">Desired keypair information.</param>
+  public LmsKeyPairInfo(LmsKeyPairInfo info) =>
     this.SetParameters(info);
 
   /// <summary>
   /// C-Tor
   /// </summary>
-  /// <param name="pubkey">Desired publickey</param>
-  /// <param name="privkey">Desired privatekey</param>
-  /// <param name="parameter">Desired ML-KEM-Parameter</param>
-  /// <param name="cryptoalgo">Desired symmetric algorithm.</param>
-  public MlKemKeyPairInfo(
+  /// <param name="pubkey">Desired PublicKey</param>
+  /// <param name="privkey">Desired PrivateKey as bytes</param>
+  /// <param name="parameter">Desired LMS-Param</param>
+  public LmsKeyPairInfo(
     ReadOnlySpan<byte> pubkey,
     ReadOnlySpan<byte> privkey,
-    MLKemParameters parameter,
-    CryptionAlgorithm cryptoalgo)
-      : this(default, pubkey, privkey,
-          parameter, cryptoalgo)
+    LmsParam parameter)
+      : this(default, pubkey, privkey, parameter)
   {
   }
 
   /// <summary>
   /// C-Tor
   /// </summary>
-  /// <param name="id">Desired ID as Guid</param>
-  /// <param name="pubkey">Desired publickey</param>
-  /// <param name="privkey">Desired privatekey</param>
-  /// <param name="parameter">Desired ML-KEM-Parameter</param>
-  /// <param name="cryptoalgo">Desired symmetric algorithm.</param>
-  public MlKemKeyPairInfo(
+  /// <param name="id">Desired id as GUID</param>
+  /// <param name="pubkey">Desired PublicKey</param>
+  /// <param name="privkey">Desired PrivateKey as bytes</param>
+  /// <param name="parameter">Desired LMS-Param</param>
+  public LmsKeyPairInfo(
     Guid id, ReadOnlySpan<byte> pubkey,
     ReadOnlySpan<byte> privkey,
-    MLKemParameters parameter,
-    CryptionAlgorithm cryptoalgo) =>
+    LmsParam parameter) =>
       this.SetParameters(id, pubkey,
-        privkey, parameter, cryptoalgo);
-
-  public MLKemParameters ToParameter() =>
-    ToMLKemParameters(this.Parameter);
+        privkey, parameter);
 
   public UsIPtr<byte> ToPrivKey() =>
     new(this.PrivKey);
@@ -97,16 +83,15 @@ public sealed class MlKemKeyPairInfo : IMlKemKeyPairInfo
     this.PubKey = [];
     this.PrivKey = [];
     this.Id = Guid.Empty;
-    this.Parameter = MLKemParam.Ml_Kem_512;
-    this.CryptAlgo = CryptionAlgorithm.AES_GCM;
+    this.Parameter = LmsParam.lms_sha256_h5_w1;
   }
 
   public void SaveKeyPair(string filename, bool with_privkey)
   {
-    var (h, f) = MlKemHF();
+    var (h, f) = LmsHF();
     if (File.Exists(filename)) File.Delete(filename);
 
-    var info = new MlKemKeyPairInfo(this); //copy
+    var info = new LmsKeyPairInfo(this); //copy
     if (!with_privkey) info.PrivKey = [];
 
     var b64 = Convert.ToBase64String(
@@ -129,64 +114,52 @@ public sealed class MlKemKeyPairInfo : IMlKemKeyPairInfo
 
   public override bool Equals(object? obj)
   {
-    if (obj is MlKemKeyPairInfo o)
+    if (obj is LmsKeyPairInfo o)
       return this.Equals(o);
 
     return false;
   }
 
-  public bool Equals(MlKemKeyPairInfo info)
+  public bool Equals(LmsKeyPairInfo info)
   {
     if (!this.Id.Equals(info.Id)) return false;
     if (this.Parameter != info.Parameter) return false;
     if (!this.PubKey.SequenceEqual(info.PubKey)) return false;
-    if (!this.PrivKey.SequenceEqual(info.PrivKey)) return false;
 
-    return this.CryptAlgo == info.CryptAlgo;
+    return this.PrivKey.SequenceEqual(info.PrivKey);
   }
 
   public override int GetHashCode() =>
       HashCode.Combine(this.Id, this.PubKey, this.PrivKey);
 
-  private void SetParameters(MlKemKeyPairInfo info) =>
+  private void SetParameters(LmsKeyPairInfo info) =>
     this.SetParameters(info.Id, info.PubKey,
-      info.PrivKey, ToMLKemParameters(info.Parameter), info.CryptAlgo);
+      info.PrivKey, info.Parameter);
 
   private void SetParameters(
     Guid id, ReadOnlySpan<byte> pubkey,
     ReadOnlySpan<byte> privkey,
-    MLKemParameters parameter,
-    CryptionAlgorithm cryptoalgo)
+    LmsParam parameter)
   {
-    ArgumentNullException.ThrowIfNull(
-      parameter, nameof(parameter));
-
-    this.CryptAlgo = cryptoalgo;
     this.PubKey = pubkey.ToArray();
     this.PrivKey = privkey.ToArray();
-    this.Parameter = FromMLKemParameters(parameter);
+    this.Parameter = parameter;
     if (id == Guid.Empty) return;
     this.Id = id;
   }
 
-  public static MLKemParameters ToMLKemParameters(MLKemParam param) =>
-    BcPqcServices.ToMLKemParameters(param);
-
-  public static MLKemParam FromMLKemParameters(MLKemParameters parameter) =>
-    BcPqcServices.FromMLKemParameters(parameter);
-
-  public static MlKemKeyPairInfo Load_KeyPair(string filename)
+  public static LmsKeyPairInfo Load_KeyPair(string filename)
   {
     if (!File.Exists(filename))
       throw new FileNotFoundException(nameof(filename));
 
-    var n = NameMLKEM();
+    var n = NameLms();
     var str = File.ReadAllLines(filename);
     if (!str[0].Contains(n) || !str[2].Contains(n))
       throw new FileNotFoundException(nameof(filename));
 
     var info = BcPqcServices.
-      DeserializeJson<MlKemKeyPairInfo>(
+      DeserializeJson<LmsKeyPairInfo>(
         Convert.FromBase64String(str[1]));
 
     if (info is not null) return info;
@@ -195,13 +168,13 @@ public sealed class MlKemKeyPairInfo : IMlKemKeyPairInfo
       $"Load_Key_Pair IsNULL has failed!", nameof(filename));
   }
 
-  private static (string H, string F) MlKemHF()
+  private static (string H, string F) LmsHF()
   {
     var tstamp = $" {DateTimeOffset.UtcNow}";
-    var footer = $"-----END {NameMLKEM()}-----";
-    var header = $"-----BEGIN {NameMLKEM()}-----{tstamp}";
+    var footer = $"-----END {NameLms()}-----";
+    var header = $"-----BEGIN {NameLms()}-----{tstamp}";
     return (header, footer);
   }
 
-  private static string NameMLKEM() => "ML-KEM KEYPAIR";
+  private static string NameLms() => "LMS KEYPAIR";
 }

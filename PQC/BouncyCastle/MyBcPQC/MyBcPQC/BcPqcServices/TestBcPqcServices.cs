@@ -112,8 +112,6 @@ public class TestBcPqcServices
     Console.WriteLine($" rounds = {rounds}, t = {t}ms, td = {t / rounds}ms");
   }
 
-
-
   private static void SetRngFileData(string filename, int size)
   {
     using var fsout = new FileStream(filename, FileMode.Create, FileAccess.Write);
@@ -135,22 +133,4 @@ public class TestBcPqcServices
     if (result[0] == 0) result[0]++;
     return result;
   }
-
-
-
-  //private static void SaveBytes(
-  //  ReadOnlySpan<byte> bytes, string filenname)
-  //{
-  //  using var fsout = new FileStream(filenname, FileMode.Create, FileAccess.Write);
-
-  //  int start = 0, readbytes = 0, length = bytes.Length;
-  //  var offset = length < 1024 * 1024 ? length : 1024 * 1024;
-
-  //  while ((readbytes = bytes.Slice(start, offset).Length) > 0)
-  //  {
-  //    fsout.Write(bytes.Slice(start, offset));
-  //    start += readbytes; length -= readbytes;
-  //    offset = length < 1024 * 1024 ? length : 1024 * 1024;
-  //  }
-  //}
 }

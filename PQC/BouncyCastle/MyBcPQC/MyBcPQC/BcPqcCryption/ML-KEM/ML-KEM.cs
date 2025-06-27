@@ -3,6 +3,7 @@
 //ML-KEM (Kyber)
 //Module-Lattice-Based
 //FIPS PUB 203
+//https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.203.ipd.pdf
 
 
 using Org.BouncyCastle.Security;
@@ -15,8 +16,11 @@ namespace michele.natale.BcPqcs;
 using Pointers;
 using Services;
 
-public class MLKEM
-{ 
+/// <summary>
+/// Provides cryption methods around the ML-KEM algorithm.
+/// </summary>
+public sealed class MLKEM : IMLKEM
+{
 
   #region ML-KEM En- / Decryption
 
@@ -29,7 +33,7 @@ public class MLKEM
 
     //ML-KEM Encapsulation
     var cryptalgo = info.CryptAlgo;
-    var parameter = info.ToParameter;
+    var parameter = info.ToParameter();
     var pubkey = MLKemPublicKeyParameters
       .FromEncoding(parameter, info.PubKey);
 
@@ -66,7 +70,7 @@ public class MLKEM
     //ML-KEM Decapsulation
     var info = MlKemKeyPairInfo.Load_KeyPair(keypairfile);
     var privkey = MLKemPrivateKeyParameters
-      .FromEncoding(parameter, info.PrivKey);
+      .FromEncoding(parameter, info.ToPrivKey().ToBytes());
     var sharedkey = ToSharedKey(privkey, parameter, capsulationkey);
 
     //ML-KEM Symmetric Decryption 
@@ -84,7 +88,7 @@ public class MLKEM
 
     //ML-KEM Encapsulation
     var cryptalgo = info.CryptAlgo;
-    var parameter = info.ToParameter;
+    var parameter = info.ToParameter();
     var pubkey = MLKemPublicKeyParameters
       .FromEncoding(parameter, info.PubKey);
 
@@ -129,7 +133,7 @@ public class MLKEM
     //ML-KEM Decapsulation
     var info = MlKemKeyPairInfo.Load_KeyPair(keypairfile);
     var privkey = MLKemPrivateKeyParameters
-      .FromEncoding(info.ToParameter, info.PrivKey);
+      .FromEncoding(info.ToParameter(), info.ToPrivKey().ToBytes());
     var sharedkey = ToSharedKey(privkey, parameter, capsulationkey);
 
     //ML-KEM Decryption
@@ -189,7 +193,7 @@ public class MLKEM
   #endregion ML-KEM En- / Decryption
 
   #region Utils
- 
+
   public static MLKemParameters ToMLKemParameter(int idx)
   {
     var a = MLKemParameters.ml_kem_512;
@@ -211,7 +215,7 @@ public class MLKEM
     if (result >= 0) return result;
 
     throw new InvalidKeyException(nameof(parameter));
-  } 
+  }
 
   #endregion  Utils
 }
