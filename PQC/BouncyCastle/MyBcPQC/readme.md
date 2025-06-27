@@ -10,8 +10,6 @@ With the exception of XMSS, all are available in the C# library. XMSS is current
 
 ## ML-KEM 
 
-The ML-KEM Module-Lattice-Based Key-Encapsulation Mechanism Standard standardized under FIPS 203. This algorithm is typically characterized by encapsulation, which allows two parties to create a shared secret key via a public channel under certain conditions. 
-
 The ML-KEM Module-Lattice-Based Key-Encapsulation Mechanism standardized under FIPS 203 has been developed by Kyber with the purpose of being resistant to cryptanalytic attacks with future powerful quantum computers.
 
 The typical feature of this algorithm is encapsulation, which allows two parties to create a shared secret key over a public channel under certain conditions. It is an asymmetric cryptosystem that uses a variant of the presumably NP-hard lattice problem of learning with errors as its basic trapdoor function.
