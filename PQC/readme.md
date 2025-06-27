@@ -14,9 +14,13 @@ The most important encryption algorithm is the [ML-KEM](https://csrc.nist.gov/pu
 
 With the exception of XMSS, all are available in the C# library. XMSS is currently only available for [Java](https://www.bouncycastle.org/documentation/specification_interoperability/). But perhaps this will change, or you can simply write this algorithm yourself, because the NIST descriptions are very easy to understand.
 
+https://github.com/michelenatale/Cryptography/tree/main/PQC/BouncyCastle/MyBcPQC
+
 
 ## DotNet Core
 
 Microsoft is also joining in, and has already made a valuable start with SymCrypt. I am sure that Dotnet will also make these algorithms available in the near future.
 
 See here: [Microsoft Security Community Blog](https://techcommunity.microsoft.com/blog/microsoft-security-blog/microsofts-quantum-resistant-cryptography-is-here/4238780)
+
+https://github.com/michelenatale/Cryptography/tree/main/PQC/DotNetCore
