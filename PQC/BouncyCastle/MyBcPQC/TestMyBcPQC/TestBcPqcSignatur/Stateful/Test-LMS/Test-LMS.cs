@@ -4,15 +4,15 @@
 //https://www.rfc-editor.org/info/rfc8554
 
 
-using Org.BouncyCastle.Security;
+using System.Security;
 using System.Diagnostics;
+using Org.BouncyCastle.Security;
 using System.Security.Cryptography;
 
 namespace michele.natale.BcPqcs;
 
-using michele.natale.TestBcPqcs;
 using Services;
-using System.Security;
+using TestBcPqcs;
 
 public class TestLMS
 {
@@ -68,11 +68,11 @@ public class TestLMS
       var kpfile = "lms_keypair.key";
       var (privk, pubk) = LMS.ToKeyPair(rand, parameter);
 
-      var lmsinfo = new LmsKeyPairInfo(pubk, privk, parameter);
+      using var lmsinfo = new LmsKeyPairInfo(pubk, privk, parameter);
       lmsinfo.SaveKeyPair(kpfile, true);
 
       //Load KeyPairs Again
-      var info = LmsKeyPairInfo.Load_KeyPair(kpfile);
+      using var info = LmsKeyPairInfo.Load_KeyPair(kpfile);
       if (!lmsinfo.Equals(info))
         throw new Exception();
 
@@ -133,11 +133,11 @@ public class TestLMS
       //Create and Save a legal LMS-KeyPair
       var kpfile = "lms_keypair.key";
       var (privkey, pubkey) = LMS.ToKeyPair(rand, parameter);
-      var lmsinfo = new LmsKeyPairInfo(pubkey, privkey, parameter);
+      using var lmsinfo = new LmsKeyPairInfo(pubkey, privkey, parameter);
       lmsinfo.SaveKeyPair(kpfile, true);
 
       //Load KeyPairs again
-      var info = LmsKeyPairInfo.Load_KeyPair(kpfile);
+      using var info = LmsKeyPairInfo.Load_KeyPair(kpfile);
       if (!lmsinfo.Equals(info))
         throw new Exception();
 
@@ -160,7 +160,6 @@ public class TestLMS
   {
 
     Console.Write($"{nameof(Test_LMS_Alice_Bob_Signature)}: ");
-
 
     var rand = new SecureRandom();
     var parameters = BcPqcServices.ToLmsParam();
@@ -263,7 +262,7 @@ public class TestLMS
       //The order in 'signinfo' does not matter. 
       //'signinfo' can also be saved and reloaded.
       var signinfo = SignInfoSamples(cnt, message, parameter);
-      var multiinfo = LMSMultiSignVerifyInfo.ToMultiInfo(signinfo);
+      using var multiinfo = LMSMultiSignVerifyInfo.ToMultiInfo(signinfo);
 
       //Check multiinfo us null
       if (multiinfo is null)
@@ -318,7 +317,7 @@ public class TestLMS
       //The order in 'signinfo' does not matter. 
       //'signinfo' can also be saved and reloaded.
       var signinfo = SignInfoSamples(cnt, srcfile, parameter);
-      var multiinfo = LMSMultiSignVerifyInfo.ToMultiInfo(signinfo);
+      using var multiinfo = LMSMultiSignVerifyInfo.ToMultiInfo(signinfo);
 
       //Check multiinfo us null
       if (multiinfo is null)
@@ -358,7 +357,7 @@ public class TestLMS
 
       //Create a legal LMS-KeyPair 
       var (privk, pubk) = LMS.ToKeyPair(rand, parameter);
-      var info = new LmsKeyPairInfo(pubk, privk, parameter);
+      using var info = new LmsKeyPairInfo(pubk, privk, parameter);
 
       //Create signatur and check verification.
       var signature = LMS.Sign(info, message);
@@ -391,7 +390,7 @@ public class TestLMS
 
       //Create a legal LMS-KeyPair 
       var (privk, pubk) = LMS.ToKeyPair(rand, parameter);
-      var info = new LmsKeyPairInfo(pubk, privk, parameter);
+      using var info = new LmsKeyPairInfo(pubk, privk, parameter);
 
       //Create signatur and check verification.
       var signature = LMS.Sign(info, msghash);

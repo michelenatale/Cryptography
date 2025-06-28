@@ -47,6 +47,7 @@ public class AliceSLHDSA : IDisposable
   {
     if (this.IsDisposed) return;
 
+    this.Info.Dispose();
     if (this.PubKey is not null)
       Array.Clear(this.PubKey);
 
@@ -112,9 +113,7 @@ public class AliceSLHDSA : IDisposable
   {
     if (!this.IsDisposed)
     {
-      if (disposing)
-      {
-      }
+      if (disposing) this.Clear();
       this.IsDisposed = true;
     }
   }

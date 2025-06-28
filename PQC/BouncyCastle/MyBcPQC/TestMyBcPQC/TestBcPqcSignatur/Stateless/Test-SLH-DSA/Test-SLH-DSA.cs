@@ -6,11 +6,11 @@
 //https://nvlpubs.nist.gov/nistpubs/fips/nist.fips.205.pdf
 
 
-using Org.BouncyCastle.Crypto.Parameters;
-using Org.BouncyCastle.Security;
-using System.Diagnostics;
 using System.Security;
+using System.Diagnostics;
+using Org.BouncyCastle.Security;
 using System.Security.Cryptography;
+using Org.BouncyCastle.Crypto.Parameters;
 
 namespace michele.natale.BcPqcs;
 
@@ -68,11 +68,11 @@ public class TestSLHDSA
       var kpfile = "slhdsa_keypair.key";
       var (privk, pubk) = SLHDSA.ToKeyPair(rand, parameter);
 
-      var slhdsainfo = new SlhDsaKeyPairInfo(pubk, privk, parameter);
+      using var slhdsainfo = new SlhDsaKeyPairInfo(pubk, privk, parameter);
       slhdsainfo.SaveKeyPair(kpfile, true);
 
       //Load KeyPairs Again
-      var info = SlhDsaKeyPairInfo.Load_KeyPair(kpfile);
+      using var info = SlhDsaKeyPairInfo.Load_KeyPair(kpfile);
       if (!slhdsainfo.Equals(info))
         throw new Exception();
 
@@ -130,11 +130,11 @@ public class TestSLHDSA
       //Create and Save a legal SLH-DSA-KeyPair
       var kpfile = "slhdsa_keypair.key";
       var (privkey, pubkey) = SLHDSA.ToKeyPair(rand, parameter);
-      var slhdsainfo = new SlhDsaKeyPairInfo(pubkey, privkey, parameter);
+      using var slhdsainfo = new SlhDsaKeyPairInfo(pubkey, privkey, parameter);
       slhdsainfo.SaveKeyPair(kpfile, true);
 
       //Load KeyPairs again
-      var info = SlhDsaKeyPairInfo.Load_KeyPair(kpfile);
+      using var info = SlhDsaKeyPairInfo.Load_KeyPair(kpfile);
       if (!slhdsainfo.Equals(info))
         throw new Exception();
 
@@ -250,7 +250,7 @@ public class TestSLHDSA
       //The order in 'signinfo' does not matter. 
       //'signinfo' can also be saved and reloaded.
       var signinfo = SignInfoSamples(cnt, message, parameter);
-      var multiinfo = SLHDSAMultiSignVerifyInfo.ToMultiInfo(signinfo);
+      using var multiinfo = SLHDSAMultiSignVerifyInfo.ToMultiInfo(signinfo);
 
       //Check multiinfo us null
       if (multiinfo is null)
@@ -302,7 +302,7 @@ public class TestSLHDSA
       //The order in 'signinfo' does not matter. 
       //'signinfo' can also be saved and reloaded.
       var signinfo = SignInfoSamples(cnt, srcfile, parameter);
-      var multiinfo = SLHDSAMultiSignVerifyInfo.ToMultiInfo(signinfo);
+      using var multiinfo = SLHDSAMultiSignVerifyInfo.ToMultiInfo(signinfo);
 
       //Check multiinfo us null
       if (multiinfo is null)
@@ -344,7 +344,7 @@ public class TestSLHDSA
 
       //Create a legal slh-DSA-KeyPair 
       var (privk, pubk) = SLHDSA.ToKeyPair(rand, parameter);
-      var info = new SlhDsaKeyPairInfo(pubk, privk, parameter);
+      using var info = new SlhDsaKeyPairInfo(pubk, privk, parameter);
 
       //Create signatur and check verification.
       var signature = SLHDSA.Sign(info, message);
@@ -377,7 +377,7 @@ public class TestSLHDSA
 
       //Create a legal slh-DSA-KeyPair 
       var (privk, pubk) = SLHDSA.ToKeyPair(rand, parameter);
-      var info = new SlhDsaKeyPairInfo(pubk, privk, parameter);
+      using var info = new SlhDsaKeyPairInfo(pubk, privk, parameter);
 
       //Create signatur and check verification.
       var signature = SLHDSA.Sign(info, msghash);

@@ -5,11 +5,11 @@
 //https://nvlpubs.nist.gov/nistpubs/fips/nist.fips.204.pdf
 
 
-using Org.BouncyCastle.Crypto.Parameters;
-using Org.BouncyCastle.Security;
-using System.Diagnostics;
 using System.Security;
+using System.Diagnostics;
+using Org.BouncyCastle.Security;
 using System.Security.Cryptography;
+using Org.BouncyCastle.Crypto.Parameters;
 
 namespace michele.natale.BcPqcs;
 
@@ -68,11 +68,11 @@ public class TestMLDSA
       var kpfile = "mldsa_keypair.key";
       var (privk, pubk) = MLDSA.ToKeyPair(rand, parameter);
 
-      var mldsainfo = new MlDsaKeyPairInfo(pubk, privk, parameter);
+      using var mldsainfo = new MlDsaKeyPairInfo(pubk, privk, parameter);
       mldsainfo.SaveKeyPair(kpfile, true);
 
       //Load KeyPairs Again
-      var info = MlDsaKeyPairInfo.Load_KeyPair(kpfile);
+      using var info = MlDsaKeyPairInfo.Load_KeyPair(kpfile);
       if (!mldsainfo.Equals(info))
         throw new Exception();
 
@@ -130,11 +130,11 @@ public class TestMLDSA
       //Create and Save a legal ML-DSA-KeyPair
       var kpfile = "mldsa_keypair.key";
       var (privkey, pubkey) = MLDSA.ToKeyPair(rand, parameter);
-      var mldsainfo = new MlDsaKeyPairInfo(pubkey, privkey, parameter);
+      using var mldsainfo = new MlDsaKeyPairInfo(pubkey, privkey, parameter);
       mldsainfo.SaveKeyPair(kpfile, true);
 
       //Load KeyPairs again
-      var info = MlDsaKeyPairInfo.Load_KeyPair(kpfile);
+      using var info = MlDsaKeyPairInfo.Load_KeyPair(kpfile);
       if (!mldsainfo.Equals(info))
         throw new Exception();
 
@@ -252,7 +252,7 @@ public class TestMLDSA
       //The order in 'signinfo' does not matter. 
       //'signinfo' can also be saved and reloaded.
       var signinfo = SignInfoSamples(cnt, message, parameter);
-      var multiinfo = MLDSAMultiSignVerifyInfo.ToMultiInfo(signinfo);
+      using var multiinfo = MLDSAMultiSignVerifyInfo.ToMultiInfo(signinfo);
 
       //Check multiinfo us null
       if (multiinfo is null)
@@ -304,7 +304,7 @@ public class TestMLDSA
       //The order in 'signinfo' does not matter. 
       //'signinfo' can also be saved and reloaded.
       var signinfo = SignInfoSamples(cnt, srcfile, parameter);
-      var multiinfo = MLDSAMultiSignVerifyInfo.ToMultiInfo(signinfo);
+      using var multiinfo = MLDSAMultiSignVerifyInfo.ToMultiInfo(signinfo);
 
       //Check multiinfo us null
       if (multiinfo is null)
@@ -344,7 +344,7 @@ public class TestMLDSA
 
       //Create a legal ML-DSA-KeyPair 
       var (privk, pubk) = MLDSA.ToKeyPair(rand, parameter);
-      var info = new MlDsaKeyPairInfo(pubk, privk, parameter);
+      using var info = new MlDsaKeyPairInfo(pubk, privk, parameter);
 
       //Create signatur and check verification.
       var signature = MLDSA.Sign(info, message);
@@ -377,7 +377,7 @@ public class TestMLDSA
 
       //Create a legal ML-DSA-KeyPair 
       var (privk, pubk) = MLDSA.ToKeyPair(rand, parameter);
-      var info = new MlDsaKeyPairInfo(pubk, privk, parameter);
+      using var info = new MlDsaKeyPairInfo(pubk, privk, parameter);
 
       //Create signatur and check verification.
       var signature = MLDSA.Sign(info, msghash);

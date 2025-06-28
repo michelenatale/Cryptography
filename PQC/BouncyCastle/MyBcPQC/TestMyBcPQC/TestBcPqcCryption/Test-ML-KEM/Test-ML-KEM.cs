@@ -7,12 +7,14 @@
 //https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.203.ipd.pdf
 
 
-using Org.BouncyCastle.Crypto.Parameters;
-using Org.BouncyCastle.Security;
 using System.Diagnostics;
+using Org.BouncyCastle.Security;
 using System.Security.Cryptography;
+using Org.BouncyCastle.Crypto.Parameters;
+
 
 namespace michele.natale.TestBcPqcs;
+
 
 using BcPqcs;
 using Services;
@@ -67,12 +69,12 @@ public class TestMLKEM
       var kpfile = "mlkem_keypair.key";
       var (privk, pubk) = MLKEM.ToKeyPair(rand, parameter);
 
-      var mlkeminfo = new MlKemKeyPairInfo(
+      using var mlkeminfo = new MlKemKeyPairInfo(
         pubk, privk, parameter, cryptoalgo);
       mlkeminfo.SaveKeyPair(kpfile, true);
 
       //Load KeyPairs again
-      var info = MlKemKeyPairInfo.Load_KeyPair(kpfile);
+      using var info = MlKemKeyPairInfo.Load_KeyPair(kpfile);
       if (!mlkeminfo.Equals(info))
         throw new Exception();
 
@@ -84,14 +86,14 @@ public class TestMLKEM
       var pubkey = MLKemPublicKeyParameters
         .FromEncoding(parameter, info.PubKey);
 
-      var sharedkey1 = MLKEM.ToSharedKey(
+      using var sharedkey1 = MLKEM.ToSharedKey(
         pubkey, parameter, rand, out var capsulationkey);
 
       //Decapsulation 
       var privkey = MLKemPrivateKeyParameters
         .FromEncoding(parameter, info.ToPrivKey().ToBytes());
 
-      var sharedkey2 = MLKEM.ToSharedKey(
+      using var sharedkey2 = MLKEM.ToSharedKey(
         privkey, parameter, capsulationkey);
 
       //Check equality.
@@ -153,7 +155,7 @@ public class TestMLKEM
       //Create and Save a legal ML-KEM-KeyPair
       var kpfile = "mlkem_keypair.key";
       var (privkey, pubkey) = MLKEM.ToKeyPair(rand, parameter);
-      var info = new MlKemKeyPairInfo(
+      using var info = new MlKemKeyPairInfo(
         pubkey, privkey, parameter, cryptoalgo);
       info.SaveKeyPair(kpfile, true);
 
@@ -222,7 +224,7 @@ public class TestMLKEM
       //Create and Save a legal ML-KEM-KeyPair
       var kpfile = "mlkem_keypair.key";
       var (privkey, pubkey) = MLKEM.ToKeyPair(rand, parameter);
-      var info = new MlKemKeyPairInfo(
+      using var info = new MlKemKeyPairInfo(
         pubkey, privkey, parameter, cryptoalgo);
       info.SaveKeyPair(kpfile, true);
 

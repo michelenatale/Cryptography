@@ -81,7 +81,7 @@ public class AliceMLKEM : IDisposable
     CryptionAlgorithm cryptoalgo)
   {
     var associat = associated.IsEmpty ? this.Associated : associated;
-    var sharedkey = this.ToSharedKey(capsulationkey);
+    using var sharedkey = this.ToSharedKey(capsulationkey);
 
     return BcPqcServices.EncryptionWithCryptionAlgo(
       bytes, sharedkey, associat, cryptoalgo);
@@ -164,7 +164,7 @@ public class AliceMLKEM : IDisposable
     if (!this.IsDisposed)
     {
       if (disposing) this.Clear();
-      this.IsDisposed = true;
+      this.IsDisposed = true; 
     }
   }
 
