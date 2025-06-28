@@ -9,7 +9,7 @@ using Pointers;
 /// <summary>
 /// Interface for the class MlDsaKeyPairInfo
 /// </summary>
-public interface IMlDsaKeyPairInfo
+public interface IMlDsaKeyPairInfo:IDisposable
 {
   /// <summary>
   /// Specifies the Id as GUID

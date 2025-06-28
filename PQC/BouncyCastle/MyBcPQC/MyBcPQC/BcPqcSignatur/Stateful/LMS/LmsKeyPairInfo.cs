@@ -12,6 +12,12 @@ using Services;
 /// </summary>
 public sealed class LmsKeyPairInfo : ILmsKeyPairInfo
 {
+  [JsonIgnore]
+  public bool IsDisposed
+  {
+    get; private set;
+  } = true;
+
   [JsonInclude]
   public Guid Id
   {
@@ -38,6 +44,7 @@ public sealed class LmsKeyPairInfo : ILmsKeyPairInfo
 /// </summary>
   public LmsKeyPairInfo()
   {
+    this.IsDisposed = false;
   }
 
   /// <summary>
@@ -80,6 +87,13 @@ public sealed class LmsKeyPairInfo : ILmsKeyPairInfo
 
   public void Clear()
   {
+    if (this.IsDisposed) return;
+
+    if (this.PubKey is not null)
+      Array.Clear(this.PubKey);
+    if (this.PrivKey is not null)
+      Array.Clear(this.PrivKey);
+
     this.PubKey = [];
     this.PrivKey = [];
     this.Id = Guid.Empty;
@@ -91,7 +105,7 @@ public sealed class LmsKeyPairInfo : ILmsKeyPairInfo
     var (h, f) = LmsHF();
     if (File.Exists(filename)) File.Delete(filename);
 
-    var info = new LmsKeyPairInfo(this); //copy
+    using var info = new LmsKeyPairInfo(this); //copy
     if (!with_privkey) info.PrivKey = [];
 
     var b64 = Convert.ToBase64String(
@@ -141,6 +155,7 @@ public sealed class LmsKeyPairInfo : ILmsKeyPairInfo
     ReadOnlySpan<byte> privkey,
     LmsParam parameter)
   {
+    this.IsDisposed = false;
     this.PubKey = pubkey.ToArray();
     this.PrivKey = privkey.ToArray();
     this.Parameter = parameter;
@@ -177,4 +192,22 @@ public sealed class LmsKeyPairInfo : ILmsKeyPairInfo
   }
 
   private static string NameLms() => "LMS KEYPAIR";
+
+
+  private void Dispose(bool disposing)
+  {
+    if (!IsDisposed)
+    {
+      if (disposing) this.Clear();
+      IsDisposed = true;
+    }
+  }
+
+  ~LmsKeyPairInfo() => Dispose(false);
+
+  public void Dispose()
+  {
+    Dispose(true);
+    GC.SuppressFinalize(this);
+  }
 }

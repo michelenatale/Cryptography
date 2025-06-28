@@ -29,7 +29,7 @@ public sealed class MLKEM : IMLKEM
     ReadOnlySpan<byte> bytes, string keypairfile,
     ReadOnlySpan<byte> associated, SecureRandom rand)
   {
-    var info = MlKemKeyPairInfo.Load_KeyPair(keypairfile);
+    using var info = MlKemKeyPairInfo.Load_KeyPair(keypairfile);
 
     //ML-KEM Encapsulation
     var cryptalgo = info.CryptAlgo;
@@ -37,7 +37,7 @@ public sealed class MLKEM : IMLKEM
     var pubkey = MLKemPublicKeyParameters
       .FromEncoding(parameter, info.PubKey);
 
-    var sharedkey = ToSharedKey(pubkey, parameter, rand, out var capsulationkey);
+    using var sharedkey = ToSharedKey(pubkey, parameter, rand, out var capsulationkey);
 
     //ML-KEM Symmetric Encryption
     var cipher = BcPqcServices.EncryptionWithCryptionAlgo(
@@ -68,10 +68,10 @@ public sealed class MLKEM : IMLKEM
     var capsulationkey = bytes.Slice(6, capslenght);
 
     //ML-KEM Decapsulation
-    var info = MlKemKeyPairInfo.Load_KeyPair(keypairfile);
+    using var info = MlKemKeyPairInfo.Load_KeyPair(keypairfile);
     var privkey = MLKemPrivateKeyParameters
       .FromEncoding(parameter, info.ToPrivKey().ToBytes());
-    var sharedkey = ToSharedKey(privkey, parameter, capsulationkey);
+    using var sharedkey = ToSharedKey(privkey, parameter, capsulationkey);
 
     //ML-KEM Symmetric Decryption 
     return BcPqcServices.DecryptionWithCryptionAlgo(
@@ -84,7 +84,7 @@ public sealed class MLKEM : IMLKEM
     string src, string dest, string keypairfile,
     ReadOnlySpan<byte> associated, SecureRandom rand)
   {
-    var info = MlKemKeyPairInfo.Load_KeyPair(keypairfile);
+    using var info = MlKemKeyPairInfo.Load_KeyPair(keypairfile);
 
     //ML-KEM Encapsulation
     var cryptalgo = info.CryptAlgo;
@@ -92,7 +92,7 @@ public sealed class MLKEM : IMLKEM
     var pubkey = MLKemPublicKeyParameters
       .FromEncoding(parameter, info.PubKey);
 
-    var sharedkey = ToSharedKey(pubkey, parameter, rand, out var capsulationkey);
+    using var sharedkey = ToSharedKey(pubkey, parameter, rand, out var capsulationkey);
 
     var ofs = 7;
     var capslength = BitConverter.GetBytes(capsulationkey.Length);
@@ -131,10 +131,10 @@ public sealed class MLKEM : IMLKEM
     int startin = (int)fsin.Position, lengthin = (int)(fsin.Length - startin);
 
     //ML-KEM Decapsulation
-    var info = MlKemKeyPairInfo.Load_KeyPair(keypairfile);
+    using var info = MlKemKeyPairInfo.Load_KeyPair(keypairfile);
     var privkey = MLKemPrivateKeyParameters
       .FromEncoding(info.ToParameter(), info.ToPrivKey().ToBytes());
-    var sharedkey = ToSharedKey(privkey, parameter, capsulationkey);
+    using var sharedkey = ToSharedKey(privkey, parameter, capsulationkey);
 
     //ML-KEM Decryption
     var startout = 0;

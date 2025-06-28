@@ -113,10 +113,7 @@ public sealed class LMS : ILMS
     LmsKeyPairInfo info, string datapath)
   {
     if (!File.Exists(datapath))
-      throw new FileNotFoundException(datapath);
-
-    //LMS Parameter 
-    var parameter = info.Parameter;
+      throw new FileNotFoundException(datapath); 
 
     //Sign Message-Data 
     var signer = new LmsSigner();

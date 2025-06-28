@@ -9,7 +9,7 @@ using Pointers;
 /// <summary>
 /// Interfaces for the class SlhDsaKeyPairInfo
 /// </summary>
-public interface ISlhDsaKeyPairInfo
+public interface ISlhDsaKeyPairInfo:IDisposable
 {
 
   /// <summary>

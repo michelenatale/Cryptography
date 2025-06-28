@@ -7,7 +7,7 @@ using Pointers;
 using Services;
 
 
-public interface ILmsKeyPairInfo
+public interface ILmsKeyPairInfo : IDisposable
 {
 
   /// <summary>

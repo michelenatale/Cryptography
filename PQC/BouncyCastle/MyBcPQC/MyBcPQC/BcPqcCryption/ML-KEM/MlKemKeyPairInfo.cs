@@ -1,18 +1,25 @@
 ﻿
-using Org.BouncyCastle.Crypto.Parameters;
 using System.Text;
 using System.Text.Json.Serialization;
+using Org.BouncyCastle.Crypto.Parameters;
 
 namespace michele.natale.BcPqcs;
 
 using Pointers;
-using Services;
+using Services; 
 
 /// <summary>
 /// Provides keypair methods around the ML-KEM algorithm.
 /// </summary>
 public sealed class MlKemKeyPairInfo : IMlKemKeyPairInfo
 {
+  [JsonIgnore]
+  public bool IsDisposed
+  {
+    get;
+    private set;
+  } = true;
+
   [JsonInclude]
   public Guid Id
   {
@@ -44,6 +51,7 @@ public sealed class MlKemKeyPairInfo : IMlKemKeyPairInfo
   /// </summary>
   public MlKemKeyPairInfo()
   {
+    this.IsDisposed = false;
   }
 
   /// <summary>
@@ -94,6 +102,13 @@ public sealed class MlKemKeyPairInfo : IMlKemKeyPairInfo
 
   public void Clear()
   {
+    if (this.IsDisposed) return;
+
+    if (this.PubKey is not null)
+      Array.Clear(this.PubKey);
+    if (this.PrivKey is not null)
+      Array.Clear(this.PrivKey);
+
     this.PubKey = [];
     this.PrivKey = [];
     this.Id = Guid.Empty;
@@ -106,7 +121,7 @@ public sealed class MlKemKeyPairInfo : IMlKemKeyPairInfo
     var (h, f) = MlKemHF();
     if (File.Exists(filename)) File.Delete(filename);
 
-    var info = new MlKemKeyPairInfo(this); //copy
+    using var info = new MlKemKeyPairInfo(this); //copy
     if (!with_privkey) info.PrivKey = [];
 
     var b64 = Convert.ToBase64String(
@@ -161,6 +176,7 @@ public sealed class MlKemKeyPairInfo : IMlKemKeyPairInfo
     ArgumentNullException.ThrowIfNull(
       parameter, nameof(parameter));
 
+    this.IsDisposed = false;
     this.CryptAlgo = cryptoalgo;
     this.PubKey = pubkey.ToArray();
     this.PrivKey = privkey.ToArray();
@@ -204,4 +220,21 @@ public sealed class MlKemKeyPairInfo : IMlKemKeyPairInfo
   }
 
   private static string NameMLKEM() => "ML-KEM KEYPAIR";
+
+  private void Dispose(bool disposing)
+  {
+    if (!IsDisposed)
+    {
+      if (disposing) this.Clear();
+      IsDisposed = true;
+    }
+  }
+
+  ~MlKemKeyPairInfo() => Dispose(false);
+
+  public void Dispose()
+  {
+    Dispose(true);
+    GC.SuppressFinalize(this);
+  }
 }

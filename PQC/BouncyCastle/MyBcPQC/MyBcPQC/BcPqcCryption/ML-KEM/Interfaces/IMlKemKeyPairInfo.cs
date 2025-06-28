@@ -9,7 +9,7 @@ using Services;
 /// <summary>
 /// Interfaces for the Class MlKemKeyPairInfo
 /// </summary>
-public interface IMlKemKeyPairInfo
+public interface IMlKemKeyPairInfo:IDisposable
 {
 
   /// <summary>
