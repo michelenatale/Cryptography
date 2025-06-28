@@ -51,9 +51,11 @@ BitsBytesUtils is a small project ([BitHacks](https://en.wikipedia.org/wiki/Bitw
 
 https://github.com/michelenatale/Cryptography/tree/main/BitsBytesUtils
 
-## PQC
+## PQC - Post Quantum Cryptography
 
-Under Construction. See Here: [Wikipedia](https://en.wikipedia.org/wiki/Post-quantum_cryptography)
+[Post-quantum cryptography](https://en.wikipedia.org/wiki/Post-quantum_cryptography) refers to a branch of [cryptography](https://en.wikipedia.org/wiki/Cryptography) that deals with [cryptographic primitives](https://en.wikipedia.org/wiki/Cryptographic_primitive) which, in contrast to most [asymmetric cryptosystems](https://en.wikipedia.org/wiki/Public-key_cryptography) currently in use, are practically indecipherable even when using [quantum computers](https://en.wikipedia.org/wiki/Quantum_computing).
+
+The term post-quantum cryptography was introduced by [Daniel J. Bernstein](https://en.wikipedia.org/wiki/Daniel_J._Bernstein), who was also involved in organizing the first PQCrypto conference on this topic in 2006.
 
 https://github.com/michelenatale/Cryptography/tree/main/PQC
 
