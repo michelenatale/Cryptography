@@ -1,4 +1,8 @@
-﻿'LMS - Leighton-Micali Hash-Based Signatures
+﻿Option Strict On
+Option Explicit On
+
+
+'LMS - Leighton-Micali Hash-Based Signatures
 'Hash-Based Signatures
 'RFC 8554
 'https://www.rfc-editor.org/info/rfc8554
@@ -247,14 +251,18 @@ Namespace michele.natale.BcPqcs
         'The order in 'signinfo' does not matter. 
         ''signinfo' can also be saved and reloaded.
         Dim signinfo = SignInfoSamples(cnt, message, parameter)
-        Using multiinfo = LMSMultiSignVerifyInfo.ToMultiInfo(signinfo)
+        Using multiinfo = New LMSMultiSignVerifyInfo(signinfo)
+
+          'Dim filename = "multiinfo"
+          'multiinfo.Save(filename)
+          'multiinfo.Load(filename)
 
           'Check multiinfo us null
           If multiinfo Is Nothing Then Throw New NullReferenceException($"{NameOf(multiinfo)} has failed!")
 
           'privkey and pubkey are in 'multiinfo'
-          Dim sign = LMSMultiSignVerifyInfo.MultiSign(multiinfo, message)
-          Dim verify = LMSMultiSignVerifyInfo.MultiVerify(multiinfo, sign, message)
+          Dim sign = multiinfo.MultiSign()
+          Dim verify = multiinfo.MultiVerify(sign)
 
           If Not verify Then Throw New Exception()
 
@@ -270,7 +278,6 @@ Namespace michele.natale.BcPqcs
 
     Private Shared Sub Test_LMS_Multi_Signature_File(rounds As Integer)
       Console.Write($"{NameOf(Test_LMS_Multi_Signature_File)}: ")
-
 
       Dim srcfile = "data"
       Dim s = 0 'Sum Signatories.
@@ -299,19 +306,23 @@ Namespace michele.natale.BcPqcs
         'The order in 'signinfo' does not matter. 
         ''signinfo' can also be saved and reloaded.
         Dim signinfo = SignInfoSamples(cnt, srcfile, parameter)
-        Using multiinfo = LMSMultiSignVerifyInfo.ToMultiInfo(signinfo)
+        Using multiinfo = New LMSMultiSignVerifyInfoFile(signinfo, srcfile)
 
-            'Check multiinfo us null
-            If multiinfo Is Nothing Then Throw New NullReferenceException($"{NameOf(multiinfo)} has failed!")
+          'Dim filename = "multiinfo"
+          'multiinfo.Save(filename)
+          'multiinfo.Load(filename)
 
-            'privkey and pubkey are in 'multiinfo'
-            Dim sign = LMSMultiSignVerifyInfo.MultiSign(multiinfo, srcfile)
-            Dim verify = LMSMultiSignVerifyInfo.MultiVerify(multiinfo, sign, srcfile)
+          'Check multiinfo us null
+          If multiinfo Is Nothing Then Throw New NullReferenceException($"{NameOf(multiinfo)} has failed!")
 
-            If Not verify Then Throw New Exception()
+          'privkey and pubkey are in 'multiinfo'
+          Dim sign = multiinfo.MultiSign()
+          Dim verify = multiinfo.MultiVerify(sign)
 
-            If i Mod rounds / 10 = 0 Then Console.Write(".")
-          End Using
+          If Not verify Then Throw New Exception()
+
+          If i Mod rounds / 10 = 0 Then Console.Write(".")
+        End Using
       Next
 
       sw.Stop()

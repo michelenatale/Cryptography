@@ -1,14 +1,15 @@
 ﻿
 
-using System.Text;
+using Org.BouncyCastle.Crypto.Parameters;
 using System.Security;
 using System.Security.Cryptography;
+using System.Text;
 using System.Text.Json.Serialization;
-using Org.BouncyCastle.Crypto.Parameters;
 
 namespace michele.natale.BcPqcs;
 
 using Services;
+using System.Xml.Linq;
 
 /// <summary>
 /// <para>The class for the signature creator only.</para>
@@ -43,6 +44,13 @@ public sealed class MLDSASignInfo : IMLDSASignInfo
 
   public MLDsaParameters ToParameter() =>
     BcPqcServices.ToMLDsaParameters(this.Parameter);
+
+  /// <summary>
+  /// C-Tor
+  /// </summary>
+  public MLDSASignInfo()
+  {
+  }
 
   /// <summary>
   /// C-Tor
@@ -159,15 +167,26 @@ public sealed class MLDSASignInfo : IMLDSASignInfo
     this.Name = name ?? BcPqcServices.ToRngName();
   }
 
+  public MLDSASignInfo Copy()
+  {
+    return new MLDSASignInfo(
+      this.ID, this.Name, this.Parameter, this.Message,
+      Encoding.UTF8.GetBytes(this.PublicKey),
+      Encoding.UTF8.GetBytes(this.Sign));
+  }
+
+  public byte[] Serialize()
+  {
+    var copy = new MLDSASignInfo(this);
+    return BcPqcServices.SerializeJson(copy);
+  }
 
   public void Save(string filename)
   {
     if (File.Exists(filename))
       File.Delete(filename);
 
-    var copy = new MLDSASignInfo(this);
-    var serialize = BcPqcServices.SerializeJson(copy);
-    File.WriteAllBytes(filename, serialize);
+    File.WriteAllBytes(filename, this.Serialize());
   }
 
   public void Load(string filename)

@@ -45,6 +45,10 @@ public sealed class SLHDSASignInfo : ISLHDSASignInfo
   public SlhDsaParameters ToParameter() =>
     BcPqcServices.ToSLHDsaParameters(this.Parameter);
 
+  public SLHDSASignInfo()
+  {
+  }
+
   /// <summary>
   /// C-Tor
   /// </summary>
@@ -160,15 +164,18 @@ public sealed class SLHDSASignInfo : ISLHDSASignInfo
     this.Name = name ?? BcPqcServices.ToRngName();
   }
 
+  public byte[] Serialize()
+  {
+    var copy = new SLHDSASignInfo(this);
+    return BcPqcServices.SerializeJson(copy);
+  }
 
   public void Save(string filename)
   {
     if (File.Exists(filename))
       File.Delete(filename);
 
-    var copy = new SLHDSASignInfo(this);
-    var serialize = BcPqcServices.SerializeJson(copy);
-    File.WriteAllBytes(filename, serialize);
+    File.WriteAllBytes(filename, this.Serialize());
   }
 
   public void Load(string filename)

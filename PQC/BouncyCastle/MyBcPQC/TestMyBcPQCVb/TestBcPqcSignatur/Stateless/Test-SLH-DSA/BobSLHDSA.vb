@@ -1,4 +1,8 @@
-﻿
+﻿Option Strict On
+Option Explicit On
+
+
+
 Imports michele.natale.BcPqcs
 Imports michele.natale.Services
 Imports Org.BouncyCastle.Security
@@ -113,7 +117,7 @@ Namespace michele.natale.TestBcPqcs
     pubkeybob As Byte(),
     signature As Byte(),
     message As Byte(),
-    Parameter As SlhDsaParameters)
+    Parameter As SlhDsaParameters) As Boolean
 
       'Verify Signature
       Dim signer = New SlhDsaSigner(Parameter, True)

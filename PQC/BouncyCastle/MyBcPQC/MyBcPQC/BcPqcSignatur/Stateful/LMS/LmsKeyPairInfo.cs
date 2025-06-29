@@ -39,9 +39,9 @@ public sealed class LmsKeyPairInfo : ILmsKeyPairInfo
     get; set;
   } = LmsParam.lms_sha256_h5_w1;
 
-/// <summary>
-/// C-Tor
-/// </summary>
+  /// <summary>
+  /// C-Tor
+  /// </summary>
   public LmsKeyPairInfo()
   {
     this.IsDisposed = false;
@@ -84,6 +84,15 @@ public sealed class LmsKeyPairInfo : ILmsKeyPairInfo
 
   public UsIPtr<byte> ToPrivKey() =>
     new(this.PrivKey);
+
+  public LmsKeyPairInfo Copy()
+  {
+    var copy = new LmsKeyPairInfo(
+      this.Id, this.PubKey.ToArray(),
+      this.PrivKey.ToArray(), this.Parameter);
+
+    return copy;
+  }
 
   public void Clear()
   {

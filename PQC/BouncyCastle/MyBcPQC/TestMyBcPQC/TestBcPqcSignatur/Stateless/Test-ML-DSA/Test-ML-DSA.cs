@@ -252,15 +252,19 @@ public class TestMLDSA
       //The order in 'signinfo' does not matter. 
       //'signinfo' can also be saved and reloaded.
       var signinfo = SignInfoSamples(cnt, message, parameter);
-      using var multiinfo = MLDSAMultiSignVerifyInfo.ToMultiInfo(signinfo);
+      using var multiinfo = new MLDSAMultiSignVerifyInfo(signinfo);
+
+      //var filename = "multiinfo";
+      //multiinfo.Save(filename);
+      //multiinfo.Load(filename);
 
       //Check multiinfo us null
       if (multiinfo is null)
         throw new NullReferenceException($"{nameof(multiinfo)} has failed!");
 
       //privkey and pubkey are in 'multiinfo'
-      var sign = MLDSAMultiSignVerifyInfo.MultiSign(multiinfo, message);
-      var verify = MLDSAMultiSignVerifyInfo.MultiVerify(multiinfo, sign, message);
+      var sign = multiinfo.MultiSign();
+      var verify = multiinfo.MultiVerify(sign);
 
       if (!verify)
         throw new Exception();
@@ -304,15 +308,19 @@ public class TestMLDSA
       //The order in 'signinfo' does not matter. 
       //'signinfo' can also be saved and reloaded.
       var signinfo = SignInfoSamples(cnt, srcfile, parameter);
-      using var multiinfo = MLDSAMultiSignVerifyInfo.ToMultiInfo(signinfo);
+      using var multiinfo = new MLDSAMultiSignVerifyInfoFile(signinfo, srcfile);
+
+      //var filename = "multiinfo";
+      //multiinfo.Save(filename);
+      //multiinfo.Load(filename);
 
       //Check multiinfo us null
       if (multiinfo is null)
         throw new NullReferenceException($"{nameof(multiinfo)} has failed!");
 
       //privkey and pubkey are in 'multiinfo'
-      var sign = MLDSAMultiSignVerifyInfo.MultiSign(multiinfo, srcfile);
-      var verify = MLDSAMultiSignVerifyInfo.MultiVerify(multiinfo, sign, srcfile);
+      var sign = multiinfo.MultiSign();
+      var verify = multiinfo.MultiVerify(sign);
 
       if (!verify)
         throw new Exception();

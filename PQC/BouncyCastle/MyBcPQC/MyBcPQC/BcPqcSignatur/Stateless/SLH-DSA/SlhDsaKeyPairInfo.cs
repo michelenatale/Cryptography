@@ -90,6 +90,12 @@ public sealed class SlhDsaKeyPairInfo : ISlhDsaKeyPairInfo
   public SlhDsaParameters ToParameter() =>
     ToSLHDsaParameters(this.Parameter);
 
+  public SlhDsaKeyPairInfo Copy()
+  {
+    return new SlhDsaKeyPairInfo(
+      this.Id, this.PubKey, this.PrivKey,
+      this.ToParameter());
+  }
 
   public UsIPtr<byte> ToPrivKey() =>
     new(this.PrivKey);

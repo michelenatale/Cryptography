@@ -16,7 +16,7 @@ public sealed class MlDsaKeyPairInfo : IMlDsaKeyPairInfo
   [JsonIgnore]
   public bool IsDisposed
   {
-    get;private set;
+    get; private set;
   } = true;
   [JsonInclude]
   public Guid Id
@@ -84,6 +84,14 @@ public sealed class MlDsaKeyPairInfo : IMlDsaKeyPairInfo
 
   public MLDsaParameters ToParameter() =>
     ToMLDsaParameters(this.Parameter);
+
+  public MlDsaKeyPairInfo Copy()
+  {
+    return new MlDsaKeyPairInfo(
+      this.Id, this.PubKey.ToArray(), 
+      this.PrivKey.ToArray(),
+      ToMLDsaParameters(this.Parameter));
+  }
 
   public UsIPtr<byte> ToPrivKey() =>
     new(this.PrivKey);

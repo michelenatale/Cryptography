@@ -1,10 +1,10 @@
 ﻿
 
 using Org.BouncyCastle.Crypto;
-using Org.BouncyCastle.Crypto.Generators;
+using Org.BouncyCastle.Security;
 using Org.BouncyCastle.Crypto.Kems;
 using Org.BouncyCastle.Crypto.Parameters;
-using Org.BouncyCastle.Security;
+using Org.BouncyCastle.Crypto.Generators;
 
 namespace michele.natale.TestBcPqcs;
 
@@ -20,8 +20,7 @@ public class AliceMLKEM : IDisposable
   public byte[] Associated
   {
     get; private set;
-  } =
-    "© michele natale 2025"u8.ToArray();
+  } = "© michele natale 2025"u8.ToArray();
 
   private SecureRandom Rand = new();
   private AsymmetricCipherKeyPair KeyPair = null!;

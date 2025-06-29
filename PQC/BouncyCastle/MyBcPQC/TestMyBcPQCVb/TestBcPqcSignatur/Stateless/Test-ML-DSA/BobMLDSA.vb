@@ -1,4 +1,8 @@
-﻿
+﻿Option Strict On
+Option Explicit On
+
+
+
 Imports michele.natale.BcPqcs
 Imports michele.natale.Services
 Imports Org.BouncyCastle.Security
@@ -113,7 +117,7 @@ Namespace michele.natale.TestBcPqcs
     pubkeyalice As Byte(),
     signature As Byte(),
     message As Byte(),
-    Parameter As MLDsaParameters)
+    Parameter As MLDsaParameters) As Boolean
 
       'Verify Signature
       Dim signer = New MLDsaSigner(Parameter, True)

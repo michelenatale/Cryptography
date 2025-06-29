@@ -1,4 +1,8 @@
-﻿'ML-DSA (Dilithium)
+﻿Option Strict On
+Option Explicit On
+
+
+'ML-DSA (Dilithium)
 'Module-Lattice-Based
 'FIPS PUB 204
 'https://pq-crystals.org/dilithium/index.shtml
@@ -238,14 +242,18 @@ Namespace michele.natale.BcPqcs
         'The order in 'signinfo' does not matter. 
         ''signinfo' can also be saved and reloaded.
         Dim signinfo = SignInfoSamples(cnt, message, parameter)
-        Using multiinfo = MLDSAMultiSignVerifyInfo.ToMultiInfo(signinfo)
+        Using multiinfo = New MLDSAMultiSignVerifyInfo(signinfo)
+
+          'Dim filename = "multiinfo"
+          'multiinfo.Save(filename)
+          'multiinfo.Load(filename)
 
           'Check multiinfo us null
           If multiinfo Is Nothing Then Throw New NullReferenceException($"{NameOf(multiinfo)} has failed!")
 
           'privkey and pubkey are in 'multiinfo'
-          Dim sign = MLDSAMultiSignVerifyInfo.MultiSign(multiinfo, message)
-          Dim verify = MLDSAMultiSignVerifyInfo.MultiVerify(multiinfo, sign, message)
+          Dim sign = multiinfo.MultiSign()
+          Dim verify = multiinfo.MultiVerify(sign)
 
           If Not verify Then Throw New Exception()
         End Using
@@ -287,14 +295,18 @@ Namespace michele.natale.BcPqcs
         'The order in 'signinfo' does not matter. 
         ''signinfo' can also be saved and reloaded.
         Dim signinfo = SignInfoSamples(cnt, srcfile, parameter)
-        Using multiinfo = MLDSAMultiSignVerifyInfo.ToMultiInfo(signinfo)
+        Using multiinfo = New MLDSAMultiSignVerifyInfoFile(signinfo, srcfile)
+
+          'Dim filename = "multiinfo"
+          'multiinfo.Save(filename)
+          'multiinfo.Load(filename)
 
           'Check multiinfo us null
           If multiinfo Is Nothing Then Throw New NullReferenceException($"{NameOf(multiinfo)} has failed!")
 
           'privkey and pubkey are in 'multiinfo'
-          Dim sign = MLDSAMultiSignVerifyInfo.MultiSign(multiinfo, srcfile)
-          Dim verify = MLDSAMultiSignVerifyInfo.MultiVerify(multiinfo, sign, srcfile)
+          Dim sign = multiinfo.MultiSign()
+          Dim verify = multiinfo.MultiVerify(sign)
 
           If Not verify Then Throw New Exception()
         End Using

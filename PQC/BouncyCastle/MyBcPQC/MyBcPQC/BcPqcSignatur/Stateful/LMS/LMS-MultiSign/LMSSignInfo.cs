@@ -1,13 +1,13 @@
 ﻿
 
+using System.Text;
 using System.Security;
 using System.Security.Cryptography;
-using System.Text;
 using System.Text.Json.Serialization;
 
 namespace michele.natale.BcPqcs;
 
-using Services;
+using Services; 
 
 /// <summary>
 /// <para>The class for the signature creator only.</para>
@@ -26,10 +26,10 @@ public sealed class LMSSignInfo : ILMSSignInfo
   [JsonInclude]
   public string Name { get; set; } = string.Empty;
 
-   [JsonInclude]
+  [JsonInclude]
   public string Sign { get; set; } = string.Empty;
 
-   [JsonInclude]
+  [JsonInclude]
   public string Message { get; set; } = string.Empty;
 
   [JsonInclude]
@@ -41,6 +41,10 @@ public sealed class LMSSignInfo : ILMSSignInfo
   [JsonInclude]
   public LmsParam Parameter { get; set; } = LmsParam.lms_sha256_h5_w1;
 
+
+  public LMSSignInfo()
+  {
+  }
 
   /// <summary>
   /// C-Tor
@@ -116,6 +120,20 @@ public sealed class LMSSignInfo : ILMSSignInfo
     this.Name = name ?? BcPqcServices.ToRngName();
   }
 
+  public LMSSignInfo Copy()
+  {
+    var result = new LMSSignInfo(
+      this.ID, this.Name, this.Parameter, this.Message,
+      Convert.FromHexString(this.PublicKey),
+      Convert.FromHexString(this.Sign));
+    return result;
+  }
+
+  internal byte[] Serialize()
+  {
+    var copy = new LMSSignInfo(this);
+    return BcPqcServices.SerializeJson(copy);
+  }
 
   public void Save(string filename)
   {

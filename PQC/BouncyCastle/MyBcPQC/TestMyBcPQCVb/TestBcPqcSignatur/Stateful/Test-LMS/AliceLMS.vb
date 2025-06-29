@@ -1,4 +1,7 @@
-﻿
+﻿Option Strict On
+Option Explicit On
+
+
 Imports michele.natale.BcPqcs
 Imports michele.natale.Services
 Imports Org.BouncyCastle.Security

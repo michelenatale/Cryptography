@@ -1,4 +1,5 @@
-﻿
+﻿Option Strict On
+Option Explicit On
 
 'ML-KEM (Kyber)
 'Module-Lattice-Based

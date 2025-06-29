@@ -1,4 +1,7 @@
-﻿
+﻿Option Strict On
+Option Explicit On
+
+
 'SLH-DSA (SPHINCS+)
 'Stateless Hash-Based
 'FIPS PUB 205
@@ -233,14 +236,18 @@ Namespace michele.natale.BcPqcs
         'The order in 'signinfo' does not matter. 
         ''signinfo' can also be saved and reloaded.
         Dim signinfo = SignInfoSamples(cnt, message, parameter)
-        Dim multiinfo = SLHDSAMultiSignVerifyInfo.ToMultiInfo(signinfo)
+        Dim multiinfo = New SLHDSAMultiSignVerifyInfo(signinfo)
+
+        'Dim filename = "multiinfo"
+        'multiinfo.Save(filename)
+        'multiinfo.Load(filename)
 
         'Check multiinfo us null
         If multiinfo Is Nothing Then Throw New NullReferenceException($"{NameOf(multiinfo)} has failed!")
 
         'privkey and pubkey are in 'multiinfo'
-        Dim sign = SLHDSAMultiSignVerifyInfo.MultiSign(multiinfo, message)
-        Dim verify = SLHDSAMultiSignVerifyInfo.MultiVerify(multiinfo, sign, message)
+        Dim sign = multiinfo.MultiSign()
+        Dim verify = multiinfo.MultiVerify(sign)
 
         If Not verify Then Throw New Exception()
 
@@ -282,14 +289,18 @@ Namespace michele.natale.BcPqcs
         'The order in 'signinfo' does not matter. 
         ''signinfo' can also be saved and reloaded.
         Dim signinfo = SignInfoSamples(cnt, srcfile, parameter)
-        Dim multiinfo = SLHDSAMultiSignVerifyInfo.ToMultiInfo(signinfo)
+        Dim multiinfo = New SLHDSAMultiSignVerifyInfoFile(signinfo, srcfile)
+
+        'Dim filename = "multiinfo"
+        'multiinfo.Save(filename)
+        'multiinfo.Load(filename)
 
         'Check multiinfo us null
         If multiinfo Is Nothing Then Throw New NullReferenceException($"{NameOf(multiinfo)} has failed!")
 
         'privkey and pubkey are in 'multiinfo'
-        Dim sign = SLHDSAMultiSignVerifyInfo.MultiSign(multiinfo, srcfile)
-        Dim verify = SLHDSAMultiSignVerifyInfo.MultiVerify(multiinfo, sign, srcfile)
+        Dim sign = multiinfo.MultiSign()
+        Dim verify = multiinfo.MultiVerify(sign)
 
         If Not verify Then Throw New Exception()
 

@@ -1,3 +1,6 @@
+Option Strict On
+Option Explicit On
+
 
 
 Imports TestMyBcPQCVb.michele.natale.BcPqcs
