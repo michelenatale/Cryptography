@@ -21,6 +21,11 @@ https://github.com/michelenatale/Cryptography/tree/main/PQC/BouncyCastle/MyBcPQC
 
 Microsoft is also joining in, and has already made a valuable start with SymCrypt. I am sure that Dotnet will also make these algorithms available in the near future.
 
-See here: [Microsoft Security Community Blog](https://techcommunity.microsoft.com/blog/microsoft-security-blog/microsofts-quantum-resistant-cryptography-is-here/4238780)
+See here: 
+
+[Microsoft Security Community Blog](https://techcommunity.microsoft.com/blog/microsoft-security-blog/microsofts-quantum-resistant-cryptography-is-here/4238780)
+
+[Post-Quantum-Kryptografie (PQC)](https://learn.microsoft.com/de-de/dotnet/core/whats-new/dotnet-10/libraries#post-quantum-cryptography-pqc)
+
 
 https://github.com/michelenatale/Cryptography/tree/main/PQC/DotNetCore
