@@ -293,10 +293,10 @@ Namespace michele.natale.TestBcPqcs
 
             'Check for equality.
             If Not decipher.SequenceEqual(message) Then Throw New Exception()
-
-            If i Mod rounds / 10 = 0 Then Console.Write(".")
           End Using
         End Using
+
+        If i Mod rounds / 10 = 0 Then Console.Write(".")
       Next
       sw.Stop()
 

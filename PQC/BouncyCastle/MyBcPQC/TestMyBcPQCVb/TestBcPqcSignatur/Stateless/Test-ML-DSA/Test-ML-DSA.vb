@@ -333,15 +333,16 @@ Namespace michele.natale.BcPqcs
 
         'Create a legal ML-DSA-KeyPair 
         Dim kp = MLDSA.ToKeyPair(rand, parameter)
-        Dim info = New MlDsaKeyPairInfo(kp.PubKey, kp.PrivKey, parameter)
+        Using info = New MlDsaKeyPairInfo(kp.PubKey, kp.PrivKey, parameter)
 
-        'Create signatur and check verification.
-        Dim signature = MLDSA.Sign(info, message)
-        If MLDSA.Verify(info, signature, message) Then
-          result(i) = New MLDSASignInfo(name, parameter, msg, kp.PubKey, signature)
+          'Create signatur and check verification.
+          Dim signature = MLDSA.Sign(info, message)
+          If MLDSA.Verify(info, signature, message) Then
+            result(i) = New MLDSASignInfo(name, parameter, msg, kp.PubKey, signature)
 
-          Continue For
-        End If
+            Continue For
+          End If
+        End Using
 
         Throw New VerificationException($"{NameOf(SignInfoSamples)} has failed!")
       Next
@@ -360,15 +361,16 @@ Namespace michele.natale.BcPqcs
 
         'Create a legal ML-DSA-KeyPair 
         Dim kp = MLDSA.ToKeyPair(rand, parameter)
-        Dim info = New MlDsaKeyPairInfo(kp.PubKey, kp.PrivKey, parameter)
+        Using info = New MlDsaKeyPairInfo(kp.PubKey, kp.PrivKey, parameter)
 
-        'Create signatur and check verification.
-        Dim signature = MLDSA.Sign(info, msghash)
-        If MLDSA.Verify(info, signature, msghash) Then
-          result(i) = New MLDSASignInfo(name, parameter, msghex, kp.PubKey, signature)
+          'Create signatur and check verification.
+          Dim signature = MLDSA.Sign(info, msghash)
+          If MLDSA.Verify(info, signature, msghash) Then
+            result(i) = New MLDSASignInfo(name, parameter, msghex, kp.PubKey, signature)
 
-          Continue For
-        End If
+            Continue For
+          End If
+        End Using
 
         Throw New VerificationException($"{NameOf(SignInfoSamples)} has failed!")
       Next

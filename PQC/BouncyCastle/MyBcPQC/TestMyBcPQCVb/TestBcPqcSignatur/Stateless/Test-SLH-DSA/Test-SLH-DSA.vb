@@ -67,18 +67,19 @@ Namespace michele.natale.BcPqcs
         Dim kpfile = "slhdsa_keypair.key"
         Dim kp = SLHDSA.ToKeyPair(rand, parameter)
 
-        Dim slhdsainfo = New SlhDsaKeyPairInfo(kp.PubKey, kp.PrivKey, parameter)
-        slhdsainfo.SaveKeyPair(kpfile, True)
+        Using slhdsainfo = New SlhDsaKeyPairInfo(kp.PubKey, kp.PrivKey, parameter)
+          slhdsainfo.SaveKeyPair(kpfile, True)
 
-        'Load KeyPairs Again
-        Dim info = SlhDsaKeyPairInfo.Load_KeyPair(kpfile)
-        If Not slhdsainfo.Equals(info) Then Throw New Exception()
+          'Load KeyPairs Again
+          Using info = SlhDsaKeyPairInfo.Load_KeyPair(kpfile)
+            If Not slhdsainfo.Equals(info) Then Throw New Exception()
 
-        Dim signature = SLHDSA.Sign(info, message)
-        Dim verify = SLHDSA.Verify(info, signature, message)
+            Dim signature = SLHDSA.Sign(info, message)
+            Dim verify = SLHDSA.Verify(info, signature, message)
 
-        If Not verify Then Throw New Exception()
-
+            If Not verify Then Throw New Exception()
+          End Using
+        End Using
         If rounds > 10 Then
           If i Mod rounds / 10 = 0 Then Console.Write(".")
         End If
@@ -125,17 +126,19 @@ Namespace michele.natale.BcPqcs
         'Create and Save a legal SLH-DSA-KeyPair
         Dim kpfile = "slhdsa_keypair.key"
         Dim kp = SLHDSA.ToKeyPair(rand, parameter)
-        Dim slhdsainfo = New SlhDsaKeyPairInfo(kp.PubKey, kp.PrivKey, parameter)
-        slhdsainfo.SaveKeyPair(kpfile, True)
+        Using slhdsainfo = New SlhDsaKeyPairInfo(kp.PubKey, kp.PrivKey, parameter)
+          slhdsainfo.SaveKeyPair(kpfile, True)
 
-        'Load KeyPairs again
-        Dim info = SlhDsaKeyPairInfo.Load_KeyPair(kpfile)
-        If Not slhdsainfo.Equals(info) Then Throw New Exception()
+          'Load KeyPairs again
+          Using info = SlhDsaKeyPairInfo.Load_KeyPair(kpfile)
+            If Not slhdsainfo.Equals(info) Then Throw New Exception()
 
-        Dim signature = SLHDSA.Sign(info, srcfile)
-        Dim verify = SLHDSA.Verify(info, signature, srcfile)
+            Dim signature = SLHDSA.Sign(info, srcfile)
+            Dim verify = SLHDSA.Verify(info, signature, srcfile)
 
-        If Not verify Then Throw New Exception()
+            If Not verify Then Throw New Exception()
+          End Using
+        End Using
 
         If rounds > 10 Then
           If i Mod rounds / 10 = 0 Then Console.Write(".")
@@ -236,20 +239,21 @@ Namespace michele.natale.BcPqcs
         'The order in 'signinfo' does not matter. 
         ''signinfo' can also be saved and reloaded.
         Dim signinfo = SignInfoSamples(cnt, message, parameter)
-        Dim multiinfo = New SLHDSAMultiSignVerifyInfo(signinfo)
+        Using multiinfo = New SLHDSAMultiSignVerifyInfo(signinfo)
 
-        'Dim filename = "multiinfo"
-        'multiinfo.Save(filename)
-        'multiinfo.Load(filename)
+          'Dim filename = "multiinfo"
+          'multiinfo.Save(filename)
+          'multiinfo.Load(filename)
 
-        'Check multiinfo us null
-        If multiinfo Is Nothing Then Throw New NullReferenceException($"{NameOf(multiinfo)} has failed!")
+          'Check multiinfo us null
+          If multiinfo Is Nothing Then Throw New NullReferenceException($"{NameOf(multiinfo)} has failed!")
 
-        'privkey and pubkey are in 'multiinfo'
-        Dim sign = multiinfo.MultiSign()
-        Dim verify = multiinfo.MultiVerify(sign)
+          'privkey and pubkey are in 'multiinfo'
+          Dim sign = multiinfo.MultiSign()
+          Dim verify = multiinfo.MultiVerify(sign)
 
-        If Not verify Then Throw New Exception()
+          If Not verify Then Throw New Exception()
+        End Using
 
         If rounds > 10 Then
           If i Mod rounds / 10 = 0 Then Console.Write(".")
@@ -289,20 +293,21 @@ Namespace michele.natale.BcPqcs
         'The order in 'signinfo' does not matter. 
         ''signinfo' can also be saved and reloaded.
         Dim signinfo = SignInfoSamples(cnt, srcfile, parameter)
-        Dim multiinfo = New SLHDSAMultiSignVerifyInfoFile(signinfo, srcfile)
+        Using multiinfo = New SLHDSAMultiSignVerifyInfoFile(signinfo, srcfile)
 
-        'Dim filename = "multiinfo"
-        'multiinfo.Save(filename)
-        'multiinfo.Load(filename)
+          'Dim filename = "multiinfo"
+          'multiinfo.Save(filename)
+          'multiinfo.Load(filename)
 
-        'Check multiinfo us null
-        If multiinfo Is Nothing Then Throw New NullReferenceException($"{NameOf(multiinfo)} has failed!")
+          'Check multiinfo us null
+          If multiinfo Is Nothing Then Throw New NullReferenceException($"{NameOf(multiinfo)} has failed!")
 
-        'privkey and pubkey are in 'multiinfo'
-        Dim sign = multiinfo.MultiSign()
-        Dim verify = multiinfo.MultiVerify(sign)
+          'privkey and pubkey are in 'multiinfo'
+          Dim sign = multiinfo.MultiSign()
+          Dim verify = multiinfo.MultiVerify(sign)
 
-        If Not verify Then Throw New Exception()
+          If Not verify Then Throw New Exception()
+        End Using
 
         If rounds > 10 Then
           If i Mod rounds / 10 = 0 Then Console.Write(".")
@@ -329,15 +334,16 @@ Namespace michele.natale.BcPqcs
 
         'Create a legal slh-DSA-KeyPair 
         Dim kp = SLHDSA.ToKeyPair(rand, parameter)
-        Dim info = New SlhDsaKeyPairInfo(kp.PubKey, kp.PrivKey, parameter)
+        Using info = New SlhDsaKeyPairInfo(kp.PubKey, kp.PrivKey, parameter)
 
-        'Create signatur and check verification.
-        Dim signature = SLHDSA.Sign(info, message)
-        If SLHDSA.Verify(info, signature, message) Then
-          result(i) = New SLHDSASignInfo(name, parameter, msg, kp.PubKey, signature)
+          'Create signatur and check verification.
+          Dim signature = SLHDSA.Sign(info, message)
+          If SLHDSA.Verify(info, signature, message) Then
+            result(i) = New SLHDSASignInfo(name, parameter, msg, kp.PubKey, signature)
 
-          Continue For
-        End If
+            Continue For
+          End If
+        End Using
 
         Throw New VerificationException($"{NameOf(SignInfoSamples)} has failed!")
       Next
@@ -356,15 +362,16 @@ Namespace michele.natale.BcPqcs
 
         'Create a legal slh-DSA-KeyPair 
         Dim kp = SLHDSA.ToKeyPair(rand, parameter)
-        Dim info = New SlhDsaKeyPairInfo(kp.PubKey, kp.PrivKey, parameter)
+        Using info = New SlhDsaKeyPairInfo(kp.PubKey, kp.PrivKey, parameter)
 
-        'Create signatur and check verification.
-        Dim signature = SLHDSA.Sign(info, msghash)
-        If SLHDSA.Verify(info, signature, msghash) Then
-          result(i) = New SLHDSASignInfo(name, parameter, msghex, kp.PubKey, signature)
+          'Create signatur and check verification.
+          Dim signature = SLHDSA.Sign(info, msghash)
+          If SLHDSA.Verify(info, signature, msghash) Then
+            result(i) = New SLHDSASignInfo(name, parameter, msghex, kp.PubKey, signature)
 
-          Continue For
-        End If
+            Continue For
+          End If
+        End Using
 
         Throw New VerificationException($"{NameOf(SignInfoSamples)} has failed!")
       Next
