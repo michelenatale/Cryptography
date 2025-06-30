@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <Nullable>enable</Nullable>
+    <Platforms>AnyCPU;x64</Platforms>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <TargetFramework>net9.0</TargetFramework>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+
+    <Authors>© Michele Natale 2025</Authors>
+    <Product>Bouncy Castle PQC 2025</Product>
+    <Company>© Michele Natale 2025</Company>
+    <Description>
+      Bouncy Castle PQC C# - Post Quantum Cryptography in C#.
+    </Description>
+    <Copyright>Bouncy Castle PQC powered by © Michele Natale 2025.</Copyright>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BouncyCastle.Cryptography" Version="2.6.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="BcPqcSignatur\Stateful\XMSS\XMSS-MultiSign\" />
+    <Folder Include="BcPqcSignatur\Stateful\XMSS\Interface\" />
+  </ItemGroup>
+
+</Project>
