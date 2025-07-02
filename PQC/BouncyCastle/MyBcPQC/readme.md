@@ -10,9 +10,31 @@ With the exception of XMSS, all are available in the C# library. XMSS is current
 
 ## ML-KEM 
 
-The ML-KEM Module-Lattice-Based Key-Encapsulation Mechanism standardized under FIPS 203 has been developed by Kyber with the purpose of being resistant to cryptanalytic attacks with future powerful quantum computers.
+The ML-KEM Module-Lattice-Based Key-Encapsulation Mechanism (also known as Kyber), standardized under FIPS 203, was developed with the aim of being resistant to cryptanalytic attacks using future powerful quantum computers.
 
-The typical feature of this algorithm is encapsulation, which allows two parties to create a shared secret key over a public channel under certain conditions. It is an asymmetric cryptosystem that uses a variant of the presumably NP-hard lattice problem of learning with errors as its basic trapdoor function.
+The typical feature of this algorithm is encapsulation, which allows two parties to create a shared secret key over a public channel under certain conditions. It is an asymmetric cryptosystem that uses a variant of the presumably NP-hard lattice problem of learning with errors as the basic trapdoor function.
 
 This extracted key can be used e.g. as a password for a much faster symmetric encryption.
+
+## ML-DSA
+
+The ML-DSA Module-Lattice-Based Digital Signature Algorithm (also known as Dilithium), standardized under Fips 204, was developed with the aim of providing the recipient of signed data with a digital signature as evidence to show a third party that the signature was actually created by the claimed signatory. Any changes can also be immediately verified. This is even referred to as non-repudiation, as the signatory can prove the signature at a later date at any time.
+
+A typical feature of this algorithm is that ML-DSA is based on the LWE (Learning With Errors) module and the SIS (Short Integer Solution) module, which is typical of lattice-based cryptography and should ensure that it is also secure against future quantum computers.
+
+## SLH-DSA
+
+The SLH-DSA Stateless Hash-Based Digital Signature Algorithm (also known as SPHINCS+), standardized under Fips 205, was developed like ML-DSA with the aim of providing the recipient of signed data with a digital signature as evidence to show a third party that the signature was actually created by the claimed signatory. Any changes can also be immediately verified. This is even referred to as non-repudiation, as the signatory can prove the signature at a later date at any time.
+
+A typical feature of this algorithm is that it is based on a one-time signature scheme called WOTS+ (a modified version of the Winternitz one-time signature scheme), a few-time signature scheme called FORS (Forest of Random Subsets) and Merkle trees, which is why NIST calls it “conservative”, as its security is based solely on the preimage and collision resistance of the underlying hash function.
+
+## LMS
+
+LMS Leighton-Micali Signatures, standardized under RFC 8554, was developed with the goal of being resistant to cryptanalytic attacks using future powerful quantum computers.
+
+LMS is a stateful hash-based signature scheme that has attracted a lot of attention in the cryptographic community due to its robust security features and potential applications in post-quantum cryptography.
+
+A typical feature of this algorithm is that it is stateful, meaning that the signer must maintain a state, usually in the form of a counter or tree structure, in order to generate signatures. This state is used to ensure that each signature is unique and cannot be reused.
+
+
 
