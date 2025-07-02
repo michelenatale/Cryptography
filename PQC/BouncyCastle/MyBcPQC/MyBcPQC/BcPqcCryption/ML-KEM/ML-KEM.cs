@@ -53,6 +53,7 @@ public sealed class MLKEM : IMLKEM
     Array.Copy(capslength, 0, result, 2, capslength.Length);
     Array.Copy(capsulationkey, 0, result, 6, capsulationkey.Length);
     Array.Copy(cipher, 0, result, 6 + capsulationkey.Length, cipher.Length);
+    BcPqcServices.MemoryClear(capslength, capsulationkey, cipher);
 
     return result;
   }
