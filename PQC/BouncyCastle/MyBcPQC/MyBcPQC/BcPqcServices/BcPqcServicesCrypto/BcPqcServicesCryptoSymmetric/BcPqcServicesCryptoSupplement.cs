@@ -46,7 +46,7 @@ partial class BcPqcServices
       Array.Clear(bytes[i]);
   }
 
-  private static void MemoryClear(params byte[][] bytes)
+  public static void MemoryClear(params byte[][] bytes)
   {
     foreach (var itm in bytes)
       Array.Clear(itm);
