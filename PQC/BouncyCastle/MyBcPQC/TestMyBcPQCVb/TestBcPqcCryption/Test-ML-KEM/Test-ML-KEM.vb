@@ -78,19 +78,18 @@ Namespace michele.natale.TestBcPqcs
             'Encapsulation
             Dim capsulationkey As Byte() = Nothing
             Dim pubkey = MLKemPublicKeyParameters.FromEncoding(parameter, info.PubKey)
-            Dim key1 = MLKEM.ToSharedKey(pubkey, parameter, rand, capsulationkey)
-
-            'Decapsulation 
-            Dim privkey = MLKemPrivateKeyParameters.FromEncoding(parameter, info.ToPrivKey().ToBytes())
-
-            Dim key2 = MLKEM.ToSharedKey(privkey, parameter, capsulationkey)
-
-            'Check equality.
-            If Not key1.Equality(key2) Then Throw New Exception()
-
-            If i Mod rounds / 10 = 0 Then Console.Write(".")
+            Using key1 = MLKEM.ToSharedKey(pubkey, parameter, rand, capsulationkey)
+              'Decapsulation 
+              Dim privkey = MLKemPrivateKeyParameters.FromEncoding(parameter, info.ToPrivKey().ToBytes())
+              Using key2 = MLKEM.ToSharedKey(privkey, parameter, capsulationkey)
+                'Check equality.
+                If Not key1.Equality(key2) Then Throw New Exception()
+              End Using
+            End Using
           End Using
         End Using
+
+        If i Mod rounds / 10 = 0 Then Console.Write(".")
       Next
       sw.Stop()
 

@@ -107,7 +107,6 @@ Namespace michele.natale.BcPqcs
 
       Console.Write($"{NameOf(Test_SLH_DSA_Single_Signature_File)}: ")
 
-
       Dim srcfile = "data"
       Dim rand = New SecureRandom()
       Dim parameters = BcPqcServices.ToSLHDsaParameters()
