@@ -45,5 +45,6 @@ LMS is a stateful hash-based signature scheme that has attracted a lot of attent
 
 A typical feature of this algorithm is that it is stateful, meaning that the signer must maintain a state, usually in the form of a counter or tree structure, in order to generate signatures. This state is used to ensure that each signature is unique and cannot be reused. See [TestCode](https://github.com/michelenatale/Cryptography/blob/main/PQC/BouncyCastle/MyBcPQC/TestMyBcPQC/TestBcPqcSignatur/Stateful/Test-LMS/Test-LMS.cs)
 
+And this is what the console output looks like:
 ![](https://github.com/michelenatale/Cryptography/blob/main/PQC/BouncyCastle/MyBcPQC/Documentation/test.png)
 
