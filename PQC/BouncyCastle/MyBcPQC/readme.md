@@ -13,7 +13,7 @@ The MyBcPQC offers at the moment 4 options.
  - ML-KEM
  - ML-DSA
  - SLH-DSA
- - MLS
+ - LMS
 
 MyBcPQC is designed to be very easy to use. There are two test projects available that show how to use MyBcPQC. One written in [C#](https://github.com/michelenatale/Cryptography/tree/main/PQC/BouncyCastle/MyBcPQC/TestMyBcPQC) and one in [Vb.Net](https://github.com/michelenatale/Cryptography/tree/main/PQC/BouncyCastle/MyBcPQC/TestMyBcPQCVb). 
 
