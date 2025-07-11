@@ -47,7 +47,7 @@ A typical feature of this algorithm is that it is stateful, meaning that the sig
 
 ## MultiSignatur 
 
-All signatures (ML.DSA, SLH-DSA and LMS) offered here can also be used as multisign. For this purpose, a [fingerprint](https://en.wikipedia.org/wiki/Fingerprint) (we also call this a [hash](https://de.wikipedia.org/w/index.php?title=Fingerprint_(Hashfunktion)&redirect=no) or hash-function in German) is created, which is used as a private key.
+All signatures (ML.DSA, SLH-DSA and LMS) offered here can also be used as [multisign](https://www.coinbase.com/nl/learn/wallet/what-is-a-multi-signature-multi-sig-wallet). For this purpose, a [fingerprint](https://en.wikipedia.org/wiki/Fingerprint) (we also call this a [hash](https://de.wikipedia.org/w/index.php?title=Fingerprint_(Hashfunktion)&redirect=no) or hash-function in German) is created, which is used as a private key.
 
 This means that the asymmetric concept of the KeyPair can be used from the private key, which enables signing and verification. Very simple but effective.
 
