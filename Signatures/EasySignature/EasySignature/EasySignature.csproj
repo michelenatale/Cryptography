@@ -5,7 +5,7 @@
     <Platforms>AnyCPU;x64</Platforms>
     <IsPublishable>False</IsPublishable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <TargetFramework>net8.0</TargetFramework>
+    <TargetFramework>net9.0</TargetFramework>
 
     <Authors>© Michele Natale 2024</Authors>
     <Product>© EasySignature 2024</Product>
