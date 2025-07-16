@@ -6,7 +6,7 @@
     <Platforms>AnyCPU;x64</Platforms>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
-    <TargetFramework>net8.0-windows</TargetFramework>
+    <TargetFramework>net9.0-windows</TargetFramework>
     <StartupObject>LoginSystemAppVb.michele.natale.LoginSystems.Apps.Program</StartupObject>
 
     <Authors>© Michele Natale 2024</Authors>
