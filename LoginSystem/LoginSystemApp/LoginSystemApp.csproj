@@ -8,7 +8,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <ApplicationIcon>MyLogo64.ico</ApplicationIcon>
-    <TargetFramework>net8.0-windows</TargetFramework>
+    <TargetFramework>net9.0-windows</TargetFramework>
     <StartupObject>michele.natale.LoginSystems.Apps.Program</StartupObject>
 
     <Authors>© Michele Natale 2024</Authors>
