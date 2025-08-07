@@ -5,6 +5,7 @@ Imports michele.natale.Pointers
 Imports michele.natale.LoginSystems
 Imports System.Security.Cryptography
 Imports michele.natale.LoginSystems.Apps
+Imports System.ComponentModel
 
 Namespace LoginSystemApp
   Public Class FrmCustomerBase
@@ -18,6 +19,7 @@ Namespace LoginSystemApp
 
     Private ReadOnly Rand As RandomNumberGenerator = RandomNumberGenerator.Create()
 
+    <DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)>
     Public Property App_Login_Setting As AppLoginSettings = Nothing
 
     Protected Sub FrmAppCustomerCTor()
