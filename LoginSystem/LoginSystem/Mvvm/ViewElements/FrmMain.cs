@@ -1,5 +1,6 @@
 
 using LoginSystem.Properties;
+using System.ComponentModel;
 
 namespace michele.natale.LoginSystems.Apps;
 
@@ -12,6 +13,8 @@ using static Services.AppServices;
 public partial class FrmMain : Form
 {
 
+
+  [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
   public object PVmUc { get; set; } = null!;
   public FrmCommands Frm_Cmd = FrmCommands.None;
   private readonly AppServices Services = AppServicesHolder;
