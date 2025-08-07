@@ -3,9 +3,10 @@ using System.Security.Cryptography;
 
 namespace LoginSystemApp;
 
-using michele.natale.Pointers;
 using michele.natale.LoginSystems;
 using michele.natale.LoginSystems.Apps;
+using michele.natale.Pointers;
+using System.ComponentModel;
 
 /// <summary>
 /// The abstract class intended for the customer for
@@ -22,6 +23,8 @@ public class FrmCustomerBase : Form
   public WindowsManager Login_System = null!;
 
   public UsIPtr<byte> MyMasterPassword = UsIPtr<byte>.Empty;
+
+  [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
   public AppLoginSettings App_Login_Setting { get; private set; } = null!;
 
   /// <summary>
