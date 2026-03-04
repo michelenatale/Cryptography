@@ -1,5 +1,6 @@
 # Cryptographie
 
+---
 
 ## CryptoRandom
 
@@ -13,7 +14,7 @@ CryptoRandom can be easily integrated into any project and fulfills its purpose 
 
 https://github.com/michelenatale/Cryptography/tree/main/CryptoRandom
 
-
+---
 
 ## Elliptic-Curve
 
@@ -24,6 +25,8 @@ The [ECDiffieHellman](https://learn.microsoft.com/en-us/dotnet/api/system.securi
 The [Elliptic Curves](https://en.wikipedia.org/wiki/Elliptic_curve) are always selected randomly so that everything in the temporary area is used.
 
 https://github.com/michelenatale/Cryptography/tree/main/Elliptic-Curve
+
+---
 
 ## Signatures 
 
@@ -37,6 +40,8 @@ Multi-signatures can also be created and verified with both signature creators.
 
 https://github.com/michelenatale/Cryptography/tree/main/Signatures
 
+---
+
 ## LoginSystem
 
 LoginSystem is a simple project that shows how to perform a local secure [login](Login) for your application. It is based on the **Winform-[Mvvm](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93viewmodel)-Design** Pattern and UserControl. 
@@ -45,11 +50,15 @@ In order for © LoginSystem 2024 to work, a registration must first be made. Onl
 
 https://github.com/michelenatale/Cryptography/tree/main/LoginSystem
 
+---
+
 ## BitsBytesUtils
 
 BitsBytesUtils is a small project ([BitHacks](https://en.wikipedia.org/wiki/Bitwise_operation) full [generic](https://en.wikipedia.org/wiki/Generic_programming)) that can be used to convert all numeric data types into their bytes or bits and convert them back to the original data type. In addition, further information can be queried, such as [BitLength](https://en.wikipedia.org/wiki/Bit-length), [LeadingZero](https://en.wikipedia.org/wiki/Leading_zero), [Two's Complement](https://en.wikipedia.org/wiki/Two%27s_complement), [PowerOfTwo](https://en.wikipedia.org/wiki/Power_of_two) etc. Feel free to try out the possibilities.
 
 https://github.com/michelenatale/Cryptography/tree/main/BitsBytesUtils
+
+---
 
 ## PQC - Post Quantum Cryptography
 
@@ -59,6 +68,8 @@ The term post-quantum cryptography was introduced by [Daniel J. Bernstein](https
 
 https://github.com/michelenatale/Cryptography/tree/main/PQC
 
+---
+
 ## C-Abi-Bright-Aot - Native Library
 
 C-Abi-Bright-Aot is a high‑performance, NativeAOT‑compatible C ABI interface for cryptographically secure random number generation, byte generation, and modern encryption algorithms.
@@ -67,4 +78,7 @@ It provides a stable, unmanaged‑friendly API that can be consumed from any lan
 This module is part of the larger Cryptography repository but is released as a standalone component.
 
 https://github.com/michelenatale/Cryptography/tree/main/C-Abi-Bright-Aot
+
+---
+
 
