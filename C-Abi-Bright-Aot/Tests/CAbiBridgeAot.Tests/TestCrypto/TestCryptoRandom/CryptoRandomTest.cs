@@ -333,7 +333,7 @@ partial class CryptoRandomTest
 
     sw.Stop();
     t = sw.ElapsedMilliseconds;
-    Console.WriteLine($" rounds = {rounds}; t = {t}ms; td = {t / rounds}ms");
+    Console.WriteLine($" rounds = {rounds}; t = {t}ms; td = {t / rounds}ms\n");
   }
 
   private static void TestRngCryptoInt64Aot(int rounds)
