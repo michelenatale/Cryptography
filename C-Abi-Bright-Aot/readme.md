@@ -88,12 +88,20 @@ All tests run stable over thousands of iterations.
 
 ```
 C-Abi-Bright-Aot/
- ├─ AotExports/         # NativeAOT C-ABI exports
- ├─ CryptoRandom/       # RNG implementation
- ├─ BitsBytesUtils/     # Utility helpers
- ├─ Tests/              # Unit and performance tests
- ├─ README.md           # This document
- └─ CHANGELOG.md        # Version history
+ ├─ Docs /
+ │  └─ ConsoleOutputTestRngCryptoBoolAot.txt
+ ├─ Src / 
+ │  ├─ CAbiBridge.Aot
+ │  ├─ CAbiBridge.Crypto
+ │  └─ CAbiBridge.Utils
+ ├─ Tests /  
+ │  └─ C-Abi-Bridge.Aot.Cpp.Tests
+ │  └─ C-Abi-Bridge.Aot.Vb.Tests
+ │  └─ CAbiBridge.Crypto.Tests
+ │  └─ CAbiBridgeAot.Tests
+ ├─ README.md 
+ ├─ CHANGELOG.md 
+ └─ C-Abi-Bridge.slnx
 ```
 
 ---
@@ -138,6 +146,13 @@ Examples:
 - **`1.0.0`** — first stable release
 - **`1.1.0`** — new features, no breaking changes
 - **`1.1.1`** — bugfix release
+
+---
+
+## ⭐ Changelog
+
+The full version history is available in  
+[CHANGELOG.md](https://github.com/michelenatale/Cryptography/blob/main/C-Abi-Bright-Aot/CHANGELOG.md).
 
 ---
 
