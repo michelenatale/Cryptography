@@ -1,0 +1,25 @@
+IMPORTANT:
+
+Set the project folder platform to x64.
+
+
+********** ********** ********** ********** ********** ********** ********** ********** ********** 
+
+
+Publish CAbiBridge.Aot – see also the video on this topic.
+
+Open a CMD, e.g.
+Extra >> Command line >> Develop Command prompt.
+
+Set the CMD prompt to the location of the file 'CAbiBridge.Aot.csproj'. Use the DOS command [cd] to do this.
+>> x:\[..]\Src\CAbiBridge.Aot\CAbiBridge.csproj 
+
+
+Execute the command "dotnet publish -c Release -r win-x64".
+
+
+********** ********** ********** ********** ********** ********** ********** ********** ********** 
+
+IMPORTANT:
+
+Once the publication has been successful, compile the entire project again...
