@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <Nullable>enable</Nullable>
+    <Platforms>AnyCPU;x64</Platforms>
+    <PlatformTarget>x64</PlatformTarget>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <TargetFramework>net10.0</TargetFramework>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+    <RootNamespace>C_Abi_Bridge.Utils</RootNamespace>
+    
+    
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="CError\" />
+  </ItemGroup>
+
+</Project>

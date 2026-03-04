@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <Nullable>enable</Nullable>
+    <PublishAot>true</PublishAot>
+    <OutputType>Library</OutputType>
+    <Platforms>AnyCPU;x64</Platforms>
+    <StripSymbols>true</StripSymbols>
+    <PlatformTarget>x64</PlatformTarget>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <TargetFramework>net10.0</TargetFramework>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+    <RootNamespace>C_Abi_Bridge.Compress</RootNamespace>
+    <InvariantGlobalization>true</InvariantGlobalization>
+
+    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+
+    <PublishDir>$(SolutionDir)Build\net10.0\publish\</PublishDir>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="NetServicesCompress\" />
+  </ItemGroup>
+
+</Project>
