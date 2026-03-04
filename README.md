@@ -59,4 +59,12 @@ The term post-quantum cryptography was introduced by [Daniel J. Bernstein](https
 
 https://github.com/michelenatale/Cryptography/tree/main/PQC
 
+## C-Abi-Bright-Aot - Native Library
+
+C-Abi-Bright-Aot is a high‑performance, NativeAOT‑compatible C ABI interface for cryptographically secure random number generation, byte generation, and modern encryption algorithms.
+It provides a stable, unmanaged‑friendly API that can be consumed from any language supporting the C ABI (C, C++, Rust, Go, Zig, Python, etc.).
+
+This module is part of the larger Cryptography repository but is released as a standalone component.
+
+https://github.com/michelenatale/Cryptography/tree/main/C-Abi-Bright-Aot
 
