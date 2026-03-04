@@ -12,10 +12,10 @@ internal static partial class Native
 
   const string DllName = "C-Abi-Bridge.Aot.N.dll";
 
-
+  #region Allocation - Free
   [LibraryImport(DllName, EntryPoint = "free_buffer_aot")]
   internal static partial void FreeBuffer(IntPtr ptr);
-
+  #endregion Allocation - Free
 
   #region Crypto
 
@@ -119,11 +119,17 @@ internal static partial class Native
 
   #region Crypto Random
 
+  #region Bytes
+
   [LibraryImport(DllName, EntryPoint = "rng_crypto_bytes_aot")]
   internal static partial CError RngCryptoBytesAot(int size, out IntPtr out_ptr);
 
   [LibraryImport(DllName, EntryPoint = "fill_crypto_bytes_aot")]
   internal static partial CError FillCryptoBytesAot(ReadOnlySpan<byte> bytes, int length);
+
+  #endregion Bytes
+
+  #region Bools
 
   [LibraryImport(DllName, EntryPoint = "next_crypto_bool_aot")]
   [return: MarshalAs(UnmanagedType.I1)]
@@ -131,6 +137,10 @@ internal static partial class Native
 
   [LibraryImport(DllName, EntryPoint = "rng_crypto_bool_aot")]
   internal static partial CError RngCryptoBoolAot(int size, out IntPtr out_ptr);
+
+  #endregion Bools
+
+  #region Ints32s
 
   [LibraryImport(DllName, EntryPoint = "next_crypto_int32_aot")]
   internal static partial int NextCryptoInt32Aot(out CError err);
@@ -150,6 +160,10 @@ internal static partial class Native
   [LibraryImport(DllName, EntryPoint = "rng_crypto_int32_min_max_aot")]
   internal static partial CError RngCryptoInt32MinMaxAot(int size, int min, int max, out IntPtr out_ptr);
 
+  #endregion Ints32s
+
+  #region Ints64s
+
   [LibraryImport(DllName, EntryPoint = "next_crypto_int64_aot")]
   internal static partial long NextCryptoInt64Aot(out CError err);
 
@@ -168,6 +182,9 @@ internal static partial class Native
   [LibraryImport(DllName, EntryPoint = "rng_crypto_int64_min_max_aot")]
   internal static partial CError RngCryptoInt64MinMaxAot(int size, long min, long max, out IntPtr out_ptr);
 
+  #endregion Ints64s
+
+  #region Doubles
 
   [LibraryImport(DllName, EntryPoint = "next_crypto_double_aot")]
   internal static partial double NextCryptoDoubleAot(out CError err);
@@ -187,6 +204,9 @@ internal static partial class Native
   [LibraryImport(DllName, EntryPoint = "rng_crypto_double_min_max_aot")]
   internal static partial CError RngCryptoDoubleMinMaxAot(int size, double min, double max, out IntPtr out_ptr);
 
+  #endregion Doubles
+
+  # region Singles
 
   [LibraryImport(DllName, EntryPoint = "next_crypto_single_aot")]
   internal static partial float NextCryptoSingleAot(out CError err);
@@ -206,6 +226,9 @@ internal static partial class Native
   [LibraryImport(DllName, EntryPoint = "rng_crypto_single_min_max_aot")]
   internal static partial CError RngCryptoSingleMinMaxAot(int size, float min, float max, out IntPtr out_ptr);
 
+  #endregion Singles
+
+  #region Decimals
 
   [LibraryImport(DllName, EntryPoint = "next_crypto_decimal_aot")]
   internal static partial decimal NextCryptoDecimalAot(out CError err);
@@ -225,13 +248,14 @@ internal static partial class Native
   [LibraryImport(DllName, EntryPoint = "rng_crypto_decimal_min_max_aot")]
   internal static partial CError RngCryptoDecimalMinMaxAot(int size, decimal min, decimal max, out IntPtr out_ptr);
 
+  #endregion Decimals
+
   #endregion Crypto Random
 
   #region Compress
 
 
   #endregion Compress
-
 
   #region Serialize
 

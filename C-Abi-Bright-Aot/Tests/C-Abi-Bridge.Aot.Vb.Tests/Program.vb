@@ -4,14 +4,17 @@ Option Explicit On
 
 Namespace michele.natale.Tests
 
-   Public Module Program
-      Public Sub Main()
-         Dim rounds = 10
-         Tests(rounds)
-         Console.WriteLine()
-         Console.WriteLine("Finish")
-         Console.ReadLine()
-      End Sub
+  Public Module Program
+    Public Sub Main()
+
+      Dim rounds = 10
+      Tests(rounds)
+
+      Console.WriteLine()
+      Console.WriteLine("Finish")
+      Console.ReadLine()
+
+    End Sub
 
     Private Sub Tests(rounds As Int32)
 

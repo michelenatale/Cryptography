@@ -124,7 +124,6 @@ Namespace michele.natale.Tests
     End Function
 
 
-    '<return:    MarshalAs(UnmanagedType.I1)>
     <DllImport(DllName, EntryPoint:="next_crypto_bool_aot")>
     Public Function NextCryptoBoolAot(<Out> ByRef err As CError) As Boolean
     End Function
@@ -282,6 +281,7 @@ Namespace michele.natale.Tests
       size As Int32, min As Decimal,
       max As Decimal, <Out> ByRef out_ptr As IntPtr) As CError
     End Function
+
 #End Region
 
 #Region "Compress"

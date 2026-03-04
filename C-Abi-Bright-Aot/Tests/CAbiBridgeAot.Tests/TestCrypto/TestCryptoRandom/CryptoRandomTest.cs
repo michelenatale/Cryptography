@@ -155,7 +155,6 @@ partial class CryptoRandomTest
     {
       var max = rand.Next();
 
-      //hier wird vielfach ein minuswert geliefert
       var result = Native.NextCryptoInt32MaxAot(max, out var err); 
       AssertError(err);
 
@@ -854,27 +853,3 @@ partial class CryptoRandomTest
     Console.WriteLine($" rounds = {rounds}; t = {t}ms; td = {t / rounds}ms\n");
   }
 }
-
-
-
-
-
-
-
-
-
-
-//private static CError RngCryptoBytesAot(int size, byte** out_ptr, bool no_zeros = true)
-//private static CError FillCryptoBytesAot(byte* bytes, int length, bool no_zeros = true)
-//private static int NextCryptoInt32Aot(CError* err = null)
-//private static int NextCryptoInt32MaxAot(int max, CError* err = null)
-//private static int NextCryptoInt32MinMaxAot(int min, int max, CError* err = null)
-//private static CError RngCryptoInt32Aot(int size, int** out_ptr)
-//private static CError RngCryptoInt32MaxAot(int size, int max, int** out_ptr)
-//private static CError RngCryptoInt32MinMaxAot(int size, int min, int max, int** out_ptr)
-//private static long NextCryptoInt64Aot(CError* err = null)
-//private static long NextCryptoInt64MaxAot(long max, CError* err = null)
-//private static long NextCryptoInt64MinMaxAot(long min, long max, CError* err = null)
-//private static CError RngCryptoInt64Aot(int size, long** out_ptr)
-//private static CError RngCryptoInt64MaxAot(int size, long max, long** out_ptr)
-//private static CError RngCryptoInt64MinMaxAot(int size, long min, long max, long** out_ptr)
