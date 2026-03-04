@@ -120,22 +120,6 @@ partial class NetServices
     return [.. hash.Skip(start).Take(ts)];
   }
 
-
-  //private static byte[] ToTag(
-  //  Stream strm, byte[] key, byte[] assosiat, int pos = 0)
-  //{
-  //  int ts = AES_TAG_SIZE, ks = AES_KEY_SIZE;
-  //  var start = (key.Sum(x => x) % (ks - ts - 1)) + 1;
-  //  var k = SHA256.HashData([.. key.Skip(start).Take(ts)]);
-
-  //  strm.Position = pos;
-  //  var src = MD5.HashData(strm).Concat(assosiat).ToArray();
-  //  var hash = HMACSHA512.HashData(k, src);
-
-  //  start = (hash.Sum(x => x) % (hash.Length - ts - 1)) + 1;
-  //  return [.. hash.Skip(start).Take(ts)];
-  //}
-
   private static async Task<byte[]> ToTagAsync(
     Stream strm, byte[] key, byte[] assosiat, int pos = 0)
   {
@@ -164,9 +148,6 @@ partial class NetServices
     byte[] cipher, byte[] key, byte[] tag, byte[] assosiat) =>
       tag.SequenceEqual(ToTag(cipher, key, assosiat));
 
-  //private static bool Verify(
-  //  Stream cipher, byte[] key, byte[] tag, byte[] assosiat, int pos = 0) =>
-  //    tag.SequenceEqual(ToTagAsync(cipher, key, assosiat, pos));
 
   private static async Task<bool> VerifyAsync(
     Stream cipher, byte[] key, byte[] tag, byte[] assosiat, int pos = 0)

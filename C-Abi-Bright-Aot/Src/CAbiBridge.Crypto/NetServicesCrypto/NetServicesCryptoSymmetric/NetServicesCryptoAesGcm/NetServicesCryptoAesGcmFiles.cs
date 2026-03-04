@@ -6,66 +6,7 @@ namespace michele.natale;
 
 using Pointers;
 public partial class NetServices
-{
-  //public static void EncryptionFileAesGcm(
-  //string src, string dest,
-  //UsIPtr<byte> key, ReadOnlySpan<byte> associated)
-  //{
-  //  AssertAesGcmEnc(src, dest, key);
-  //  var associat = ToAssociated(associated, key);
-  //  var buffer = new byte[AES_GCM_MAX_PLAIN_SIZE];
-
-  //  using var fsin = new FileStream(src, FileMode.Open, FileAccess.Read);
-  //  using var fsout = new FileStream(dest, FileMode.Create, FileAccess.ReadWrite);
-
-  //  fsout.Position = 0;
-  //  int readbytes = 0, length = buffer.Length;
-  //  while ((readbytes = fsin.Read(buffer)) > 0)
-  //  {
-  //    if (readbytes != length)
-  //      Array.Resize(ref buffer, readbytes);
-
-  //    var cipher = EncAesGcmSingle(
-  //      buffer, key, associat, out var tag, out var nonce);
-
-  //    fsout.Write(tag);
-  //    fsout.Write(nonce);
-  //    fsout.Write(cipher);
-  //    Array.Clear(buffer);
-  //  }
-  //}
-
-  //public static void DecryptionFileAesGcm(
-  //  string src, string dest,
-  //  UsIPtr<byte> key, ReadOnlySpan<byte> associated)
-  //{
-  //  AssertAesGcmDec(src, dest, key);
-
-  //  var associat = ToAssociated(associated, key);
-  //  using var fsin = new FileStream(src, FileMode.Open, FileAccess.Read);
-  //  using var fsout = new FileStream(dest, FileMode.Create, FileAccess.ReadWrite);
-
-  //  try
-  //  {
-  //    int readbytes = 0; fsin.Position = 0;
-  //    var start = AES_GCM_TAG_SIZE + AES_GCM_NONCE_SIZE;
-  //    var buffer = new byte[start + AES_GCM_MAX_PLAIN_SIZE].AsSpan();
-  //    while ((readbytes = fsin.Read(buffer)) > 0)
-  //    {
-  //      var decipher = DecAesGcmSingle(
-  //        buffer[start..readbytes], key, associat,
-  //        buffer[..AES_GCM_TAG_SIZE],
-  //        buffer.Slice(AES_GCM_TAG_SIZE, AES_GCM_NONCE_SIZE));
-
-  //      fsout.Write(decipher);
-  //      buffer.Clear();
-  //    }
-  //    return;
-  //  }
-  //  catch { }
-
-  //  throw new CryptographicException($"Verifiy {nameof(DecryptionAes)} failed!");
-  //}
+{ 
 
   public static async Task EncryptionFileAesGcmAsync(
     string src, string dest, UsIPtr<byte> key, 
@@ -128,65 +69,7 @@ public partial class NetServices
       memo.Span.Clear();
     }
   }
-
-
-
-  //public static void EncryptionFileAesGcm(
-  //  FileStream fsin, FileStream fsout,
-  //  int startin, int lengthin, int startout,
-  //  UsIPtr<byte> key, ReadOnlySpan<byte> associated)
-  //{
-  //  AssertAesGcmEnc(fsin, fsout, key, startin, lengthin, startout);
-  //  var associat = ToAssociated(associated, key);
-  //  var buffer = new byte[AES_GCM_MAX_PLAIN_SIZE];
-
-  //  int readbytes, length = buffer.Length;
-  //  fsin.Position = startin; fsout.Position = startout;
-  //  while ((readbytes = fsin.Read(buffer)) > 0)
-  //  {
-  //    if (readbytes != length)
-  //      Array.Resize(ref buffer, readbytes);
-
-  //    var cipher = EncAesGcmSingle(
-  //      buffer, key, associat, out var tag, out var nonce);
-
-  //    fsout.Write(tag);
-  //    fsout.Write(nonce);
-  //    fsout.Write(cipher);
-  //    Array.Clear(buffer);
-  //  }
-  //}
-
-  //public static void DecryptionFileAesGcm(
-  //  FileStream fsin, FileStream fsout,
-  //  int startin, int lengthin, int startout,
-  //  UsIPtr<byte> key, ReadOnlySpan<byte> associated)
-  //{
-  //  AssertAesGcmDec(fsin, fsout, key, startin, lengthin, startout);
-
-  //  var associat = ToAssociated(associated, key);
-
-  //  try
-  //  {
-  //    var start = AES_GCM_TAG_SIZE + AES_GCM_NONCE_SIZE;
-  //    var buffer = new byte[start + AES_GCM_MAX_PLAIN_SIZE].AsSpan();
-  //    int readbytes = 0; fsin.Position = startin; fsout.Position = startout;
-  //    while ((readbytes = fsin.Read(buffer)) > 0)
-  //    {
-  //      var decipher = DecAesGcmSingle(
-  //        buffer[start..readbytes], key, associat,
-  //        buffer[..AES_GCM_TAG_SIZE],
-  //        buffer.Slice(AES_GCM_TAG_SIZE, AES_GCM_NONCE_SIZE));
-
-  //      fsout.Write(decipher);
-  //      buffer.Clear();
-  //    }
-  //    return;
-  //  }
-  //  catch { }
-
-  //  throw new CryptographicException($"Verifiy {nameof(DecryptionAes)} failed!");
-  //}
+   
 
   public static async Task EncryptionFileAesGcmAsync(
     FileStream fsin, FileStream fsout,

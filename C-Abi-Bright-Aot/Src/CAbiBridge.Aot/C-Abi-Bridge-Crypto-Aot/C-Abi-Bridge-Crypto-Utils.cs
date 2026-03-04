@@ -28,38 +28,6 @@ public unsafe static partial class CryptoBridge
     return result;
   }
 
-  //public static IntPtr ToPtr<T>(Span<T> managed)
-  //    where T : unmanaged, INumber<T>
-  //{
-  //  var result = IntPtr.Zero; 
-  //  var bytes = MemoryMarshal.AsBytes<T>(managed);
-  //  Marshal.Copy(bytes.ToArray(), 0, result, bytes.Length);
-
-  //  return result;
-  //}
-
-  //public static IntPtr ToPtr(decimal[] values)
-  //{
-  //  int size = values.Length * 16;
-  //  IntPtr ptr = Marshal.AllocHGlobal(size);
-
-  //  byte* dst = (byte*)ptr;
-
-  //  for (int i = 0; i < values.Length; i++)
-  //  {
-  //    decimal d = values[i];
-
-  //    int[] bits = decimal.GetBits(d);
-
-  //    Unsafe.WriteUnaligned(ref dst[i * 16 + 0], bits[0]);  // lo
-  //    Unsafe.WriteUnaligned(ref dst[i * 16 + 4], bits[1]);  // mid
-  //    Unsafe.WriteUnaligned(ref dst[i * 16 + 8], bits[2]);  // hi
-  //    Unsafe.WriteUnaligned(ref dst[i * 16 + 12], bits[3]); // flags
-  //  }
-
-  //  return ptr;
-  //}
-
   internal static IntPtr ToPtr(decimal[] values)
   {
     int size = values.Length * 16;

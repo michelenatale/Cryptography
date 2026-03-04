@@ -10,8 +10,6 @@ using static NetServices;
 
 partial class CryptoBridge
 {
-
-
   [UnmanagedCallersOnly(EntryPoint = "aes_gcm_encrypt_file_aot")]
   public  unsafe static CError AesGcmEncryptFileAot(
     byte* src_ptr, int src_length,

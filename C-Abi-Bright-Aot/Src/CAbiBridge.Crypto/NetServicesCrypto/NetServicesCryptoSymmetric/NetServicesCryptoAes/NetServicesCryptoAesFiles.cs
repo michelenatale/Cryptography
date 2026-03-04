@@ -13,46 +13,7 @@ partial class NetServices
 
   #region AES File En- & Decryption
 
-  //public static void EncryptionFileAes(
-  //  string src, string dest, UsIPtr<byte> key,
-  //  ReadOnlySpan<byte> associated)
-  //{
-  //  AssertAesEnc(src, dest, key);
-  //  var iv = RngCryptoBytes(AES_IV_SIZE);
-  //  var associat = ToAssociated(associated, key);
-  //  var buffer = new byte[AES_MAX_PLAIN_SIZE];
-
-  //  var sw = Stopwatch.StartNew();
-  //  using var fsin = new FileStream(src, FileMode.Open, FileAccess.Read);
-  //  using var fsout = new FileStream(dest, FileMode.Create, FileAccess.ReadWrite);
-
-  //  int readbytes = 0, length = buffer.Length;
-  //  fsout.Position = AES_TAG_SIZE + AES_IV_SIZE;
-  //  //var cnt = fsin.Length / (AES_MAX_PLAIN_SIZE - 1) + 1;
-  //  while ((readbytes = fsin.Read(buffer)) > 0)
-  //  {
-  //    if (readbytes != length)
-  //      Array.Resize(ref buffer, readbytes);
-
-  //    var cipher = EncryptionAesSingle(
-  //      buffer, key.ToArray(), iv, associat);
-
-  //    fsout.Write(cipher);
-  //    Array.Clear(buffer);
-  //  }
-
-  //  var pos = AES_TAG_SIZE + AES_IV_SIZE;
-  //  fsout.Position = AES_TAG_SIZE + AES_IV_SIZE;
-  //  var tag = ToTagAsync(fsout, key.ToArray(), associat, pos);
-
-  //  fsout.Position = 0; fsout.Write(tag); fsout.Write(iv);
-  //  MemoryClear(tag, iv, associat);
-
-  //  var deltatime = (int)(TimeSleep - sw.ElapsedMilliseconds);
-  //  if (TimeLoc)
-  //    if (deltatime > 0)
-  //      Thread.Sleep(deltatime);
-  //}
+ 
 
   public static async Task EncryptionFileAesAsync(
     string src, string dest, UsIPtr<byte> key,
@@ -96,52 +57,7 @@ partial class NetServices
         Thread.Sleep(deltatime);
   }
 
-
-
-  //public static void DecryptionFileAes(
-  //  string src, string dest, UsIPtr<byte> key,
-  //  ReadOnlySpan<byte> associated)
-  //{
-  //  AssertAesDec(src, dest, key);
-
-  //  var associat = ToAssociated(associated, key);
-  //  byte[] tag = new byte[AES_TAG_SIZE], iv = new byte[AES_IV_SIZE];
-  //  using var fsin = new FileStream(src, FileMode.Open, FileAccess.Read);
-  //  using var fsout = new FileStream(dest, FileMode.Create, FileAccess.Write);
-  //  var cnt = fsin.Read(tag); cnt += fsin.Read(iv);
-
-  //  try
-  //  {
-  //    fsin.Position = AES_TAG_SIZE + AES_IV_SIZE;
-  //    if (VerifyAsync(fsin, key.ToArray(), tag, associat, cnt))
-  //    {
-  //      fsin.Position = AES_IV_SIZE + AES_TAG_SIZE;
-  //      var buffer = new byte[AES_MAX_PLAIN_SIZE + 16];
-  //      int readbytes = 0, length = AES_MAX_PLAIN_SIZE + 16;
-  //      while ((readbytes = fsin.Read(buffer)) > 0)
-  //      {
-  //        if (readbytes != length)
-  //          Array.Resize(ref buffer, readbytes);
-
-  //        var decipher = DecryptionAesSingle(
-  //          buffer, key.ToArray(), iv, associat);
-
-  //        fsout.Write(decipher);
-  //        Array.Clear(buffer);
-
-  //        if (buffer.Length != length)
-  //          Array.Resize(ref buffer, length);
-  //      }
-  //      return;
-  //    }
-  //  }
-  //  catch { MemoryClear(associat, tag, iv); }
-  //  finally { MemoryClear(associat, tag, iv); }
-
-  //  throw new CryptographicException($"Verifiy {nameof(DecryptionAes)} failed!");
-  //}
-
-
+   
   public static async Task DecryptionFileAesAsync(
     string src, string dest, UsIPtr<byte> key,
     ReadOnlyMemory<byte> associated)

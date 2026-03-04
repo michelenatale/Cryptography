@@ -303,7 +303,6 @@ partial class CryptoBridge
 
       var sz = Unsafe.SizeOf<long>();
       var managed = RngCryptoInt64(size, long.MaxValue);
-      //if (out_ptr != null) *out_ptr = ToPtr(managed);
 
       var ptr = Marshal.AllocHGlobal(size * sz);
       Marshal.Copy(managed, 0, ptr, size);
@@ -329,7 +328,6 @@ partial class CryptoBridge
 
       var sz = Unsafe.SizeOf<long>();
       var managed = RngCryptoInt64(size, max);
-      //if (out_ptr != null) *out_ptr = ToPtr(managed);
 
       var ptr = Marshal.AllocHGlobal(size * sz);
       Marshal.Copy(managed, 0, ptr, size);
@@ -356,7 +354,6 @@ partial class CryptoBridge
 
       var sz = Unsafe.SizeOf<long>();
       var managed = RngCryptoInt64(size, min, max);
-      //if (out_ptr != null) *out_ptr = ToPtr(managed);
 
       var ptr = Marshal.AllocHGlobal(size * sz);
       Marshal.Copy(managed, 0, ptr, size);
@@ -450,7 +447,6 @@ partial class CryptoBridge
 
       var sz = Unsafe.SizeOf<double>();
       var managed = RngCryptoDouble(size, double.MaxValue);
-      //if (out_ptr != null) *out_ptr = ToPtr(managed);
 
       var ptr = Marshal.AllocHGlobal(size * sz);
       Marshal.Copy(managed, 0, ptr, size);
@@ -476,7 +472,6 @@ partial class CryptoBridge
 
       var sz = Unsafe.SizeOf<double>();
       var managed = RngCryptoDouble(size, max);
-      //if (out_ptr != null) *out_ptr = ToPtr(managed);
 
       var ptr = Marshal.AllocHGlobal(size * sz);
       Marshal.Copy(managed, 0, ptr, size);
@@ -503,7 +498,6 @@ partial class CryptoBridge
 
       var sz = Unsafe.SizeOf<double>();
       var managed = RngCryptoDouble(size, min, max);
-      //if (out_ptr != null) *out_ptr = ToPtr(managed);
 
       var ptr = Marshal.AllocHGlobal(size * sz);
       Marshal.Copy(managed, 0, ptr, size);
@@ -597,7 +591,6 @@ partial class CryptoBridge
 
       var sz = Unsafe.SizeOf<float>();
       var managed = RngCryptoSingle(size, float.MaxValue);
-      //if (out_ptr != null) *out_ptr = ToPtr(managed);
 
       var ptr = Marshal.AllocHGlobal(size * sz);
       Marshal.Copy(managed, 0, ptr, size);
@@ -623,7 +616,6 @@ partial class CryptoBridge
 
       var sz = Unsafe.SizeOf<float>();
       var managed = RngCryptoSingle(size, max);
-      //if (out_ptr != null) *out_ptr = ToPtr(managed);
 
       var ptr = Marshal.AllocHGlobal(size * sz);
       Marshal.Copy(managed, 0, ptr, size);
@@ -650,7 +642,6 @@ partial class CryptoBridge
 
       var sz = Unsafe.SizeOf<float>();
       var managed = RngCryptoSingle(size, min, max);
-      //if (out_ptr != null) *out_ptr = ToPtr(managed);
 
       var ptr = Marshal.AllocHGlobal(size * sz);
       Marshal.Copy(managed, 0, ptr, size);
@@ -742,19 +733,9 @@ partial class CryptoBridge
       if (size <= 0 && CheckSetZero(out_ptr))
         return new CError { error_code = (int)CErrorCode.InvalidLength };
 
-      var sz = Unsafe.SizeOf<decimal>();
       var maxlimit = 9999999999999999999999999999m; // 10^28 - 1
       var managed = RngCryptoDecimal(size, maxlimit);
       if (out_ptr != null) *out_ptr = ToPtr(managed);
-
-      //var tsz = size * sz;
-      //var ptr = Marshal.AllocHGlobal(tsz);
-      //var span = MemoryMarshal.AsBytes(managed.AsSpan());
-
-      //fixed (byte* src = span)
-      //  Buffer.MemoryCopy(src, (void*)ptr, tsz, tsz);
-
-      //if (out_ptr != null) *out_ptr = ptr;
 
       return new CError { error_code = (int)CErrorCode.Ok };
     }
@@ -774,18 +755,8 @@ partial class CryptoBridge
       if (size <= 0 && CheckSetZero(out_ptr))
         return new CError { error_code = (int)CErrorCode.InvalidLength };
 
-      //var sz = Unsafe.SizeOf<decimal>();
       var managed = RngCryptoDecimal(size, max);
       if (out_ptr != null) *out_ptr = ToPtr(managed);
-
-      //var tsz = size * sz;
-      //var ptr = Marshal.AllocHGlobal(tsz);
-      //var span = MemoryMarshal.AsBytes(managed.AsSpan());
-
-      //fixed (byte* src = span)
-      //  Buffer.MemoryCopy(src, (void*)ptr, tsz, tsz);
-
-      //if (out_ptr != null) *out_ptr = ptr;
 
       return new CError { error_code = (int)CErrorCode.Ok };
     }
@@ -805,18 +776,8 @@ partial class CryptoBridge
       if (size <= 0 && CheckSetZero(out_ptr))
         return new CError { error_code = (int)CErrorCode.InvalidLength };
 
-      var sz = Unsafe.SizeOf<decimal>();
       var managed = RngCryptoDecimal(size, min, max);
       if (out_ptr != null) *out_ptr = ToPtr(managed);
-
-      //var tsz = size * sz;
-      //var ptr = Marshal.AllocHGlobal(tsz);
-      //var span = MemoryMarshal.AsBytes(managed.AsSpan());
-
-      //fixed (byte* src = span)
-      //  Buffer.MemoryCopy(src, (void*)ptr, tsz, tsz);
-
-      //if (out_ptr != null) *out_ptr = ptr;
 
       return new CError { error_code = (int)CErrorCode.Ok };
     }
@@ -828,91 +789,3 @@ partial class CryptoBridge
   }
 }
 
-
-
-
-//[UnmanagedCallersOnly(EntryPoint = "rng_crypto_int32_aot")]
-//public unsafe static CError RngCryptoInt32Aot(int size, int** out_ptr)
-//{
-//  try
-//  {
-//    if (size <= 0)
-//      return new CError { error_code = (int)CErrorCode.InvalidLength };
-
-//    var result = RngCryptoInt32(size, int.MaxValue);
-//    //var buffer = (int*)NativeMemory.Alloc((nuint)result.Length);
-//    var buffer = (int*)NativeMemory.Alloc((nuint)size, sizeof(int));
-//    result.CopyTo(new Span<int>(buffer, result.Length));
-//    *out_ptr = buffer;
-
-//    return new CError { error_code = (int)CErrorCode.Ok };
-//  }
-//  catch (CryptographicException ex)
-//  {
-//    return CreateError(CErrorCode.CryptoError, ex.Message);
-//  }
-//  catch (Exception ex)
-//  {
-//    return CreateError(CErrorCode.UnknownError, ex.Message);
-//  }
-//}
-
-//[UnmanagedCallersOnly(EntryPoint = "rng_crypto_int32_max_aot")]
-//public unsafe static CError RngCryptoInt32MaxAot(int size, int max, int** out_ptr)
-//{
-//  try
-//  {
-//    if (size <= 0)
-//      return new CError { error_code = (int)CErrorCode.InvalidLength };
-
-//    var result = RngCryptoInt32(size, 0, max);
-//    var buffer = (int*)NativeMemory.Alloc((nuint)result.Length);
-//    result.CopyTo(new Span<int>(buffer, result.Length));
-//    *out_ptr = buffer;
-
-//    return new CError { error_code = (int)CErrorCode.Ok };
-//  }
-//  catch (CryptographicException ex)
-//  {
-//    return CreateError(CErrorCode.CryptoError, ex.Message);
-//  }
-//  catch (ArgumentOutOfRangeException ex)
-//  {
-//    return CreateError(CErrorCode.OutOfRange, ex.Message);
-//  }
-//  catch (Exception ex)
-//  {
-//    return CreateError(CErrorCode.UnknownError, ex.Message);
-//  }
-//}
-
-
-//[UnmanagedCallersOnly(EntryPoint = "rng_crypto_int32_min_max_aot")]
-//public unsafe static CError RngCryptoInt32MinMaxAot(
-//  int size, int min, int max, int** out_ptr)
-//{
-//  try
-//  {
-//    if (size <= 0)
-//      return new CError { error_code = (int)CErrorCode.InvalidLength };
-
-//    var result = RngCryptoInt32(size, min, max);
-//    var buffer = (int*)NativeMemory.Alloc((nuint)result.Length);
-//    result.CopyTo(new Span<int>(buffer, result.Length));
-//    *out_ptr = buffer;
-
-//    return new CError { error_code = (int)CErrorCode.Ok };
-//  }
-//  catch (CryptographicException ex)
-//  {
-//    return CreateError(CErrorCode.CryptoError, ex.Message);
-//  }
-//  catch (ArgumentOutOfRangeException ex)
-//  {
-//    return CreateError(CErrorCode.OutOfRange, ex.Message);
-//  }
-//  catch (Exception ex)
-//  {
-//    return CreateError(CErrorCode.UnknownError, ex.Message);
-//  }
-//}
