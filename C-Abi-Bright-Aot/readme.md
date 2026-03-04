@@ -149,7 +149,7 @@ Examples:
 
 ---
 
-## ⭐ Changelog
+## 📌 Changelog
 
 The full version history is available in  
 [CHANGELOG.md](https://github.com/michelenatale/Cryptography/blob/main/C-Abi-Bright-Aot/CHANGELOG.md).
@@ -175,5 +175,5 @@ GitHub: [https://github.com/michelenatale](https://github.com/michelenatale)
 
 ---
 
-
+## 📥 Video Mp4 - Downloads
 
