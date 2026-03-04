@@ -22,7 +22,7 @@ This module is part of the larger **Cryptography** repository but is released as
 - No .NET runtime required
 - Zero‑GC interop: memory is explicitly allocated and freed
 
-### 🔒 Modern encryption
+### 🔒 Modern Encryption
 - AES (CBC)
 - AES‑GCM (AEAD)
 - ChaCha20‑Poly1305 (AEAD)
@@ -44,7 +44,7 @@ The results are consistent with no outliers.
 
 ---
 
-## 📦 Memory management
+## 📦 Memory Management
 
 All Rng‑methods that return arrays allocate unmanaged memory:
 
@@ -69,7 +69,7 @@ Native.FreeBuffer(ptr);
 
 ---
 
-## 🧪 Tests and stability
+## 🧪 Tests and Stability
 The project includes extensive tests:
 
 Range validation
@@ -84,7 +84,7 @@ All tests run stable over thousands of iterations.
 
 ---
 
-## 📁 Project structure
+## 📁 Project Structure
 
 ```
 C-Abi-Bright-Aot/
