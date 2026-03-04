@@ -177,3 +177,8 @@ GitHub: [https://github.com/michelenatale](https://github.com/michelenatale)
 
 ## 📥 Video Mp4 - Downloads
 
+[c-abi-brdge-aot.mpa](https://github.com/michelenatale/Cryptography/blob/main/C-Abi-Bright-Aot/Docs/c-abi-bridge-aot-3_10782.mp4)
+
+---
+
+
