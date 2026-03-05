@@ -5,8 +5,8 @@ This document explains how to call the C-Abi-Bridge-Aot module from C# using P/I
 ## Import Example
 
 ```
-[DllImport("bridge", EntryPoint = "next_crypto_int32_aot")]
-public static extern CError NextCryptoInt32Aot(out int value);
+[LibraryImport("bridge", EntryPoint = "next_crypto_int32_aot")]
+public static partial CError NextCryptoInt32Aot(out int value);
 ```
 
 ## Decimal Interop
@@ -23,8 +23,8 @@ public struct Decimal128 {
 ## Freeing Memory
 
 ```
-[DllImport("bridge")]
-public static extern void free_buffer(IntPtr ptr);
+[LibraryImport("bridge", EntryPoint = "free_buffer")]
+public static partial void FreeBuffer(IntPtr ptr);
 ```
 
 ## Example Usage
