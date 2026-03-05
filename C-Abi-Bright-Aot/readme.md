@@ -7,6 +7,15 @@ This module is part of the larger **Cryptography** repository but is released as
 
 ---
 
+## 🛠️ Project Status
+
+This module is currently being prepared for its first public release.  
+The C-Abi-Bright-Aot component will be published as part of the broader **Cryptography** repository and will serve as the foundation for future cross‑language interoperability work.
+
+A demonstration video is also available to help you get started.
+
+---
+
 ## ✨ Features
 
 ### 🔐 Cryptographically secure random number generation
@@ -176,9 +185,20 @@ GitHub: [https://github.com/michelenatale](https://github.com/michelenatale)
 
 ---
 
+## 🎬 Video Demonstration
+
+A demonstration video is available in the "Docs" folder and as a link below:
+
+- **c-abi-bridge-aot.mp4**
+
+It shows the test execution, the NativeAOT behavior, and how the C ABI interface is used from different languages.
+
+
+---
+
 ## 📥 Video Mp4 - Downloads
 
-**Publish**: [c-abi-bridge-aot.mp4](https://github.com/michelenatale/Cryptography/blob/main/C-Abi-Bright-Aot/Docs/c-abi-bridge-aot-3_10782.mp4)
+**Publish**: [c-abi-bridge-aot.mp4](https://github.com/michelenatale/Cryptography/blob/main/C-Abi-Bright-Aot/Docs/c-abi-bridge-aot_3_24671.mp4)
 
 ---
 
