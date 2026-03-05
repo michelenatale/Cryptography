@@ -77,7 +77,7 @@ It provides a stable, unmanaged‑friendly API that can be consumed from any lan
 
 This module is part of the larger Cryptography repository but is released as a standalone component.
 
-https://github.com/michelenatale/Cryptography/tree/main/C-Abi-Bright-Aot
+https://github.com/michelenatale/Cryptography/tree/main/C-Abi-Bridge-Aot
 
 ---
 
