@@ -14,7 +14,7 @@ This module is currently being prepared for its first public release.
 
 It will be published as part of the broader **Cryptography** repository and will serve as the foundation for future cross‑language interoperability work.
 
-A demonstration video is available below.
+A [demonstration video](https://github.com/michelenatale/Cryptography/blob/main/C-Abi-Bright-Aot/readme.md#-video-demonstration) is available below.
 
 ---
 
