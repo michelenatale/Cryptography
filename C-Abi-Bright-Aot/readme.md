@@ -1,6 +1,7 @@
 # C-Abi-Bright-Aot
 
 C-Abi-Bright-Aot is a high‑performance, NativeAOT‑compatible C ABI interface for cryptographically secure random number generation, byte generation, and modern encryption algorithms.  
+
 It provides a stable, unmanaged‑friendly API that can be consumed from any language supporting the C ABI (C, C++, Rust, Go, Zig, Python, etc.).
 
 This module is part of the larger **Cryptography** repository but is released as a standalone component.
@@ -10,9 +11,10 @@ This module is part of the larger **Cryptography** repository but is released as
 ## 🛠️ Project Status
 
 This module is currently being prepared for its first public release.  
-The C-Abi-Bright-Aot component will be published as part of the broader **Cryptography** repository and will serve as the foundation for future cross‑language interoperability work.
 
-A demonstration video is also available to help you get started.
+It will be published as part of the broader **Cryptography** repository and will serve as the foundation for future cross‑language interoperability work.
+
+A demonstration video is available below.
 
 ---
 
