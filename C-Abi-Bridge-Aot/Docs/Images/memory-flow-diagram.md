@@ -24,4 +24,4 @@ This diagram illustrates how  memory is allocated and released in the ABI.
 
 ---
 
-[← Back to Docs](README.md)
+[← Back to Docs](../README-DOCS.md)
