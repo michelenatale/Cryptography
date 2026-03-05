@@ -37,12 +37,12 @@ Imports System.Runtime.InteropServices
 
 Public Module Bridge
 
-    <DllImport("bridge", EntryPoint:="next_crypto_int32_aot")>
-    Public Function NextCryptoInt32Aot(ByRef value As Integer) As CError
+    <DllImport(DllName, EntryPoint:="next_crypto_int32_aot")>
+    Public Function NextCryptoInt32Aot(ByRef err As CError) As Int32
     End Function
 
-    <DllImport("bridge", EntryPoint:="rng_crypto_int32_aot")>
-    Public Function RngCryptoInt32Aot(count As Integer, ByRef ptr As IntPtr) As CError
+    <DllImport(DllName, EntryPoint:="rng_crypto_int32_aot")>
+    Public Function RngCryptoInt32Aot(size As Int32, <Out> ByRef ptr As IntPtr) As CError
     End Function
 
     <DllImport("bridge", EntryPoint:="free_buffer")>
@@ -73,13 +73,12 @@ This matches the exact memory layout of .NET decimal used by the C ABI.
 ## Example: Getting a Single Random Int32
 
 ```vbnet
-Dim value As Integer
-Dim err = Bridge.NextCryptoInt32Aot(value)
+Dim err As CError
+Dim value = Native.NextCryptoInt32Aot(err)
 
 If err.ErrorCode = 0 Then
     Console.WriteLine($"Value: {value}")
-Else
-    Console.WriteLine($"Error: {err.ErrorCode}")
+Else Console.WriteLine($"Error: {err.ErrorCode}")
 End If
 ```
 
