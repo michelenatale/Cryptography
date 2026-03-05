@@ -42,6 +42,6 @@ Console.WriteLine(value);
 
 # 🎬 **video/**
 
-[Docs/video/c-abi-bridge-aot.mp4](Docs/c-abi-bridge-aot_3_24671.mp4)
+[Docs/video/c-abi-bridge-aot.mp4](c-abi-bridge-aot_3_24671.mp4)
 
 ---
