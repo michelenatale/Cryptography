@@ -1,6 +1,6 @@
 # 🧠 Memory-Flow Diagram
 
-Dieses Diagramm veranschaulicht, wie Speicher im ABI zugewiesen und freigegeben wird.
+This diagram illustrates how  memory is allocated and released in the ABI.
 ```
 +------------------------+
 |     NativeAOT DLL      |
