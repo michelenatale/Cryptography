@@ -1,4 +1,4 @@
-# 🔢 Decimal-Layout
+# 🔢 Decimal Layout Diagram
 
 This diagram illustrates the internal structure of a .NET Decimal.
 ```
