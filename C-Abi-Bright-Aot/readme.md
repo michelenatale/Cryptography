@@ -1,8 +1,8 @@
 # C-Abi-Bright-Aot
 
-C-Abi-Bright-Aot is a high‑performance, NativeAOT‑compatible C ABI interface for cryptographically secure random number generation, byte generation, and modern encryption algorithms.  
+C-Abi-Bright-Aot is a high‑performance, [NativeAOT](https://learn.microsoft.com/en-us/dotnet/core/deploying/native-aot)‑compatible [C ABI interface](https://en.wikipedia.org/wiki/Application_binary_interface) for [cryptographically secure random number generation](https://en.wikipedia.org/wiki/Cryptographically_secure_pseudorandom_number_generator), byte generation, and [modern encryption algorithms](https://en.wikipedia.org/wiki/Cryptography).  
 
-It provides a stable, unmanaged‑friendly API that can be consumed from any language supporting the C ABI (C, C++, Rust, Go, Zig, Python, etc.).
+It provides a stable, unmanaged‑friendly API that can be consumed from any language supporting the C ABI ([C](https://en.wikipedia.org/wiki/C_(programming_language)), [C++](https://en.wikipedia.org/wiki/C%2B%2B), [Rust](https://en.wikipedia.org/wiki/Rust_(programming_language)), [Go](https://en.wikipedia.org/wiki/Go_(programming_language)), [Zig](https://en.wikipedia.org/wiki/Zig_(programming_language)), [Python](https://en.wikipedia.org/wiki/Python_(programming_language)), etc.).
 
 This module is part of the larger **Cryptography** repository but is released as a standalone component.
 
