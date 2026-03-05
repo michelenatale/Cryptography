@@ -202,7 +202,7 @@ It shows the test execution, the NativeAOT behavior, and how the C ABI interface
 
 **Publish**: 
 
-➡️ [c-abi-bridge-aot.mp4](Docs/c-abi-bridge-aot_3_24671.mp4)
+➡️ [c-abi-bridge-aot.mp4](Docs/Videos/c-abi-bridge-aot_3_24671.mp4)
 
 ---
 
