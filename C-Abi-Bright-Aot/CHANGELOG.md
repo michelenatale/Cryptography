@@ -1,7 +1,7 @@
 
 ---
 
-# 📝 CHANGELOG.md (English)
+# 📝 CHANGELOG.md
 
 ```markdown
 # Changelog
