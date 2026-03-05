@@ -32,7 +32,7 @@ Using the wrong free function can cause:
 1. ABI allocates memory
 2. ABI returns pointer
 3. Consumer reads data
-4. Consumer calls free_buffer(ptr)
+4. Consumer calls **`free_buffer(ptr)`**
 
 ## Example
 
@@ -46,4 +46,9 @@ if (err.error_code == 0) {
 
 free_buffer(values);
 ```
+
+## Thread Safety
+
+All memory operations are thread‑safe.
+
 
