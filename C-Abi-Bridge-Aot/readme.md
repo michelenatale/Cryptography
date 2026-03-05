@@ -100,8 +100,7 @@ All tests run stable over thousands of iterations.
 ```
 C-Abi-Bridge-Aot/
  ├─ Docs /
- │  ├─ c-abi-bridge-aot.mp4
- │  └─ ConsoleOutputTestRngCryptoBoolAot.txt
+ │  ├─ ...
  ├─ Src / 
  │  ├─ CAbiBridge.Aot
  │  ├─ CAbiBridge.Crypto
