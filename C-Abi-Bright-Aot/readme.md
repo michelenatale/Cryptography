@@ -14,7 +14,7 @@ This module is currently being prepared for its first public release.
 
 It will be published as part of the broader **Cryptography** repository and will serve as the foundation for future cross‑language interoperability work.
 
-A [demonstration video](https://github.com/michelenatale/Cryptography/blob/main/C-Abi-Bright-Aot/readme.md#-video-demonstration) is available below.
+A [demonstration video](https://github.com/michelenatale/Cryptography/blob/main/C-Abi-Bright-Aot/readme.md#-video-demonstration) is available in the `Docs` folder and as a direct download below. 
 
 ---
 
@@ -164,7 +164,7 @@ Examples:
 ## 📌 Changelog
 
 The full version history is available in  
-[CHANGELOG.md](https://github.com/michelenatale/Cryptography/blob/main/C-Abi-Bright-Aot/CHANGELOG.md).
+[CHANGELOG.md](CHANGELOG.md).
 
 ---
 
@@ -200,7 +200,9 @@ It shows the test execution, the NativeAOT behavior, and how the C ABI interface
 
 ## 📥 Video Mp4 - Downloads
 
-**Publish**: [c-abi-bridge-aot.mp4](https://github.com/michelenatale/Cryptography/blob/main/C-Abi-Bright-Aot/Docs/c-abi-bridge-aot_3_24671.mp4)
+**Publish**: 
+
+➡️ [c-abi-bridge-aot.mp4](Docs/c-abi-bridge-aot_3_24671.mp4)
 
 ---
 
