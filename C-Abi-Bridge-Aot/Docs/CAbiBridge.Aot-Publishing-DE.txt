@@ -1,0 +1,23 @@
+WICHTIG:
+
+Projektmappen-Plattform auf x64 setzen
+
+********** ********** ********** ********** ********** ********** ********** ********** ********** 
+
+Veröffentlichen von CAbiBridge.Aot - siehe auch Video dazu
+
+Öffnen einer CMD z.B.
+Extra >> Befehlszeile >> Develop Aingabeaufforderung
+
+Den Promp der CMD dort hin setze wo die Datei 'CAbiBridge.Aot.csproj' liegt. Nutze dazu den DOS-Befehl [cd].
+>> x:\[..]\Src\CAbiBridge.Aot\CAbiBridge.csproj 
+
+
+Den Befehl "dotnet publish -c Release -r win-x64" ausführen.
+
+********** ********** ********** ********** ********** ********** ********** ********** ********** 
+
+WICHTIG:
+
+Nachdem die Veröffentlichung geklappt hat, dass komplette Projekt nochmals kompilieren, damit die entsprechenden neuen Dateien um kopiert werden.
+

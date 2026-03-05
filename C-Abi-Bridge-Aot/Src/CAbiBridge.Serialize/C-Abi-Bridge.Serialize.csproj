@@ -1,0 +1,37 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <Nullable>enable</Nullable>
+    <PublishAot>true</PublishAot>
+    <OutputType>Library</OutputType>
+    <Platforms>AnyCPU;x64</Platforms>
+    <StripSymbols>true</StripSymbols>
+    <PlatformTarget>x64</PlatformTarget>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <TargetFramework>net10.0</TargetFramework>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+    <RootNamespace>C_Abi_Bridge.Serialize</RootNamespace>
+    <InvariantGlobalization>true</InvariantGlobalization>
+
+    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+
+    <PublishDir>$(SolutionDir)Build\net10.0\publish\</PublishDir>
+
+
+    <Authors>© Michele Natale 2026</Authors>
+    <Product>© C-Abi-Bridge.Serialize 2026</Product>
+    <Company>© Michele Natale 2026</Company>
+    <Description>
+      © C-Abi-Bridge.Serialize 2026 -
+      © C-Abi-Bridge-Aot 2026 is a high‑performance, NativeAOT‑compatible C ABI interface for cryptographically secure random number generation, byte generation, and modern encryption algorithms.
+      It provides a stable, unmanaged‑friendly API that can be consumed from any language supporting the C ABI (C, C++, Rust, Go, Zig, Python, etc.).
+    </Description>
+    <Copyright>© C-Abi-Bridge.Serialize 2026 created by © Michele Natale 2026.</Copyright>
+
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="NetServicesSerialize\" />
+  </ItemGroup>
+
+</Project>

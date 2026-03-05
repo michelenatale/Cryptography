@@ -1,0 +1,38 @@
+<Solution>
+  <Configurations>
+    <Platform Name="Any CPU" />
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Folder Name="/Src/">
+    <Project Path="Src/CAbiBridge.Aot/C-Abi-Bridge.Aot.csproj">
+      <Platform Solution="*|x64" Project="x64" />
+    </Project>
+    <Project Path="Src/CAbiBridge.Compress/C-Abi-Bridge.Compress.csproj">
+      <Platform Solution="*|x64" Project="x64" />
+    </Project>
+    <Project Path="Src/CAbiBridge.Crypto/C-Abi-Bridge.Crypto.csproj">
+      <Platform Solution="*|x64" Project="x64" />
+    </Project>
+    <Project Path="Src/CAbiBridge.Serialize/C-Abi-Bridge.Serialize.csproj">
+      <Platform Solution="*|x64" Project="x64" />
+    </Project>
+    <Project Path="Src/CAbiBridge.Utils/C-Abi-Bridge.Utils.csproj">
+      <Platform Solution="*|x64" Project="x64" />
+    </Project>
+  </Folder>
+  <Folder Name="/TestDllsDevelop/">
+    <Project Path="Tests/CAbiBridge.Crypto.Tests/C-Abi-Bridge.Crypto.Tests.csproj">
+      <Platform Solution="*|x64" Project="x64" />
+    </Project>
+  </Folder>
+  <Folder Name="/TestsNativeAot/">
+    <Project Path="Tests/C-Abi-Bridge.Aot.Cpp.Tests/C-Abi-Bridge.Aot.Cpp.Tests.vcxproj" Id="5450581d-be3a-44f0-842f-d0b838912eb8" />
+    <Project Path="Tests/C-Abi-Bridge.Aot.Vb.Tests/C-Abi-Bridge.Aot.Vb.Tests.vbproj" Id="f802eb4a-fb1a-424e-801d-c15e14bec693">
+      <Platform Solution="*|x64" Project="x64" />
+    </Project>
+    <Project Path="Tests/CAbiBridgeAot.Tests/C-Abi-Bridge.Aot.Tests.csproj">
+      <Platform Solution="*|x64" Project="x64" />
+    </Project>
+  </Folder>
+</Solution>
