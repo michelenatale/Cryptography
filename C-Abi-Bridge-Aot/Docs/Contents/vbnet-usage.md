@@ -1,4 +1,4 @@
-# VB.NET Usage Guide
+# 🧩 VB.NET Usage Guide
 
 This document shows how to call the C-Abi-Bridge-Aot native library from VB.NET using `LibraryImport`.
 
