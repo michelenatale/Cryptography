@@ -19,7 +19,7 @@ Docs/
  │   └─ testing.md
  ├─ Video /
  │   └─ c-abi-bridge-aot.mp4
- └─ images /
+ └─ Images /
  │   ├─ architecture.md
  │   ├─ memory-flow.md
  │   └─ decimal-layout.md
