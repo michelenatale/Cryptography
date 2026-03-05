@@ -34,8 +34,11 @@ var err = NextCryptoInt32Aot(out var value);
 Console.WriteLine(value);
 ```
 ```
-var err = NextCryptoInt32Aot(out var value);
-Console.WriteLine(value);
+var err = Native.RngCryptoInt32Aot(size, out var ptr);
+AssertError(err);
+
+var values = ToInt32Array(ptr, size);
+Native.FreeBuffer(ptr);
 ```
 
 ---
