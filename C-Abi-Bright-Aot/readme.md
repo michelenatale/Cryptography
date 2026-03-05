@@ -36,7 +36,7 @@ A [demonstration video](https://github.com/michelenatale/Cryptography/blob/main/
 ### 🔒 Modern Encryption
 - AES (CBC)
 - AES‑GCM (AEAD)
-- ChaCha20‑Poly1305 (AEAD)
+- [ChaCha20‑Poly1305 (AEAD)](https://en.wikipedia.org/wiki/ChaCha20-Poly1305)
 - File and byte‑level APIs
 
 ### 🚀 Performance
