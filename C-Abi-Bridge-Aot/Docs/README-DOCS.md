@@ -5,6 +5,29 @@ While the main `README.md` provides a high-level overview, this section goes dee
 
 ---
 
+## 📚 Readme-Docs Structure
+
+```
+Docs/
+ ├─ Contents / 
+ │   ├─ overview.md
+ │   ├─ architecture.md
+ │   ├─  memory-management.md
+ │   ├─ decimal-interop.md
+ │   ├─ c-usage.md
+ │   ├─ csharp-usage.md
+ │   └─ testing.md
+ ├─ Video /
+ │   └─ c-abi-bridge-aot.mp4
+ └─ images /
+ │   ├─ architecture.md
+ │   ├─ memory-flow.md
+ │   └─ decimal-layout.md
+ └─ README-DOCS.md
+```
+
+---
+
 ## 📚 Contents
 
 ### 🔷 Overview
