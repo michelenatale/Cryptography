@@ -48,11 +48,9 @@ A demonstration video showing the module in action is available in:
 
 Supporting diagrams used across the documentation:
 
-[Images/architecture-diagram.md](Images/architecture-diagram.md)
-
-[Images/memory-flow-diagram.md](Images/memory-flow-diagram.md)
-
-[Images/decimal-layout-diagram.md](Images/decimal-layout-diagram.md)
+- 🧩 [Images/architecture-diagram.md](Images/architecture-diagram.md)
+- 🧠 [Images/memory-flow-diagram.md](Images/memory-flow-diagram.md)
+- 🔢 [Images/decimal-layout-diagram.md](Images/decimal-layout-diagram.md)
 
 ---
 
