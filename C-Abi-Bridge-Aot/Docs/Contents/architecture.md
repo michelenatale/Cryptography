@@ -50,7 +50,7 @@ typedef struct CError {
     int32_t reserved;
 } CError;
 ```
-error_code == 0 means success.
+`error_code == 0` means success.
 
 ## Memory Ownership
 
@@ -58,9 +58,8 @@ All buffers returned by the ABI must be freed using free_buffer.
 
 Consumers must not free memory using free, delete, or custom allocators.
 
-See memory-management.md for details.
-
-
+See [memory-management.md](memory-management.md) for details.
+```
 if (err.error_code == 0) {
     // use values
 }
