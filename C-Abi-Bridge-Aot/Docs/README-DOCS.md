@@ -12,10 +12,11 @@ Docs/
  ├─ Contents / 
  │   ├─ overview.md
  │   ├─ architecture.md
- │   ├─  memory-management.md
+ │   ├─ memory-management.md
  │   ├─ decimal-interop.md
  │   ├─ c-usage.md
  │   ├─ csharp-usage.md
+ │   ├─ vb.net-usage.md
  │   └─ testing.md
  ├─ Video /
  │   └─ c-abi-bridge-aot.mp4
@@ -51,7 +52,10 @@ Docs/
   Examples for calling the ABI from plain C.
 
 - [Using the C ABI from C#](Contents/csharp-usage.md)  
-  P/Invoke examples, struct layouts, and memory handling.
+  P/Invoke and LibraryImport examples, struct layouts, and memory handling.
+
+- [Using the C ABI from VB.Net](Contents/vbnet-usage.md)  
+  P/Invoke and DllImport examples, struct layouts, and memory handling.
 
 ### 🧪 Testing
 - [Testing](Contents/testing.md)  
