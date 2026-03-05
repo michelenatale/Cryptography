@@ -27,7 +27,6 @@
     </Project>
   </Folder>
   <Folder Name="/TestsNativeAot/">
-    <Project Path="Tests/CAbiBridge.Aot.Cpp.Tests/C-Abi-Bridge.Aot.Cpp.Tests.vcxproj" Id="5450581d-be3a-44f0-842f-d0b838912eb8" />
     <Project Path="Tests/CAbiBridge.Aot.Vb.Tests/C-Abi-Bridge.Aot.Vb.Tests.vbproj">
       <Platform Solution="*|x64" Project="x64" />
     </Project>
@@ -36,3 +35,4 @@
     </Project>
   </Folder>
 </Solution>
+
