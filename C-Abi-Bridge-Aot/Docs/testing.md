@@ -28,3 +28,9 @@ Validate encryption and decryption.
 
 A CMake-based test project is available in:
 
+Tests/C-Abi-Bridge.Aot.Cpp.Tests
+```
+It mirrors the C# test suite.
+```
+
+
