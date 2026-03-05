@@ -8,30 +8,30 @@ While the main `README.md` provides a high-level overview, this section goes dee
 ## 📚 Contents
 
 ### 🔷 Overview
-- [Overview](overview.md)  
+- [Overview](Contents/overview.md)  
   High-level explanation of the module, goals, features, and supported platforms.
 
 ### 🧩 Architecture
-- [Architecture](architecture.md)  
+- [Architecture](Contents/architecture.md)  
   Internal structure, layers, error handling, and how the C ABI interacts with NativeAOT.
 
 ### 🧠 Memory Management
-- [Memory Management](memory-management.md)  
+- [Memory Management](Contents/memory-management.md)  
   Allocation rules, buffer lifetime, and why `free_buffer` is required.
 
 ### 🔢 Decimal Interop
-- [Decimal Interop](decimal-interop.md)  
+- [Decimal Interop](Contents/decimal-interop.md)  
   Bit layout, flags, scale, and how .NET `decimal` is represented in the C ABI.
 
 ### 💻 Usage Guides
-- [Using the C ABI from C](c-usage.md)  
+- [Using the C ABI from C](Contents/c-usage.md)  
   Examples for calling the ABI from plain C.
 
-- [Using the C ABI from C#](csharp-usage.md)  
+- [Using the C ABI from C#](Contents/csharp-usage.md)  
   P/Invoke examples, struct layouts, and memory handling.
 
 ### 🧪 Testing
-- [Testing](testing.md)  
+- [Testing](Contents/testing.md)  
   Overview of the test suites (C#, VB.NET, C++), including the CMake-based C++ tests.
 
 ---
@@ -40,7 +40,7 @@ While the main `README.md` provides a high-level overview, this section goes dee
 
 A demonstration video showing the module in action is available in:
 
-[Docs/c-abi-bridge-aot.mp4](c-abi-bridge-aot_3_24671.mp4)
+[Docs/c-abi-bridge-aot.mp4](Videos/c-abi-bridge-aot_3_24671.mp4)
 
 ---
 
