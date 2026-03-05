@@ -1,6 +1,6 @@
-# C-Abi-Bright-Aot
+# C-Abi-Bridge-Aot
 
-C-Abi-Bright-Aot is a high‑performance, [NativeAOT](https://learn.microsoft.com/en-us/dotnet/core/deploying/native-aot)‑compatible [C ABI interface](https://en.wikipedia.org/wiki/Application_binary_interface) for [cryptographically secure random number generation](https://en.wikipedia.org/wiki/Cryptographically_secure_pseudorandom_number_generator), byte generation, and [modern encryption algorithms](https://en.wikipedia.org/wiki/Cryptography).  
+C-Abi-Bridge-Aot is a high‑performance, [NativeAOT](https://learn.microsoft.com/en-us/dotnet/core/deploying/native-aot)‑compatible [C ABI interface](https://en.wikipedia.org/wiki/Application_binary_interface) for [cryptographically secure random number generation](https://en.wikipedia.org/wiki/Cryptographically_secure_pseudorandom_number_generator), byte generation, and [modern encryption algorithms](https://en.wikipedia.org/wiki/Cryptography).  
 
 It provides a stable, unmanaged‑friendly API that can be consumed from any language supporting the C ABI ([C](https://en.wikipedia.org/wiki/C_(programming_language)), [C++](https://en.wikipedia.org/wiki/C%2B%2B), [Rust](https://en.wikipedia.org/wiki/Rust_(programming_language)), [Go](https://en.wikipedia.org/wiki/Go_(programming_language)), [Zig](https://en.wikipedia.org/wiki/Zig_(programming_language)), [Python](https://en.wikipedia.org/wiki/Python_(programming_language)), etc.).
 
@@ -14,7 +14,7 @@ This module is currently being prepared for its first public release.
 
 It will be published as part of the broader **Cryptography** repository and will serve as the foundation for future cross‑language interoperability work.
 
-A [demonstration video](https://github.com/michelenatale/Cryptography/blob/main/C-Abi-Bright-Aot/readme.md#-video-demonstration) is available in the `Docs` folder and as a direct download below. 
+A [demonstration video](#-video-demonstration) is available in the `Docs` folder and as a direct download below. 
 
 ---
 
@@ -98,7 +98,7 @@ All tests run stable over thousands of iterations.
 ## 📁 Project Structure
 
 ```
-C-Abi-Bright-Aot/
+C-Abi-Bridge-Aot/
  ├─ Docs /
  │  ├─ c-abi-bridge-aot.mp4
  │  └─ ConsoleOutputTestRngCryptoBoolAot.txt
@@ -121,7 +121,7 @@ C-Abi-Bright-Aot/
 ## 🛠 Example: Calling from C
 
 ```
-#include "bright.h"
+#include "bridge.h"
 
 int main() {
     int size = 16;
@@ -173,7 +173,7 @@ The full version history is available in
 Releases are published through GitHub and include:
 
 - Compiled NativeAOT binaries
-- Header files (bright.h)
+- Header files (bridge.h)
 - Documentation
 - Changelog
 
