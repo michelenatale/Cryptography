@@ -23,7 +23,6 @@ This diagram illustrates how  memory is allocated and released in the ABI.
 |   free_buffer(ptr)        |
 |   (NativeAOT frees heap)  |
 +---------------------------+
-
 ```
 
 ---
