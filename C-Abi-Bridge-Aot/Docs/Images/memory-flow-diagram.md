@@ -2,24 +2,28 @@
 
 This diagram illustrates how  memory is allocated and released in the ABI.
 ```
-+------------------------+
-|     NativeAOT DLL      |
-|  (.NET compiled native)|
-+-----------+------------+
-            |
-            |  C ABI (exports)
-            v
-+------------------------+
-|   C-Abi-Bridge-Aot     |
-|  (bridge layer, C code)|
-+-----------+------------+
-            |
-            |  language bindings
-            v
-+------------------------+
-| C / C++ / Rust / Zig   |
-| Go / Python / others   |
-+------------------------+
++---------------------------+
+|   NativeAOT allocates     |
+|   buffer (internal heap)  |
++-------------+-------------+
+              |
+              v
++---------------------------+
+|   Pointer returned to     |
+|   C / C++ / Rust / etc.   |
++-------------+-------------+
+              |
+              v
++---------------------------+
+|   User processes data     |
++-------------+-------------+
+              |
+              v
++---------------------------+
+|   free_buffer(ptr)        |
+|   (NativeAOT frees heap)  |
++---------------------------+
+
 ```
 
 ---
