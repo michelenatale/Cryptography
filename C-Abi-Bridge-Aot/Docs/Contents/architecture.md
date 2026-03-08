@@ -2,6 +2,8 @@
 
 This document explains the internal architecture of the C-Abi-Bridge-Aot module and how it interacts with the .NET NativeAOT runtime.
 
+---
+
 ## High-Level Structure
 
 ```
@@ -15,6 +17,8 @@ This document explains the internal architecture of the C-Abi-Bridge-Aot module 
 ↓
 [ C / C++ / Rust / Zig / Go / Python ]
 ```
+
+---
 
 ## Components
 
@@ -40,6 +44,16 @@ Provides:
 ### 4. Consumer Layer
 Any language that can call native functions.
 
+---
+
+## Diagram
+
+**Architecture Diagram:**
+
+[Docs/Images/architecture-diagram.md](../Images/architecture-diagram.md)
+
+---
+
 ## Error Handling
 
 All functions return:
@@ -51,6 +65,8 @@ typedef struct CError {
 } CError;
 ```
 `error_code == 0` means success.
+
+---
 
 ## Memory Ownership
 
@@ -66,3 +82,7 @@ if (err.error_code == 0) {
 
 free_buffer(values);
 ```
+
+---
+
+
