@@ -6,15 +6,29 @@ The .NET `decimal` type is a 128‑bit structure consisting of:
 - 1‑bit sign
 - 7‑bit scale (0–28)
 
+---
+
 ## Layout
 
 [ 32 bits flags ][ 32 bits hi ][ 32 bits mid ][ 32 bits low ]
+
+---
+
+## Diagram
+
+**Decimal Layout Diagram:**
+
+[Docs/Images/decimal-layout-diagram.md](../Images/decimal-layout-diagram.md)
+
+---
 
 ## Flags
 
 - Bits 0–15: unused
 - Bits 16–23: scale
 - Bit 31: sign
+
+---
 
 ## Conversion
 
@@ -29,6 +43,8 @@ typedef struct Decimal128 {
 } Decimal128;
 ```
 
+---
+
 ## Usage Example
 
 ```
@@ -42,8 +58,11 @@ if (err.error_code == 0) {
 free_buffer(arr);
 ```
 
+---
+
 ## Scale and Range
 
 - Scale is always between 0 and 28.
 - Values are always non‑negative unless explicitly documented.
 
+---
