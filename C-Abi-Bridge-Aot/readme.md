@@ -81,15 +81,12 @@ Native.FreeBuffer(ptr);
 ---
 
 ## 🧪 Tests and Stability
+
 The project includes extensive tests:
-
-Range validation
-
-Interop roundtrip tests (Decimal, Double, Single)
-
-Performance tests
-
-AES / AES‑GCM / ChaCha20‑Poly1305 validation
+- Range validation
+- Interop roundtrip tests (Decimal, Double, Single)
+- Performance tests
+- AES / AES‑GCM / ChaCha20‑Poly1305 validation
 
 All tests run stable over thousands of iterations.
 
@@ -203,7 +200,6 @@ A demonstration video is available in the "Docs" folder and as a link below:
 - **c-abi-bridge-aot.mp4**
 
 It shows the test execution, the NativeAOT behavior, and how the C ABI interface is used from different languages.
-
 
 ---
 
