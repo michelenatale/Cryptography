@@ -2,6 +2,8 @@
 
 The C-Abi-Bridge-Aot module uses a deterministic memory model designed for NativeAOT.
 
+---
+
 ## Allocation Rules
 
 - All buffers returned from the ABI are allocated using a custom allocator.
@@ -10,6 +12,16 @@ The C-Abi-Bridge-Aot module uses a deterministic memory model designed for Nativ
 ```
 void free_buffer(void* ptr);
 ```
+
+---
+
+## Diagram
+
+**Memory-Flow Diagram:**
+
+[Docs/Images/memory-flow-diagram.md](../Images/memory-flow-diagram.md)
+
+---
 
 ## Why a Custom Free Function?
 
@@ -27,12 +39,16 @@ Using the wrong free function can cause:
 - crashes
 - undefined behavior
 
+---
+
 ## Buffer Lifetime
 
 1. ABI allocates memory
 2. ABI returns pointer
 3. Consumer reads data
 4. Consumer calls **`free_buffer(ptr)`**
+
+---
 
 ## Example
 
@@ -47,8 +63,12 @@ if (err.error_code == 0) {
 free_buffer(values);
 ```
 
+---
+
 ## Thread Safety
 
 All memory operations are thread‑safe.
+
+---
 
 
