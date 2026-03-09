@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <Platforms>AnyCPU;x64</Platforms>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="MsPqcSignatur\Stateful\XMSS\" />
+    <Folder Include="MsPqcSignatur\Stateful\LMS\" />
+    <Folder Include="MsPqcSignatur\Stateful\" />
+  </ItemGroup>
+
+</Project>

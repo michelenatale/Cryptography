@@ -1,0 +1,156 @@
+﻿
+using System.Security.Cryptography;
+
+
+namespace michele.natale.TestMsPqcs;
+
+using MsPqcs;
+using Pointers;
+using Services;
+
+public class AliceMLKEM : IDisposable
+{
+  public byte[] PubKey { get; private set; } = null!;
+  public bool IsDisposed { get; private set; } = true;
+  public byte[] CapsulationKey { get; private set; } = null!;
+  public MLKemAlgorithm Algorithm { get; private set; } = null!;
+  public byte[] Associated
+  {
+    get; private set;
+  } = "© michele natale 2025"u8.ToArray();
+
+  private KeyPairInfo KeyPair = null!;
+  private UsIPtr<byte> SharedKey = UsIPtr<byte>.Empty;
+
+  public AliceMLKEM()
+    : this(ToRngParameter())
+  {
+  }
+
+  public AliceMLKEM(MLKemAlgorithm algo)
+  {
+    this.Algorithm = algo;
+
+    using var kem = MLKem.GenerateKey(algo);
+
+    var (priv, pub) = MlKemEx.ToKeyPair(kem);
+    this.KeyPair = new KeyPairInfo(pub, priv);
+    this.PubKey = this.KeyPair.PublicKey;
+
+    this.IsDisposed = false;
+  }
+
+  public void Clear()
+  {
+    if (this.IsDisposed) return;
+
+    if (this.PubKey is not null)
+      Array.Clear(this.PubKey);
+    if (this.Associated is not null)
+      Array.Clear(this.Associated);
+    if (this.CapsulationKey is not null)
+      Array.Clear(this.CapsulationKey);
+
+    this.SharedKey.Dispose();
+
+    //this.Rand = null!;
+    this.PubKey = null!;
+    this.KeyPair = null!;
+    this.Algorithm = null!;
+    this.CapsulationKey = null!;
+    this.SharedKey = UsIPtr<byte>.Empty;
+    this.Associated = "© michele natale 2025"u8.ToArray();
+  } 
+
+  public byte[] Encryption(
+    ReadOnlySpan<byte> bytes,
+    ReadOnlySpan<byte> capsulationkey,
+    ReadOnlySpan<byte> associated,
+    CryptionAlgorithm cryptoalgo)
+  {
+    var associat = associated.IsEmpty ? this.Associated : associated;
+    using var sharedkey = this.ToSharedKey(capsulationkey);
+
+    return MsPqcServices.EncryptionWithCryptionAlgo(
+      bytes, sharedkey, associat, cryptoalgo);
+  }
+
+  public byte[] Decryption(
+    ReadOnlySpan<byte> bytes,
+    ReadOnlySpan<byte> associated,
+    CryptionAlgorithm cryptoalgo)
+  {
+    var associat = associated.IsEmpty ? this.Associated : associated;
+
+    return MsPqcServices.DecryptionWithCryptionAlgo(
+      bytes, this.SharedKey, associat, cryptoalgo);
+  }
+
+  public UsIPtr<byte> ToSharedKey(ReadOnlySpan<byte> capsulationkey)
+  {
+    //SharedKeys are always secret.
+
+    // Alice decapsulates a new shared secret using Alice's private key
+    using var alice = MLKem.ImportDecapsulationKey(this.Algorithm, this.KeyPair.PrivateKey.ToBytes());
+    
+    return MlKemEx.ToSharedKey(alice, capsulationkey);
+  }
+
+  public byte[] GenerateSharedKey(ReadOnlySpan<byte> bob_pubkey)
+  {
+    //SharedKeys are always secret, whereas the CapsulationKey is always public.
+
+    if (this.SharedKey is not null && !this.SharedKey.IsDisposed)
+      this.ClearSharedKey();
+
+    // Alice encapsulates a new shared secret using bob's public key
+    using var bob = MLKem.ImportEncapsulationKey(this.Algorithm, bob_pubkey);
+    this.SharedKey = MlKemEx.ToSharedKey(bob, out var capsulationkey);
+         this.CapsulationKey = capsulationkey;
+
+    return [.. capsulationkey];
+  }
+
+  private void ClearSharedKey()
+  {
+    if (this.SharedKey is not null && !this.SharedKey.IsDisposed)
+    {
+      this.SharedKey.Dispose();
+      this.SharedKey = UsIPtr<byte>.Empty;
+
+      Array.Clear(this.CapsulationKey);
+      this.CapsulationKey = null!;
+    }
+  }
+
+  private static MLKemAlgorithm ToRngParameter()
+  {
+    var parameters = MsPqcServices.ToMLKemAlgorithm();
+    var idx = RandomNumberGenerator.GetInt32(parameters.Length);
+    return parameters[idx];
+  }
+
+  //public static MLKemPublicKeyParameters ToPubKey(
+  //  byte[] pubkey, MLKemAlgorithm parameter) =>
+  //    MLKemPublicKeyParameters.FromEncoding(parameter, pubkey);
+
+  protected virtual void Dispose(bool disposing)
+  {
+    if (!this.IsDisposed)
+    {
+      if (disposing) this.Clear();
+      this.IsDisposed = true;
+    }
+  }
+
+  ~AliceMLKEM() =>
+    Dispose(false);
+
+  public void Dispose()
+  {
+    this.Dispose(true);
+    GC.SuppressFinalize(this);
+  }
+}
+
+
