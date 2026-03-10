@@ -44,6 +44,7 @@ public class AliceMLKEM : IDisposable
   {
     if (this.IsDisposed) return;
 
+
     if (this.PubKey is not null)
       Array.Clear(this.PubKey);
     if (this.Associated is not null)
@@ -51,16 +52,16 @@ public class AliceMLKEM : IDisposable
     if (this.CapsulationKey is not null)
       Array.Clear(this.CapsulationKey);
 
+    this.KeyPair.Dispose();
     this.SharedKey.Dispose();
 
-    //this.Rand = null!;
     this.PubKey = null!;
     this.KeyPair = null!;
     this.Algorithm = null!;
     this.CapsulationKey = null!;
     this.SharedKey = UsIPtr<byte>.Empty;
     this.Associated = "© michele natale 2025"u8.ToArray();
-  } 
+  }
 
   public byte[] Encryption(
     ReadOnlySpan<byte> bytes,
@@ -92,7 +93,7 @@ public class AliceMLKEM : IDisposable
 
     // Alice decapsulates a new shared secret using Alice's private key
     using var alice = MLKem.ImportDecapsulationKey(this.Algorithm, this.KeyPair.PrivateKey.ToBytes());
-    
+
     return MlKemEx.ToSharedKey(alice, capsulationkey);
   }
 
@@ -106,7 +107,7 @@ public class AliceMLKEM : IDisposable
     // Alice encapsulates a new shared secret using bob's public key
     using var bob = MLKem.ImportEncapsulationKey(this.Algorithm, bob_pubkey);
     this.SharedKey = MlKemEx.ToSharedKey(bob, out var capsulationkey);
-         this.CapsulationKey = capsulationkey;
+    this.CapsulationKey = capsulationkey;
 
     return [.. capsulationkey];
   }
@@ -128,7 +129,7 @@ public class AliceMLKEM : IDisposable
     var parameters = MsPqcServices.ToMLKemAlgorithm();
     var idx = RandomNumberGenerator.GetInt32(parameters.Length);
     return parameters[idx];
-  } 
+  }
 
   protected virtual void Dispose(bool disposing)
   {

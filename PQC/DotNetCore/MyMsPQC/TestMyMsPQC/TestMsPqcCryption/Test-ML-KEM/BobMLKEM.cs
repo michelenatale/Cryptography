@@ -44,6 +44,7 @@ public class BobMLKEM : IDisposable
   {
     if (this.IsDisposed) return;
 
+
     if (this.PubKey is not null)
       Array.Clear(this.PubKey);
     if (this.Associated is not null)
@@ -51,6 +52,7 @@ public class BobMLKEM : IDisposable
     if (this.CapsulationKey is not null)
       Array.Clear(this.CapsulationKey);
 
+    this.KeyPair.Dispose();
     this.SharedKey.Dispose();
      
     this.PubKey = null!;

@@ -9,4 +9,7 @@
   <Project Path="TestMyMsPQC/TestMyMsPQC.csproj">
     <Platform Solution="*|x64" Project="x64" />
   </Project>
+  <Project Path="TestMyMsPQCVb/TestMyMsPQCVb.vbproj" Id="9d1d2cb6-1a6b-44c0-adb3-e8bcc18c4044">
+    <Platform Solution="*|x64" Project="x64" />
+  </Project>
 </Solution>

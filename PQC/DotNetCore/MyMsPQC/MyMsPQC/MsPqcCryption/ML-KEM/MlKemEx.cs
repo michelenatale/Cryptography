@@ -58,7 +58,7 @@ public sealed class MlKemEx : IMlKemEx
   {
     var ofs = 7;
     var calgo = (CryptionAlgorithm)(byte.MaxValue - ofs - bytes[0]);
-    var parameter = ToMLKemAlgorithm(byte.MaxValue - ofs - bytes[1]);
+    //var parameter = ToMLKemAlgorithm(byte.MaxValue - ofs - bytes[1]);
     var capslenght = BitConverter.ToInt32(bytes.Slice(2, 4));
     var capsulationkey = bytes.Slice(6, capslenght);
 

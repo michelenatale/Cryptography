@@ -44,16 +44,15 @@ internal class TestMLKEM
 
     Console.Write($"{nameof(Test_ML_KEM_SharedKey)}: ");
 
-    if (rounds < 10) rounds = 10;
-    //var rand = new SecureRandom();
-    var parameters = MsPqcServices.ToMLKemAlgorithm();
+    if (rounds < 10) rounds = 10; 
+    var algos = MsPqcServices.ToMLKemAlgorithm();
 
     var sw = Stopwatch.StartNew();
     for (var i = 0; i < rounds; i++)
     {
       //ML-KEM Parameter select. Only the first 3 algos
-      var idx = RandomNumberGenerator.GetInt32(parameters.Length);
-      var algos = parameters[idx];
+      var idx = RandomNumberGenerator.GetInt32(algos.Length);
+      var algo = algos[idx];
 
       //Symmetric CryptionAlgorithm select
       var cas = Enum.GetValues<CryptionAlgorithm>();
@@ -62,11 +61,11 @@ internal class TestMLKEM
 
       //Create and Save a legal ML-KEM-KeyPair
       var kpfile = "mlkem_keypair.key";
-      using var kem = MLKem.GenerateKey(algos);
+      using var kem = MLKem.GenerateKey(algo);
       var (privk, pubk) = MlKemEx.ToKeyPair(kem);
 
       using var mlkeminfo = new MlKemKeyPairInfo(
-        pubk, privk.ToBytes(), algos, cryptoalgo);
+        pubk, privk.ToBytes(), algo, cryptoalgo);
       mlkeminfo.SaveKeyPair(kpfile, true);
 
       //Load KeyPairs again
@@ -76,18 +75,18 @@ internal class TestMLKEM
 
       //ML-KEM Encapsulation
       cryptoalgo = info.CryptAlgo;
-      algos = info.ToAlgo();
+      algo = info.ToAlgo();
 
       //Encapsulation
       var pubkey = info.PubKey;
 
-      using var kem1 = MLKem.ImportEncapsulationKey(algos, pubkey);
+      using var kem1 = MLKem.ImportEncapsulationKey(algo, pubkey);
       using var sharedkey1 = MlKemEx.ToSharedKey(
         kem1, out var capsulationkey);
 
       //Decapsulation 
       var privkey = info.ToPrivKey().ToBytes();
-      using var kem2 = MLKem.ImportDecapsulationKey(algos, privkey);
+      using var kem2 = MLKem.ImportDecapsulationKey(algo, privkey);
       using var sharedkey2 = MlKemEx.ToSharedKey(
         kem2, capsulationkey);
 

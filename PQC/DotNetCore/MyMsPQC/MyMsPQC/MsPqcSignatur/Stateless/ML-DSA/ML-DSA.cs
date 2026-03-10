@@ -242,6 +242,11 @@ public sealed class MlDsaEx : IMlDsaEx
   private static async Task<byte[]> ComputeHashAsync(
     string path, HashAlgorithm hash)
   {
+    var fi = new FileInfo(path);
+
+    if (fi.Length == 0)
+      throw new InvalidOperationException("Cannot hash empty file.");
+
     await using var fs = new FileStream(
       path, FileMode.Open,
       FileAccess.Read, FileShare.Read,

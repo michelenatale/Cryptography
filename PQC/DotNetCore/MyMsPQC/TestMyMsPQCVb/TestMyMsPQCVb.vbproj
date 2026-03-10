@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <Platforms>AnyCPU;x64</Platforms>
+    <TargetFramework>net10.0</TargetFramework>
+    <RootNamespace>TestMyMsPQCVb</RootNamespace>
+
+    <Authors>© Michele Natale 2026</Authors>
+    <Product>© Microsoft Dotnet Core PQC 2026</Product>
+    <Company>© Michele Natale 2026</Company>
+    <Description>
+      © Microsoft Dotnet Core PQC 2026 C# - Post Quantum Cryptography in C#.
+    </Description>
+    <Copyright>© Microsoft Dotnet Core PQC 2026 created by © Michele Natale 2026.</Copyright>
+
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MyMsPQC\MyMsPQC.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="TestMsPqcSignatur\Stateless\Test-SLH-DSA\" />
+  </ItemGroup>
+
+</Project>

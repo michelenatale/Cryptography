@@ -46,7 +46,6 @@ public class BobMLDSA : IDisposable
     this.Info = null!;
     this.PubKey = null!;
     this.Algo = null!;
-
   }
 
   public (byte[] Sign, byte[] PubKey) Sign(ReadOnlySpan<byte> message)
