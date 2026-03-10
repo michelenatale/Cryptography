@@ -19,13 +19,9 @@ https://github.com/michelenatale/Cryptography/tree/main/PQC/BouncyCastle/MyBcPQC
 
 ## DotNet Core
 
-Microsoft is also joining in, and has already made a valuable start with SymCrypt. I am sure that Dotnet will also make these algorithms available in the near future.
+# MyMsPQC – Post‑Quantum Cryptography for .NET
 
-See here: 
-
-[Microsoft Security Community Blog](https://techcommunity.microsoft.com/blog/microsoft-security-blog/microsofts-quantum-resistant-cryptography-is-here/4238780)
-
-[Post-Quantum-Kryptografie (PQC)](https://learn.microsoft.com/de-de/dotnet/core/whats-new/dotnet-10/libraries#post-quantum-cryptography-pqc)
-
+MyMsPQC is a lightweight .NET project demonstrating how to use [Microsoft’s Post‑Quantum Cryptography (PQC)](https://devblogs.microsoft.com/dotnet/post-quantum-cryptography-in-dotnet/) implementations. It provides simple, practical examples for integrating quantum‑resistant algorithms into modern .NET applications.
 
 https://github.com/michelenatale/Cryptography/tree/main/PQC/DotNetCore
+
