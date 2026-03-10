@@ -4,6 +4,8 @@
 
 The term post-quantum cryptography was introduced by [Daniel J. Bernstein](https://en.wikipedia.org/wiki/Daniel_J._Bernstein), who was also involved in organizing the first PQCrypto conference on this topic in 2006.
 
+---
+
 ## Bouncy Castle
 
 [Bouncy Castle](https://www.bouncycastle.org) Crypto API are a collection of open-source cryptographic programming interfaces (API) for the Java and C# programming languages. They are maintained by the Australian-based Legion of the Bouncy Castle Inc.
@@ -16,6 +18,7 @@ With the exception of XMSS, all are available in the C# library. XMSS is current
 
 https://github.com/michelenatale/Cryptography/tree/main/PQC/BouncyCastle/MyBcPQC
 
+---
 
 ## DotNet Core
 
@@ -24,4 +27,6 @@ https://github.com/michelenatale/Cryptography/tree/main/PQC/BouncyCastle/MyBcPQC
 MyMsPQC is a lightweight .NET project demonstrating how to use [Microsoft’s Post‑Quantum Cryptography (PQC)](https://devblogs.microsoft.com/dotnet/post-quantum-cryptography-in-dotnet/) implementations. It provides simple, practical examples for integrating quantum‑resistant algorithms into modern .NET applications.
 
 https://github.com/michelenatale/Cryptography/tree/main/PQC/DotNetCore/MyMsPQC
+
+---
 
