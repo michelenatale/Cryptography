@@ -1,6 +1,6 @@
 # MyMsPQC – Post‑Quantum Cryptography for .NET
 
-MyMsPQC is a lightweight .NET project demonstrating how to use Microsoft’s Post‑Quantum Cryptography (PQC) implementations. It provides simple, practical examples for integrating quantum‑resistant algorithms into modern .NET applications.
+MyMsPQC is a lightweight .NET project demonstrating how to use [Microsoft’s Post‑Quantum Cryptography (PQC)](https://devblogs.microsoft.com/dotnet/post-quantum-cryptography-in-dotnet/) implementations. It provides simple, practical examples for integrating quantum‑resistant algorithms into modern .NET applications.
 
 ## ✨ Features
 
@@ -9,8 +9,8 @@ Integration of Microsoft PQC algorithms
 Examples for:
 - Key generation
 - Key Encapsulation Mechanism (KEM): encapsulation & decapsulation
-  - Digital signatures: signing & verification
-  - Clean project structure with a dedicated test project
+- Digital signatures: signing & verification
+- Clean project structure with a dedicated test project
 - Ideal as a learning resource or integration reference for PQC in .NET
 
 ## 📁 Project Structure
@@ -18,9 +18,10 @@ Examples for:
 ```
 MyMsPQC/
 │
-├── MyMsPQC/           # Core library with PQC implementations
-├── TestMyMsPQC/       # Unit tests and usage examples
-└── TestMyMsPQC.slnx   # Solution file
+├── MyMsPQC /           # Core library with PQC implementations
+├── TestMyMsPQC /       # Unit tests and usage examples
+├── TestMyMsPQCVb /     # Unit tests and usage examples in Vb.Net
+└── TestMyMsPQC.slnx    # Solution file
 ```
 
 ## 🧰 Requirements
