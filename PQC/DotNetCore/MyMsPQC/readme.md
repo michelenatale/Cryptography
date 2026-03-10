@@ -187,4 +187,5 @@ This project is part of the broader Cryptography repository and follows its lice
 
 [Post-Quantum-Kryptografie (PQC)](https://learn.microsoft.com/de-de/dotnet/core/whats-new/dotnet-10/libraries#post-quantum-cryptography-pqc)
 
+---
 
