@@ -1,8 +1,5 @@
-Under Construction
+# MyMsPQC – Post‑Quantum Cryptography for .NET
 
+MyMsPQC is a lightweight .NET project demonstrating how to use [Microsoft’s Post‑Quantum Cryptography (PQC)](https://devblogs.microsoft.com/dotnet/post-quantum-cryptography-in-dotnet/) implementations. It provides simple, practical examples for integrating quantum‑resistant algorithms into modern .NET applications.
 
-See here: 
-
-[Microsoft Security Community Blog](https://techcommunity.microsoft.com/blog/microsoft-security-blog/microsofts-quantum-resistant-cryptography-is-here/4238780)
-
-[Post-Quantum-Kryptografie (PQC)](https://learn.microsoft.com/de-de/dotnet/core/whats-new/dotnet-10/libraries#post-quantum-cryptography-pqc)
+https://github.com/michelenatale/Cryptography/tree/main/PQC/DotNetCore/MyMsPQC
