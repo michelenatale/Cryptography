@@ -27,9 +27,9 @@ public interface IMlDsaKeyPairInfo:IDisposable
   }
 
   /// <summary>
-  /// Return the ML-DSA-Parameter.
+  /// Return the ML-DSA-Algo.
   /// </summary>
-  /// <returns>Return the ML-DSA-Parameter.</returns>
+  /// <returns>Return the ML-DSA-Algo.</returns>
   MLDsaAlgorithm ToAlgo();
 
   /// <summary>
@@ -64,18 +64,18 @@ public interface IMlDsaKeyPairInfo:IDisposable
   public bool Equals(MlDsaKeyPairInfo info);
 
   /// <summary>
-  /// Returns the ML-DSA-Parameters.
+  /// Returns the ML-DSA-Algo.
   /// </summary>
-  /// <param name="param">Desired Parameter as MLDsaParam</param>
-  /// <returns>Returns the ML-DSA-Parameters.</returns>
-  static abstract MLDsaAlgorithm ToMLDsaAlgorithm(MLDsaParam param);
+  /// <param name="algo">Desired Algo as MLDsaParam</param>
+  /// <returns>Returns the ML-DSA-Algo.</returns>
+  static abstract MLDsaAlgorithm ToMLDsaAlgorithm(MLDsaParam algo);
 
   /// <summary>
-  /// Returns the ML-DSA-Parameters as MLDsaParam.
+  /// Returns the ML-DSA-Algo as MLDsaParam.
   /// </summary>
-  /// <param name="parameter">Desired ML-DSA-Parameter</param>
+  /// <param name="algo">Desired ML-DSA-Algo</param>
   /// <returns>Returns the ML-DSA-Parameters as MLDsaParam.</returns>
-  static abstract MLDsaParam FromMLDsaAlgorithm(MLDsaAlgorithm parameter);
+  static abstract MLDsaParam FromMLDsaAlgorithm(MLDsaAlgorithm algo);
 
   /// <summary>
   /// Loads the KeyPair from the hardware.

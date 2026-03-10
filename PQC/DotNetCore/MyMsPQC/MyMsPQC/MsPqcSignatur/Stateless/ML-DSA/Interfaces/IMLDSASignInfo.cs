@@ -59,10 +59,10 @@ public interface IMLDSASignInfo
   }
 
   /// <summary>
-  /// Return the ML-DSA-Parameter.
+  /// Return the ML-DSA-Algo.
   /// </summary>
-  /// <returns>Return the ML-DSA-Parameter.</returns>
-  MLDsaAlgorithm ToParameter();
+  /// <returns>Return the ML-DSA-Algo.</returns>
+  MLDsaAlgorithm ToAlgo();
 
   /// <summary>
   /// Saves all information in a file on the hardware.
@@ -80,6 +80,5 @@ public interface IMLDSASignInfo
   /// Resets all information.
   /// </summary>
   void Clear();
-
  
 }

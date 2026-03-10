@@ -39,7 +39,7 @@ public sealed class MLDSASignInfo : IMLDSASignInfo
   public MLDsaParam Parameter { get; set; } = MLDsaParam.Ml_Dsa_44;
 
 
-  public MLDsaAlgorithm ToParameter() =>
+  public MLDsaAlgorithm ToAlgo() =>
     MsPqcServices.ToMLDsaAlgorithm(this.Parameter);
 
   /// <summary>
@@ -224,7 +224,7 @@ public sealed class MLDSASignInfo : IMLDSASignInfo
   internal byte[] VerifiyHash()
   {
     //Check in advance whether all signatures can be verified.
-    if (MlDsaEx.Verify(this.ToParameter(),
+    if (MlDsaEx.Verify(this.ToAlgo(),
       Convert.FromHexString(this.PublicKey),
       Convert.FromHexString(this.Sign),
       Convert.FromHexString(this.Message)))

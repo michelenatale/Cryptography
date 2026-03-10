@@ -1,20 +1,19 @@
 ﻿
 
 using michele.natale.MsPqcs;
-using michele.natale.TestMsPqcs;  
+using michele.natale.TestMsPqcs;
 
 namespace MyMsPQCTest;
 
 
 public class Program
 {
-  public static async Task Main()
+  public async static Task Main()
   {
-
     await TestBcPqc();
   }
 
-  private static async Task TestBcPqc()
+  private async static Task TestBcPqc()
   {
     //Asymmetric Crypto
     TestBcCrypto();
@@ -28,7 +27,7 @@ public class Program
     TestMLKEM.Start();
   }
 
-  private static async Task TestBcSignatureStateless()
+  private async static Task TestBcSignatureStateless()
   {
     //Signature Stateless
     await TestMLDSA.Start();

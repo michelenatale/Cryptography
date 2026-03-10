@@ -9,7 +9,6 @@ using Pointers;
 
 public class KeyPairInfo : IDisposable
 {
-
   public byte[] PublicKey { get; private set; } = [];
   public bool IsDisposed { get; private set; } = false;
   public UsIPtr<byte> PrivateKey { get; private set; } = UsIPtr<byte>.Empty;
@@ -34,7 +33,6 @@ public class KeyPairInfo : IDisposable
 
     this.PublicKey = [];
     this.PrivateKey = UsIPtr<byte>.Empty;
-
   }
 
   protected virtual void Dispose(bool disposing)

@@ -4,7 +4,7 @@ using System.Security.Cryptography;
 
 namespace michele.natale.TestMsPqcs;
 
-using michele.natale.MsPqcs;
+using MsPqcs;
 using Pointers;
 using Services;
 

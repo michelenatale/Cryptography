@@ -1,14 +1,13 @@
 ﻿
+using System.Text;
 using System.Security;
 using System.Security.Cryptography;
-using System.Text;
 using System.Text.Json.Serialization;
 
 
 namespace michele.natale.MsPqcs;
 
-using Services;
-using System.Diagnostics;
+using Services; 
 
 /// <summary>
 /// Provides methods and tools related to the multi-signature.

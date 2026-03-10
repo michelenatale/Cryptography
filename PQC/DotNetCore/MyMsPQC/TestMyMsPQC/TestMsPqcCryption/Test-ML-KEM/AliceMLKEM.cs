@@ -128,11 +128,7 @@ public class AliceMLKEM : IDisposable
     var parameters = MsPqcServices.ToMLKemAlgorithm();
     var idx = RandomNumberGenerator.GetInt32(parameters.Length);
     return parameters[idx];
-  }
-
-  //public static MLKemPublicKeyParameters ToPubKey(
-  //  byte[] pubkey, MLKemAlgorithm parameter) =>
-  //    MLKemPublicKeyParameters.FromEncoding(parameter, pubkey);
+  } 
 
   protected virtual void Dispose(bool disposing)
   {

@@ -5,13 +5,13 @@
 
 
 
+using System.Security.Cryptography;
 
 
 namespace michele.natale.MsPqcs;
 
 
 using Pointers;
-using System.Security.Cryptography;
 
 
 /// <summary>
@@ -30,9 +30,8 @@ public interface IMlDsaEx
 
   /// <summary>
   /// Signs the existing message using the desired parameters.
-  /// </summary>
-  /// <param name="parameter">Desired ML-DSA-Parameter</param>
-  /// <param name="privkey">Desired PrivateKey as Bytes</param>
+  /// </summary> 
+  /// <param name="mldsa">Desired MLDsa-Instance</param>
   /// <param name="message">Desired Message</param>
   /// <returns>Returns a signature as bytes.</returns>
   static abstract byte[] Sign(MLDsa mldsa, ReadOnlySpan<byte> message);
@@ -40,23 +39,25 @@ public interface IMlDsaEx
   /// <summary>
   /// Signs the existing message using the desired parameters.
   /// </summary>
+  /// <param name="algo">Desired MlDsa-Algorithm</param>
   /// <param name="privkey">Desired PrivateKey as Bytes</param>
-  /// <param name="message">Desired Message</param>
+  /// <param name="message">Desired Message as Bytes</param>
   /// <returns>Returns a signature as bytes.</returns>
   static abstract byte[] Sign(MLDsaAlgorithm algo, UsIPtr<byte> privkey, ReadOnlySpan<byte> message);
 
   /// <summary>
   /// Verify the existing message and Signature using the desired parameters.
   /// </summary>
-  /// <param name="info">Desired KeyPair informations.</param>
-  /// <param name="signature">Desired signature</param>
-  /// <param name="message">Desired Message</param>
+  /// <param name="mldsa">Desired MLDsa-Instance.</param>
+  /// <param name="signature">Desired signature as Bytes</param>
+  /// <param name="message">Desired Message as Bytes</param>
   /// <returns>True, verify is ok, ortherwise false.</returns>
   static abstract bool Verify(MLDsa mldsa, ReadOnlySpan<byte> signature, ReadOnlySpan<byte> message);
 
   /// <summary>
   /// Verify the existing message and Signature using the desired parameters.
   /// </summary>
+  /// <param name="algo">Desired MLDsa-Algorithm</param>
   /// <param name="pubkey">Desired PublicKey</param>
   /// <param name="signature">Desired Signature</param>
   /// <param name="message">Desired Message</param>
@@ -65,7 +66,7 @@ public interface IMlDsaEx
 
 
   /// <summary> 
-  /// Signs the existing message from datafile using the desired parameters.
+  /// Signs the existing message from datafile (Async) using the desired parameters.
   /// </summary>
   /// <param name="info">Desired KeyPair informations.</param>
   /// <param name="datapath">Desired datafile</param>
@@ -73,24 +74,25 @@ public interface IMlDsaEx
   static abstract Task<byte[]> SignSha512Async(MlDsaKeyPairInfo info, string datapath);
 
   /// <summary>
-  /// Signs the existing message from datafile using the desired parameters.
+  /// Signs the existing message from datafile (Async) using the desired parameters.
   /// </summary>
-  /// <param name="parameter">Desired ML-DSA-Parameter</param>
+  /// <param name="mldsa">Desired MLDsa-Instance</param>
   /// <param name="privkey">Desired PrivateKey as Bytes</param>
   /// <param name="datapath">Desired datafile.</param>
   /// <returns>Returns a signature as bytes.</returns>
   static abstract Task<byte[]> SignSha512Async(MLDsa mldsa, UsIPtr<byte> privkey, string datapath);
 
   /// <summary>
-  /// Signs the existing message from datafile using the desired parameters.
+  /// Signs the existing message from datafile (Async) using the desired parameters.
   /// </summary>
+  /// <param name="algo">Desired MLDsa-Algorithm</param>
   /// <param name="privkey">Desired PrivateKey</param>
   /// <param name="datapath">Desired datafile</param>
   /// <returns>Returns a signature as bytes.</returns>
   static abstract Task<byte[]> SignSha512Async(MLDsaAlgorithm algo, UsIPtr<byte> privkey, string datapath);
 
   /// <summary>
-  /// Verify the existing message and signature from datafile using the desired parameters.
+  /// Verify the existing message and signature from datafile (Async) using the desired parameters.
   /// </summary>
   /// <param name="info">Desired KeyPair information.</param>
   /// <param name="signature">Desired Signature as bytes</param>
@@ -99,11 +101,10 @@ public interface IMlDsaEx
   static abstract Task<bool> VerifySha512Async(MlDsaKeyPairInfo info, ReadOnlyMemory<byte> signature, string datapath);
 
   /// <summary>
-  /// Verify the existing message and signature from datafile using the desired parameters.
-  /// </summary>
-  /// <param name="parameter">Desired ML-DSA-Parameter</param>
-  /// <param name="pubkey">Desired PublicKey</param>
-  /// <param name="signature">Desired Signature</param>
+  /// Verify the existing message and signature from datafile (Async) using the desired parameters.
+  /// </summary> 
+  /// <param name="mldsa">Desired MLDsa-instance</param>
+  /// <param name="signature">Desired Signature as Bytes</param>
   /// <param name="datapath">Desired filedata</param>
   /// <returns>True, the verify is ok, ortherwise false.</returns>
   static abstract Task<bool> VerifySha512Async(MLDsa mldsa, ReadOnlyMemory<byte> signature, string datapath);
@@ -111,6 +112,7 @@ public interface IMlDsaEx
   /// <summary>
   /// Verify the existing message and signature from datafile using the desired parameters.
   /// </summary>
+  /// <param name="algo">Desired MLDsa-Algorithm</param>
   /// <param name="pubkey">Desired PublicKey</param>
   /// <param name="signature">Desired Signature</param>
   /// <param name="datapath">Desired datafile</param>
@@ -120,8 +122,7 @@ public interface IMlDsaEx
   /// <summary>
   /// Creates a KeyPair based on the existing data.
   /// </summary>
-  /// <param name="rand">Desired SecureRandom-Instance</param>
-  /// <param name="parameter">Desired ML-DSA-Parameter</param>
+  /// <param name="mldsa">Desired MLDsa-Instance</param> 
   /// <returns>Returns the Public- and the PrivateKey as bytes.</returns>
   static abstract (UsIPtr<byte> PrivKey, byte[] PubKey) ToKeyPair(MLDsa mldsa);
 
@@ -135,7 +136,7 @@ public interface IMlDsaEx
   /// <summary>
   /// Returns the index based on an ML-DSA-PArameter.
   /// </summary>
-  /// <param name="parameter">Desired ML-DSA-Parameter</param>
+  /// <param name="algo">Desired ML-DSA-Parameter</param>
   /// <returns></returns>
-  static abstract int ToIndex(MLDsaAlgorithm parameter);
+  static abstract int ToIndex(MLDsaAlgorithm algo);
 }

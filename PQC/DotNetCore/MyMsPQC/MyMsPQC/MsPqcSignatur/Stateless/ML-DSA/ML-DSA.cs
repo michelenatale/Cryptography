@@ -243,12 +243,9 @@ public sealed class MlDsaEx : IMlDsaEx
     string path, HashAlgorithm hash)
   {
     await using var fs = new FileStream(
-        path,
-        FileMode.Open,
-        FileAccess.Read,
-        FileShare.Read,
-        bufferSize: 81920,
-        useAsync: true);
+      path, FileMode.Open,
+      FileAccess.Read, FileShare.Read,
+      bufferSize: 81920, useAsync: true);
 
     return await hash.ComputeHashAsync(fs);
   }

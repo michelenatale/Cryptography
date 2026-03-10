@@ -59,12 +59,12 @@ public sealed class MlDsaKeyPairInfo : IMlDsaKeyPairInfo
   /// </summary>
   /// <param name="pubkey">Desired publickey</param>
   /// <param name="privkey">Desired privatekey</param>
-  /// <param name="parameter">desired ML-DSA-Parameter</param>
+  /// <param name="algo">desired ML-DSA-Algo</param>
   public MlDsaKeyPairInfo(
     ReadOnlySpan<byte> pubkey,
     ReadOnlySpan<byte> privkey,
-    MLDsaAlgorithm parameter)
-      : this(default, pubkey, privkey, parameter)
+    MLDsaAlgorithm algo)
+      : this(default, pubkey, privkey, algo)
   {
   }
 
@@ -74,13 +74,13 @@ public sealed class MlDsaKeyPairInfo : IMlDsaKeyPairInfo
   /// <param name="id">Desired id as Guid</param>
   /// <param name="pubkey">Desired publickey</param>
   /// <param name="privkey">Desired privatekey</param>
-  /// <param name="parameter">desired ML-DSA-Parameter</param>
+  /// <param name="algo">desired ML-DSA-Algo</param>
   public MlDsaKeyPairInfo(
     Guid id, ReadOnlySpan<byte> pubkey,
     ReadOnlySpan<byte> privkey,
-    MLDsaAlgorithm parameter) =>
+    MLDsaAlgorithm algo) =>
       this.SetParameters(id, pubkey,
-        privkey, parameter);
+        privkey, algo);
 
   public MLDsaAlgorithm ToAlgo() =>
     ToMLDsaAlgorithm(this.Parameter);

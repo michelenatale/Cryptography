@@ -40,13 +40,13 @@ public interface IMlKemKeyPairInfo:IDisposable
   }
 
   /// <summary>
-  /// Returns the current ML-KEM-Parameter.
+  /// Returns the current ML-KEM-Algo.
   /// </summary>
-  /// <returns>Returns the ML-KEM-Parameter as a MLKemAlgorithm-Instance</returns>
+  /// <returns>Returns the ML-KEM-Algo as a MLKemAlgorithm-Instance</returns>
   MLKemAlgorithm ToAlgo();
 
   /// <summary>
-  /// Returns the current PrivateKey as bytes in a protected (fix) UsIPtr-instance.
+  /// Returns the current PrivateKey as bytes in a protected (fix) UsIPtr-Instance.
   /// </summary>
   /// <returns>Returns a UsIPtr-instance</returns>
   UsIPtr<byte> ToPrivKey();
@@ -79,16 +79,16 @@ public interface IMlKemKeyPairInfo:IDisposable
   /// <summary>
   /// Returns the ML-KEM-Parameters.
   /// </summary>
-  /// <param name="param">Desired Parameter as MLKemParam</param>
+  /// <param name="algo">Desired Parameter as MLKemParam (Algo)</param>
   /// <returns>Returns the ML-KEM-Parameters.</returns>
-  static abstract MLKemAlgorithm ToMLKemAlgorithm(MLKemParam param);
+  static abstract MLKemAlgorithm ToMLKemAlgorithm(MLKemParam algo);
 
   /// <summary>
-  /// Returns the ML-KEM-Parameters as MLKemParam.
+  /// Returns the ML-KEM-Parameters as MLKemParam (Algo).
   /// </summary>
-  /// <param name="parameter">Desired ML-KEM-Parameter</param>
+  /// <param name="algo">Desired ML-KEM-Parameter</param>
   /// <returns>Returns the ML-KEM-Parameters as MLKemParam.</returns>
-  static abstract MLKemParam FromMLKemAlgorithm(MLKemAlgorithm parameter);
+  static abstract MLKemParam FromMLKemAlgorithm(MLKemAlgorithm algo);
 
   /// <summary>
   /// Loads the KeyPair from the hardware.

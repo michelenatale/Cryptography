@@ -4,12 +4,12 @@
 //https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.203.ipd.pdf
 
 
+using System.Security.Cryptography;
 
 
 namespace michele.natale.MsPqcs;
 
 using Pointers;
-using System.Security.Cryptography;
 
 
 /// <summary>
@@ -73,7 +73,7 @@ public interface IMlKemEx
   /// Creates a Shared Secred Key based on the entered parameters. (Encapsulation)
   /// </summary>
   /// <param name="kem">Desired MLKem-instance</param>
-  /// <param name="capsulationkey">Desired CapsulationKey (Ciphertext from the Encapsulation)</param>
+  /// <param name="capsulationkey">Out-Parameter, desired CapsulationKey (Ciphertext from the Encapsulation)</param>
   /// <returns>Returns the Shared Secred Key as bytes in a protected (fix) UsIPtr-instance</returns>
   static abstract UsIPtr<byte> ToSharedKey(MLKem kem, out byte[] capsulationkey);
 
