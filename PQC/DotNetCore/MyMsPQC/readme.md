@@ -189,3 +189,8 @@ This project is part of the broader Cryptography repository and follows its lice
 
 ---
 
+## ▶️ Console Output
+
+![](/Docs/ConsoleOutput.png)
+
+---
