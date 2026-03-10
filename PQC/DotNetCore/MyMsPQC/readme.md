@@ -67,3 +67,13 @@ This project serves as a practical reference for developers who want to:
 ## 📄 License
 
 This project is part of the broader Cryptography repository and follows its licensing terms.
+
+## 🧭 Reference
+
+[Microsoft Security Community Blog](https://techcommunity.microsoft.com/blog/microsoft-security-blog/microsofts-quantum-resistant-cryptography-is-here/4238780)
+
+[PQC - A New Age of Digital Security](https://techcommunity.microsoft.com/blog/microsoft-security-blog/post-quantum-cryptography-comes-to-windows-insiders-and-linux/4413803)
+
+[Post-Quantum-Kryptografie (PQC)](https://learn.microsoft.com/de-de/dotnet/core/whats-new/dotnet-10/libraries#post-quantum-cryptography-pqc)
+
+
