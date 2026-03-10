@@ -134,18 +134,18 @@ SLH‑DSA will remain a niche but essential algorithm for high‑assurance envir
 
 ## 🚀 Getting Started
 
-Clone the repository:
+*Clone the repository:*
 ```
 git clone https://github.com/michelenatale/Cryptography.git
 cd Cryptography/PQC/DotNetCore/MyMsPQC
 ```
 
-Build the project:
+*Build the project:*
 ```
 dotnet build
 ```
 
-Run the tests:
+*Run the tests:*
 ```
 dotnet test
 ```
