@@ -211,4 +211,9 @@ It shows the test execution, the NativeAOT behavior, and how the C ABI interface
 
 ---
 
+## 🔍 That could also be of interest.
+
+[.NET-Native-Interop-Suite](https://github.com/michelenatale/.NET-Native-Interop-Suite)
+
+---
 
