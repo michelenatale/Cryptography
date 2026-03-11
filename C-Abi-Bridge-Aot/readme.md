@@ -34,7 +34,7 @@ A [demonstration video](#-video-demonstration) is available in the `Docs` folder
 - Zero‑GC interop: memory is explicitly allocated and freed
 
 ### 🔒 Modern Encryption
-- AES (CBC)
+- AES-CBC with AEAD modification
 - AES‑GCM (AEAD)
 - [ChaCha20‑Poly1305 (AEAD)](https://en.wikipedia.org/wiki/ChaCha20-Poly1305)
 - File and byte‑level APIs
