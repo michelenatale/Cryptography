@@ -30,7 +30,9 @@ public static partial void FreeBuffer(IntPtr ptr);
 ## Example Usage
 
 ```
-var err = NextCryptoInt32Aot(out var value);
+var value = Native.NextCryptoInt32Aot(out var err);
+AssertError(err);
+
 Console.WriteLine(value);
 ```
 ```
