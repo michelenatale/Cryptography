@@ -1,6 +1,7 @@
 # 🔍 Crypto FAQ
 
 This document provides additional background information on the cryptographic concepts used in the MyMsPQC project.  
+
 It complements the main README and explains why certain design choices were made.
 
 ---
@@ -35,8 +36,7 @@ Since signatures do not provide confidentiality and do not separate metadata fro
 
 ### **What is the difference between a KEM and a digital signature scheme?**
 
-A **Key Encapsulation Mechanism (KEM)** is used to establish a shared secret between two parties.  
-It provides confidentiality and is typically used to bootstrap symmetric encryption.
+A **Key Encapsulation Mechanism (KEM)** is used to establish a shared secret between two parties. It provides confidentiality and is typically used to bootstrap symmetric encryption.
 
 A **digital signature scheme** provides integrity and authenticity for messages.  
 It does not establish shared secrets and does not provide confidentiality.
@@ -55,6 +55,7 @@ Both are essential in modern cryptographic protocols, but they solve different p
 ### **Can ML‑KEM keys be reused across multiple sessions?**
 
 Yes. ML‑KEM public keys are designed for reuse across many sessions.  
+
 This is necessary for practical deployment (e.g., servers handling many clients).
 
 However:
@@ -68,6 +69,7 @@ Each encapsulation produces a fresh shared secret, even when the same key pair i
 ### **Can ML‑DSA signing keys be reused?**
 
 Yes. ML‑DSA signing keys are intended for long‑term use.  
+
 Unlike classical schemes such as ECDSA, ML‑DSA does not rely on fragile random nonces that could leak the private key.
 
 Still, best practice includes:
@@ -111,6 +113,7 @@ If unsure, **ML‑DSA‑65** is a safe and balanced default.
 ### **Why are hashes (e.g., SHA‑512) computed before signing?**
 
 ML‑DSA signs hash values rather than raw data.  
+
 Hashing large files:
 
 - reduces memory usage  
