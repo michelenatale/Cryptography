@@ -177,7 +177,7 @@ This project serves as a practical reference for developers who want to:
 
 A more detailed Crypto FAQ can be found here:
 
-➡️ [Crypto FAQ](docs/faq.md)
+➡️ [Crypto FAQ](Docs/faq.md)
 
 ---
 
