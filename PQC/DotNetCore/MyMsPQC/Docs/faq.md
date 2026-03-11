@@ -109,6 +109,14 @@ Rule of thumb:
 
 If unsure, **ML‑DSA‑65** is a safe and balanced default.
 
+### Why do KEMs and signatures use different parameter sets?
+
+Because they solve different problems:
+- KEMs focus on **key exchange**, ciphertext size, and decapsulation performance
+- Signatures focus on **message integrity**, signature size, and verification speed
+
+Each algorithm is optimized for its own security and performance trade‑offs.
+
 ---
 
 ## 🧮 Hashing Before Signing
