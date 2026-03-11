@@ -1,4 +1,4 @@
-# 🔍 Crypto FAQ
+# 🔍 PQC Crypto FAQ
 
 This document provides additional background information on the cryptographic concepts used in the MyMsPQC project.  
 
