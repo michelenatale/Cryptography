@@ -11,6 +11,7 @@ It complements the main README and explains why certain design choices were made
 ### **Why is “associated data” used in the encryption examples?**
 
 The encryption examples in this project follow the **AEAD model** (*Authenticated Encryption with Associated Data*).  
+
 AEAD allows additional metadata (such as headers, nonces, or protocol information) to be authenticated without being encrypted.  
 - This ensures that contextual information cannot be tampered with, while still remaining visible.
 - The examples intentionally use associated data to reflect realistic and modern protocol designs.
@@ -18,6 +19,7 @@ AEAD allows additional metadata (such as headers, nonces, or protocol informatio
 ### Why are key pairs stored in the tests, even though they are only temporary?
 
 The tests are designed to demonstrate realistic workflows where key pairs are persisted.
+
 For purely temporary sessions, storing the keys would not be necessary, but it is shown here intentionally to illustrate complete end‑to‑end usage patterns.
 
 ---
@@ -26,8 +28,10 @@ For purely temporary sessions, storing the keys would not be necessary, but it i
 
 ### **Why is there no “associated data” in the digital signature examples?**
 
-Digital signatures (e.g., ML‑DSA) provide *integrity and authenticity* for a message.  
+Digital signatures (e.g., ML‑DSA) provide *integrity and authenticity* for a message. 
+
 Everything that needs to be protected is simply included in the message that is signed.  
+
 Since signatures do not provide confidentiality and do not separate metadata from payload, the AEAD concept does not apply here.
 
 ---
@@ -38,8 +42,7 @@ Since signatures do not provide confidentiality and do not separate metadata fro
 
 A **Key Encapsulation Mechanism (KEM)** is used to establish a shared secret between two parties. It provides confidentiality and is typically used to bootstrap symmetric encryption.
 
-A **digital signature scheme** provides integrity and authenticity for messages.  
-It does not establish shared secrets and does not provide confidentiality.
+A **digital signature scheme** provides integrity and authenticity for messages. It does not establish shared secrets and does not provide confidentiality.
 
 In short:
 
