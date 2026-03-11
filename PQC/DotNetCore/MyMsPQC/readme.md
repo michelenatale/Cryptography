@@ -22,6 +22,7 @@ Examples for:
 ```
 MyMsPQC/
 │
+├── Docs /              # Documentation, FAQ, etc.
 ├── MyMsPQC /           # Core library with PQC implementations
 ├── TestMyMsPQC /       # Unit tests and usage examples
 ├── TestMyMsPQCVb /     # Unit tests and usage examples in Vb.Net
