@@ -129,5 +129,5 @@ This is why the examples compute a hash before signing.
 
 ## 📚 More Documentation
 
-For additional details, refer to the main project README or the official Microsoft PQC documentation.
+For additional details, refer to the main project [README](../readme.md) or the official [Microsoft PQC documentation](../#-reference).
 
