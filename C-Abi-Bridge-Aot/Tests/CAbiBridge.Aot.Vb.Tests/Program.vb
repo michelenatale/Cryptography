@@ -23,6 +23,12 @@ Namespace michele.natale.Tests
       CryptoAesTest.StartNative(rounds)
       CryptoAesGcmTest.StartNative(rounds)
       CryptoChaCha20Poly1305Test.StartNative(rounds)
+
+      CryptoHashHmacTest.StartNative(rounds * 1000)
+      CryptoPqcMlKemTest.StartNative(rounds)
+
+      ConvertEncodingTest.StartNative(rounds * 1000)
+
     End Sub
   End Module
 End Namespace

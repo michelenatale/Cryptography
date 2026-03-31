@@ -1,14 +1,13 @@
 ﻿Option Strict On
 Option Explicit On
 
-Imports michele.natale.CAbiBridge
 Imports System.Runtime.InteropServices
+Imports michele.natale.CAbiBridge
 
 Namespace michele.natale.Tests
   Friend Module Native
 
     Const DllName As String = "C-Abi-Bridge.Aot.N.dll"
-
 
     <DllImport(DllName, EntryPoint:="free_buffer_aot")>
     Public Sub FreeBuffer(ptr As IntPtr)
@@ -281,6 +280,254 @@ Namespace michele.natale.Tests
       size As Int32, min As Decimal,
       max As Decimal, <Out> ByRef out_ptr As IntPtr) As CError
     End Function
+
+#End Region
+
+#Region "Crypto Hash - Hmac"
+
+#Region " Crypto Hash"
+
+    <DllImport(DllName, EntryPoint:="sha_256_hash_data_aot")>
+    Public Function Sha256HashDataAot(
+       bytes As Byte(),
+       bytes_length As Int32,
+       <Out> ByRef output As IntPtr,
+       <Out> ByRef output_length As Int32) As CError
+    End Function
+
+    <DllImport(DllName, EntryPoint:="sha_384_hash_data_aot")>
+    Public Function Sha384HashDataAot(
+       bytes As Byte(),
+       bytes_length As Int32,
+       <Out> ByRef output As IntPtr,
+       <Out> ByRef output_length As Int32) As CError
+    End Function
+
+    <DllImport(DllName, EntryPoint:="sha_512_hash_data_aot")>
+    Public Function Sha512HashDataAot(
+       bytes As Byte(),
+       bytes_length As Int32,
+       <Out> ByRef output As IntPtr,
+       <Out> ByRef output_length As Int32) As CError
+    End Function
+
+    <DllImport(DllName, EntryPoint:="sha1_hash_data_aot")>
+    Public Function Sha1HashDataAot(
+       bytes As Byte(),
+       bytes_length As Int32,
+       <Out> ByRef output As IntPtr,
+       <Out> ByRef output_length As Int32) As CError
+    End Function
+
+    <DllImport(DllName, EntryPoint:="md5_hash_data_aot")>
+    Public Function Md5HashDataAot(
+       bytes As Byte(),
+       bytes_length As Int32,
+       <Out> ByRef output As IntPtr,
+       <Out> ByRef output_length As Int32) As CError
+    End Function
+
+#End Region
+
+#Region " Crypto Hmac"
+
+    <DllImport(DllName, EntryPoint:="hmac_sha_256_hash_data_aot")>
+    Public Function HmacSha256HashDataAot(
+       bytes As Byte(),
+       bytes_length As Int32,
+       key As Byte(),
+       key_length As Int32,
+       <Out> ByRef output As IntPtr,
+       <Out> ByRef output_length As Int32) As CError
+    End Function
+
+    <DllImport(DllName, EntryPoint:="hmac_sha_384_hash_data_aot")>
+    Public Function HmacSha384HashDataAot(
+       bytes As Byte(),
+       bytes_length As Int32,
+       key As Byte(),
+       key_length As Int32,
+       <Out> ByRef output As IntPtr,
+       <Out> ByRef output_length As Int32) As CError
+    End Function
+
+    <DllImport(DllName, EntryPoint:="hmac_sha_512_hash_data_aot")>
+    Public Function HmacSha512HashDataAot(
+       bytes As Byte(),
+       bytes_length As Int32,
+       key As Byte(),
+       key_length As Int32,
+       <Out> ByRef output As IntPtr,
+       <Out> ByRef output_length As Int32) As CError
+    End Function
+
+    <DllImport(DllName, EntryPoint:="hmac_sha1_hash_data_aot")>
+    Public Function HmacSha1HashDataAot(
+       bytes As Byte(),
+       bytes_length As Int32,
+       key As Byte(),
+       key_length As Int32,
+       <Out> ByRef output As IntPtr,
+       <Out> ByRef output_length As Int32) As CError
+    End Function
+
+    <DllImport(DllName, EntryPoint:="hmac_md5_hash_data_aot")>
+    Public Function HmacMd5HashDataAot(
+       bytes As Byte(),
+       bytes_length As Int32,
+       key As Byte(),
+       key_length As Int32,
+       <Out> ByRef output As IntPtr,
+       <Out> ByRef output_length As Int32) As CError
+    End Function
+
+#End Region
+
+#End Region
+
+#Region "Crypto PQC"
+
+#Region "Crypto PQC Cryption"
+
+#Region "Crypto PQC Cryption ML-KEM"
+
+#Region "Crypto PQC Cryption ML-KEM Bytes"
+
+    <DllImport(DllName, EntryPoint:="create_mlkem_key_pair_aot")>
+    Public Function CreateMlKemKeyPairAot(
+       <Out> ByRef priv_key_ptr As IntPtr, <Out> ByRef priv_key_length As Int32,
+       <Out> ByRef pub_key_ptr As IntPtr, <Out> ByRef pub_key_length As Int32,
+       <Out> ByRef guid_id_ptr As IntPtr, <Out> ByRef guid_id_length As Int32,
+       <Out> ByRef mlkem_param As Byte, <Out> ByRef crypto_algo As Byte) As CError
+    End Function
+
+    <DllImport(DllName, EntryPoint:="create_mlkem_key_pair_param_aot")>
+    Public Function CreateMlKemKeyPairParamAot(
+       mlkem_param As Byte, crypto_algo As Byte,
+       <Out> ByRef priv_key_ptr As IntPtr, <Out> ByRef priv_key_length As Int32,
+       <Out> ByRef pub_key_ptr As IntPtr, <Out> ByRef pub_key_length As Int32,
+       <Out> ByRef guid_id_ptr As IntPtr, <Out> ByRef guid_id_length As Int32) As CError
+    End Function
+
+    <DllImport(DllName, EntryPoint:="save_pqc_mlkem_key_pair_aot")>
+    Public Function SavePqcMlKemKeyPairAot(
+       src As Byte(), src_length As Int32,
+       priv_key As Byte(), priv_key_length As Int32,
+       pub_key As Byte(), pub_key_length As Int32,
+       guid_id As Byte(), guid_id_length As Int32,
+       mlkem_param As Byte, crypto_algo As Byte,
+       <MarshalAs(UnmanagedType.U1)> save_private_key As Boolean) As CError
+    End Function
+    <DllImport(DllName, EntryPoint:="load_pqc_mlkem_key_pair_aot")>
+    Public Function LoadPqcMlKemKeyPairAot(
+       src As Byte(), src_length As Int32, <Out>
+       ByRef priv_key_ptr As IntPtr, <Out> ByRef priv_key_length As Int32,
+       <Out> ByRef pub_key_ptr As IntPtr, <Out> ByRef pub_key_length As Int32,
+       <Out> ByRef guid_id_ptr As IntPtr, <Out> ByRef guid_id_length As Int32,
+       <Out> ByRef mlkem_param As Byte, <Out> ByRef crypto_algo As Byte) As CError
+    End Function
+
+    <DllImport(DllName, EntryPoint:="to_pqc_mlkem_capsulation_from_pub_key_aot")>
+    Public Function ToPqcMlKemCapsulationFromPubKeyAot(
+       alice_public_key As Byte(), alice_public_key_length As Int32,
+       mlkem_param As Byte,
+       <Out> ByRef shared_key_ptr As IntPtr, <Out> ByRef shared_key_length As Int32,
+       <Out> ByRef capsulation_ptr As IntPtr, <Out> ByRef capsulation_length As Int32) As CError
+    End Function
+
+    <DllImport(DllName, EntryPoint:="to_pqc_mlkem_shared_key_from_private_key_aot")>
+    Public Function ToPqcMlKemSharedKeyFromPrivateKeyAot(
+       alice_private_key As Byte(), alice_private_key_length As Int32,
+       capsulation As Byte(), capsulation_length As Int32,
+       mlkem_param As Byte,
+       <Out> ByRef [shared] As IntPtr, <Out> ByRef shared_length As Int32) As CError
+    End Function
+
+    <DllImport(DllName, EntryPoint:="pqc_mlkem_encryption_aot")>
+    Public Function PqcMlKemEncryptionAot(
+       message As Byte(), message_length As Int32,
+       private_key As Byte(), private_key_length As Int32,
+       capsulation As Byte(), capsulation_length As Int32,
+       associated As Byte(), associated_length As Int32,
+       mlkem_param As Byte, crypto_algo As Byte,
+       <Out> ByRef cipher As IntPtr, <Out> ByRef cipher_length As Int32) As CError
+    End Function
+    <DllImport(DllName, EntryPoint:="pqc_mlkem_decryption_aot")>
+    Public Function PqcMlKemDecryptionAot(
+       cipher As Byte(), cipher_length As Int32,
+       shared_key As Byte(), shared_key_length As Int32,
+       associated As Byte(), associated_length As Int32,
+       mlkem_param As Byte, crypto_algo As Byte,
+       <Out> ByRef decipher_ptr As IntPtr, <Out> ByRef decipher_length As Int32) As CError
+    End Function
+#End Region
+
+#Region "Crypto PQC Cryption ML-KEM File"
+
+    <DllImport(DllName, EntryPoint:="pqc_mlkem_encryption_file_aot")>
+    Public Function PqcMlKemEncryptionFileAot(
+       src_file As Byte(), src_file_length As Int32,
+       dest_file As Byte(), dest_file_length As Int32,
+       private_key As Byte(), private_key_length As Int32,
+       capsulation As Byte(), capsulation_length As Int32,
+       associated As Byte(), associated_length As Int32,
+       mlkem_param As Byte, crypto_algo As Byte) As CError
+    End Function
+
+    <DllImport(DllName, EntryPoint:="pqc_mlkem_decryption_file_aot")>
+    Public Function PqcMlKemDecryptionFileAot(
+       src_file As Byte(), src_file_length As Int32,
+       dest_file As Byte(), dest_file_length As Int32,
+       shared_key As Byte(), shared_key_length As Int32,
+       associated As Byte(), associated_length As Int32) As CError
+    End Function
+
+#End Region
+
+#End Region
+
+#End Region
+
+#Region "Crypto PQC Signature"
+
+#End Region
+
+#End Region
+
+#Region "Convert - Encoding"
+
+#Region "Base646"
+
+    <DllImport(DllName, EntryPoint:="to_base_64_utf8_aot")>
+    Public Function ToBase64Aot(
+      bytes As Byte(), bytes_length As Int32,
+      <Out> ByRef output As IntPtr, <Out> ByRef output_length As Int32) As CError
+    End Function
+
+    <DllImport(DllName, EntryPoint:="from_base_64_utf8_aot")>
+    Public Function FromBase64Aot(
+      bytes As Byte(), bytes_length As Int32,
+      <Out> ByRef output As IntPtr, <Out> ByRef output_length As Int32) As CError
+    End Function
+
+#End Region
+
+#Region "Hex"
+
+    <DllImport(DllName, EntryPoint:="to_hex_utf8_aot")>
+    Public Function ToHexAot(
+      bytes As Byte(), bytes_length As Int32,
+      <Out> ByRef output As IntPtr, <Out> ByRef output_length As Int32,
+      <MarshalAs(UnmanagedType.U1)> Optional lower As Boolean = True) As CError
+    End Function
+
+    <DllImport(DllName, EntryPoint:="from_hex_utf8_aot")>
+    Public Function FromHexAot(
+      bytes As Byte(), bytes_length As Int32,
+      <Out> ByRef output As IntPtr, <Out> ByRef output_length As Int32) As CError
+    End Function
+
+#End Region
 
 #End Region
 
