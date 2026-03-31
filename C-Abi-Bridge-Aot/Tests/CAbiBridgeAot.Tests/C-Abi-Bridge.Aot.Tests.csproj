@@ -31,6 +31,9 @@
 
   <ItemGroup>
     <Folder Include="TestCompress\" />
+    <Folder Include="TestCrypto\TestCryptoPqc\TestCryptoPqcSignature\TestCryptoPqcSignatureStateless\TestCryptoPqcSignatureSlhDsa\" />
+    <Folder Include="TestCrypto\TestCryptoSignature\" />
+    <Folder Include="TestCrypto\TestCryptoCryption\TestCryptoAsymmetric\" />
     <Folder Include="TestSerialize\" />
   </ItemGroup>
 

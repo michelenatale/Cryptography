@@ -9,7 +9,6 @@ using CAbiBridge;
 
 internal static partial class Native
 {
-
   const string DllName = "C-Abi-Bridge.Aot.N.dll";
 
   #region Allocation - Free
@@ -17,7 +16,7 @@ internal static partial class Native
   internal static partial void FreeBuffer(IntPtr ptr);
   #endregion Allocation - Free
 
-  #region Crypto
+  #region Crypto Symmetric
 
   #region Aes
 
@@ -115,7 +114,72 @@ internal static partial class Native
 
   #endregion ChaCha20Poly1305
 
-  #endregion Crypto
+  #endregion Crypto Symmetric
+
+  #region Crypto Hash - Hmac
+
+  #region Crypto Hash
+  [LibraryImport(DllName, EntryPoint = "sha_256_hash_data_aot")]
+  internal static partial CError Sha256HashDataAot(
+    ReadOnlySpan<byte> bytes, int bytes_length,
+    out IntPtr output, out int output_length);
+
+  [LibraryImport(DllName, EntryPoint = "sha_384_hash_data_aot")]
+  public static partial CError Sha384HashDataAot(
+    ReadOnlySpan<byte> bytes, int bytes_length,
+    out IntPtr output, out int output_length);
+
+  [LibraryImport(DllName, EntryPoint = "sha_512_hash_data_aot")]
+  public static partial CError Sha512HashDataAot(
+    ReadOnlySpan<byte> bytes, int bytes_length,
+    out IntPtr output, out int output_length);
+
+  [LibraryImport(DllName, EntryPoint = "sha1_hash_data_aot")]
+  public static partial CError Sha1HashDataAot(
+    ReadOnlySpan<byte> bytes, int bytes_length,
+    out IntPtr output, out int output_length);
+
+  [LibraryImport(DllName, EntryPoint = "md5_hash_data_aot")]
+  public static partial CError Md5HashDataAot(
+    ReadOnlySpan<byte> bytes, int bytes_length,
+    out IntPtr output, out int output_length);
+
+  #endregion Crypto Hash
+
+  #region Crypto Hmac
+  [LibraryImport(DllName, EntryPoint = "hmac_sha_256_hash_data_aot")]
+  public static partial CError HmacSha256HashDataAot(
+    ReadOnlySpan<byte> bytes, int bytes_length,
+    ReadOnlySpan<byte> key, int key_length,
+    out IntPtr output, out int output_length);
+
+  [LibraryImport(DllName, EntryPoint = "hmac_sha_384_hash_data_aot")]
+  public static partial CError HmacSha384HashDataAot(
+    ReadOnlySpan<byte> bytes, int bytes_length,
+    ReadOnlySpan<byte> key, int key_length,
+    out IntPtr output, out int output_length);
+
+  [LibraryImport(DllName, EntryPoint = "hmac_sha_512_hash_data_aot")]
+  public static partial CError HmacSha512HashDataAot(
+    ReadOnlySpan<byte> bytes, int bytes_length,
+    ReadOnlySpan<byte> key, int key_length,
+    out IntPtr output, out int output_length);
+
+  [LibraryImport(DllName, EntryPoint = "hmac_sha1_hash_data_aot")]
+  public static partial CError HmacSha1HashDataAot(
+    ReadOnlySpan<byte> bytes, int bytes_length,
+    ReadOnlySpan<byte> key, int key_length,
+    out IntPtr output, out int output_length);
+
+  [LibraryImport(DllName, EntryPoint = "hmac_md5_hash_data_aot")]
+  public static partial CError HmacMd5HashDataAot(
+    ReadOnlySpan<byte> bytes, int bytes_length,
+    ReadOnlySpan<byte> key, int key_length,
+    out IntPtr output, out int output_length);
+
+  #endregion Crypto Hmac
+
+  #endregion Crypto Hash - Hmac
 
   #region Crypto Random
 
@@ -251,6 +315,191 @@ internal static partial class Native
   #endregion Decimals
 
   #endregion Crypto Random
+
+  #region Crypto PQC
+
+  #region Crypto PQC Cryption
+
+  #region Crypto PQC Cryption ML-KEM
+
+  #region Crypto PQC Cryption ML-KEM Bytes
+
+  [LibraryImport(DllName, EntryPoint = "create_mlkem_key_pair_aot")]
+  internal static partial CError CreateMlKemKeyPairAot(
+    out IntPtr priv_key_ptr, out int priv_key_length,
+    out IntPtr pub_key_ptr, out int pub_key_length,
+    out IntPtr guid_id_ptr, out int guid_id_length,
+    out byte mlkem_param, out byte crypto_algo);
+
+  [LibraryImport(DllName, EntryPoint = "create_mlkem_key_pair_param_aot")]
+  internal static partial CError CreateMlKemKeyPairParamAot(
+    byte mlkem_param, byte crypto_algo,
+    out IntPtr priv_key_ptr, out int priv_key_length,
+    out IntPtr pub_key_ptr, out int pub_key_length,
+    out IntPtr guid_id_ptr, out int guid_id_length);
+
+  [LibraryImport(DllName, EntryPoint = "save_pqc_mlkem_key_pair_aot")]
+  internal static partial CError SavePqcMlKemKeyPairAot(
+    ReadOnlySpan<byte> src, int src_length,
+    ReadOnlySpan<byte> priv_key, int priv_key_length,
+    ReadOnlySpan<byte> pub_key, int pub_key_length,
+    ReadOnlySpan<byte> guid_id, int guid_id_length,
+    byte mlkem_param, byte crypto_algo,
+    [MarshalAs(UnmanagedType.U1)] bool save_private_key);
+
+  [LibraryImport(DllName, EntryPoint = "load_pqc_mlkem_key_pair_aot")]
+  internal static partial CError LoadPqcMlKemKeyPairAot(
+    ReadOnlySpan<byte> src, int src_length,
+    out IntPtr priv_key_ptr, out int priv_key_length,
+    out IntPtr pub_key_ptr, out int pub_key_length,
+    out IntPtr guid_id_ptr, out int guid_id_length,
+    out byte mlkem_param, out byte crypto_algo);
+
+  [LibraryImport(DllName, EntryPoint = "to_pqc_mlkem_capsulation_from_pub_key_aot")]
+  internal static partial CError ToPqcMlKemCapsulationFromPubKeyAot(
+    ReadOnlySpan<byte> alice_public_key, int alice_public_key_length,
+    byte mlkem_param,
+    out IntPtr shared_key_ptr, out int shared_key_length,
+    out IntPtr capsulation_ptr, out int capsulation_length);
+
+  [LibraryImport(DllName, EntryPoint = "to_pqc_mlkem_shared_key_from_private_key_aot")]
+  internal static partial CError ToPqcMlKemSharedKeyFromPrivateKeyAot(
+    ReadOnlySpan<byte> alice_private_key, int alice_private_key_length,
+    ReadOnlySpan<byte> capsulation, int capsulation_length,
+    byte mlkem_param, out IntPtr shared, out int shared_length);
+
+  [LibraryImport(DllName, EntryPoint = "pqc_mlkem_encryption_aot")]
+  internal static partial CError PqcMlKemEncryptionAot(
+    ReadOnlySpan<byte> message, int message_length,
+    ReadOnlySpan<byte> private_key, int private_key_length,
+    ReadOnlySpan<byte> capsulation, int capsulation_length,
+    ReadOnlySpan<byte> associated, int associated_length,
+    byte mlkem_param, byte crypto_algo,
+    out IntPtr cipher, out int cipher_length);
+
+  [LibraryImport(DllName, EntryPoint = "pqc_mlkem_decryption_aot")]
+  internal static partial CError PqcMlKemDecryptionAot(
+    ReadOnlySpan<byte> cipher, int cipher_length,
+    ReadOnlySpan<byte> shared_key, int shared_key_length,
+    ReadOnlySpan<byte> associated, int associated_length,
+    byte mlkem_param, byte crypto_algo,
+    out IntPtr decipher_ptr, out int decipher_length);
+
+  #endregion Crypto PQC Cryption ML-KEM Bytes
+
+  #region Crypto PQC Cryption ML-KEM Files
+
+  [LibraryImport(DllName, EntryPoint = "pqc_mlkem_encryption_file_aot")]
+  internal static partial CError PqcMlKemEncryptionFileAot(
+    ReadOnlySpan<byte> src_file, int src_file_length,
+    ReadOnlySpan<byte> dest_file, int dest_file_length,
+    ReadOnlySpan<byte> private_key, int private_key_length,
+    ReadOnlySpan<byte> capsulation, int capsulation_length,
+    ReadOnlySpan<byte> associated, int associated_length,
+    byte mlkem_param, byte crypto_algo);
+
+  [LibraryImport(DllName, EntryPoint = "pqc_mlkem_decryption_file_aot")]
+  internal static partial CError PqcMlKemDecryptionFileAot(
+    ReadOnlySpan<byte> src_file, int src_file_length,
+    ReadOnlySpan<byte> dest_file, int dest_file_length,
+    ReadOnlySpan<byte> shared_key, int shared_key_length,
+    ReadOnlySpan<byte> associated, int associated_length);
+
+
+  //[LibraryImport(DllName, EntryPoint = "pqc_mlkem_encryption_kpi_file_aot")]
+  //internal static partial CError PqcMlKemEncryptionKpiFileAot(
+  //  ReadOnlySpan<byte> src_file, int src_file_length,
+  //  ReadOnlySpan<byte> dest_file, int dest_file_length,
+  //  ReadOnlySpan<byte> key_pair_file, int key_pair_file_length,
+  //  ReadOnlySpan<byte> associated, int associated_length);
+
+  //[LibraryImport(DllName, EntryPoint = "pqc_mlkem_decryption_kpi_file_aot")]
+  //internal static partial CError PqcMlKemDecryptionKpiFileAot(
+  //  ReadOnlySpan<byte> src_file, int src_file_length,
+  //  ReadOnlySpan<byte> dest_file, int dest_file_length,
+  //  ReadOnlySpan<byte> key_pair_file, int key_pair_file_length,
+  //  ReadOnlySpan<byte> associated, int associated_length);
+
+  #endregion Crypto PQC Cryption ML-KEM Files
+
+  #endregion Crypto PQC Cryption ML-KEM
+
+  #endregion Crypto PQC Cryption
+
+  #region Crypto PQC Signatur
+
+  #region Crypto PQC Signatur Stateless
+
+  #region Crypto PQC Signatur ML-DSA
+
+  #region Crypto PQC Signatur ML-DSA Bytes
+
+  //stuff
+
+  #endregion Crypto PQC Signatur ML-DSA Bytes
+
+  #region Crypto PQC Signatur ML-DSA Files
+
+  #endregion Crypto PQC Signatur ML-DSA Files
+
+  //stuff
+
+  #endregion Crypto PQC Signatur ML-DSA
+
+  #region Crypto PQC Signatur SLH-DSA
+
+  #region Crypto PQC Signatur SLH-DSA Bytes
+
+  //stuff
+
+  #endregion Crypto PQC Signatur SLH-DSA Bytes
+
+  #region Crypto PQC Signatur SLH-DSA Files
+
+  //stuff
+
+  #endregion Crypto PQC Signatur SLH-DSA Files
+
+  #endregion Crypto PQC Signatur SLH-DSA
+
+  #endregion Crypto PQC Signatur Stateless
+
+  #endregion Crypto PQC Signatur
+
+  #endregion Crypto PQC
+
+  #region Convert - Encoding
+
+  #region Base64
+
+  [LibraryImport(DllName, EntryPoint = "to_base_64_utf8_aot")]
+  internal static partial CError ToBase64Aot(
+    ReadOnlySpan<byte> bytes, int bytes_length,
+    out IntPtr output, out int output_length);
+
+  [LibraryImport(DllName, EntryPoint = "from_base_64_utf8_aot")]
+  public static partial CError FromBase64Aot(
+    ReadOnlySpan<byte> bytes, int bytes_length,
+    out IntPtr output, out int output_length);
+
+  #endregion Base64
+
+  #region Hex
+
+  [LibraryImport(DllName, EntryPoint = "to_hex_utf8_aot")]
+  internal static partial CError ToHexAot(
+  ReadOnlySpan<byte> bytes, int bytes_length,
+  out IntPtr output, out int output_length,
+  [MarshalAs(UnmanagedType.U1)] bool lower = true);
+
+  [LibraryImport(DllName, EntryPoint = "from_hex_utf8_aot")]
+  public static partial CError FromHexAot(
+    ReadOnlySpan<byte> bytes, int bytes_length,
+    out IntPtr output, out int output_length);
+
+  #endregion Hex
+
+  #endregion Convert - Encoding
 
   #region Compress
 

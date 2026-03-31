@@ -17,11 +17,16 @@ public class Program
 
   private static void Tests(int rounds)
   {
-    CryptoRandomTest.Start(rounds * 1000);
+    CryptoRandomTest.StartNative(rounds * 1000);
+    CryptoHashHmacTest.StartNative(rounds * 1000);
 
     CryptoAesTest.StartNative(rounds);
     CryptoAesGcmTest.StartNative(rounds);
     CryptoChaCha20Poly1305Test.StartNative(rounds);
+
+    CryptoPqcMlKemTest.StartNative(rounds);
+
+    ConvertEncodingTest.StartNative(rounds * 1000);
 
 
     ////Kann für die Tests der Nativen
