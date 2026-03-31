@@ -1,0 +1,8 @@
+cd X:\[...]\C-Abi-Bridge-Aot\Src\CAbiBridge.Aot
+dotnet publish -c Release -r win-x64
+
+cd X:\[...]\C-Abi-Bridge-Aot\Src\CAbiBridge.Aot\Build\net10.0\publish
+make-def.bat //füge diese Datei in das obige Verzeichnis ein.
+lib /def:C-Abi-Bridge.Aot.def /out:C-Abi-Bridge.Aot.lib /machine:x64
+
+
