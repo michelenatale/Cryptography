@@ -1,0 +1,267 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Quelldateien">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Headerdateien">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Ressourcendateien">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Headerdateien\test_crypto">
+      <UniqueIdentifier>{92c7c400-1bd4-4d45-87ca-6e8beb09a147}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien\test_crypto\test_crypto_utils">
+      <UniqueIdentifier>{c78be4ca-d92e-4c39-915f-0b52ba6551ce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien\test_crypto\test_crypto_random">
+      <UniqueIdentifier>{fac7f377-9b48-4aa6-a0e9-67842ebcf7c0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien\test_crypto\test_crypto_cryption">
+      <UniqueIdentifier>{91821235-8b25-4f76-a153-d9ea2fc6c651}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien\test_crypto\test_crypto_cryption\test_crypto_cryption_asymmetric">
+      <UniqueIdentifier>{86f703e5-251c-40e0-94cd-25265f027314}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien\test_crypto\test_crypto_cryption\test_crypto_cryption_symmetric">
+      <UniqueIdentifier>{07ff9458-bc23-42bc-ba2e-a62880167d40}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien\test_crypto\test_crypto_cryption\test_crypto_cryption_symmetric\test_crypto_aes">
+      <UniqueIdentifier>{1067cd34-2574-469e-bdbd-0f2a0e5f0633}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien\test_crypto\test_crypto_cryption\test_crypto_cryption_symmetric\test_crypto_aes_gcm">
+      <UniqueIdentifier>{2ae4fbd3-fe22-4e0e-bf9d-daaf65b3a04f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien\test_crypto\test_crypto_cryption\test_crypto_cryption_symmetric\test_crypto_chacha_poly">
+      <UniqueIdentifier>{ba5117f7-de5a-4a61-ad80-14357caf93dc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quelldateien\test_crypto">
+      <UniqueIdentifier>{2e8b042c-3fc9-484c-ac8e-f1208626b8a9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quelldateien\test_crypto\test_crypto_cryption">
+      <UniqueIdentifier>{31b119b1-4c7e-4f39-ac15-770d3490def6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quelldateien\test_crypto\test_crypto_cryption\test_crypto_cryption_symmetric">
+      <UniqueIdentifier>{c218ed7d-890c-4f80-a42a-bd97354d8327}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quelldateien\test_crypto\test_crypto_cryption\test_crypto_cryption_asymmetric">
+      <UniqueIdentifier>{944941d9-4336-4d56-a865-2da52102663b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quelldateien\test_crypto\test_crypto_utils">
+      <UniqueIdentifier>{271814da-6541-4877-a5ee-d61cd1823efa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quelldateien\test_crypto\test_crypto_cryption\test_crypto_cryption_symmetric\test_crypto_aes_gcm">
+      <UniqueIdentifier>{e0cc5ca1-d879-4847-9fd8-2e7c1053a4be}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quelldateien\test_crypto\test_crypto_cryption\test_crypto_cryption_symmetric\test_crypto_chacha_poly">
+      <UniqueIdentifier>{6d04ff70-30b2-4bfd-9a49-050a17a1d9c7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quelldateien\test_crypto\test_crypto_cryption\test_crypto_cryption_symmetric\test_crypto_aes">
+      <UniqueIdentifier>{1a0a47ea-607d-457e-adaa-de6cbfce1f89}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quelldateien\test_crypto\test_crypto_random">
+      <UniqueIdentifier>{708adae8-7d15-4f0d-8c3f-1ea0a0effb66}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien\test_crypto\test_crypto_hash_hmac">
+      <UniqueIdentifier>{84a4f9fe-142c-4d88-a056-362731635f64}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien\test_crypto\test_crypto_pqc">
+      <UniqueIdentifier>{417e1ca2-c2d6-4349-99cb-691b6c78dc99}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien\test_crypto\test_crypto_pqc\test_crypto_pqc_cryption">
+      <UniqueIdentifier>{70c60d4c-dcbe-4fce-ae9a-48e7eed66715}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien\test_crypto\test_crypto_pqc\test_crypto_pqc_signature">
+      <UniqueIdentifier>{75f0453f-9ead-42bf-9d7c-c554e1b592a4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien\test_crypto\test_crypto_pqc\test_crypto_pqc_signature\test_crypto_pqc_signature_stateless">
+      <UniqueIdentifier>{c099ea95-050a-44c2-8c47-8d0d1707b10e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien\test_crypto\test_crypto_pqc\test_crypto_pqc_cryption\test_crypto_pqc_ml_kem">
+      <UniqueIdentifier>{40c55ed3-a91e-4d95-bb27-7b93b925476c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quelldateien\test_crypto\test_crypto_pqc">
+      <UniqueIdentifier>{b680cdf4-237d-4b0b-8f04-7a2da5b869b3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quelldateien\test_crypto\test_crypto_pqc\test_crypto_pqc_cryption">
+      <UniqueIdentifier>{adeec54b-fb4f-43cb-8ba4-fc08da96fbab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quelldateien\test_crypto\test_crypto_pqc\test_crypto_pqc_signature">
+      <UniqueIdentifier>{4662e184-24c2-43b6-b058-ec8ff1e5a620}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quelldateien\test_crypto\test_crypto_pqc\test_crypto_pqc_cryption\test_crypto_pqc_ml_kem">
+      <UniqueIdentifier>{78f0a421-a409-454b-812d-606ffcc105f8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quelldateien\test_crypto\test_crypto_pqc\test_crypto_pqc_signature\test_crypto_pqc_signature_stateless">
+      <UniqueIdentifier>{a80f74f7-5499-43e1-b70e-b92362334113}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quelldateien\test_crypto\test_crypto_pqc\test_crypto_pqc_signature\test_crypto_pqc_signature_stateless\test_crypto_pqc_ml_dsa">
+      <UniqueIdentifier>{26ce6bcc-d459-47fc-9ac7-29f5577c4342}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quelldateien\test_crypto\test_crypto_pqc\test_crypto_pqc_signature\test_crypto_pqc_signature_stateless\test_crypto_pqc_slh_dsa">
+      <UniqueIdentifier>{73feb6ec-1fe1-4ccf-9817-92f5e4fdc5f2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien\test_crypto\test_crypto_pqc\test_crypto_pqc_signature\test_crypto_pqc_signature_stateless\test_crypto_pqc_ml_dsa">
+      <UniqueIdentifier>{d56c2e40-777f-4549-a1bd-e1b9ad860e52}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien\test_crypto\test_crypto_pqc\test_crypto_pqc_signature\test_crypto_pqc_signature_stateless\test_crypto_pqc_slh_dsa">
+      <UniqueIdentifier>{0324fc25-559a-4396-af92-09e094bd4c03}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quelldateien\test_crypto\test_crypto_hash_hmac">
+      <UniqueIdentifier>{5718d9a1-c9f2-4988-90df-a20453b8ba68}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien\test_convert_encoding">
+      <UniqueIdentifier>{c9bc97ce-c01d-467f-8ec5-34a5fcf382cd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quelldateien\test_convert_encoding">
+      <UniqueIdentifier>{0c60ab5e-0010-4096-8e7a-bdbb5c69e645}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="program.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="pch.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="native.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="crypto_aes_bytes_test.cpp">
+      <Filter>Quelldateien\test_crypto\test_crypto_cryption\test_crypto_cryption_symmetric\test_crypto_aes</Filter>
+    </ClCompile>
+    <ClCompile Include="crypto_aes_file_stream_test.cpp">
+      <Filter>Quelldateien\test_crypto\test_crypto_cryption\test_crypto_cryption_symmetric\test_crypto_aes</Filter>
+    </ClCompile>
+    <ClCompile Include="crypto_aes_test.cpp">
+      <Filter>Quelldateien\test_crypto\test_crypto_cryption\test_crypto_cryption_symmetric\test_crypto_aes</Filter>
+    </ClCompile>
+    <ClCompile Include="test_crypto_utils.cpp">
+      <Filter>Quelldateien\test_crypto\test_crypto_utils</Filter>
+    </ClCompile>
+    <ClCompile Include="crypto_aes_gcm_test.cpp">
+      <Filter>Quelldateien\test_crypto\test_crypto_cryption\test_crypto_cryption_symmetric\test_crypto_aes_gcm</Filter>
+    </ClCompile>
+    <ClCompile Include="crypto_aes_gcm_file_stream_test.cpp">
+      <Filter>Quelldateien\test_crypto\test_crypto_cryption\test_crypto_cryption_symmetric\test_crypto_aes_gcm</Filter>
+    </ClCompile>
+    <ClCompile Include="crypto_aes_gcm_bytes_test.cpp">
+      <Filter>Quelldateien\test_crypto\test_crypto_cryption\test_crypto_cryption_symmetric\test_crypto_aes_gcm</Filter>
+    </ClCompile>
+    <ClCompile Include="crypto_chacha_poly_bytes_test.cpp">
+      <Filter>Quelldateien\test_crypto\test_crypto_cryption\test_crypto_cryption_symmetric\test_crypto_chacha_poly</Filter>
+    </ClCompile>
+    <ClCompile Include="crypto_chacha_poly_file_stream_test.cpp">
+      <Filter>Quelldateien\test_crypto\test_crypto_cryption\test_crypto_cryption_symmetric\test_crypto_chacha_poly</Filter>
+    </ClCompile>
+    <ClCompile Include="crypto_chacha_poly_test.cpp">
+      <Filter>Quelldateien\test_crypto\test_crypto_cryption\test_crypto_cryption_symmetric\test_crypto_chacha_poly</Filter>
+    </ClCompile>
+    <ClCompile Include="crypto_random_test.cpp">
+      <Filter>Quelldateien\test_crypto\test_crypto_random</Filter>
+    </ClCompile>
+    <ClCompile Include="convert_encoding_hex_test.cpp">
+      <Filter>Quelldateien\test_convert_encoding</Filter>
+    </ClCompile>
+    <ClCompile Include="convert_encoding_base64_test.cpp">
+      <Filter>Quelldateien\test_convert_encoding</Filter>
+    </ClCompile>
+    <ClCompile Include="convert_encoding_utils_test.cpp">
+      <Filter>Quelldateien\test_convert_encoding</Filter>
+    </ClCompile>
+    <ClCompile Include="convert_encoding_test.cpp">
+      <Filter>Quelldateien\test_convert_encoding</Filter>
+    </ClCompile>
+    <ClCompile Include="crypto_hash_hmac_test.cpp">
+      <Filter>Quelldateien\test_crypto\test_crypto_hash_hmac</Filter>
+    </ClCompile>
+    <ClCompile Include="crypto_hash_test.cpp">
+      <Filter>Quelldateien\test_crypto\test_crypto_hash_hmac</Filter>
+    </ClCompile>
+    <ClCompile Include="crypto_hmac_test.cpp">
+      <Filter>Quelldateien\test_crypto\test_crypto_hash_hmac</Filter>
+    </ClCompile>
+    <ClCompile Include="ref_hash_hmac.cpp">
+      <Filter>Quelldateien\test_crypto\test_crypto_hash_hmac</Filter>
+    </ClCompile>
+    <ClCompile Include="crypto_pqc_test.cpp">
+      <Filter>Quelldateien\test_crypto\test_crypto_pqc</Filter>
+    </ClCompile>
+    <ClCompile Include="crypto_pqc_ml_kem_test.cpp">
+      <Filter>Quelldateien\test_crypto\test_crypto_pqc\test_crypto_pqc_cryption\test_crypto_pqc_ml_kem</Filter>
+    </ClCompile>
+    <ClCompile Include="crypto_pqc_ml_kem_bytes_test.cpp">
+      <Filter>Quelldateien\test_crypto\test_crypto_pqc\test_crypto_pqc_cryption\test_crypto_pqc_ml_kem</Filter>
+    </ClCompile>
+    <ClCompile Include="crypto_pqc_ml_kem_file_test.cpp">
+      <Filter>Quelldateien\test_crypto\test_crypto_pqc\test_crypto_pqc_cryption\test_crypto_pqc_ml_kem</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="pch.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="bright.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="cabi_exp_imp.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="cerror.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="crypto_aes_test.h">
+      <Filter>Headerdateien\test_crypto\test_crypto_cryption\test_crypto_cryption_symmetric\test_crypto_aes</Filter>
+    </ClInclude>
+    <ClInclude Include="crypto_utils_test.h">
+      <Filter>Headerdateien\test_crypto\test_crypto_utils</Filter>
+    </ClInclude>
+    <ClInclude Include="crypto_aes_gcm_test.h">
+      <Filter>Headerdateien\test_crypto\test_crypto_cryption\test_crypto_cryption_symmetric\test_crypto_aes_gcm</Filter>
+    </ClInclude>
+    <ClInclude Include="variables.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="crypto_chacha_poly_test.h">
+      <Filter>Headerdateien\test_crypto\test_crypto_cryption\test_crypto_cryption_symmetric\test_crypto_chacha_poly</Filter>
+    </ClInclude>
+    <ClInclude Include="crypto_random_test.h">
+      <Filter>Headerdateien\test_crypto\test_crypto_random</Filter>
+    </ClInclude>
+    <ClInclude Include="convert_encoding_test.h">
+      <Filter>Headerdateien\test_convert_encoding</Filter>
+    </ClInclude>
+    <ClInclude Include="convert_encoding_utils_test.h">
+      <Filter>Headerdateien\test_convert_encoding</Filter>
+    </ClInclude>
+    <ClInclude Include="crypto_hash_hmac_test.h">
+      <Filter>Headerdateien\test_crypto\test_crypto_hash_hmac</Filter>
+    </ClInclude>
+    <ClInclude Include="ref_hash_hmac.h">
+      <Filter>Headerdateien\test_crypto\test_crypto_hash_hmac</Filter>
+    </ClInclude>
+    <ClInclude Include="crypto_pqc_test.h">
+      <Filter>Headerdateien\test_crypto\test_crypto_pqc</Filter>
+    </ClInclude>
+    <ClInclude Include="crypto_pqc_ml_kem_test.h">
+      <Filter>Headerdateien\test_crypto\test_crypto_pqc\test_crypto_pqc_cryption\test_crypto_pqc_ml_kem</Filter>
+    </ClInclude>
+    <ClInclude Include="crypto_pqc_ml_kem_file_test.h">
+      <Filter>Headerdateien\test_crypto\test_crypto_pqc\test_crypto_pqc_cryption\test_crypto_pqc_ml_kem</Filter>
+    </ClInclude>
+    <ClInclude Include="crypto_pqc_ml_kem_bytes_test.h">
+      <Filter>Headerdateien\test_crypto\test_crypto_pqc\test_crypto_pqc_cryption\test_crypto_pqc_ml_kem</Filter>
+    </ClInclude>
+    <ClInclude Include="crypto_pqc_ml_kem_bytes_file_test.h">
+      <Filter>Headerdateien\test_crypto\test_crypto_pqc\test_crypto_pqc_cryption\test_crypto_pqc_ml_kem</Filter>
+    </ClInclude>
+    <ClInclude Include="usi_ptr_t.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>18.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{5450581d-be3a-44f0-842f-d0b838912eb8}</ProjectGuid>
+    <RootNamespace>CAbiBridgeAotCppTests</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <Authors>© Michele Natale 2026</Authors>
+    <Product>© C-Abi-Bridge.Aot.Cpp.Tests 2026</Product>
+    <Company>© Michele Natale 2026</Company>
+    <Description>
+      © C-Abi-Bridge.Aot.Cpp.Tests 2026 -
+      © C-Abi-Bridge-Aot 2026 is a high‑performance, NativeAOT‑compatible C ABI interface for cryptographically secure random number generation, byte generation, and modern encryption algorithms.
+      It provides a stable, unmanaged‑friendly API that can be consumed from any language supporting the C ABI (C, C++, Rust, Go, Zig, Python, etc.).
+    </Description>
+    <Copyright>© C-Abi-Bridge.Aot.Cpp.Tests 2026 created by © Michele Natale 2026.</Copyright>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v145</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v145</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v145</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v145</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>
+      </AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(OutDir);$(SolutionDir)Src\CAbiBridge.Aot\Build\net10.0\publish\</AdditionalLibraryDirectories>
+      <AdditionalDependencies>C-Abi-Bridge.Aot.lib</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>
+      </AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(OutDir);$(SolutionDir)Src\CAbiBridge.Aot\Build\net10.0\publish\</AdditionalLibraryDirectories>
+      <AdditionalDependencies>C-Abi-Bridge.Aot.lib</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="convert_encoding_hex_test.cpp" />
+    <ClCompile Include="crypto_hash_test.cpp" />
+    <ClCompile Include="crypto_hmac_test.cpp" />
+    <ClCompile Include="program.cpp" />
+    <ClCompile Include="crypto_aes_bytes_test.cpp" />
+    <ClCompile Include="crypto_aes_file_stream_test.cpp" />
+    <ClCompile Include="crypto_aes_gcm_file_stream_test.cpp" />
+    <ClCompile Include="crypto_aes_gcm_test.cpp" />
+    <ClCompile Include="crypto_aes_test.cpp" />
+    <ClCompile Include="native.cpp" />
+    <ClCompile Include="pch.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="crypto_aes_gcm_bytes_test.cpp" />
+    <ClCompile Include="crypto_chacha_poly_bytes_test.cpp" />
+    <ClCompile Include="crypto_chacha_poly_file_stream_test.cpp" />
+    <ClCompile Include="crypto_chacha_poly_test.cpp" />
+    <ClCompile Include="crypto_random_test.cpp" />
+    <ClCompile Include="convert_encoding_base64_test.cpp" />
+    <ClCompile Include="convert_encoding_test.cpp" />
+    <ClCompile Include="crypto_hash_hmac_test.cpp" />
+    <ClCompile Include="crypto_pqc_test.cpp" />
+    <ClCompile Include="crypto_pqc_ml_kem_test.cpp" />
+    <ClCompile Include="crypto_pqc_ml_kem_bytes_test.cpp" />
+    <ClCompile Include="crypto_pqc_ml_kem_file_test.cpp" />
+    <ClCompile Include="ref_hash_hmac.cpp" />
+    <ClCompile Include="test_crypto_utils.cpp" />
+    <ClCompile Include="convert_encoding_utils_test.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="bright.h" />
+    <ClInclude Include="cabi_exp_imp.h" />
+    <ClInclude Include="cerror.h" />
+    <ClInclude Include="crypto_aes_gcm_test.h" />
+    <ClInclude Include="crypto_aes_test.h" />
+    <ClInclude Include="crypto_chacha_poly_test.h" />
+    <ClInclude Include="crypto_random_test.h" />
+    <ClInclude Include="convert_encoding_test.h" />
+    <ClInclude Include="convert_encoding_utils_test.h" />
+    <ClInclude Include="crypto_hash_hmac_test.h" />
+    <ClInclude Include="crypto_pqc_test.h" />
+    <ClInclude Include="crypto_pqc_ml_kem_test.h" />
+    <ClInclude Include="crypto_pqc_ml_kem_file_test.h" />
+    <ClInclude Include="crypto_pqc_ml_kem_bytes_test.h" />
+    <ClInclude Include="crypto_pqc_ml_kem_bytes_file_test.h" />
+    <ClInclude Include="ref_hash_hmac.h" />
+    <ClInclude Include="usi_ptr_t.h" />
+    <ClInclude Include="variables.h" />
+    <ClInclude Include="crypto_utils_test.h" />
+    <ClInclude Include="pch.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Src\CAbiBridge.Aot\C-Abi-Bridge.Aot.csproj">
+      <Project>{fa3ed49d-d282-edbd-dcad-633e2f12f660}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+  <Target Name="CopyAotDllAfterBuild" AfterTargets="Build">
+    <PropertyGroup>
+      <AotPublishDir>$(SolutionDir)Src\CAbiBridge.Aot\Build\net10.0\publish</AotPublishDir>
+      <!-- DLL -->
+      <AotSourceDll>$(AotPublishDir)\C-Abi-Bridge.Aot.dll</AotSourceDll>
+      <AotTargetDll>$(OutDir)C-Abi-Bridge.Aot.dll</AotTargetDll>
+      <!-- LIB -->
+      <AotSourceLib>$(AotPublishDir)\C-Abi-Bridge.Aot.lib</AotSourceLib>
+      <AotTargetLib>$(OutDir)C-Abi-Bridge.Aot.lib</AotTargetLib>
+    </PropertyGroup>
+    <!-- Copy DLL -->
+    <Copy SourceFiles="$(AotSourceDll)" DestinationFiles="$(AotTargetDll)" SkipUnchangedFiles="false" />
+    <!-- Copy LIB -->
+    <Copy SourceFiles="$(AotSourceLib)" DestinationFiles="$(AotTargetLib)" SkipUnchangedFiles="false" />
+  </Target>
+</Project>
