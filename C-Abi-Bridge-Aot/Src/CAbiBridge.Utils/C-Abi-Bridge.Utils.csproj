@@ -22,7 +22,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="CError\" />
+    <Folder Include="Cryption\" />
+    <Folder Include="PQC\" />
   </ItemGroup>
 
 </Project>
