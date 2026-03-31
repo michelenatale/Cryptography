@@ -21,7 +21,7 @@ public class Program
   }
 
   private async static Task TestCryptoAsync(int rounds)
-  { 
+  {
     await CryptoAesTest.StartAsync(rounds);
     await CryptoAesGcmTest.StartAsync(rounds);
     await CryptoChaCha20Poly1305Test.StartAsync(rounds);
