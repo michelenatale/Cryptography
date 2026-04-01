@@ -40,7 +40,7 @@ partial class CryptoChaCha20Poly1305Test
         key.Ptr, key.Length, associated, associated.Length);
       AssertError(err);
 
-      if (!NetServicesCrypto.FileEquals(src, srcr))
+      if (!NetServicesUtils.FileEquals(src, srcr))
         throw new Exception();
 
       if (i % (rounds / 10) == 0)
@@ -82,7 +82,7 @@ partial class CryptoChaCha20Poly1305Test
       AssertError(err);
 
 
-      if (!NetServicesCrypto.FileEquals(src, srcr))
+      if (!NetServicesUtils.FileEquals(src, srcr))
         throw new Exception();
 
       if (i % (rounds / 10) == 0)

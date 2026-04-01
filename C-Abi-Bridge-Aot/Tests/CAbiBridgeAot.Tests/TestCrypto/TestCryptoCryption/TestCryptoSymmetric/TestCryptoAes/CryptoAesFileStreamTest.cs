@@ -42,7 +42,7 @@ partial class CryptoAesTest
         key.Ptr, key.Length, associated, associated.Length);
       AssertError(err);
 
-      if (!NetServicesCrypto.FileEquals(src, srcr))
+      if (!NetServicesUtils.FileEquals(src, srcr))
         throw new Exception();
 
       if (i % (rounds / 10) == 0)
@@ -85,7 +85,7 @@ partial class CryptoAesTest
         dest, srcr, key, associated);
       AssertError(err);
 
-      if (!NetServicesCrypto.FileEquals(src, srcr))
+      if (!NetServicesUtils.FileEquals(src, srcr))
         throw new Exception();
 
       if (i % (rounds / 10) == 0)

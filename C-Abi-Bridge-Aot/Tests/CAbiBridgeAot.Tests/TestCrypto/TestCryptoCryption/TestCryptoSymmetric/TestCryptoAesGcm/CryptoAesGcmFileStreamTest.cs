@@ -1,12 +1,12 @@
 ﻿
 
-using System.Diagnostics;
 using System.Text;
+using System.Diagnostics;
 
 namespace michele.natale.Tests;
 
-using CAbiBridge;
 using Pointers;
+using CAbiBridge;
 using static CryptoTestUtils;
 
 partial class CryptoAesGcmTest
@@ -38,7 +38,7 @@ partial class CryptoAesGcmTest
        key.Ptr, key.Length, associated, associated.Length);
       AssertError(err);
 
-      if (!NetServicesCrypto.FileEquals(src, srcr))
+      if (!NetServicesUtils.FileEquals(src, srcr))
         throw new Exception();
 
       if (i % (rounds / 10) == 0)
@@ -76,7 +76,7 @@ partial class CryptoAesGcmTest
       err = CryptoBridge.AesGcmDecryptFileManaged(dest, srcr, key, associated);
       AssertError(err);
 
-      if (!NetServicesCrypto.FileEquals(src, srcr))
+      if (!NetServicesUtils.FileEquals(src, srcr))
         throw new Exception();
 
       if (i % (rounds / 10) == 0)
