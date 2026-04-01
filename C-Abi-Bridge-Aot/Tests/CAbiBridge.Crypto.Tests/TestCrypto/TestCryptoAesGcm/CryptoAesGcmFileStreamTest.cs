@@ -29,7 +29,7 @@ partial class CryptoAesGcmTest
       await NetServicesCrypto.EncryptionFileAesGcmAsync(src, dest, key, associated);
       await NetServicesCrypto.DecryptionFileAesGcmAsync(dest, srcr, key, associated);
 
-      if (!NetServicesCrypto.FileEquals(src, srcr))
+      if (!NetServicesUtils.EqualFiles(src, srcr))
         throw new Exception();
 
       if (i % (rounds / 10) == 0)
