@@ -41,7 +41,7 @@ Namespace michele.natale.Tests
           AssertError(err)
         End Using
 
-        If Not NetServicesCrypto.FileEquals(src, srcr) Then
+        If Not NetServicesUtils.FileEquals(src, srcr) Then
           Throw New Exception()
         End If
 

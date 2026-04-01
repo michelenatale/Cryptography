@@ -100,7 +100,7 @@ Namespace michele.natale.Tests
           associated, associated.Length)
         AssertError(err)
 
-        If Not NetServicesCrypto.FileEquals(src, srcr) Then
+        If Not NetServicesUtils.FileEquals(src, srcr) Then
           Throw New Exception()
         End If
 
@@ -138,13 +138,6 @@ Namespace michele.natale.Tests
       Dim ssrc = Encoding.UTF8.GetString(src)
 
       Dim sw = Stopwatch.StartNew()
-      'Dim apk As (
-      '  apk As UsIPtr(Of Byte), alicepubkey As Byte(),
-      '  guid As Guid, mlkem_param As MLKemAlgorithm,
-      '  cryptoalgo As CryptionAlgorithm) =
-      'Nothing, bob_shared_key_ptr As IntPtr = IntPtr.Zero, bob_shared_key_length As Integer = -1,
-      '  bob_capsulation_ptr As IntPtr = IntPtr.Zero, bob_capsulation_length As Integer = -1
-
 
       For i = 0 To rounds - 1
 
@@ -172,17 +165,17 @@ Namespace michele.natale.Tests
         'and the CryptionAlgorithm from Alice. 
         'Bob uses it to generate his SharedKey, Capsulation.
         Dim err = ToPqcMlKemCapsulationFromPubKeyAot(
-            alicepubkey, alicepubkey.Length,
-            CByte(param),
-            bob_shared_key_ptr, bob_shared_key_length,
-            bob_capsulation_ptr, bob_capsulation_length)
-          AssertError(err)
+          alicepubkey, alicepubkey.Length,
+          param,
+          bob_shared_key_ptr, bob_shared_key_length,
+          bob_capsulation_ptr, bob_capsulation_length)
+        AssertError(err)
 
-          Dim bobsharedkey = New UsIPtr(Of Byte)(ToBytes(bob_shared_key_ptr, bob_shared_key_length))
-          FreeBuffer(bob_shared_key_ptr)
+        Dim bobsharedkey = New UsIPtr(Of Byte)(ToBytes(bob_shared_key_ptr, bob_shared_key_length))
+        FreeBuffer(bob_shared_key_ptr)
 
-          Dim bobcapsulation = ToBytes(bob_capsulation_ptr, bob_capsulation_length)
-          FreeBuffer(bob_capsulation_ptr)
+        Dim bobcapsulation = ToBytes(bob_capsulation_ptr, bob_capsulation_length)
+        FreeBuffer(bob_capsulation_ptr)
 
         'Alice encrypts the message using the Capsulation she received from Bob,
         'her PrivateKey, and a pre-selected associated. The MLKemAlgorithm and the
@@ -192,7 +185,7 @@ Namespace michele.natale.Tests
           aliceprivkey.ToBytes(), aliceprivkey.Length,
           bobcapsulation, bobcapsulation.Length,
           associated, associated.Length,
-          CByte(param), CByte(cryptoalgo))
+          param, cryptoalgo)
         AssertError(err)
 
 
@@ -203,7 +196,7 @@ Namespace michele.natale.Tests
             dest, dest.Length, srcr, srcr.Length, bobsharedkey.ToBytes(), bobsharedkey.Length, associated, associated.Length)
           AssertError(err)
 
-          If Not NetServicesCrypto.FileEquals(src, srcr) Then Throw New Exception()
+        If Not NetServicesUtils.FileEquals(src, srcr) Then Throw New Exception()
 
         If i Mod rounds / 10 = 0 Then
           Console.Write(".")

@@ -1,8 +1,8 @@
 ﻿Option Strict On
 Option Explicit On
 
+Imports michele.natale
 Imports System.Runtime.InteropServices
-Imports michele.natale.CAbiBridge
 
 Namespace michele.natale.Tests
   Friend Module Native

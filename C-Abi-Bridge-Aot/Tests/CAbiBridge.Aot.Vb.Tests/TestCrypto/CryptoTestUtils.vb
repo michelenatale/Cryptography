@@ -2,10 +2,10 @@
 Option Explicit On
 
 Imports System.IO
+Imports michele.natale
 Imports System.Numerics
-Imports System.Runtime.CompilerServices
 Imports System.Runtime.InteropServices
-Imports michele.natale.CAbiBridge
+Imports System.Runtime.CompilerServices
 
 Namespace michele.natale.Tests
   Friend Module CryptoTestUtils

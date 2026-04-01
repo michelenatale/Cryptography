@@ -3,7 +3,7 @@ Option Explicit On
 
 
 
-Imports michele.natale.CAbiBridge
+Imports michele.natale
 
 Namespace michele.natale.Tests
 
