@@ -3,6 +3,15 @@ using System.Text;
 using System.Numerics;
 using System.Runtime.InteropServices;
 
+
+//Start
+//Alice(Keypair)
+//    >> Bob(Encapsulation)
+//        >> Alice(Encryption)
+//            >> Bob(Decryption)
+//Finish
+
+
 namespace michele.natale.CAbiBridge;
 
 using Pointers;

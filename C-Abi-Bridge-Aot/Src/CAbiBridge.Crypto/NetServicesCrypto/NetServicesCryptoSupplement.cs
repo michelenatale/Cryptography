@@ -1,6 +1,6 @@
 ﻿
-using System.Security.Cryptography;
 using System.Text;
+using System.Security.Cryptography;
 
 
 namespace michele.natale;
@@ -59,19 +59,4 @@ partial class NetServicesCrypto
   }
   #endregion Resets Byte Arrays 
 
-  //#region File Equality
-
-  //public static bool FileEquals(
-  //  ReadOnlySpan<byte> leftfile, ReadOnlySpan<byte> rightfile) =>
-  //   FileEquals(Encoding.UTF8.GetString(leftfile),
-  //    Encoding.UTF8.GetString(rightfile));
-
-
-  //public static bool FileEquals(string leftfile, string rightfile)
-  //{
-  //  using var fsleft = new FileStream(leftfile, FileMode.Open, FileAccess.Read);
-  //  using var fsright = new FileStream(rightfile, FileMode.Open, FileAccess.Read);
-  //  return SHA256.HashData(fsleft).SequenceEqual(SHA256.HashData(fsright));
-  //}
-  //#endregion File Equality
 }
