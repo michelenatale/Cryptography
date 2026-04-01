@@ -30,7 +30,7 @@ partial class CryptoChaCha20Poly1305Test
       await NetServicesCrypto.EncryptionFileChaCha20Poly1305Async(src, dest, key, associated);
       await NetServicesCrypto.DecryptionFileChaCha20Poly1305Async(dest, srcr, key, associated);
 
-      if (!NetServicesCrypto.FileEquals(src, srcr))
+      if (!NetServicesUtils.EqualFiles(src, srcr))
         throw new Exception();
 
       if (i % (rounds / 10) == 0)
