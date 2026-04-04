@@ -56,20 +56,23 @@
   </PropertyGroup>
 
   <Target Name="CreateImportLib" AfterTargets="Publish">
+    <!-- Debug-Ausgabe -->
     <Message Text="ToolsDir: $(PublishToolsDir)" Importance="high" />
     <Message Text="PublishDir: $(PublishDir)" Importance="high" />
 
+    <!-- Artifacts-Ordner sicherstellen -->
     <MakeDir Directories="$(PublishArtifactsDir)" />
 
+    <!-- 1. DEF aus der frisch gepublishten DLL erzeugen -->
     <Exec Command="&quot;$(PublishToolsDir)make-def.bat&quot;" WorkingDirectory="$(PublishDir)" />
+
+    <!-- 2. LIB aus der DEF erzeugen -->
     <Exec Command="lib /def:C-Abi-Bridge.Aot.def /out:C-Abi-Bridge.Aot.lib /machine:x64" WorkingDirectory="$(PublishDir)" />
 
-    <!-- NEU: DLL kopieren -->
-    <Copy SourceFiles="$(PublishDir)C-Abi-Bridge.Aot.dll" DestinationFolder="$(PublishArtifactsDir)" />
-
-    <!-- DEF + LIB kopieren -->
-    <Copy SourceFiles="$(PublishArtifactsDir)C-Abi-Bridge.Aot.def" DestinationFolder="$(OutDir)" />
-    <Copy SourceFiles="$(PublishArtifactsDir)C-Abi-Bridge.Aot.lib" DestinationFolder="$(OutDir)" />
+    <!-- 3. DEF + LIB in den Artifacts-Ordner kopieren -->
+    <Copy SourceFiles="$(PublishDir)C-Abi-Bridge.Aot.def" DestinationFolder="$(PublishArtifactsDir)" />
+    <Copy SourceFiles="$(PublishDir)C-Abi-Bridge.Aot.lib" DestinationFolder="$(PublishArtifactsDir)" />
   </Target>
+
 
 </Project>
