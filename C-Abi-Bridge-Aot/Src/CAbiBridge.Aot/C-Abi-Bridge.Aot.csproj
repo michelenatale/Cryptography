@@ -14,7 +14,8 @@
     <InvariantGlobalization>true</InvariantGlobalization>
 
     <RuntimeIdentifier>win-x64</RuntimeIdentifier>
-    <PublishDir>$(SolutionDir)Build\net10.0\publish\</PublishDir>
+    <!-- <PublishDir>$(SolutionDir)Build\net10.0\publish\</PublishDir> -->
+    <PublishDir>$(MSBuildProjectDirectory)\..\Build\net10.0\publish\</PublishDir>
 
     <Authors>© Michele Natale 2026</Authors>
     <Product>© C-Abi-Bridge.Aot 2026</Product>
@@ -44,5 +45,31 @@
     <Folder Include="C-Abi-Bridge-Crypto-Aot\C-Abi-Bridge-Crypto-Signature-Aot\" />
     <Folder Include="C-Abi-Bridge-Compress-Aot\" />
   </ItemGroup>
+
+  <PropertyGroup>
+    <!-- Absoluter Pfad zum Build-Ordner -->
+    <BuildRoot>$(MSBuildProjectDirectory)\..\..\Build\</BuildRoot>
+
+    <!-- Tools und Artifacts -->
+    <PublishToolsDir>$(BuildRoot)Tools\</PublishToolsDir>
+    <PublishArtifactsDir>$(BuildRoot)Artifacts\</PublishArtifactsDir>
+  </PropertyGroup>
+
+  <Target Name="CreateImportLib" AfterTargets="Publish">
+    <Message Text="ToolsDir: $(PublishToolsDir)" Importance="high" />
+    <Message Text="PublishDir: $(PublishDir)" Importance="high" />
+
+    <MakeDir Directories="$(PublishArtifactsDir)" />
+
+    <Exec Command="&quot;$(PublishToolsDir)make-def.bat&quot;" WorkingDirectory="$(PublishDir)" />
+    <Exec Command="lib /def:C-Abi-Bridge.Aot.def /out:C-Abi-Bridge.Aot.lib /machine:x64" WorkingDirectory="$(PublishDir)" />
+
+    <!-- NEU: DLL kopieren -->
+    <Copy SourceFiles="$(PublishDir)C-Abi-Bridge.Aot.dll" DestinationFolder="$(PublishArtifactsDir)" />
+
+    <!-- DEF + LIB kopieren -->
+    <Copy SourceFiles="$(PublishArtifactsDir)C-Abi-Bridge.Aot.def" DestinationFolder="$(OutDir)" />
+    <Copy SourceFiles="$(PublishArtifactsDir)C-Abi-Bridge.Aot.lib" DestinationFolder="$(OutDir)" />
+  </Target>
 
 </Project>
