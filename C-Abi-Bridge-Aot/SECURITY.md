@@ -23,7 +23,7 @@ If you discover a security vulnerability, **do not open a public GitHub issue**.
 
 Instead, please report it privately:
 
-- Email: **security@michelenatale.dev**  
+- Email: **michele.natale.net@proton.me**  
 - Subject line: `C-Abi-Bridge-Aot Security Report`
 
 Please include:
