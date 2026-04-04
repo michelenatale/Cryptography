@@ -118,13 +118,13 @@ Breaking changes will only occur in **major versions**.
 
 The library includes:
 
-- AES (ECB, CBC, GCM)
+- AES (CBC-AEAD, GCM)
 - ChaCha20‑Poly1305
-- SHA‑2, SHA‑3, BLAKE2
+- SHA‑3
 - HMAC
 - Random number generation
 - Encoding utilities
-- Post‑quantum algorithms (ML‑KEM, ML‑DSA, SLH‑DSA, XMSS, LMS)
+- Post‑quantum algorithms (ML‑KEM, ML‑DSA, [SLH‑DSA later])
 
 All algorithms are implemented using well‑established primitives and follow best practices.
 
@@ -180,5 +180,5 @@ Use at your own risk.
 Security researchers and contributors help keep this project safe and reliable.  
 We appreciate your efforts and responsible disclosure.
 
---
+---
 
