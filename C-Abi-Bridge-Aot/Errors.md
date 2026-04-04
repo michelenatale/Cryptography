@@ -12,14 +12,14 @@ All exported functions return an `int`:
 # 1. Error Code Table
 
 | Code | Name | Meaning | Typical Cause |
-|------|------|---------|----------------|
-| `0` | `CABI_OK` | Operation completed successfully | — |
-| `-1` | `CABI_ERR_INVALID_ARGUMENT` | One or more arguments are invalid | Null pointer, invalid key length, invalid IV length |
-| `-2` | `CABI_ERR_BUFFER_TOO_SMALL` | Output buffer is too small | Caller did not allocate enough space |
-| `-3` | `CABI_ERR_NULL_POINTER` | A required pointer was null | Missing buffer, key, IV, or input |
-| `-4` | `CABI_ERR_INTERNAL` | Internal error occurred | Unexpected failure inside crypto backend |
-| `-5` | `CABI_ERR_UNSUPPORTED` | Unsupported algorithm or parameter | Invalid mode, unsupported key size |
-| `-6` | `CABI_ERR_CRYPTO_FAILURE` | Cryptographic operation failed | Authentication failure, invalid tag, decryption error |
+| --- | --- | --- | --- |
+| ``0`` | ``CABI_OK`` | Operation completed successfully | — |
+| ``-1`` | ``CABI_ERR_NULL_POINTER`` | A required pointer was null | Missing buffer, key, IV, or input |
+| ``-2`` | ``CABI_ERR_INVALID_LENGTH`` | Length parameter is invalid | Wrong key size, wrong IV size, negative length |
+| ``-3`` | ``CABI_ERR_IO_ERROR`` | File or stream I/O failed | File not found, access denied, read/write error |
+| ``-4`` | ``CABI_ERR_CRYPTO_ERROR`` | Cryptographic operation failed | Authentication failure, invalid tag, corrupted ciphertext |
+| ``-5`` | ``CABI_ERR_OUT_OF_RANGE`` | Value outside allowed range | Numeric range checks, invalid enum values |
+| ``-99`` | ``CABI_ERR_UNKNOWN`` | Unknown or unexpected error | Unexpected internal failure |
 
 These codes are stable and part of the public ABI.
 
