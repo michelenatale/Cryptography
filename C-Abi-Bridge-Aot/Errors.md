@@ -57,40 +57,35 @@ Incorrect key lengths are a common source of -1 errors.
 ## 3.1 C / C++
 
 ```
-int result = cabi_aes_gcm_decrypt(...);
-
-if (result == 0) {
-    // success
-} else if (result == -6) {
-    // authentication failure
-} else {
-    // general error handling
-}
+auto err = aes_gcm_encrypt_aot(
+  plain.data(), (int)plain.size(),
+  key.data(), (int)key.size(),
+  associat.data(), (int)associat.size(),
+  &cipher_ptr, &cipher_len);
+assert_error(err);
 ```
 
 ## 3.2 C# (P/Invoke)
 
 
 ```
-int rc = cabi_sha256(input, input.Length, output, output.Length);
-
-if (rc < 0)
-    throw new InvalidOperationException($"Crypto error: {rc}");
+var err = Native.Sha256HashDataAot(
+  bytes, bytes.Length,
+  out IntPtr hash_ptr, out int hash_length);
+AssertError(err);
 ```
 
 ## 3.3 VB.NET
 
 ```
-Dim rc = cabi_sha256(input, input.Length, output, output.Length)
-If rc <> 0 Then
-    Throw New Exception("Crypto error: " & rc)
-End If
+Dim err = Sha256HashDataAot(bytes, bytes.Length, hash_ptr, hash_length)
+AssertError(err)
 ```
 
 ## 3.4 Rust
 
 ```
-let rc = unsafe { cabi_sha256(input.as_ptr(), len, out.as_mut_ptr(), out_len) };
+let rc = unsafe { sha_256_hash_data_aot(input.as_ptr(), len, out.as_mut_ptr(), out_len) };
 
 if rc != 0 {
     panic!("crypto error: {}", rc);
@@ -101,47 +96,88 @@ if rc != 0 {
 
 ## 4. Common Error Scenarios
 
-## 4.1 Buffer Too Small (`-2`)
+## 4.1 Null Pointer (`-1`)
 
 Occurs when:
-- Output buffer is smaller than required
-- Tag buffer is too small
-- GCM output buffer does not include space for ciphertext
-
-Fix:
-- Allocate a larger buffer
-- Check required sizes in API.md
-
-## 4.2 Invalid Argument (-1)
-
-Occurs when:
-- Key length is invalid
-- IV length is invalid
-- AAD length is negative
-- Input length is negative
-
-Fix:
-- Validate all parameters before calling
-- Use correct key sizes (AES‑128/192/256, GCM IV = 12 bytes)
-
-## 4.3 Null Pointer (-3)
-Occurs when:
-- A required pointer is NULL
+- A required pointer is `NULL`
 - Caller forgot to allocate a buffer
+- A buffer, key, IV, tag, or input pointer is missing
 
 Fix:
 - Ensure all pointers are valid
 - Ensure buffers are allocated before calling
+- Validate that no required argument is `NULL`
 
-## 4.4 Crypto Failure (-6)
+---
+
+## 4.2 Invalid Length (`-2`)
+
 Occurs when:
-- AES‑GCM authentication fails
-- ChaCha20‑Poly1305 tag mismatch
-- Decryption input is corrupted
+- A length parameter is negative
+- Key length is invalid
+- IV length is invalid
+- Tag length is invalid
+- Input or output length is inconsistent
 
 Fix:
-- Verify key, IV, and tag
+- Validate all length parameters before calling
+- Use correct key sizes (e.g. AES‑128/192/256)
+- Use valid IV/tag sizes for the chosen algorithm
+- Check required sizes in `API.md`
+
+---
+
+## 4.3 I/O Error (`-3`)
+
+Occurs when:
+- A file cannot be opened
+- A file cannot be read or written
+- The path is invalid or access is denied
+
+Fix:
+- Verify file paths
+- Check file permissions
+- Ensure the file exists and is accessible
+
+---
+
+## 4.4 Crypto Error (`-4`)
+
+Occurs when:
+- AES‑GCM authentication fails
+- ChaCha20‑Poly1305 tag verification fails
+- Ciphertext or tag has been modified or corrupted
+
+Fix:
+- Verify key, IV, AAD, and tag
 - Ensure ciphertext was not modified
+- Treat this as a **hard failure** and do not use the output
+
+---
+
+## 4.5 Out of Range (`-5`)
+
+Occurs when:
+- A numeric value is outside the allowed range
+- An enum or mode value is invalid
+- A parameter violates documented constraints
+
+Fix:
+- Validate all numeric and enum parameters
+- Ensure values are within documented ranges
+
+---
+
+## 4.6 Unknown Error (`-99`)
+
+Occurs when:
+- An unexpected internal condition is hit
+- An error cannot be mapped to a more specific code
+
+Fix:
+- Log the error code and context
+- Try to reproduce with debug builds
+- If reproducible, consider reporting it (see `SECURITY.md` / issue tracker)
 
 ---
 
