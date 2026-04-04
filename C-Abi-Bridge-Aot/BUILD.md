@@ -197,7 +197,7 @@ This will:
 
 ## 7. Release Workflow
 
-1. Update version in `CHANGELOG.md`
+1. Update version in [`CHANGELOG.md`](https://github.com/michelenatale/Cryptography/blob/main/C-Abi-Bridge-Aot/CHANGELOG.md)
 2. Run full publish:
 ```
 dotnet publish -c Release -r win-x64
@@ -220,7 +220,7 @@ dotnet publish -c Release -r win-x64
 
 # 9. License
 
-MIT License
+GPL-3.0 License
 © Michele Natale 2026
 
 ---
