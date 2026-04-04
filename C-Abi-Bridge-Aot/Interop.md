@@ -48,7 +48,7 @@ Add to your `.vcxproj`:
 int main()
 {
     uint8_t buffer[32];
-    int result = cabi_crypto_random_bytes(buffer, 32);
+    int result = fill_crypto_bytes_aot(buffer, 32);
 
     if (result == 0)
         printf("Random bytes generated.\n");
@@ -62,8 +62,8 @@ int main()
 ## 3.1 Import Declaration
 
 ```
-[DllImport("C-Abi-Bridge.Aot.N.dll")]
-public static extern int cabi_crypto_random_bytes(byte[] buffer, int size);
+[LibraryImport("C-Abi-Bridge.Aot.N.dll")]
+public static extern int fill_crypto_bytes_aot(byte[] buffer, int size);
 ```
 
 ## 3.2 Example Usage
@@ -79,7 +79,7 @@ cabi_crypto_random_bytes(buf, buf.Length);
 
 ```
 <DllImport("C-Abi-Bridge.Aot.N.dll")>
-Public Shared Function cabi_crypto_random_bytes(
+Public Shared Function fill_crypto_bytes_aot(
     buffer As Byte(),
     size As Integer
 ) As Integer
@@ -95,7 +95,7 @@ End Function
 ```
 #[link(name = "C-Abi-Bridge.Aot")]
 extern "C" {
-    fn cabi_crypto_random_bytes(buffer: *mut u8, size: i32) -> i32;
+    fn fill_crypto_bytes_aot(buffer: *mut u8, size: i32) -> i32;
 }
 ```
 
@@ -104,7 +104,7 @@ extern "C" {
 ```
 let mut buf = [0u8; 32];
 unsafe {
-    cabi_crypto_random_bytes(buf.as_mut_ptr(), buf.len() as i32);
+    fill_crypto_bytes_aot(buf.as_mut_ptr(), buf.len() as i32);
 }
 ```
 
@@ -119,7 +119,7 @@ unsafe {
 #cgo LDFLAGS: -LC:/path/to/Artifacts -lC-Abi-Bridge.Aot
 #include <stdint.h>
 
-int cabi_crypto_random_bytes(uint8_t* buffer, int32_t size);
+int fill_crypto_bytes_aot(uint8_t* buffer, int32_t size);
 */
 import "C"
 ```
@@ -128,7 +128,7 @@ import "C"
 
 ```
 buf := make([]byte, 32)
-C.cabi_crypto_random_bytes((*C.uint8_t)(&buf[0]), C.int(len(buf)))
+C.fill_crypto_bytes_aot((*C.uint8_t)(&buf[0]), C.int(len(buf)))
 ```
 
 ---
@@ -145,7 +145,7 @@ const cabi = @cImport({
 Usage:
 ```zig
 var buf: [32]u8 = undefined;
-_ = cabi.cabi_crypto_random_bytes(&buf, 32);
+_ = cabi.fill_crypto_bytes_aot(&buf, 32);
 ```
 
 ---
@@ -158,7 +158,7 @@ from ctypes import *
 dll = CDLL("C-Abi-Bridge.Aot.dll")
 
 buf = (c_ubyte * 32)()
-dll.cabi_crypto_random_bytes(buf, 32)
+dll.fill_crypto_bytes_aot(buf, 32)
 ```
 
 # 9. Python Interop (cffi)
@@ -170,7 +170,7 @@ ffi = FFI()
 lib = ffi.dlopen("C-Abi-Bridge.Aot.dll")
 
 buf = ffi.new("uint8_t[32]")
-lib.cabi_crypto_random_bytes(buf, 32)
+lib.fill_crypto_bytes_aot(buf, 32)
 ```
 
 # 10. Java Interop (JNI)
