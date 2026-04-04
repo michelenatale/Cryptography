@@ -134,7 +134,7 @@ auto result = cabi_crypto_random_bytes(buffer, sizeof(buffer));
 ## 4.2 C# (P/Invoke)
 
 ```
-[DllImport("C-Abi-Bridge.Aot.N.dll")]
+[LibraryImport("C-Abi-Bridge.Aot.N.dll")]
 public static extern int cabi_crypto_random_bytes(byte[] buffer, int size);
 ```
 
