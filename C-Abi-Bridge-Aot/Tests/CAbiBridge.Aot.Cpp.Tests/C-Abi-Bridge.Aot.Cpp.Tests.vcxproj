@@ -219,7 +219,7 @@
 <Target Name="CopyAotDllAfterBuild" AfterTargets="Build">
   <PropertyGroup>
     <!-- DLL kommt aus dem Publish-Ordner -->
-    <AotPublishDir>$(SolutionDir)Src\CAbiBridge.Aot\Build\net10.0\publish</AotPublishDir>
+    <AotPublishDir>$(SolutionDir)Src\Build\net10.0\publish</AotPublishDir>
     <AotSourceDll>$(AotPublishDir)\C-Abi-Bridge.Aot.dll</AotSourceDll>
     <AotTargetDll>$(OutDir)C-Abi-Bridge.Aot.dll</AotTargetDll>
 
