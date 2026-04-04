@@ -210,7 +210,7 @@ dotnet test
 
 # 📄 License
 
-MIT License
+GPL-3.0 License
 © Michele Natale 2026
 
 ---
