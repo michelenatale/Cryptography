@@ -126,8 +126,8 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(OutDir);$(SolutionDir)Src\CAbiBridge.Aot\Build\net10.0\publish\</AdditionalLibraryDirectories>
-      <AdditionalDependencies>C-Abi-Bridge.Aot.lib</AdditionalDependencies>
+	<AdditionalLibraryDirectories>$(OutDir);$(SolutionDir)Build\Artifacts</AdditionalLibraryDirectories>
+	<AdditionalDependencies>C-Abi-Bridge.Aot.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -147,8 +147,8 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(OutDir);$(SolutionDir)Src\CAbiBridge.Aot\Build\net10.0\publish\</AdditionalLibraryDirectories>
-      <AdditionalDependencies>C-Abi-Bridge.Aot.lib</AdditionalDependencies>
+	<AdditionalLibraryDirectories>$(OutDir);$(SolutionDir)Build\Artifacts</AdditionalLibraryDirectories>
+	<AdditionalDependencies>C-Abi-Bridge.Aot.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -214,19 +214,26 @@
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
-  <Target Name="CopyAotDllAfterBuild" AfterTargets="Build">
-    <PropertyGroup>
-      <AotPublishDir>$(SolutionDir)Src\CAbiBridge.Aot\Build\net10.0\publish</AotPublishDir>
-      <!-- DLL -->
-      <AotSourceDll>$(AotPublishDir)\C-Abi-Bridge.Aot.dll</AotSourceDll>
-      <AotTargetDll>$(OutDir)C-Abi-Bridge.Aot.dll</AotTargetDll>
-      <!-- LIB -->
-      <AotSourceLib>$(AotPublishDir)\C-Abi-Bridge.Aot.lib</AotSourceLib>
-      <AotTargetLib>$(OutDir)C-Abi-Bridge.Aot.lib</AotTargetLib>
-    </PropertyGroup>
-    <!-- Copy DLL -->
-    <Copy SourceFiles="$(AotSourceDll)" DestinationFiles="$(AotTargetDll)" SkipUnchangedFiles="false" />
-    <!-- Copy LIB -->
-    <Copy SourceFiles="$(AotSourceLib)" DestinationFiles="$(AotTargetLib)" SkipUnchangedFiles="false" />
-  </Target>
+
+
+<Target Name="CopyAotDllAfterBuild" AfterTargets="Build">
+  <PropertyGroup>
+    <!-- DLL kommt aus dem Publish-Ordner -->
+    <AotPublishDir>$(SolutionDir)Src\CAbiBridge.Aot\Build\net10.0\publish</AotPublishDir>
+    <AotSourceDll>$(AotPublishDir)\C-Abi-Bridge.Aot.dll</AotSourceDll>
+    <AotTargetDll>$(OutDir)C-Abi-Bridge.Aot.dll</AotTargetDll>
+
+    <!-- LIB kommt aus Artifacts -->
+    <AotArtifactsDir>$(SolutionDir)Build\Artifacts</AotArtifactsDir>
+    <AotSourceLib>$(AotArtifactsDir)\C-Abi-Bridge.Aot.lib</AotSourceLib>
+    <AotTargetLib>$(OutDir)C-Abi-Bridge.Aot.lib</AotTargetLib>
+  </PropertyGroup>
+
+  <!-- Copy DLL -->
+  <Copy SourceFiles="$(AotSourceDll)" DestinationFiles="$(AotTargetDll)" SkipUnchangedFiles="false" />
+
+  <!-- Copy LIB -->
+  <Copy SourceFiles="$(AotSourceLib)" DestinationFiles="$(AotTargetLib)" SkipUnchangedFiles="false" />
+</Target>
+
 </Project>
