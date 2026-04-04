@@ -1,4 +1,4 @@
-📘 # Security Policy  
+# 📘 Security Policy  
 
 This document describes how security is handled in the **C‑Abi‑Bridge‑Aot** project, including vulnerability reporting, cryptographic guarantees, and secure usage guidelines.
 
