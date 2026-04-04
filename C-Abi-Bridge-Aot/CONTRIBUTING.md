@@ -2,7 +2,9 @@
 # ⭐ Contributing to C‑Abi‑Bridge‑Aot
 
 Thank you for your interest in contributing to **C‑Abi‑Bridge‑Aot**!  
+
 This project aims to provide a high‑performance, NativeAOT‑compiled, C‑ABI‑compatible cryptography runtime that can be consumed from any language.  
+
 Contributions are welcome and appreciated.
 
 ---
