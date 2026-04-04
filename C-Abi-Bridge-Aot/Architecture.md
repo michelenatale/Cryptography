@@ -71,7 +71,7 @@ Responsibilities:
 - Implements cryptographic algorithms:
   - AES‑CBC, AES‑GCM
   - ChaCha20‑Poly1305
-  - SHA‑2, SHA‑3, BLAKE2
+  - SHA
   - HMAC
   - Random number generation
 - Ensures constant‑time operations where applicable
