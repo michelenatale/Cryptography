@@ -33,7 +33,7 @@ Docs /
 
 ---
 
-# 1. [Core Documentation](TechnicalReference/Core)
+## 1. [Core Documentation](TechnicalReference/Core)
 
 ### **[API.md](TechnicalReference/Core/API.md)**  
 Complete reference of all exported C ABI functions, parameters, return values, and usage notes.
@@ -46,7 +46,7 @@ Guidelines for contributors, coding standards, pull request rules, and developme
 
 ---
 
-# 2. [Runtime Behavior & Safety](TechnicalReference/RuntimeBehaviorSafety)
+## 2. [Runtime Behavior & Safety](TechnicalReference/RuntimeBehaviorSafety)
 
 ### **[Errors.md](TechnicalReference/RuntimeBehaviorSafety/Errors.md)**  
 List of all error codes, meanings, and common error scenarios.
@@ -59,7 +59,7 @@ Security policy, responsible disclosure process, cryptographic guarantees, and t
 
 ---
 
-# 3. [Usage & Integration](TechnicalReference/UsageIntegration)
+## 3. [Usage & Integration](TechnicalReference/UsageIntegration)
 
 ### **[Interop.md](TechnicalReference/UsageIntegration/Interop.md)**  
 Cross‑language interop guide with examples for C, C++, C#, VB.NET, Rust, Go, Zig, Python, and Java.
@@ -72,7 +72,7 @@ Frequently asked questions about building, using, and integrating the library.
 
 ---
 
-# 4. [Architectural Documentation](TechnicalReference/Architectural)
+## 4. [Architectural Documentation](TechnicalReference/Architectural)
 
 ### **[DesignPrinciples.md](TechnicalReference/Architectural/DesignPrinciples.md)**  
 Explains why the project uses NativeAOT, why a C ABI, and why the architecture is layered.
@@ -85,7 +85,7 @@ General overview of the internal structure of the C-Abi-Bridge-Aot project.
 
 ---
 
-# 5. Recommended Reading Order
+## 5. Recommended Reading Order
 
 1. **TechnicalReference.md** (this file)  
 2. **DesignPrinciples.md**  
