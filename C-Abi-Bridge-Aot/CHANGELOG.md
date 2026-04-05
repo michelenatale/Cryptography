@@ -29,7 +29,7 @@ and this project adheres to **Semantic Versioning (SemVer)**.
 
 ---
 
-## [0.1.0] – 2026-04-04  
+## [0.1.0] – 2026-04-02  
 ### Added
 - Initial release of **C‑Abi‑Bridge‑Aot**, a NativeAOT‑compiled C‑ABI bridge for cryptographic operations.
 - NativeAOT single‑file DLL (`C-Abi-Bridge.Aot.dll`) with stable C ABI exports.
