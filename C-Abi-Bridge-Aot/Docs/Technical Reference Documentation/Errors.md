@@ -2,7 +2,7 @@
 
 This document describes the error codes returned by the **C‑Abi‑Bridge‑Aot** NativeAOT library and provides guidance on how to handle them safely across different languages.
 
-All exported functions return an `int`:
+All exported functions return an `int` / `cerror`:
 
 - `0` indicates **success**
 - Negative values indicate **failure**
