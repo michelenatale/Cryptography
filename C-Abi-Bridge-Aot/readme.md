@@ -61,8 +61,6 @@ C-Abi-Bridge-Aot/
 
 The build pipeline is fully automated and consists of three stages:
 
----
-
 ## 1. NativeAOT Publish (DLL generation)
 
 Run:
