@@ -1,5 +1,11 @@
 # 📘 Design Principles  
 
+**Status**: ✅   
+**Version**: 0.2.0   
+**Last Updated**: 2026.04.07
+
+---
+
 This document explains the core design principles behind **C‑Abi‑Bridge‑Aot**, including why the project uses NativeAOT, why it exposes a C ABI, and why the internal structure is organized into clear layers.
 
 ---
