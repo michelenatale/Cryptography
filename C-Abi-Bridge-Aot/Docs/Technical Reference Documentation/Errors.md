@@ -57,7 +57,7 @@ Incorrect key lengths are a common source of -1 errors.
 ## 3.1 Universal Error Convention for All Languages
 
 `CError` is the **only canonical error code** of the C‑ABI Bridge.  
-It is defined as an unsigned 8‑bit value (`uint8_t`) and represents all possible error states returned by the NativeAOT export functions.
+It is defined as an int value and represents all possible error conditions returned by the NativeAOT export functions.
 
 All languages consuming the C‑ABI **must follow this convention**:
 
@@ -67,7 +67,7 @@ All languages consuming the C‑ABI **must follow this convention**:
   but these wrappers must always be based on the **original `CError` byte value**.
 - The underlying `CError` value must remain the **single source of truth** for all error handling across all bindings.
 
-This rule applies to **all languages**, not only Rust.  
+This rule applies to **all languages**, not only Rust, go, etc.  
 It is based on the error model originally defined for **C / C# / VB.NET**, and all other languages are expected to follow the same contract to ensure API stability, predictability, and cross‑language consistency.
 
 ## 3.2 C / C++
