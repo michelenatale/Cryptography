@@ -74,7 +74,7 @@ fill_crypto_bytes_aot(buffer, 32);
 
 # 5. AES Encryption
 
-## 5.1 AES‑CBC Encrypt
+## 5.1 AES‑CBC-AEAD Encrypt
 
 ```
 [LibraryImport(DllName, EntryPoint = "aes_encrypt_aot")]
@@ -83,14 +83,13 @@ internal static partial CError AesEncryptAot(
   IntPtr key, int key_length,
   ReadOnlySpan<byte> associated, int associated_length,
   out IntPtr output, out int output_length);
-
 ```
 
 **Notes**
 
 - die `output_length` ist immer länger als die `Input_length`
 
-## 5.2 AES‑CBC Decrypt
+## 5.2 AES‑CBC-AEAD Decrypt
 
 ```
 [LibraryImport(DllName, EntryPoint = "aes_decrypt_aot")]
