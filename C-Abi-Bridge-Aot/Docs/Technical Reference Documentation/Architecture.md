@@ -165,7 +165,7 @@ See `Docs/Errors.md` for details.
 
 - Caller‑allocated buffers for all operations
 - No hidden allocations inside crypto functions
-- Library‑allocated memory must be freed with `cabi_free_buffer`
+- Library‑allocated memory must be freed with `free_buffer_aot`
 - Sensitive memory is zeroed when possible
 
 See `Docs/Memory.md` for details.
