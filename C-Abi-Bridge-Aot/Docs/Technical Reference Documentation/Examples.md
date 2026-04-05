@@ -164,21 +164,87 @@ int main() {
 # 8. Rust Example
 
 ```
-extern "C" {
-    fn sha_256_aot(input: *const u8, len: i32, out: *mut u8, out_len: i32) -> i32;
+#[repr(i32)]
+#[derive(Debug, Copy, Clone, PartialEq, Eq)]
+pub enum CError {
+    Ok = 0,
+    ArgumentError = -1,
+    CryptoError = -2,
+    // ...
 }
 
-let mut out = [0u8; 32];
-unsafe {
-    sha_256_aot(data.as_ptr(), data.len() as i32, out.as_mut_ptr(), 32);
+extern "C" {
+    fn to_base_64_utf8_aot(
+        input_ptr: *const u8,
+        input_len: i32,
+        output_ptr: *mut u8,
+        output_len: i32,
+    ) -> i32; // CError as signed int32
+}
+
+fn main() {
+    let input: Vec<u8> = (0..64).collect();
+    let mut output = vec![0u8; 128];
+
+    let err = unsafe {
+        to_base_64_utf8_aot(
+            input.as_ptr(),
+            input.len() as i32,
+            output.as_mut_ptr(),
+            output.len() as i32,
+        )
+    };
+
+    if err != 0 {
+        panic!("CError returned: {}", err);
+    }
+
+    println!("Output: {:?}", output);
 }
 ```
 
 # 9. Go Example (cgo)
 
 ```
-buf := make([]byte, 32)
-C.crypto_random_bytes_aot((*C.uint8_t)(&buf[0]), C.int(len(buf)))
+package main
+
+/*
+#cgo LDFLAGS: -LC-Abi-Bridge-Aot -lCAbiBridgeAot
+#include <stdint.h>
+
+extern int32_t to_base_64_utf8_aot(
+    const uint8_t* input_ptr,
+    int32_t input_len,
+    uint8_t* output_ptr,
+    int32_t output_len
+);
+*/
+import "C"
+import (
+    "fmt"
+)
+
+func main() {
+    input := make([]C.uint8_t, 64)
+    output := make([]C.uint8_t, 128)
+
+    for i := 0; i < 64; i++ {
+        input[i] = C.uint8_t(i)
+    }
+
+    err := C.to_base_64_utf8_aot(
+        &input[0],
+        C.int32_t(len(input)),
+        &output[0],
+        C.int32_t(len(output)),
+    )
+
+    if err != 0 {
+        panic(fmt.Sprintf("CError returned: %d", int32(err)))
+    }
+
+    fmt.Println("Output:", output)
+}
 ```
 
 # 10. Python Example (ctypes)
@@ -188,8 +254,25 @@ from ctypes import *
 
 dll = CDLL("C-Abi-Bridge.Aot.dll")
 
-buf = (c_ubyte * 32)()
-dll.crypto_random_bytes_aot(buf, 32)
+# CError = int32
+dll.to_base_64_utf8_aot.restype = c_int
+
+dll.to_base_64_utf8_aot.argtypes = [
+    POINTER(c_ubyte),  # input buffer
+    c_int,             # input length
+    POINTER(c_ubyte),  # output buffer
+    c_int              # output length
+]
+
+input_buf = (c_ubyte * 64)(*range(64))
+output_buf = (c_ubyte * 128)()
+
+err = dll.to_base_64_utf8_aot(input_buf, len(input_buf), output_buf, len(output_buf))
+
+if err != 0:
+    raise Exception(f"CError returned: {err}")
+
+print(bytes(output_buf))
 ```
 
 # 11. VB.NET Example
