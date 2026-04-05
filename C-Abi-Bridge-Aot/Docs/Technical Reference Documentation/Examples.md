@@ -203,6 +203,8 @@ fn main() {
 }
 ```
 
+---
+
 # 9. Go Example (cgo)
 
 ```
@@ -247,6 +249,8 @@ func main() {
 }
 ```
 
+---
+
 # 10. Python Example (ctypes)
 
 ```
@@ -275,9 +279,13 @@ if err != 0:
 print(bytes(output_buf))
 ```
 
+---
+
 # 11. VB.NET Example
 
 ```
 Dim buf(31) As Byte
 Dim rc = crypto_random_bytes_aot(buf, buf.Length)
 ```
+
+---
