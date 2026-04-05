@@ -6,6 +6,18 @@
 
 ---
 
+## 📍 Who Is This For?
+
+This project is intended for developers who require a stable, portable, and high‑performance C‑ABI layer for cryptography and cross‑language interoperability.  
+It is especially useful for:
+
+- .NET developers working with NativeAOT or ahead‑of‑time compilation  
+- Teams integrating .NET components into C, C++, Rust, Go, Python, or other native environments  
+- Developers building plugin systems, sandboxed runtimes, or language‑agnostic libraries  
+- Anyone who needs predictable memory behavior, stable binary interfaces, and secure cryptographic primitives across platforms
+
+---
+
 *A high‑performance NativeAOT C‑ABI bridge for cryptographic operations*
 
 C‑Abi‑Bridge‑Aot is a **NativeAOT‑compiled, cross‑language, C‑ABI‑compatible** cryptography runtime designed to be consumed from any language that can call C functions — including **C, C++, Rust, Go, Zig, Python, Java, .NET, and more**.
@@ -23,6 +35,21 @@ It provides a stable, minimal, and allocation‑safe API surface for:
 - Secure memory utilities
 
 The library is compiled as a **NativeAOT single‑file** DLL, making it extremely fast to load, dependency‑free, and safe to distribute.
+
+---
+
+## Getting Started
+
+To explore the project:
+
+1. Clone the repository  
+2. Open the solution in Visual Studio or JetBrains Rider  
+3. Build the `C-Abi-Bridge-Aot` project using the provided publish profiles  
+4. Run the C++, C#, or VB.NET tests to see the bridge in action  
+5. Review the documentation under `/Docs/TechnicalReference` for detailed architecture and usage information
+
+This gives you a complete end‑to‑end view of how the C‑ABI bridge is built, published, and consumed across languages.
+
 
 ---
 
@@ -210,10 +237,12 @@ dotnet test
 
 # ➡️ Documentation
 
-This project includes a full documentation suite with architecture diagrams, memory flow explanations, interop guides, and usage examples for C, C#, and VB.NET.
+Two documentation series are available:
 
-> **Basic-2026.03.05:** [README-DOCS.md](Docs/README-DOCS.md)   
-> **Update 1-2026.04.07:** [TechnicalReference.Update1.md](Docs/TechnicalReference.Update1.md)   
+- [**README-DOCS.md**](Docs/README-DOCS.md) – the original documentation set, still useful for historical context  
+- [**TechnicalReference.Update1.md**](Docs/TechnicalReference.Update1.md) – the updated and expanded technical reference (introduced with version 0.2.0)
+
+The updated documentation series provides a more structured and detailed view of the architecture, runtime behavior, memory model, and cross‑language integration.
 
 ---
 
