@@ -1,5 +1,11 @@
 # 📘 Cross‑Language Interop Guide  
 
+**Status**: ✅   
+**Version**: 0.2.0   
+**Last Updated**: 2026.04.07
+
+---
+
 This document provides practical examples for consuming the **C‑Abi‑Bridge‑Aot** NativeAOT library from various programming languages.  
 
 All examples use the exported C ABI functions defined in `API.md`.
