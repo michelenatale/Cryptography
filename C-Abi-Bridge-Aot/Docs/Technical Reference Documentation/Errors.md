@@ -85,10 +85,33 @@ AssertError(err)
 ## 3.4 Rust
 
 ```
-let rc = unsafe { sha_256_hash_data_aot(input.as_ptr(), len, out.as_mut_ptr(), out_len) };
+#[repr(u8)]
+#[derive(Debug, Copy, Clone, PartialEq, Eq)]
+pub enum CError {
+    Ok = 0,
+    // ...
+}
 
-if rc != 0 {
-    panic!("crypto error: {}", rc);
+extern "C" {
+    fn aes_decrypt_aot(
+        bytes_ptr: *const u8,
+        bytes_length: i32,
+        key_ptr: *const u8,
+        key_length: i32,
+        associated_ptr: *const u8,
+        associated_length: i32,
+        decipher_ptr: *mut *mut u8,
+        decipher_length: *mut i32,
+    ) -> u8; // oder CError, wenn via bindgen gespiegelt
+}
+```
+```
+fn aes_decrypt(...) -> Result<Vec<u8>, CryptoError> {
+    let err = unsafe { aes_decrypt_aot(... ) };
+    match err {
+        0 => Ok(...),
+        code => Err(CryptoError::from(code)),
+    }
 }
 ```
 
