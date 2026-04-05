@@ -5,55 +5,55 @@ Use this as the entry point to navigate the project documentation.
 
 ---
 
-# 1. Core Documentation
+# 1. [Core Documentation](TechnicalReference/Core)
 
-### **API.md**  
+### **[API.md](TechnicalReference/Core/API.md)**  
 Complete reference of all exported C ABI functions, parameters, return values, and usage notes.
 
-### **BUILD.md**  
+### **[Build.md)(TechnicalReference/Core/Build.md)**  
 Explains how to build the NativeAOT DLL, generate `.def` and `.lib` files, and run the build pipeline.
 
-### **CHANGELOG.md**  
-Version history, including added features, fixes, and breaking changes.
-
-### **CONTRIBUTING.md**  
+### **[CONTRIBUTING.md](TechnicalReference/Core/Contributing.md)**  
 Guidelines for contributors, coding standards, pull request rules, and development workflow.
 
 ---
 
-# 2. Runtime Behavior & Safety
+# 2. [Runtime Behavior & Safety](TechnicalReference/RuntimeBehaviorSafety)
 
-### **Errors.md**  
+### **[Errors.md](TechnicalReference/RuntimeBehaviorSafety/Error.md)**  
 List of all error codes, meanings, and common error scenarios.
 
-### **Memory.md**  
+### **[Memory.md](TechnicalReference/RuntimeBehaviorSafety/Memory.md)**  
 Memory ownership rules, caller‑allocated buffers, zeroing behavior, and cross‑language memory safety.
 
-### **SECURITY.md**  
+### **[Security.md](TechnicalReference/RuntimeBehaviorSafety/Security.md)**  
 Security policy, responsible disclosure process, cryptographic guarantees, and threat model.
 
 ---
 
-# 3. Usage & Integration
+# 3. [Usage & Integration](TechnicalReference/UsageIntegration)
 
-### **Interop.md**  
+### **[Interop.md](TechnicalReference/UsageIntegration/Interop.md)**  
 Cross‑language interop guide with examples for C, C++, C#, VB.NET, Rust, Go, Zig, Python, and Java.
 
-### **Examples.md**  
+### **[Examples.md](TechnicalReference/UsageIntegration/Examples.md)**  
 Practical usage examples for AES, GCM, ChaCha20‑Poly1305, hashing, HMAC, Base64, and random bytes.
 
-### **FAQ.md**  
+### **[FAQ.md](TechnicalReference/UsageIntegration/FAQ.md)**  
 Frequently asked questions about building, using, and integrating the library.
 
 ---
 
-# 4. Architectural Documentation
+# 4. [Architectural Documentation](TechnicalReference/Architectural)
 
-### **DesignPrinciples.md**  
+### **[DesignPrinciples.md](TechnicalReference/Architectural/DesignPrinciples.md)**  
 Explains why the project uses NativeAOT, why a C ABI, and why the architecture is layered.
 
-### *(Optional)* **Architecture.md**  
+### *(Optional)* **[Architecture.md](TechnicalReference/Architectural/Architecture.md)**  
 High‑level overview of the internal structure, layering model, and build pipeline.
+
+### **[ArchitectureDiagram.md](TechnicalReference/Architectural/ArchitectureDiagram.md)**  
+General overview of the internal structure of the C-Abi-Bridge-Aot project.
 
 ---
 
