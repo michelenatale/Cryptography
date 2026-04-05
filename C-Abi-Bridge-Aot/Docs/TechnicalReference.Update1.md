@@ -1,5 +1,11 @@
 # 📘 Technical Reference Documentation  
 
+**Status**: ✅   
+**Version**: 0.2.0   
+**Last Updated**: 2026.04.07
+
+---
+
 > **Documentation Update 1 / 2026.04.07**  
 > This document is part of the updated Technical Reference series.  
 > The original documentation series (`README-DOCS.md`) remains available for historical context and may still be useful for understanding the evolution of the project.
