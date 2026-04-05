@@ -1,5 +1,11 @@
 # 📘 Error Codes & Handling  
 
+**Status**: ✅   
+**Version**: 0.2.0   
+**Last Updated**: 2026.04.07
+
+---
+
 This document describes the error codes returned by the **C‑Abi‑Bridge‑Aot** NativeAOT library and provides guidance on how to handle them safely across different languages.
 
 All exported functions return an `int` / `cerror`:
