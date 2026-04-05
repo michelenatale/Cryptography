@@ -1,5 +1,11 @@
 # ⭐ Contributing to C‑Abi‑Bridge‑Aot
 
+**Status**: ✅   
+**Version**: 0.2.0   
+**Last Updated**: 2026.04.07
+
+---
+
 Thank you for your interest in contributing to **C‑Abi‑Bridge‑Aot**!  
 
 This project aims to provide a high‑performance, NativeAOT‑compiled, C‑ABI‑compatible cryptography runtime that can be consumed from any language.  
