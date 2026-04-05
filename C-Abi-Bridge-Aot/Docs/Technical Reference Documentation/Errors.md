@@ -100,10 +100,13 @@ AssertError(err)
 ## 3.5 Rust
 
 ```
-#[repr(u8)]
+#[repr(i32)]
 #[derive(Debug, Copy, Clone, PartialEq, Eq)]
 pub enum CError {
     Ok = 0,
+    // Negative values for specific error kinds, e.g.:
+    ArgumentError = -1,
+    CryptoError   = -2,
     // ...
 }
 
@@ -117,15 +120,15 @@ extern "C" {
         associated_length: i32,
         decipher_ptr: *mut *mut u8,
         decipher_length: *mut i32,
-    ) -> u8; // oder CError, wenn via bindgen gespiegelt
+    ) -> i32; // or CError via bindgen
 }
 ```
 ```
-fn aes_decrypt(...) -> Result<Vec<u8>, CryptoError> {
+fn aes_decrypt(...) -> Result<Vec<u8>, CError> {
     let err = unsafe { aes_decrypt_aot(... ) };
-    match err {
-        0 => Ok(...),
-        code => Err(CryptoError::from(code)),
+    match CError::from_i32(err) {
+        CError::Ok => Ok(...),
+        other      => Err(other),
     }
 }
 ```
