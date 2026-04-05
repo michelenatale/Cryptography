@@ -1,5 +1,11 @@
 # 📘 C‑Abi‑Bridge‑Aot
 
+**Status**: ✅   
+**Version**: 0.2.0   
+**Last Updated**: 2026.04.07
+
+---
+
 *A high‑performance NativeAOT C‑ABI bridge for cryptographic operations*
 
 C‑Abi‑Bridge‑Aot is a **NativeAOT‑compiled, cross‑language, C‑ABI‑compatible** cryptography runtime designed to be consumed from any language that can call C functions — including **C, C++, Rust, Go, Zig, Python, Java, .NET, and more**.
