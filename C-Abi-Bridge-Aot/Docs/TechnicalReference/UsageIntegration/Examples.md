@@ -1,5 +1,11 @@
 # 📘 Practical Usage Examples  
 
+**Status**: ✅   
+**Version**: 0.2.0   
+**Last Updated**: 2026.04.07
+
+---
+
 This document provides real‑world examples for using the **C‑Abi‑Bridge‑Aot** NativeAOT library from multiple programming languages.
 
 All examples assume:
