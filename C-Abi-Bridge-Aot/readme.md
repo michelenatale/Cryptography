@@ -202,17 +202,53 @@ dotnet test
 
 ---
 
+# ➡️ Documentation
+
+This project includes a full documentation suite with architecture diagrams, memory flow explanations, interop guides, and usage examples for C, C#, and VB.NET.
+
+> **Basic-2026.03.05:** [README-DOCS.md](Docs/README-DOCS.md)   
+> **Update 1-2026.04.07:** [TechnicalReference.Update1.md](Docs/TechnicalReference.Update1.md)   
+
+---
+
+## 📌 Changelog
+
+The full version history is available in  
+[CHANGELOG.md](CHANGELOG.md).
+
+---
+
 # 📄 License
 
 GPL-3.0 License
-© Michele Natale 2026
+@ C-Abi-Bridge-Aot 2026
+Created by © Michele Natale 2026
+
+This project inherits the license of the parent repository Cryptography.
 
 ---
 
 # 🙌 Credits
 
 Developed by Michele Natale  
-NativeAOT, C ABI, and cryptography engineering.
+NativeAOT, C ABI and Cryptography Engineering.
+
+GitHub: [https://github.com/michelenatale](https://github.com/michelenatale)
 
 ---
 
+# 🎬 Video Demonstration - Video Mp4 - Downloads
+
+A demonstration video is available in the "Docs/Video" folder and as a link below:
+
+➡️ [c-abi-bridge-aot-basic.mp4](Docs/Videos/c-abi-bridge-aot_3_24671.mp4)
+➡️ [c-abi-bridge-aot-cpp.mp4](Docs/Videos/c-abi-bridge-aot_2.mp4)
+➡️ [c-abi-bridge-aot-new.mp4](Docs/Videos/c-abi-bridge-aot.mp4)
+
+---
+
+## 🔍 That could also be of interest.
+
+[.NET-Native-Interop-Suite](https://github.com/michelenatale/.NET-Native-Interop-Suite)
+
+---
