@@ -117,8 +117,8 @@ Misaligned or invalid pointers may cause:
 
 Caller must allocate: 
 ```
-uint8_t out[64];
-cabi_sha256(input, len, out, 64);
+auto err = sha_256_hash_data_aot(bytes.data(), size, &out_ptr, &out_len);
+assert_error(err);
 ```
 Never free stack memory with cabi_free_buffer.
 
@@ -126,8 +126,10 @@ Never free stack memory with cabi_free_buffer.
 
 Use managed arrays:
 ```
-byte[] output = new byte[32];
-cabi_sha256(input, input.Length, output, output.Length);
+var err = Native.Sha256HashDataAot(
+  bytes, bytes.Length,
+  out IntPtr hash_ptr, out int hash_length);
+AssertError(err);
 ```
 The GC owns the memory — do not free it manually.
 
@@ -145,7 +147,12 @@ pub enum CError {
 }
 
 extern "C" {
-    fn free_memory_aot(ptr: *mut u8) -> i32; // CError (int32)
+    fn sha256_hash_data_aot(
+        bytes_ptr: *const u8,
+        bytes_len: i32,
+        hash_ptr: *mut *mut u8,
+        hash_len: *mut i32,
+    ) -> i32; // CError
 }
 
 fn assert_error(err: i32) {
@@ -155,12 +162,22 @@ fn assert_error(err: i32) {
 }
 
 fn main() {
-    let mut buffer = vec![1u8, 2, 3, 4];
+    let bytes: Vec<u8> = vec![1, 2, 3, 4];
+    let mut hash_ptr: *mut u8 = std::ptr::null_mut();
+    let mut hash_len: i32 = 0;
 
-    let err = unsafe { free_memory_aot(buffer.as_mut_ptr()) };
+    let err = unsafe {
+        sha256_hash_data_aot(
+            bytes.as_ptr(),
+            bytes.len() as i32,
+            &mut hash_ptr,
+            &mut hash_len,
+        )
+    };
+
     assert_error(err);
 
-    println!("Memory freed successfully.");
+    println!("Hash length: {}", hash_len);
 }
 ```
 Rust owns the memory — do not call `cabi_free_buffer`.
@@ -174,7 +191,12 @@ package main
 /*
 #include <stdint.h>
 
-extern int32_t free_memory_aot(uint8_t* ptr);
+extern int32_t sha256_hash_data_aot(
+    const uint8_t* bytes_ptr,
+    int32_t bytes_len,
+    uint8_t** hash_ptr,
+    int32_t* hash_len
+);
 */
 import "C"
 import "fmt"
@@ -186,12 +208,20 @@ func assertError(err C.int32_t) {
 }
 
 func main() {
-    buffer := []C.uint8_t{1, 2, 3, 4}
+    bytes := []C.uint8_t{1, 2, 3, 4}
+    var hashPtr *C.uint8_t
+    var hashLen C.int32_t
 
-    err := C.free_memory_aot(&buffer[0])
+    err := C.sha256_hash_data_aot(
+        &bytes[0],
+        C.int32_t(len(bytes)),
+        &hashPtr,
+        &hashLen,
+    )
+
     assertError(err)
 
-    fmt.Println("Memory freed successfully.")
+    fmt.Println("Hash length:", int(hashLen))
 }
 ```
 Go owns the memory.
@@ -202,21 +232,32 @@ from ctypes import *
 
 dll = CDLL("C-Abi-Bridge.Aot.dll")
 
-# CError = int32
-dll.free_memory_aot.restype = c_int
-dll.free_memory_aot.argtypes = [POINTER(c_ubyte)]
+dll.sha256_hash_data_aot.restype = c_int  # CError = int32
+dll.sha256_hash_data_aot.argtypes = [
+    POINTER(c_ubyte),  # bytes_ptr
+    c_int,             # bytes_len
+    POINTER(c_void_p), # hash_ptr (uint8_t**)
+    POINTER(c_int)     # hash_len
+]
 
 def assert_error(err: int):
     if err != 0:
         raise Exception(f"CError returned: {err}")
 
-# Example buffer
-buf = (c_ubyte * 4)(1, 2, 3, 4)
+bytes_buf = (c_ubyte * 4)(1, 2, 3, 4)
+hash_ptr = c_void_p()
+hash_len = c_int()
 
-err = dll.free_memory_aot(buf)
+err = dll.sha256_hash_data_aot(
+    bytes_buf,
+    len(bytes_buf),
+    byref(hash_ptr),
+    byref(hash_len)
+)
+
 assert_error(err)
 
-print("Memory freed successfully.")
+print("Hash length:", hash_len.value)
 ```
 Python owns the memory.
 
