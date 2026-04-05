@@ -112,6 +112,8 @@ Tests/C-Abi-Bridge.Aot.Cpp.Tests
 - Ensure ABI compatibility across languages
 - Follow .NET NativeAOT restrictions
 
+---
+
 ## 6. Pull Requests
 
 Before submitting a PR:
@@ -123,6 +125,8 @@ Before submitting a PR:
 
 PRs that break ABI compatibility must be discussed first.
 
+---
+
 ## 7. Reporting Issues
 
 When reporting a bug, please include:
@@ -133,6 +137,8 @@ When reporting a bug, please include:
 - Logs or error messages
 
 Environment details (OS, .NET version, compiler version)
+
+---
 
 ## 8. License
 
