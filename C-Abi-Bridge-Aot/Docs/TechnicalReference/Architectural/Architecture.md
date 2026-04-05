@@ -1,6 +1,12 @@
 
 # 📘 High‑Level Architecture  
 
+**Status**: ✅   
+**Version**: 0.2.0   
+**Last Updated**: 2026.04.07
+
+---
+
 This document provides an overview of the internal architecture of **C‑Abi‑Bridge‑Aot**, including its design goals, layering model, build pipeline, and cross‑language integration strategy.
 
 ---
