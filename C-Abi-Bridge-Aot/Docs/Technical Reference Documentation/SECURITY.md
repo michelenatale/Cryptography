@@ -34,7 +34,7 @@ Please include:
 - Suggested fixes (optional)  
 - Your environment (OS, compiler, .NET version)  
 
-You will receive a response within **72 hours**.
+Please note that the interaction between NativeAOT, platform compatibility, and low‑level runtime behavior is still an evolving area within .NET. In some cases, it may be appropriate to contact Microsoft directly so that valuable insights and platform‑level issues can be captured, analyzed, and incorporated into the ongoing improvement of the ecosystem.
 
 ---
 
