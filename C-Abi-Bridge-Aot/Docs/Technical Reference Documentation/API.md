@@ -12,7 +12,7 @@ All functions follow a stable, language‑agnostic ABI and can be consumed from 
 - **Calling convention:** `__cdecl`
 - **Export style:** C ABI (`extern "C"`)
 - **Name mangling:** Disabled (flat symbol names)
-- **Return type:** `int` (status code)
+- **Return type:** `int` or `cerror` (status code)
 - **Error handling:** Negative values indicate failure
 - **Memory:** Caller‑allocated unless explicitly stated otherwise
 - **Thread safety:** All functions are thread‑safe unless noted
@@ -77,12 +77,12 @@ fill_crypto_bytes_aot(buffer, 32);
 ## 5.1 AES‑CBC-AEAD Encrypt
 
 ```
-[LibraryImport(DllName, EntryPoint = "aes_encrypt_aot")]
-internal static partial CError AesEncryptAot(
-  ReadOnlySpan<byte> bytes, int bytes_length,
-  IntPtr key, int key_length,
-  ReadOnlySpan<byte> associated, int associated_length,
-  out IntPtr output, out int output_length);
+[UnmanagedCallersOnly(EntryPoint = "aes_encrypt_aot")]
+public unsafe static CError AesEncryptAot(
+  byte* bytes_ptr, int bytes_length,
+  byte* key_ptr, int key_length,
+  byte* associated_ptr, int associated_length,
+  byte** cipher_ptr, int* cipher_length);
 ```
 
 **Notes**
@@ -92,12 +92,12 @@ internal static partial CError AesEncryptAot(
 ## 5.2 AES‑CBC-AEAD Decrypt
 
 ```
-[LibraryImport(DllName, EntryPoint = "aes_decrypt_aot")]
-internal static partial CError AesDecryptAot(
-  ReadOnlySpan<byte> bytes, int bytes_length,
-  IntPtr key, int key_length,
-  ReadOnlySpan<byte> associated, int associated_length,
-  out IntPtr output, out int output_length);
+[UnmanagedCallersOnly(EntryPoint = "aes_decrypt_aot")]
+public unsafe static CError AesDecryptAot(
+  byte* bytes_ptr, int bytes_length,
+  byte* key_ptr, int key_length,
+  byte* associated_ptr, int associated_length,
+  byte** decipher_ptr, int* decipher_length);
 ```
 
 ---
@@ -107,23 +107,23 @@ internal static partial CError AesDecryptAot(
 ## 6.1 Encrypt
 
 ```
-[LibraryImport(DllName, EntryPoint = "aes_gcm_encrypt_aot")]
-internal static partial CError AesGcmEncryptAot(
-  ReadOnlySpan<byte> bytes, int bytes_length,
-  IntPtr key, int key_length,
-  ReadOnlySpan<byte> associated, int associated_length,
-  out IntPtr output, out int output_length);
+[UnmanagedCallersOnly(EntryPoint = "aes_gcm_encrypt_aot")]
+public unsafe static CError AesGcmEncryptAot(
+  byte* bytes_ptr, int bytes_length,
+  byte* key_ptr, int key_length,
+  byte* associated_ptr, int associated_length,
+  byte** cipher_ptr, int* cipher_length);
 ```
 
 ## 6.2 Decrypt
 
 ```
-[LibraryImport(DllName, EntryPoint = "aes_gcm_decrypt_aot")]
-internal static partial CError AesGcmDecryptAot(
-  ReadOnlySpan<byte> bytes, int bytes_length,
-  IntPtr key, int key_length,
-  ReadOnlySpan<byte> associated, int associated_length,
-  out IntPtr output, out int output_length);
+[UnmanagedCallersOnly(EntryPoint = "aes_gcm_decrypt_aot")]
+public unsafe static CError AesGcmDecryptAot(
+ byte* bytes_ptr, int bytes_length,
+ byte* key_ptr, int key_length,
+ byte* associated_ptr, int associated_length,
+ byte** decipher_ptr, int* decipher_length);
 ```
 
 ---
@@ -133,24 +133,23 @@ internal static partial CError AesGcmDecryptAot(
 ## 7.1 Encrypt
 
 ```
-[LibraryImport(DllName, EntryPoint = "chacha20_poly1305_encrypt_aot")]
-internal static partial CError ChaCha20Poly1305EncryptAot(
-  ReadOnlySpan<byte> bytes, int bytes_length,
-  IntPtr key, int key_length,
-  ReadOnlySpan<byte> associated, int associated_length,
-  out IntPtr output, out int output_length);
-
+[UnmanagedCallersOnly(EntryPoint = "chacha20_poly1305_encrypt_aot")]
+public unsafe static CError ChaCha20Poly1305EncryptAot(
+  byte* bytes_ptr, int bytes_length,
+  byte* key_ptr, int key_length,
+  byte* associated_ptr, int associated_length,
+  byte** cipher_ptr, int* cipher_length);
 ```
 
 ## 7.2 Decrypt
 
 ```
-[LibraryImport(DllName, EntryPoint = "chacha20_poly1305_decrypt_aot")]
-internal static partial CError ChaCha20Poly1305DecryptAot(
-  ReadOnlySpan<byte> bytes, int bytes_length,
-  IntPtr key, int key_length,
-  ReadOnlySpan<byte> associated, int associated_length,
-  out IntPtr output, out int output_length);
+[UnmanagedCallersOnly(EntryPoint = "chacha20_poly1305_decrypt_aot")]
+public unsafe static CError ChaCha20Poly1305DecryptAot(
+ byte* bytes_ptr, int bytes_length,
+ byte* key_ptr, int key_length,
+ byte* associated_ptr, int associated_length,
+ byte** decipher_ptr, int* decipher_length);
 ```
 
 ---
@@ -160,21 +159,20 @@ internal static partial CError ChaCha20Poly1305DecryptAot(
 ## 8.1 SHA‑256
 
 ```
-[LibraryImport(DllName, EntryPoint = "sha_256_hash_data_aot")]
-internal static partial CError Sha256HashDataAot(
-  ReadOnlySpan<byte> bytes, int bytes_length,
-  out IntPtr output, out int output_length);
-
+[UnmanagedCallersOnly(EntryPoint = "sha_256_hash_data_aot")]
+public unsafe static CError Sha256HashDataAot(
+  byte* bytes_ptr, int length,
+  byte** sha_out_ptr, int* sha_out_length);
 ```
 Output must be 32 bytes.
 
 ## 8.2 SHA‑512
 
 ```
-[LibraryImport(DllName, EntryPoint = "sha_512_hash_data_aot")]
-public static partial CError Sha512HashDataAot(
-  ReadOnlySpan<byte> bytes, int bytes_length,
-  out IntPtr output, out int output_length);
+[UnmanagedCallersOnly(EntryPoint = "sha_512_hash_data_aot")]
+public unsafe static CError Sha512HashDataAot(
+  byte* bytes_ptr, int length,
+  byte** sha_out_ptr, int* sha_out_length);
 ```
 
 Output must be 64 bytes.
@@ -186,11 +184,11 @@ Output must be 64 bytes.
 ## 9.1 HMAC‑SHA256
 
 ```
-[LibraryImport(DllName, EntryPoint = "hmac_sha_256_hash_data_aot")]
-public static partial CError HmacSha256HashDataAot(
-  ReadOnlySpan<byte> bytes, int bytes_length,
-  ReadOnlySpan<byte> key, int key_length,
-  out IntPtr output, out int output_length);
+[UnmanagedCallersOnly(EntryPoint = "hmac_sha_256_hash_data_aot")]
+public unsafe static CError HmacSha256HashDataAot(
+  byte* bytes_ptr, int bytes_length,
+  byte* key_ptr, int key_length,
+  byte** sha_out_ptr, int* sha_out_length);
 ```
 
 ---
@@ -200,19 +198,17 @@ public static partial CError HmacSha256HashDataAot(
 ## 10.1 Base64 Encode
 
 ```
-[LibraryImport(DllName, EntryPoint = "to_base_64_utf8_aot")]
-internal static partial CError ToBase64Aot(
-  ReadOnlySpan<byte> bytes, int bytes_length,
-  out IntPtr output, out int output_length);
+[UnmanagedCallersOnly(EntryPoint = "to_base_64_utf8_aot")]
+public unsafe static CError ToBase64Utf8Aot(
+ byte* bytes, int bytes_length, byte** output_ptr, int* outputLen);
 ```
 
 ## 10.2 Base64 Decode
 
 ```
-[LibraryImport(DllName, EntryPoint = "from_base_64_utf8_aot")]
-public static partial CError FromBase64Aot(
-  ReadOnlySpan<byte> bytes, int bytes_length,
-  out IntPtr output, out int output_length);
+[UnmanagedCallersOnly(EntryPoint = "from_base_64_utf8_aot")]
+public unsafe static CError FromBase64Utf8Aot(
+  byte* bytes, int bytes_length, byte** output_ptr, int* outputLen);
 ```
 
 --- 
@@ -222,8 +218,8 @@ public static partial CError FromBase64Aot(
 ## 11.1 Free Buffer
 
 ```
-[LibraryImport(DllName, EntryPoint = "free_buffer_aot")]
-internal static partial void FreeBuffer(IntPtr ptr);
+[UnmanagedCallersOnly(EntryPoint = "free_buffer_clear_aot")]
+public static void FreeBuffer(void* buffer, int length);
 ```
 
 Used only for functions that allocate memory (rare).
@@ -232,15 +228,15 @@ Used only for functions that allocate memory (rare).
 
 # 12. File Encryption
 
-## 12.1 AES‑CBC File Encrypt
+## 12.1 AES‑CBC-AEAD File Encrypt
 
 ```
-[LibraryImport(DllName, EntryPoint = "aes_encrypt_file_aot")]
-public static partial CError AesEncryptFileAot(
- ReadOnlySpan<byte> src, int src_length,
- ReadOnlySpan<byte> dest, int dest_length,
- IntPtr key, int key_length,
- ReadOnlySpan<byte> associated, int associated_length);
+[UnmanagedCallersOnly(EntryPoint = "aes_encrypt_file_aot")]
+public unsafe static CError AesEncryptFileAot(
+  byte* src_ptr, int src_length,
+  byte* dest_ptr, int dest_length,
+  byte* key_ptr, int key_length,
+  byte* associated_ptr, int associated_length);
 ```
 
 ---
@@ -248,31 +244,31 @@ public static partial CError AesEncryptFileAot(
 # 13. Post‑Quantum Cryptography
 
 ```
-[LibraryImport(DllName, EntryPoint = "create_mlkem_key_pair_aot")]
-internal static partial CError CreateMlKemKeyPairAot(
-  out IntPtr priv_key_ptr, out int priv_key_length,
-  out IntPtr pub_key_ptr, out int pub_key_length,
-  out IntPtr guid_id_ptr, out int guid_id_length,
-  out byte mlkem_param, out byte crypto_algo);
+[UnmanagedCallersOnly(EntryPoint = "create_mlkem_key_pair_aot")]
+public unsafe static CError CreateMlKemKeyPairAot(
+  byte** priv_key_ptr, int* priv_key_length,
+  byte** pub_key_ptr, int* pub_key_length,
+  byte** guid_id_ptr, int* guid_id_length,
+  byte* mlkem_param, byte* crypto_algo);
 ```
 
 ```
-[LibraryImport(DllName, EntryPoint = "pqc_mlkem_encryption_aot")]
-internal static partial CError PqcMlKemEncryptionAot(
-  ReadOnlySpan<byte> message, int message_length,
-  ReadOnlySpan<byte> private_key, int private_key_length,
-  ReadOnlySpan<byte> capsulation, int capsulation_length,
-  ReadOnlySpan<byte> associated, int associated_length,
+[UnmanagedCallersOnly(EntryPoint = "pqc_mlkem_encryption_aot")]
+public unsafe static CError PqcMlKemEncryptionAot(
+  byte* message_ptr, int message_length,
+  byte* private_key_ptr, int private_key_length,
+  byte* capsulation_ptr, int capsulation_length,
+  byte* associated_ptr, int associated_length,
   byte mlkem_param, byte crypto_algo,
-  out IntPtr cipher, out int cipher_length);
+  byte** cipher_ptr, int* cipher_length);
 
-[LibraryImport(DllName, EntryPoint = "pqc_mlkem_decryption_aot")]
-internal static partial CError PqcMlKemDecryptionAot(
-  ReadOnlySpan<byte> cipher, int cipher_length,
-  ReadOnlySpan<byte> shared_key, int shared_key_length,
-  ReadOnlySpan<byte> associated, int associated_length,
+[UnmanagedCallersOnly(EntryPoint = "pqc_mlkem_decryption_aot")]
+public unsafe static CError PqcMlKemDecryptionAot(
+  byte* cipher_ptr, int cipher_length,
+  byte* shared_key_ptr, int shared_key_length,
+  byte* associated_ptr, int associated_length,
   byte mlkem_param, byte crypto_algo,
-  out IntPtr decipher_ptr, out int decipher_length);
+  byte** decipher_ptr, int* decipher_length);
 ```
 
 ---
@@ -319,5 +315,6 @@ internal static partial CError Sha256HashDataAot(
   out IntPtr output, out int output_length);
 ```
 
-**End of API Reference**
+---
+
 
