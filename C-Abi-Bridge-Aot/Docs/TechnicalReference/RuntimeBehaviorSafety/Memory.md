@@ -1,4 +1,11 @@
 # 📘 Memory Ownership & Lifetime Rules  
+
+**Status**: ✅   
+**Version**: 0.2.0   
+**Last Updated**: 2026.04.07
+
+---
+
 This document describes how memory is allocated, passed, and freed when using the **C‑Abi‑Bridge‑Aot** NativeAOT library.  
 Correct memory handling is essential for safe and predictable cross‑language interop.
 
