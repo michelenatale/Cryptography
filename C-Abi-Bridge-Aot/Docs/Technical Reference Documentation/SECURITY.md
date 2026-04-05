@@ -74,7 +74,7 @@ Never assume success.
 Especially for AES‑GCM and ChaCha20‑Poly1305.
 
 ### ✔ Use strong random keys  
-Use `cabi_crypto_random_bytes` to generate keys.
+Use `crypto_random_bytes_aot` to generate keys.
 
 ### ✔ Zero sensitive memory  
 Use secure zeroing functions where appropriate.
@@ -91,7 +91,7 @@ The library follows strict memory rules:
 - All buffers must be allocated by the **caller**
 - The library never frees caller‑allocated memory
 - Functions that allocate memory explicitly document this behavior
-- Use `cabi_free_buffer` to free library‑allocated memory
+- Use `free_buffer_aot` to free library‑allocated memory
 - Sensitive buffers are cleared when possible
 
 The NativeAOT runtime ensures:
