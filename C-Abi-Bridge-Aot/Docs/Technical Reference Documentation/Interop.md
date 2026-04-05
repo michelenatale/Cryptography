@@ -42,7 +42,7 @@ Add to your `.vcxproj`:
 ### 2.2 Example Usage
 
 ```cpp
-#include "cabi_exp_imp.h"
+#include "exp_imp.aot.h"
 
 int main()
 {
