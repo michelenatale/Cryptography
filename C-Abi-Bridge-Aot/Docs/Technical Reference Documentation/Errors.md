@@ -222,6 +222,6 @@ Especially in C, C++, and Rust.
 ## 6. ABI Stability
 Error codes are part of the public ABI and will not change without a major version bump.
 
-End of Error Documentation
+---
 
 
