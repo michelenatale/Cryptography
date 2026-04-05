@@ -1,5 +1,11 @@
 # 📘 C‑Abi‑Bridge‑Aot — API Reference
 
+**Status**: ✅   
+**Version**: 0.2.0   
+**Last Updated**: 2026.04.07
+
+---
+
 This document describes the public C ABI exported by the **C‑Abi‑Bridge‑Aot** NativeAOT library.  
 
 All functions follow a stable, language‑agnostic ABI and can be consumed from C, C++, Rust, Go, Zig, Python, Java, .NET, and any other language that supports C interop.
