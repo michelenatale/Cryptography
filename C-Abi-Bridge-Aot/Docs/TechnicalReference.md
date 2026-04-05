@@ -3,6 +3,34 @@ This file provides a structured overview of all documentation available in the `
 
 Use this as the entry point to navigate the project documentation.
 
+```
+Docs /
+│
+├── TechnicalReference /
+│   │
+│   ├── Core /
+│   │   ├── API.md
+│   │   ├── Build.md
+│   │   └── Contributing.md
+│   │
+│   ├── RuntimeBehaviorSafety /
+│   │   ├── Errors.md
+│   │   ├── Memory.md
+│   │   └── Security.md
+│   │
+│   ├── UsageIntegration /
+│   │   ├── Examples.md
+│   │   ├── FAQ.md 
+│   │   └── Interop.md
+│   │
+│   └── Architecture /
+│       ├── Architecture.md
+│       ├── ArchitectureDiagram.md
+│       └── DesignPrinciples.md
+│
+└── TechnicalReference.md
+```
+
 ---
 
 # 1. [Core Documentation](TechnicalReference/Core)
