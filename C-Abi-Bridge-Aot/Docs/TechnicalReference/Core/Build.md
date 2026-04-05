@@ -1,6 +1,12 @@
 
 # 📘 Build Guide  — Developer Guide
 
+**Status**: ✅   
+**Version**: 0.2.0   
+**Last Updated**: 2026.04.07
+
+---
+
 This document describes how to build, publish, test, and consume the **C‑Abi‑Bridge‑Aot** NativeAOT library.  
 
 It is intended for developers working on the repository or integrating the library into other projects.
