@@ -4,14 +4,14 @@ This document answers common questions about building, using, and integrating th
 
 ---
 
-# 1. What is C‑Abi‑Bridge‑Aot?
+## 1. What is C‑Abi‑Bridge‑Aot?
 
 C‑Abi‑Bridge‑Aot is a **NativeAOT‑compiled**, **C‑ABI‑compatible** cryptography runtime.  
 It exposes a stable C interface that can be consumed from any language capable of calling C functions.
 
 ---
 
-# 2. Which platforms are supported?
+## 2. Which platforms are supported?
 
 Currently:
 
@@ -25,7 +25,7 @@ Planned:
 
 ---
 
-# 3. What does the build pipeline generate?
+## 3. What does the build pipeline generate?
 
 A full build produces:
 
@@ -38,7 +38,7 @@ The `.lib` is used only by C++.
 
 ---
 
-# 4. Where are the generated files located?
+## 4. Where are the generated files located?
 
 - DLL:  
   `Src/CAbiBridge.Aot/Build/<tfm>/publish/`
@@ -48,7 +48,7 @@ The `.lib` is used only by C++.
 
 ---
 
-# 5. Why is the DLL not stored in `Build/Artifacts`?
+## 5. Why is the DLL not stored in `Build/Artifacts`?
 
 Because:
 
@@ -60,7 +60,7 @@ Artifacts are reserved for **stable, versioned files** (`.def`, `.lib`).
 
 ---
 
-# 6. How do I regenerate the `.def` and `.lib` files?
+## 6. How do I regenerate the `.def` and `.lib` files?
 
 Simply run:
 
@@ -75,7 +75,7 @@ MSBuild automatically:
 
 ---
 
-# 7. How do I use the library in C++?
+## 7. How do I use the library in C++?
 
 Link against the import library:
 
@@ -88,7 +88,7 @@ Load the DLL at runtime and call the exported functions.
 
 ---
 
-# 8. How do I use the library in C# or VB.NET?
+## 8. How do I use the library in C# or VB.NET?
 
 Use P/Invoke:
 ```
@@ -98,10 +98,12 @@ public static extern int cabi_crypto_random_bytes(byte[] buffer, int size);
 
 ---
 
-# 9. Are the exported functions thread‑safe?
+## 9. Are the exported functions thread‑safe?
 
 Yes.
 All cryptographic operations are thread‑safe unless explicitly documented otherwise.
+
+---
 
 # 10. Does the library allocate memory?
 
@@ -114,7 +116,9 @@ If a function allocates memory, it will be documented and must be freed using:
 cabi_free_buffer(ptr);
 ```
 
-# 11. What calling convention is used?
+---
+
+## 11. What calling convention is used?
 
 All exported functions use:
 
@@ -126,7 +130,7 @@ No name mangling
 
 ---
 
-# 12. How are errors reported?
+## 12. How are errors reported?
 
 All functions return an int:
 
@@ -140,35 +144,35 @@ See Docs/Errors.md for details.
 
 ---
 
-# 13. Can I use this library from Rust, Go, Zig, or Python?
+## 13. Can I use this library from Rust, Go, Zig, or Python?
 
 Yes.
 Examples are provided in `Docs/Interop.md`.
 
 ---
 
-# 14. Is the library FIPS‑certified?
+## 14. Is the library FIPS‑certified?
 
 No.
 The library is not FIPS‑certified and is not intended for high‑assurance or regulated environments without independent review.
 
 ---
 
-# 15. How stable is the C ABI?
+## 15. How stable is the C ABI?
 
 The ABI is stable and versioned.
 Breaking changes only occur in major versions.
 
 ---
 
-# 16. How do I report a security issue?
+## 16. How do I report a security issue?
 
 Do not open a public GitHub issue.
 See `SECURITY.md` for responsible disclosure instructions.
 
 ---
 
-# 17. Why NativeAOT instead of a normal .NET runtime?
+## 17. Why NativeAOT instead of a normal .NET runtime?
 
 NativeAOT provides:
 - Zero dependencies
@@ -180,7 +184,7 @@ NativeAOT provides:
 
 ---
 
-# 18. Can I embed this DLL in another application?
+## 18. Can I embed this DLL in another application?
 
 Yes.
 The DLL is self‑contained and safe to redistribute.
