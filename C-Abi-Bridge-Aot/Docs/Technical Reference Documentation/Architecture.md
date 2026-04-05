@@ -151,7 +151,7 @@ Uses `ctypes` or `cffi`.
 
 # 5. Error Handling Architecture
 
-- All functions return an `int`
+- All functions return an `int` / `cerror`
 - `0` = success  
 - Negative values = error codes  
 - No exceptions, no panics, no thrown errors  
