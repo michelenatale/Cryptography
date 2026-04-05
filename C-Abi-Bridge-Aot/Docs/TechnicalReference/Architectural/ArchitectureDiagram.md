@@ -1,5 +1,11 @@
 # 📘 Architecture Diagram  
 
+**Status**: ✅   
+**Version**: 0.2.0   
+**Last Updated**: 2026.04.07
+
+---
+
 This document provides a high‑level overview of the internal structure of the **C‑Abi‑Bridge‑Aot** project.
 
 ---
