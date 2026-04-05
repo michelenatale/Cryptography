@@ -221,7 +221,9 @@ The full version history is available in
 # 📄 License
 
 GPL-3.0 License
+
 @ C-Abi-Bridge-Aot 2026
+
 Created by © Michele Natale 2026
 
 This project inherits the license of the parent repository Cryptography.
