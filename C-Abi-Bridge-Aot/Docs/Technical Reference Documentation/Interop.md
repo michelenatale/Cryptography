@@ -42,7 +42,7 @@ Add to your `.vcxproj`:
 ### 2.2 Example Usage
 
 ```cpp
-#include "exp_imp.aot.h"
+#include "bridge-aot.h"
 
 int main()
 {
@@ -69,7 +69,7 @@ public static extern int fill_crypto_bytes_aot(byte[] buffer, int size);
 
 ```
 var buf = new byte[32];
-cabi_crypto_random_bytes(buf, buf.Length);
+fill_crypto_bytes_aot(buf, buf.Length);
 ```
 
 ---
@@ -180,7 +180,7 @@ public class Crypto {
         System.loadLibrary("C-Abi-Bridge.Aot");
     }
 
-    public static native int cabi_crypto_random_bytes(byte[] buffer, int size);
+    public static native int fill_crypto_bytes_aot(byte[] buffer, int size);
 }
 ```
 
