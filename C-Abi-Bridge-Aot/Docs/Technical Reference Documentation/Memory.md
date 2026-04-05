@@ -135,8 +135,33 @@ The GC owns the memory — do not free it manually.
 
 Use slices or vectors:
 ```
-let mut out = vec![0u8; 32];
-cabi_sha256(input.as_ptr(), len, out.as_mut_ptr(), out.len() as i32);
+#[repr(i32)]
+#[derive(Debug, Copy, Clone, PartialEq, Eq)]
+pub enum CError {
+    Ok = 0,
+    ArgumentError = -1,
+    CryptoError = -2,
+    // ...
+}
+
+extern "C" {
+    fn free_memory_aot(ptr: *mut u8) -> i32; // CError (int32)
+}
+
+fn assert_error(err: i32) {
+    if err != 0 {
+        panic!("CError returned: {}", err);
+    }
+}
+
+fn main() {
+    let mut buffer = vec![1u8, 2, 3, 4];
+
+    let err = unsafe { free_memory_aot(buffer.as_mut_ptr()) };
+    assert_error(err);
+
+    println!("Memory freed successfully.");
+}
 ```
 Rust owns the memory — do not call `cabi_free_buffer`.
 
@@ -144,15 +169,54 @@ Rust owns the memory — do not call `cabi_free_buffer`.
 
 Use Go slices:
 ```
-buf := make([]byte, 32)
-C.cabi_crypto_random_bytes((*C.uint8_t)(&buf[0]), C.int(len(buf)))
+package main
+
+/*
+#include <stdint.h>
+
+extern int32_t free_memory_aot(uint8_t* ptr);
+*/
+import "C"
+import "fmt"
+
+func assertError(err C.int32_t) {
+    if err != 0 {
+        panic(fmt.Sprintf("CError returned: %d", int32(err)))
+    }
+}
+
+func main() {
+    buffer := []C.uint8_t{1, 2, 3, 4}
+
+    err := C.free_memory_aot(&buffer[0])
+    assertError(err)
+
+    fmt.Println("Memory freed successfully.")
+}
 ```
 Go owns the memory.
 
 ## 6.5 Python (ctypes)
 ```
-buf = (c_ubyte * 32)()
-dll.cabi_sha256(buf, 32, out, 32)
+from ctypes import *
+
+dll = CDLL("C-Abi-Bridge.Aot.dll")
+
+# CError = int32
+dll.free_memory_aot.restype = c_int
+dll.free_memory_aot.argtypes = [POINTER(c_ubyte)]
+
+def assert_error(err: int):
+    if err != 0:
+        raise Exception(f"CError returned: {err}")
+
+# Example buffer
+buf = (c_ubyte * 4)(1, 2, 3, 4)
+
+err = dll.free_memory_aot(buf)
+assert_error(err)
+
+print("Memory freed successfully.")
 ```
 Python owns the memory.
 
