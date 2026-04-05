@@ -1,4 +1,3 @@
-
 # 📘 Cross‑Language Interop Guide  
 
 This document provides practical examples for consuming the **C‑Abi‑Bridge‑Aot** NativeAOT library from various programming languages.  
@@ -7,7 +6,7 @@ All examples use the exported C ABI functions defined in `API.md`.
 
 ---
 
-# 1. Overview
+## 1. Overview
 
 The library exposes a stable C ABI and can be consumed from any language that supports:
 
@@ -29,9 +28,9 @@ Supported languages include:
 
 ---
 
-# 2. C++ Interop
+## 2. C++ Interop
 
-## 2.1 Linking the Import Library
+### 2.1 Linking the Import Library
 
 Add to your `.vcxproj`:
 
@@ -40,7 +39,7 @@ Add to your `.vcxproj`:
 <AdditionalDependencies>C-Abi-Bridge.Aot.lib</AdditionalDependencies>
 ```
 
-## 2.2 Example Usage
+### 2.2 Example Usage
 
 ```cpp
 #include "cabi_exp_imp.h"
@@ -57,16 +56,16 @@ int main()
 
 ---
 
-# 3. C# Interop (P/Invoke)
+## 3. C# Interop (P/Invoke)
 
-## 3.1 Import Declaration
+### 3.1 Import Declaration
 
 ```
 [LibraryImport("C-Abi-Bridge.Aot.N.dll")]
 public static extern int fill_crypto_bytes_aot(byte[] buffer, int size);
 ```
 
-## 3.2 Example Usage
+### 3.2 Example Usage
 
 ```
 var buf = new byte[32];
@@ -75,7 +74,7 @@ cabi_crypto_random_bytes(buf, buf.Length);
 
 ---
 
-# 4. VB.NET Interop
+## 4. VB.NET Interop
 
 ```
 <DllImport("C-Abi-Bridge.Aot.N.dll")>
@@ -88,9 +87,9 @@ End Function
 
 ---
 
-# 5. Rust Interop
+## 5. Rust Interop
 
-## 5.1 FFI Declaration
+### 5.1 FFI Declaration
 
 ```
 #[link(name = "C-Abi-Bridge.Aot")]
@@ -99,7 +98,7 @@ extern "C" {
 }
 ```
 
-## 5.2 Example Usage
+### 5.2 Example Usage
 
 ```
 let mut buf = [0u8; 32];
@@ -110,9 +109,9 @@ unsafe {
 
 ---
 
-# 6. Go Interop (cgo)
+## 6. Go Interop (cgo)
 
-## 6.1 cgo Header
+### 6.1 cgo Header
 
 ```
 /*
@@ -124,7 +123,7 @@ int fill_crypto_bytes_aot(uint8_t* buffer, int32_t size);
 import "C"
 ```
 
-## 6.2 Example Usage
+### 6.2 Example Usage
 
 ```
 buf := make([]byte, 32)
@@ -133,7 +132,7 @@ C.fill_crypto_bytes_aot((*C.uint8_t)(&buf[0]), C.int(len(buf)))
 
 ---
 
-# 7. Zig Interop
+## 7. Zig Interop
 
 Zig can import the `.def` file directly:
 ```zig
@@ -150,7 +149,7 @@ _ = cabi.fill_crypto_bytes_aot(&buf, 32);
 
 ---
 
-# 8. Python Interop (ctypes)
+## 8. Python Interop (ctypes)
 
 ```
 from ctypes import *
@@ -161,7 +160,7 @@ buf = (c_ubyte * 32)()
 dll.fill_crypto_bytes_aot(buf, 32)
 ```
 
-# 9. Python Interop (cffi)
+## 9. Python Interop (cffi)
 
 ```
 from cffi import FFI
@@ -173,7 +172,7 @@ buf = ffi.new("uint8_t[32]")
 lib.fill_crypto_bytes_aot(buf, 32)
 ```
 
-# 10. Java Interop (JNI)
+## 10. Java Interop (JNI)
 
 ```
 public class Crypto {
@@ -185,7 +184,7 @@ public class Crypto {
 }
 ```
 
-# 11. Notes
+## 11. Notes
 
 - All examples assume the DLL is in the process working directory.
 - C++ requires the .lib file from Build/Artifacts.
