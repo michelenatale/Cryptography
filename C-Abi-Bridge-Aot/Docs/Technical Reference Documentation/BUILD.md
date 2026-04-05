@@ -126,10 +126,10 @@ Add to your `.vcxproj`:
 
 Load the DLL at runtime:
 ```
-#include "cabi_exp_imp.h"
+#include "brigde.h"
 
 uint8_t buffer[32];
-auto result = cabi_crypto_random_bytes(buffer, sizeof(buffer));
+auto result = crypto_random_bytes_aot(buffer, sizeof(buffer));
 ```
 
 ## 4.2 C# (P/Invoke)
