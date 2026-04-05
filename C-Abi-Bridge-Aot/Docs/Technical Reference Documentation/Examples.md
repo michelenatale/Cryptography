@@ -112,8 +112,27 @@ from ctypes import *
 
 dll = CDLL("C-Abi-Bridge.Aot.dll")
 
-out = (c_ubyte * 128)()
-dll.to_base_64_utf8_aot(input_buf, len(input_buf), out, 128)
+# Define return type (CError = int32)
+dll.to_base_64_utf8_aot.restype = c_int
+
+# Define argument types
+dll.to_base_64_utf8_aot.argtypes = [
+    POINTER(c_ubyte),  # input buffer
+    c_int,             # input length
+    POINTER(c_ubyte),  # output buffer
+    c_int              # output length
+]
+
+# Example usage
+input_buf = (c_ubyte * 64)(*range(64))
+out_buf = (c_ubyte * 128)()
+
+err = dll.to_base_64_utf8_aot(input_buf, len(input_buf), out_buf, 128)
+
+if err != 0:
+    raise Exception(f"CError returned: {err}")
+
+print(bytes(out_buf))
 ```
 
 ---
