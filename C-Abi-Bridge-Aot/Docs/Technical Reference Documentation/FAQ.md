@@ -105,7 +105,7 @@ All cryptographic operations are thread‑safe unless explicitly documented othe
 
 ---
 
-# 10. Does the library allocate memory?
+## 10. Does the library allocate memory?
 
 Most functions do not allocate memory.
 The caller must allocate all buffers.
