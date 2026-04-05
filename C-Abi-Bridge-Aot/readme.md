@@ -76,8 +76,6 @@ Src/CAbiBridge.Aot/Build/net10.0/publish/C-Abi-Bridge.Aot.dll
 
 This DLL is the single‑file NativeAOT binary.
 
-...
-
 ## 2. Automatic DEF + LIB generation
 
 After publishing, MSBuild automatically:
@@ -96,8 +94,6 @@ Build/Artifacts/
 ```
 
 These files are stable, versioned artifacts used by C++.
-
-...
 
 ## 3. Consumer Projects Copy the DLL
 
