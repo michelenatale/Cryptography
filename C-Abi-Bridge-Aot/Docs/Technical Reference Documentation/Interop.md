@@ -137,7 +137,7 @@ C.fill_crypto_bytes_aot((*C.uint8_t)(&buf[0]), C.int(len(buf)))
 Zig can import the `.def` file directly:
 ```zig
 const cabi = @cImport({
-    @cInclude("cabi_exp_imp.h");
+    @cInclude("bridge-aot.h");
 });
 ```
 
