@@ -10,7 +10,7 @@ Use this as the entry point to navigate the project documentation.
 ### **[API.md](TechnicalReference/Core/API.md)**  
 Complete reference of all exported C ABI functions, parameters, return values, and usage notes.
 
-### **[Build.md)(TechnicalReference/Core/Build.md)**  
+### **[Build.md](TechnicalReference/Core/Build.md)**  
 Explains how to build the NativeAOT DLL, generate `.def` and `.lib` files, and run the build pipeline.
 
 ### **[CONTRIBUTING.md](TechnicalReference/Core/Contributing.md)**  
@@ -20,7 +20,7 @@ Guidelines for contributors, coding standards, pull request rules, and developme
 
 # 2. [Runtime Behavior & Safety](TechnicalReference/RuntimeBehaviorSafety)
 
-### **[Errors.md](TechnicalReference/RuntimeBehaviorSafety/Error.md)**  
+### **[Errors.md](TechnicalReference/RuntimeBehaviorSafety/Errors.md)**  
 List of all error codes, meanings, and common error scenarios.
 
 ### **[Memory.md](TechnicalReference/RuntimeBehaviorSafety/Memory.md)**  
@@ -59,7 +59,7 @@ General overview of the internal structure of the C-Abi-Bridge-Aot project.
 
 # 5. Recommended Reading Order
 
-1. **Overview.md** (this file)  
+1. **TechnicalReference.md** (this file)  
 2. **DesignPrinciples.md**  
 3. **Architecture.md**  
 4. **API.md**  
@@ -67,8 +67,8 @@ General overview of the internal structure of the C-Abi-Bridge-Aot project.
 6. **Errors.md**  
 7. **Interop.md**  
 8. **Examples.md**  
-9. **SECURITY.md**  
-10. **CONTRIBUTING.md**
+9. **Security.md**  
+10. **Contributing.md**
 
 ---
 
