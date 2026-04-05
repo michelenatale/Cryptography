@@ -1,5 +1,11 @@
 # 📘 Security Policy  
 
+**Status**: ✅   
+**Version**: 0.2.0   
+**Last Updated**: 2026.04.07
+
+---
+
 This document describes how security is handled in the **C‑Abi‑Bridge‑Aot** project, including vulnerability reporting, cryptographic guarantees, and secure usage guidelines.
 
 ---
