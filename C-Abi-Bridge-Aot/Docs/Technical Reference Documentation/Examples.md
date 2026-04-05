@@ -10,16 +10,16 @@ All examples assume:
 
 ---
 
-# 1. Random Bytes
+## 1. Random Bytes
 
-## 1.1 C Example
+### 1.1 C Example
 
 ```c
 auto err = fill_crypto_bytes_aot(bytes.data(), (int)bytes.size());
 assert_error(err);
 ```
 
-## 1.2 C# Example
+### 1.2 C# Example
 
 ```
 var size = rand.Next(128, 512);
@@ -29,16 +29,16 @@ AssertError(err);
 
 ---
 
-# 2. SHA‑256 Hashing
+## 2. SHA‑256 Hashing
 
-## 2.1 C Example
+### 2.1 C Example
 
 ```
 var err = fill_crypto_bytes_aot(bytes, bytes.Length);
 AssertError(err);
 ```
 
-## 2.2 C# Example
+### 2.2 C# Example
 
 ```
 var err = fill_crypto_bytes_aAot(bytes, bytes.Length);
@@ -47,9 +47,9 @@ AssertError(err);
 
 ---
 
-# 3. AES‑CBC Encryption
+## 3. AES‑CBC Encryption
 
-## 3.1 C Example
+### 3.1 C Example
 
 ```
 auto err = aes_encrypt_aot(
@@ -62,9 +62,9 @@ assert_error(err);
 
 ---
 
-# 4. AES‑GCM Encryption
+## 4. AES‑GCM Encryption
 
-## 4.1 C Example
+### 4.1 C Example
 
 ```
 auto err = aes_gcm_encrypt_aot(
@@ -77,9 +77,9 @@ assert_error(err);
 
 ---
 
-# 5. ChaCha20‑Poly1305 Encryption
+## 5. ChaCha20‑Poly1305 Encryption
 
-## 5.1 C Example
+### 5.1 C Example
 
 ```
 auto err = chacha20_poly1305_encrypt_aot(
@@ -92,9 +92,9 @@ assert_error(err);
 
 ---
 
-# 6. Base64 Encoding
+## 6. Base64 Encoding
 
-## 6.1 C Example
+### 6.1 C Example
    
 ```
 auto err = chacha20_poly1305_encrypt_aot(
@@ -105,17 +105,17 @@ auto err = chacha20_poly1305_encrypt_aot(
 assert_error(err);
 ```
 
-## 6.2 Python Example (ctypes)
+### 6.2 Python Example (ctypes)
 
 ```
 from ctypes import *
 
 dll = CDLL("C-Abi-Bridge.Aot.dll")
 
-# Define return type (CError = int32)
+### Define return type (CError = int32)
 dll.to_base_64_utf8_aot.restype = c_int
 
-# Define argument types
+### Define argument types
 dll.to_base_64_utf8_aot.argtypes = [
     POINTER(c_ubyte),  # input buffer
     c_int,             # input length
@@ -123,7 +123,7 @@ dll.to_base_64_utf8_aot.argtypes = [
     c_int              # output length
 ]
 
-# Example usage
+### Example usage
 input_buf = (c_ubyte * 64)(*range(64))
 out_buf = (c_ubyte * 128)()
 
@@ -137,7 +137,7 @@ print(bytes(out_buf))
 
 ---
 
-# 7. C++ Example (Full Flow)
+## 7. C++ Example (Full Flow)
 
 ```
 #include "cabi_exp_imp.h"
@@ -161,7 +161,7 @@ int main() {
 
 ---
 
-# 8. Rust Example
+## 8. Rust Example
 
 ```
 #[repr(i32)]
@@ -205,7 +205,7 @@ fn main() {
 
 ---
 
-# 9. Go Example (cgo)
+## 9. Go Example (cgo)
 
 ```
 package main
@@ -251,7 +251,7 @@ func main() {
 
 ---
 
-# 10. Python Example (ctypes)
+## 10. Python Example (ctypes)
 
 ```
 from ctypes import *
@@ -281,7 +281,7 @@ print(bytes(output_buf))
 
 ---
 
-# 11. VB.NET Example
+## 11. VB.NET Example
 
 ```
 Dim buf(31) As Byte
