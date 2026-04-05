@@ -1,5 +1,11 @@
 # 📘 Frequently Asked Questions (FAQ)
 
+**Status**: ✅   
+**Version**: 0.2.0   
+**Last Updated**: 2026.04.07
+
+---
+
 This document answers common questions about building, using, and integrating the **C‑Abi‑Bridge‑Aot** NativeAOT library.
 
 ---
