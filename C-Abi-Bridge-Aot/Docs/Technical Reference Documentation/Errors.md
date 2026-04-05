@@ -54,7 +54,23 @@ Incorrect key lengths are a common source of -1 errors.
 
 # 3. Error Handling by Language
 
-## 3.1 C / C++
+## 3.1 Universal Error Convention for All Languages
+
+`CError` is the **only canonical error code** of the C‑ABI Bridge.  
+It is defined as an unsigned 8‑bit value (`uint8_t`) and represents all possible error states returned by the NativeAOT export functions.
+
+All languages consuming the C‑ABI **must follow this convention**:
+
+- They must **mirror the `CError` values exactly** (1:1 mapping).
+- They must **not introduce custom error codes** or alternative numeric schemes.
+- They may provide **language‑specific wrappers** (e.g., Rust `Result<T, CryptoError>`, C# exceptions, Go `error`, Python exceptions),  
+  but these wrappers must always be based on the **original `CError` byte value**.
+- The underlying `CError` value must remain the **single source of truth** for all error handling across all bindings.
+
+This rule applies to **all languages**, not only Rust.  
+It is based on the error model originally defined for **C / C# / VB.NET**, and all other languages are expected to follow the same contract to ensure API stability, predictability, and cross‑language consistency.
+
+## 3.2 C / C++
 
 ```
 auto err = aes_gcm_encrypt_aot(
@@ -65,8 +81,7 @@ auto err = aes_gcm_encrypt_aot(
 assert_error(err);
 ```
 
-## 3.2 C# (P/Invoke)
-
+## 3.3 C# (P/Invoke)
 
 ```
 var err = Native.Sha256HashDataAot(
@@ -75,14 +90,14 @@ var err = Native.Sha256HashDataAot(
 AssertError(err);
 ```
 
-## 3.3 VB.NET
+## 3.4 VB.NET
 
 ```
 Dim err = Sha256HashDataAot(bytes, bytes.Length, hash_ptr, hash_length)
 AssertError(err)
 ```
 
-## 3.4 Rust
+## 3.5 Rust
 
 ```
 #[repr(u8)]
