@@ -10,6 +10,8 @@
 > This document is part of the updated Technical Reference series.  
 > The original documentation series (`README-DOCS.md`) remains available for historical context and may still be useful for understanding the evolution of the project.
 
+---
+
 This file provides a structured overview of all documentation available in the `Docs/` directory.  
 
 Use this as the entry point to navigate the project documentation.
