@@ -114,31 +114,13 @@ assert_error(err);
 ### 6.2 Python Example (ctypes)
 
 ```
-from ctypes import *
-
-dll = CDLL("C-Abi-Bridge.Aot.dll")
-
-### Define return type (CError = int32)
-dll.to_base_64_utf8_aot.restype = c_int
-
-### Define argument types
-dll.to_base_64_utf8_aot.argtypes = [
-    POINTER(c_ubyte),  # input buffer
-    c_int,             # input length
-    POINTER(c_ubyte),  # output buffer
-    c_int              # output length
-]
-
-### Example usage
-input_buf = (c_ubyte * 64)(*range(64))
-out_buf = (c_ubyte * 128)()
-
-err = dll.to_base_64_utf8_aot(input_buf, len(input_buf), out_buf, 128)
-
-if err != 0:
-    raise Exception(f"CError returned: {err}")
-
-print(bytes(out_buf))
+err = dll.to_base_64_utf8_aot(
+    input_buf,
+    len(input_buf),
+    output_buf,
+    len(output_buf)
+)
+assert_error(err)
 ```
 
 ---
@@ -146,7 +128,7 @@ print(bytes(out_buf))
 ## 7. C++ Example (Full Flow)
 
 ```
-#include "cabi_exp_imp.h"
+#include "bridge_aot.h"
 
 int main() {
   auto plain = rng_bytes(plain_size);
@@ -170,42 +152,47 @@ int main() {
 ## 8. Rust Example
 
 ```
-#[repr(i32)]
-#[derive(Debug, Copy, Clone, PartialEq, Eq)]
-pub enum CError {
-    Ok = 0,
-    ArgumentError = -1,
-    CryptoError = -2,
-    // ...
-}
-
 extern "C" {
     fn to_base_64_utf8_aot(
         input_ptr: *const u8,
         input_len: i32,
-        output_ptr: *mut u8,
-        output_len: i32,
-    ) -> i32; // CError as signed int32
+        output_ptr: *mut *mut u8,
+        output_len: *mut i32,
+    ) -> i32;
+
+    fn free_buffer(ptr: *mut u8);
+}
+
+fn assert_error(err: i32) {
+    if err != 0 {
+        panic!("CError returned: {}", err);
+    }
 }
 
 fn main() {
     let input: Vec<u8> = (0..64).collect();
-    let mut output = vec![0u8; 128];
+
+    let mut out_ptr: *mut u8 = std::ptr::null_mut();
+    let mut out_len: i32 = 0;
 
     let err = unsafe {
         to_base_64_utf8_aot(
             input.as_ptr(),
             input.len() as i32,
-            output.as_mut_ptr(),
-            output.len() as i32,
+            &mut out_ptr,
+            &mut out_len,
         )
     };
+    assert_error(err);
 
-    if err != 0 {
-        panic!("CError returned: {}", err);
-    }
+    let data = unsafe { std::slice::from_raw_parts(out_ptr, out_len as usize).to_vec() };
 
-    println!("Output: {:?}", output);
+    unsafe { free_buffer(out_ptr) };
+    out_ptr = std::ptr::null_mut(); // Important: reset pointer
+
+    println!("Output: {:?}", data);
+
+    .....
 }
 ```
 
@@ -214,8 +201,6 @@ fn main() {
 ## 9. Go Example (cgo)
 
 ```
-package main
-
 /*
 #cgo LDFLAGS: -LC-Abi-Bridge-Aot -lCAbiBridgeAot
 #include <stdint.h>
@@ -223,36 +208,49 @@ package main
 extern int32_t to_base_64_utf8_aot(
     const uint8_t* input_ptr,
     int32_t input_len,
-    uint8_t* output_ptr,
-    int32_t output_len
+    uint8_t** output_ptr,
+    int32_t* output_len
 );
+
+extern void free_buffer(uint8_t* ptr);
 */
 import "C"
-import (
-    "fmt"
-)
+import "unsafe"
+import "fmt"
+
+func assertError(err C.int32_t) {
+    if err != 0 {
+        panic(fmt.Sprintf("CError returned: %d", int32(err)))
+    }
+}
 
 func main() {
     input := make([]C.uint8_t, 64)
-    output := make([]C.uint8_t, 128)
-
     for i := 0; i < 64; i++ {
         input[i] = C.uint8_t(i)
     }
 
+    var outPtr *C.uint8_t
+    var outLen C.int32_t
+
     err := C.to_base_64_utf8_aot(
         &input[0],
         C.int32_t(len(input)),
-        &output[0],
-        C.int32_t(len(output)),
+        &outPtr,
+        &outLen,
     )
+    assertError(err)
 
-    if err != 0 {
-        panic(fmt.Sprintf("CError returned: %d", int32(err)))
-    }
+    data := C.GoBytes(unsafe.Pointer(outPtr), C.int(outLen))
 
-    fmt.Println("Output:", output)
+    C.free_buffer(outPtr)
+    outPtr = nil // Important: reset pointer
+
+    fmt.Println("Output:", data)
+
+    ....
 }
+
 ```
 
 ---
@@ -264,25 +262,43 @@ from ctypes import *
 
 dll = CDLL("C-Abi-Bridge.Aot.dll")
 
-# CError = int32
 dll.to_base_64_utf8_aot.restype = c_int
-
-dll.to_base_64_utf8_aot.argtypes = [
-    POINTER(c_ubyte),  # input buffer
-    c_int,             # input length
-    POINTER(c_ubyte),  # output buffer
-    c_int              # output length
+dll.to_base_64_utf8_utf8_aot.argtypes = [
+    POINTER(c_ubyte),
+    c_int,
+    POINTER(c_void_p),   # output_ptr**
+    POINTER(c_int)       # output_len*
 ]
 
+dll.free_buffer.argtypes = [c_void_p]
+dll.free_buffer.restype = None
+
+def assert_error(err: int):
+    if err != 0:
+        raise Exception(f"CError returned: {err}")
+
+# Example usage
 input_buf = (c_ubyte * 64)(*range(64))
-output_buf = (c_ubyte * 128)()
 
-err = dll.to_base_64_utf8_aot(input_buf, len(input_buf), output_buf, len(output_buf))
+out_ptr = c_void_p(None)
+out_len = c_int(0)
 
-if err != 0:
-    raise Exception(f"CError returned: {err}")
+err = dll.to_base_64_utf8_aot(
+    input_buf,
+    len(input_buf),
+    byref(out_ptr),
+    byref(out_len)
+)
+assert_error(err)
 
-print(bytes(output_buf))
+data = string_at(out_ptr, out_len.value)
+
+dll.free_buffer(out_ptr)  # Important: free memory
+out_ptr = c_void_p(None)  # Important: reset pointer
+
+print(data)
+
+....
 ```
 
 ---
@@ -290,8 +306,16 @@ print(bytes(output_buf))
 ## 11. VB.NET Example
 
 ```
-Dim buf(31) As Byte
-Dim rc = crypto_random_bytes_aot(buf, buf.Length)
+Dim plain_ptr As IntPtr = Nothing, plain_length As Int32 = Nothing
+Dim err = ToBase64Aot(bytes, bytes.Length, plain_ptr, plain_length)
+AssertError(err)
+
+Dim data = ToBytes(plain_ptr, plain_length)
+FreeBuffer(plain_ptr) 'Important: Always reset the memory
+
+plain_ptr = IntPtr.Zero
+err = FromBase64Aot(data, data.Length, plain_ptr, plain_length)
+AssertError(err)
 ```
 
 ---
