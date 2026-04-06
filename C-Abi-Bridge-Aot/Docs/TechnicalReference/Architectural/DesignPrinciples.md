@@ -10,7 +10,7 @@ This document explains the core design principles behind **C‑Abi‑Bridge‑Ao
 
 ---
 
-# 1. Philosophy
+## 1. Philosophy
 
 C‑Abi‑Bridge‑Aot is built on a simple idea:
 
@@ -26,7 +26,7 @@ To achieve this, the project follows a strict set of design principles that ensu
 
 ---
 
-# 2. Why NativeAOT?
+## 2. Why NativeAOT?
 
 NativeAOT was chosen for several reasons:
 
@@ -50,7 +50,7 @@ Ideal for embedding into applications, distributing with installers, or shipping
 
 ---
 
-# 3. Why a C ABI?
+## 3. Why a C ABI?
 
 The C ABI is the **lowest common denominator** across programming languages.
 
@@ -86,7 +86,7 @@ Caller‑allocated buffers avoid ownership confusion.
 
 ---
 
-# 4. Why This Project Structure?
+## 4. Why This Project Structure?
 
 The repository is organized into three layers:
 
@@ -109,7 +109,7 @@ The AOT layer is thin and stable — ideal for long‑term compatibility.
 
 ---
 
-# 5. Why Caller‑Allocated Buffers?
+## 5. Why Caller‑Allocated Buffers?
 
 The library uses a strict memory model:
 
@@ -134,7 +134,7 @@ Maximum performance.
 
 ---
 
-# 6. Why No Exceptions?
+## 6. Why No Exceptions?
 
 All functions return an `int` error code.
 
@@ -154,7 +154,7 @@ No exception metadata, no stack traces leaking sensitive data.
 
 ---
 
-# 7. Why Automated DEF + LIB Generation?
+## 7. Why Automated DEF + LIB Generation?
 
 The build pipeline automatically generates:
 
@@ -174,7 +174,7 @@ MSVC can link against the library without extra configuration.
 
 ---
 
-# 8. Why Minimalism?
+## 8. Why Minimalism?
 
 The API intentionally avoids:
 
@@ -201,7 +201,7 @@ Simple APIs remain stable for years.
 
 ---
 
-# 9. Why Strict Validation?
+## 9. Why Strict Validation?
 
 Every exported function validates:
 
@@ -224,7 +224,7 @@ No silent failures.
 
 ---
 
-# 10. Summary of Core Principles
+## 10. Summary of Core Principles
 
 | Principle | Description |
 |----------|-------------|
