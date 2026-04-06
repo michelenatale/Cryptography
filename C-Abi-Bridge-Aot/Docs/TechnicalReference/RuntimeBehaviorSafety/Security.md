@@ -10,7 +10,7 @@ This document describes how security is handled in the **C‑Abi‑Bridge‑Aot*
 
 ---
 
-# 1. Supported Versions
+## 1. Supported Versions
 
 Only the latest release of **C‑Abi‑Bridge‑Aot** receives security updates.
 
@@ -23,7 +23,7 @@ Security fixes are applied only to the most recent version to ensure consistency
 
 ---
 
-# 2. Reporting a Vulnerability
+## 2. Reporting a Vulnerability
 
 If you discover a security vulnerability, **do not open a public GitHub issue**.
 
@@ -44,7 +44,7 @@ Please note that the interaction between NativeAOT, platform compatibility, and 
 
 ---
 
-# 3. Cryptographic Guarantees
+## 3. Cryptographic Guarantees
 
 The library provides cryptographic primitives through a **NativeAOT‑compiled C ABI**.  
 It guarantees:
@@ -66,7 +66,7 @@ However:
 
 ---
 
-# 4. Secure Usage Guidelines
+## 4. Secure Usage Guidelines
 
 To ensure safe usage:
 
@@ -90,7 +90,7 @@ Never print keys or intermediate values.
 
 ---
 
-# 5. Memory Safety
+## 5. Memory Safety
 
 The library follows strict memory rules:
 
@@ -108,7 +108,7 @@ The NativeAOT runtime ensures:
 
 ---
 
-# 6. ABI Stability
+## 6. ABI Stability
 
 The C ABI is designed to be:
 
@@ -120,7 +120,7 @@ Breaking changes will only occur in **major versions**.
 
 ---
 
-# 7. Cryptographic Algorithms
+## 7. Cryptographic Algorithms
 
 The library includes:
 
@@ -136,7 +136,7 @@ All algorithms are implemented using well‑established primitives and follow be
 
 ---
 
-# 8. Threat Model
+## 8. Threat Model
 
 The library assumes:
 
@@ -155,7 +155,7 @@ The library assumes:
 
 ---
 
-# 9. Responsible Disclosure
+## 9. Responsible Disclosure
 
 We follow a **90‑day responsible disclosure policy**:
 
@@ -168,7 +168,7 @@ Contributors must not disclose vulnerabilities before a fix is published.
 
 ---
 
-# 10. Disclaimer
+## 10. Disclaimer
 
 This project is provided under the MIT License.  
 No warranty is given regarding:
@@ -181,7 +181,7 @@ Use at your own risk.
 
 ---
 
-# Thank You
+## Thank You
 
 Security researchers and contributors help keep this project safe and reliable.  
 We appreciate your efforts and responsible disclosure.
