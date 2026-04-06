@@ -11,7 +11,7 @@ This document provides an overview of the internal architecture of **C‑Abi‑B
 
 ---
 
-# 1. Design Goals
+## 1. Design Goals
 
 The architecture of C‑Abi‑Bridge‑Aot is built around the following principles:
 
@@ -35,7 +35,7 @@ The architecture of C‑Abi‑Bridge‑Aot is built around the following princip
 
 ---
 
-# 2. Layered Architecture Overview
+## 2. Layered Architecture Overview
 
 The project is organized into three main layers:
 ```
@@ -95,7 +95,7 @@ Responsibilities:
 
 ---
 
-# 3. Build Pipeline Architecture
+## 3. Build Pipeline Architecture
 
 The build pipeline consists of three automated stages:
 ```
@@ -128,7 +128,7 @@ Build/Artifacts/ (.def, .lib)
 
 ---
 
-# 4. Cross‑Language Integration Architecture
+## 4. Cross‑Language Integration Architecture
 
 The architecture is designed for universal consumption:
 ```
@@ -155,7 +155,7 @@ Uses `ctypes` or `cffi`.
 
 ---
 
-# 5. Error Handling Architecture
+## 5. Error Handling Architecture
 
 - All functions return an `int` / `cerror`
 - `0` = success  
@@ -167,7 +167,7 @@ See `Docs/Errors.md` for details.
 
 ---
 
-# 6. Memory Architecture
+## 6. Memory Architecture
 
 - Caller‑allocated buffers for all operations
 - No hidden allocations inside crypto functions
@@ -178,7 +178,7 @@ See `Docs/Memory.md` for details.
 
 ---
 
-# 7. Testing Architecture
+## 7. Testing Architecture
 
 The test suite validates:
 
@@ -191,7 +191,7 @@ The test suite validates:
 
 ---
 
-# 8. Architectural Guarantees
+## 8. Architectural Guarantees
 
 The architecture guarantees:
 
