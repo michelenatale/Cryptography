@@ -11,7 +11,7 @@ Correct memory handling is essential for safe and predictable cross‑language i
 
 ---
 
-# 1. General Principles
+## 1. General Principles
 
 The library follows strict and predictable memory rules:
 
@@ -30,7 +30,7 @@ These rules ensure:
 
 ---
 
-# 2. Caller‑Allocated Buffers (Most Common Case)
+## 2. Caller‑Allocated Buffers (Most Common Case)
 
 Most functions follow this pattern:
 
@@ -65,7 +65,7 @@ int cabi_function(
 
 ---
 
-# 3. Library‑Allocated Memory (Rare Case)
+## 3. Library‑Allocated Memory (Rare Case)
 
 Some functions may allocate memory internally (e.g., future PQC keygen APIs).
 
@@ -89,7 +89,7 @@ CError free_buffer_aot(void* buffer);
 
 ---
 
-# 4. Zeroing Sensitive Memory
+## 4. Zeroing Sensitive Memory
 
 The library attempts to zero sensitive memory when possible:
 - Keys
@@ -103,7 +103,7 @@ However:
 - The library cannot zero memory it does not own
 - Zeroing is best‑effort and platform‑dependent
 
-# 5. Alignment & Safety
+## 5. Alignment & Safety
 
 All exported functions assume:
 - Buffers are properly aligned for their platform
@@ -118,9 +118,9 @@ Misaligned or invalid pointers may cause:
 
 ---
 
-# 6. Memory Rules by Language
+## 6. Memory Rules by Language
 
-## 6.1 C / C++
+### 6.1 C / C++
 
 Caller must allocate: 
 ```
@@ -129,7 +129,7 @@ assert_error(err);
 ```
 Never free stack memory with cabi_free_buffer.
 
-## 6.2 C# / VB.NET (P/Invoke)
+### 6.2 C# / VB.NET (P/Invoke)
 
 Use managed arrays:
 ```
@@ -140,7 +140,7 @@ AssertError(err);
 ```
 The GC owns the memory — do not free it manually.
 
-## 6.3 Rust
+### 6.3 Rust
 
 Use slices or vectors:
 ```
@@ -189,7 +189,7 @@ fn main() {
 ```
 Rust owns the memory — do not call `cabi_free_buffer`.
 
-## 6.4 Go (cgo)
+### 6.4 Go (cgo)
 
 Use Go slices:
 ```
@@ -233,7 +233,7 @@ func main() {
 ```
 Go owns the memory.
 
-## 6.5 Python (ctypes)
+### 6.5 Python (ctypes)
 ```
 from ctypes import *
 
