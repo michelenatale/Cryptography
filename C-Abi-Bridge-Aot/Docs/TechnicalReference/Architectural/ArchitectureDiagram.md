@@ -10,7 +10,7 @@ This document provides a high‑level overview of the internal structure of the 
 
 ---
 
-# 1. Mermaid Diagram (GitHub‑compatible)
+## 1. Mermaid Diagram (GitHub‑compatible)
 
 ```mermaid
 flowchart TD
@@ -48,7 +48,7 @@ flowchart TD
 
 --- 
 
-# 2. ASCII Diagram (for README or plain text)
+## 2. ASCII Diagram (for README or plain text)
 
 ```
 C-Abi-Bridge-Aot
@@ -77,7 +77,7 @@ C-Abi-Bridge-Aot
 
 --- 
 
-# 3. Explanation
+## 3. Explanation
 
 - **CAbiBridge.Aot** - The NativeAOT project that exposes the C ABI and compiles into a single‑file DLL.
 - **CAbiBridge.Crypto** - Implements AES, GCM, ChaCha20‑Poly1305, hashing, HMAC, PQC, etc.
