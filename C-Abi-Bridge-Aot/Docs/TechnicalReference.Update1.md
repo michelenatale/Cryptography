@@ -54,7 +54,7 @@ Complete reference of all exported C ABI functions, parameters, return values, a
 ### **[Build.md](TechnicalReference/Core/Build.md)**  
 Explains how to build the NativeAOT DLL, generate `.def` and `.lib` files, and run the build pipeline.
 
-### **[CONTRIBUTING.md](TechnicalReference/Core/Contributing.md)**  
+### **[Contributing.md](TechnicalReference/Core/Contributing.md)**  
 Guidelines for contributors, coding standards, pull request rules, and development workflow.
 
 ---
