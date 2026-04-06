@@ -14,7 +14,7 @@ Contributions are welcome and appreciated.
 
 ---
 
-# 1. How to Contribute
+## 1. How to Contribute
 
 There are several ways to contribute:
 
@@ -30,9 +30,9 @@ Before submitting a pull request, please read the guidelines below.
 
 ---
 
-# 2. Development Environment
+## 2. Development Environment
 
-## Requirements
+### Requirements
 
 - .NET 10.0 (NativeAOT)
 - Visual Studio 2022 or newer
@@ -48,7 +48,7 @@ Optional:
 
 ---
 
-# 3. Repository Structure
+## 3. Repository Structure
 
 ```
 C-Abi-Bridge-Aot/
@@ -72,9 +72,9 @@ C-Abi-Bridge-Aot/
 
 ---
 
-# 4. Build Instructions
+## 4. Build Instructions
 
-## 4.1 Build the NativeAOT DLL
+### 4.1 Build the NativeAOT DLL
 
 ```bash
 dotnet publish -c Release -r win-x64
@@ -84,21 +84,21 @@ This generates the NativeAOT single‑file DLL:
 Src/CAbiBridge.Aot/Build/net10.0/publish/C-Abi-Bridge.Aot.dll
 ```
 
-## 4.2 Generate .def and .lib files
+### 4.2 Generate .def and .lib files
 
 This happens automatically after publish:
 - make-def.bat extracts exported symbols
 - lib.exe generates the import library
 - Files are stored in Build/Artifacts
 
-## 4.3 Run Tests
+### 4.3 Run Tests
 
-## .NET tests
+#### .NET tests
 ```
  dotnet test
 ```
 
-## C++ tests
+#### C++ tests
 
 Open and run:
 ```
