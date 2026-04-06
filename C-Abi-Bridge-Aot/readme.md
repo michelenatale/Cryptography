@@ -275,11 +275,13 @@ GitHub: [https://github.com/michelenatale](https://github.com/michelenatale)
 
 # 🎬 Video Demonstration - Video Mp4 - Downloads
 
-A demonstration video is available in the "Docs/Video" folder and as a link below:
+There are 3 videos available:
 
-➡️ [c-abi-bridge-aot-basic.mp4](Docs/Videos/c-abi-bridge-aot_3_24671.mp4)   
-➡️ [c-abi-bridge-aot-cpp.mp4](Docs/Videos/c-abi-bridge-aot-2.mp4)   
-➡️ [c-abi-bridge-aot-new.mp4](Docs/Videos/c-abi-bridge-aot.mp4)   
+➡️ [c-abi-bridge-aot-basic.mp4](Docs/Videos/c-abi-bridge-aot_3_24671.mp4) - The original first video, which is still available for viewing.   
+➡️ [c-abi-bridge-aot-cpp.mp4](Docs/Videos/c-abi-bridge-aot-2.mp4) - A new video has been created using C++, and the procedure shown in it is still available for viewing.   
+➡️ [c-abi-bridge-aot-new.mp4](Docs/Videos/c-abi-bridge-aot.mp4) - The latest video, introduced with Update 1 (version 0.2.0).    
+
+All demonstration videos are available in the [Docs/Video](https://github.com/michelenatale/Cryptography/tree/main/C-Abi-Bridge-Aot/Docs/Videos) folder and via the links above.
 
 ---
 
