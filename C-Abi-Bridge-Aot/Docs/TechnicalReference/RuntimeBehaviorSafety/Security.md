@@ -70,22 +70,22 @@ However:
 
 To ensure safe usage:
 
-### ✔ Always validate buffer sizes  
+#### ✔ Always validate buffer sizes  
 Most functions return `-2` if the output buffer is too small.
 
-### ✔ Always check return codes  
+#### ✔ Always check return codes  
 Never assume success.
 
-### ✔ Do not reuse IVs or nonces  
+#### ✔ Do not reuse IVs or nonces  
 Especially for AES‑GCM and ChaCha20‑Poly1305.
 
-### ✔ Use strong random keys  
+#### ✔ Use strong random keys  
 Use `crypto_random_bytes_aot` to generate keys.
 
-### ✔ Zero sensitive memory  
+#### ✔ Zero sensitive memory  
 Use secure zeroing functions where appropriate.
 
-### ✔ Avoid exposing raw keys in logs or exceptions  
+#### ✔ Avoid exposing raw keys in logs or exceptions  
 Never print keys or intermediate values.
 
 ---
@@ -126,8 +126,7 @@ The library includes:
 
 - AES (CBC-AEAD, GCM)
 - ChaCha20‑Poly1305
-- SHA‑3
-- HMAC
+- SHA / HMAC
 - Random number generation
 - Encoding utilities
 - Post‑quantum algorithms (ML‑KEM, ML‑DSA, [SLH‑DSA later])
@@ -140,13 +139,13 @@ All algorithms are implemented using well‑established primitives and follow be
 
 The library assumes:
 
-### In‑scope:
+#### In‑scope:
 - Local attackers attempting to read memory  
 - Side‑channel‑resistant operations (best effort)  
 - Safe cross‑language interop  
 - Memory safety in unmanaged environments  
 
-### Out‑of‑scope:
+#### Out‑of‑scope:
 - Hardware attacks  
 - Kernel‑level compromise  
 - Physical access attacks  
@@ -170,7 +169,7 @@ Contributors must not disclose vulnerabilities before a fix is published.
 
 ## 10. Disclaimer
 
-This project is provided under the MIT License.  
+This project is provided under the GPL-3.0 License.  
 No warranty is given regarding:
 
 - Fitness for a particular purpose  
