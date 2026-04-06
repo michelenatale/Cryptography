@@ -130,6 +130,7 @@ The library includes:
 - Random number generation
 - Encoding utilities
 - Post‑quantum algorithms (ML‑KEM, ML‑DSA, [SLH‑DSA later])
+- and many more  
 
 All algorithms are implemented using well‑established primitives and follow best practices.
 
