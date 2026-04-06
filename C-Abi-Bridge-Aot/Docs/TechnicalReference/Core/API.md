@@ -12,7 +12,7 @@ All functions follow a stable, language‑agnostic ABI and can be consumed from 
 
 ---
 
-# 1. ABI Conventions
+## 1. ABI Conventions
 
 - **Calling convention:** `__cdecl`
 - **Export style:** C ABI (`extern "C"`)
@@ -24,7 +24,7 @@ All functions follow a stable, language‑agnostic ABI and can be consumed from 
 
 ---
 
-# 2. Error Codes
+## 2. Error Codes
 
 | Code | Meaning |
 |------|---------|
@@ -38,7 +38,7 @@ All functions follow a stable, language‑agnostic ABI and can be consumed from 
 
 ---
 
-# 3. Memory Rules
+## 3. Memory Rules
 
 - All buffers must be allocated by the **caller**.
 - The library never frees memory allocated by the caller.
@@ -47,9 +47,9 @@ All functions follow a stable, language‑agnostic ABI and can be consumed from 
 
 ---
 
-# 4. Random Number Generation
+## 4. Random Number Generation
 
-## 4.1 `fill_crypto_bytes_aot`
+### 4.1 `fill_crypto_bytes_aot`
 
 ```c
 CError fill_crypto_bytes_aot(uint8_t* buffer, int32_t size);
@@ -77,9 +77,9 @@ fill_crypto_bytes_aot(buffer, 32);
 
 --- 
 
-# 5. AES Encryption
+## 5. AES Encryption
 
-## 5.1 AES‑CBC-AEAD Encrypt
+### 5.1 AES‑CBC-AEAD Encrypt
 
 ```
 [UnmanagedCallersOnly(EntryPoint = "aes_encrypt_aot")]
@@ -94,7 +94,7 @@ public unsafe static CError AesEncryptAot(
 
 - die `output_length` ist immer länger als die `Input_length`
 
-## 5.2 AES‑CBC-AEAD Decrypt
+### 5.2 AES‑CBC-AEAD Decrypt
 
 ```
 [UnmanagedCallersOnly(EntryPoint = "aes_decrypt_aot")]
@@ -107,9 +107,9 @@ public unsafe static CError AesDecryptAot(
 
 ---
 
-# 6. AES‑GCM
+## 6. AES‑GCM
 
-## 6.1 Encrypt
+### 6.1 Encrypt
 
 ```
 [UnmanagedCallersOnly(EntryPoint = "aes_gcm_encrypt_aot")]
@@ -120,7 +120,7 @@ public unsafe static CError AesGcmEncryptAot(
   byte** cipher_ptr, int* cipher_length);
 ```
 
-## 6.2 Decrypt
+### 6.2 Decrypt
 
 ```
 [UnmanagedCallersOnly(EntryPoint = "aes_gcm_decrypt_aot")]
@@ -133,9 +133,9 @@ public unsafe static CError AesGcmDecryptAot(
 
 ---
 
-# 7. ChaCha20‑Poly1305
+## 7. ChaCha20‑Poly1305
 
-## 7.1 Encrypt
+### 7.1 Encrypt
 
 ```
 [UnmanagedCallersOnly(EntryPoint = "chacha20_poly1305_encrypt_aot")]
@@ -146,7 +146,7 @@ public unsafe static CError ChaCha20Poly1305EncryptAot(
   byte** cipher_ptr, int* cipher_length);
 ```
 
-## 7.2 Decrypt
+### 7.2 Decrypt
 
 ```
 [UnmanagedCallersOnly(EntryPoint = "chacha20_poly1305_decrypt_aot")]
@@ -159,9 +159,9 @@ public unsafe static CError ChaCha20Poly1305DecryptAot(
 
 ---
 
-# 8. Hashing
+## 8. Hashing
 
-## 8.1 SHA‑256
+### 8.1 SHA‑256
 
 ```
 [UnmanagedCallersOnly(EntryPoint = "sha_256_hash_data_aot")]
@@ -171,7 +171,7 @@ public unsafe static CError Sha256HashDataAot(
 ```
 Output must be 32 bytes.
 
-## 8.2 SHA‑512
+### 8.2 SHA‑512
 
 ```
 [UnmanagedCallersOnly(EntryPoint = "sha_512_hash_data_aot")]
@@ -184,9 +184,9 @@ Output must be 64 bytes.
 
 ---
 
-# 9. HMAC
+## 9. HMAC
 
-## 9.1 HMAC‑SHA256
+### 9.1 HMAC‑SHA256
 
 ```
 [UnmanagedCallersOnly(EntryPoint = "hmac_sha_256_hash_data_aot")]
@@ -198,9 +198,9 @@ public unsafe static CError HmacSha256HashDataAot(
 
 ---
 
-# 10. Encoding Utilities
+## 10. Encoding Utilities
 
-## 10.1 Base64 Encode
+### 10.1 Base64 Encode
 
 ```
 [UnmanagedCallersOnly(EntryPoint = "to_base_64_utf8_aot")]
@@ -208,7 +208,7 @@ public unsafe static CError ToBase64Utf8Aot(
  byte* bytes, int bytes_length, byte** output_ptr, int* outputLen);
 ```
 
-## 10.2 Base64 Decode
+### 10.2 Base64 Decode
 
 ```
 [UnmanagedCallersOnly(EntryPoint = "from_base_64_utf8_aot")]
@@ -218,9 +218,9 @@ public unsafe static CError FromBase64Utf8Aot(
 
 --- 
 
-# 11. Memory Management
+## 11. Memory Management
 
-## 11.1 Free Buffer
+### 11.1 Free Buffer
 
 ```
 [UnmanagedCallersOnly(EntryPoint = "free_buffer_clear_aot")]
@@ -231,9 +231,9 @@ Used only for functions that allocate memory (rare).
 
 ---
 
-# 12. File Encryption
+## 12. File Encryption
 
-## 12.1 AES‑CBC-AEAD File Encrypt
+### 12.1 AES‑CBC-AEAD File Encrypt
 
 ```
 [UnmanagedCallersOnly(EntryPoint = "aes_encrypt_file_aot")]
@@ -246,7 +246,7 @@ public unsafe static CError AesEncryptFileAot(
 
 ---
 
-# 13. Post‑Quantum Cryptography
+## 13. Post‑Quantum Cryptography
 
 ```
 [UnmanagedCallersOnly(EntryPoint = "create_mlkem_key_pair_aot")]
@@ -278,7 +278,7 @@ public unsafe static CError PqcMlKemDecryptionAot(
 
 ---
 
-# 14. Versioning
+## 14. Versioning
 
 The API follows semantic versioning:
 - Adding functions → minor version
@@ -287,7 +287,7 @@ The API follows semantic versioning:
 
 ---
 
-# 15. Language Interop Notes
+## 15. Language Interop Notes
 
 C++ uses the .lib from Build/Artifacts
 - C# / VB.NET use P/Invoke
@@ -298,7 +298,7 @@ C++ uses the .lib from Build/Artifacts
 
 ---
 
-# 16. Example: C++ Usage
+## 16. Example: C++ Usage
 
 ```
 #include "cabi_exp_imp.h"
@@ -311,7 +311,7 @@ uint8_t output[64];
 cabi_aes_cbc_encrypt(key, 32, iv, input, 32, output, 64);
 ```
 
-# 17. Example: C# Usage
+## 17. Example: C# Usage
 
 ```
 [LibraryImport(DllName, EntryPoint = "sha_256_hash_data_aot")]
