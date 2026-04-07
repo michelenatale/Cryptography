@@ -301,14 +301,21 @@ C++ uses the .lib from Build/Artifacts
 ## 16. Example: C++ Usage
 
 ```
-#include "cabi_exp_imp.h"
+// --- Encrypt ---
+int cipher_len = 0;
+void* cipher_ptr = nullptr;
 
-uint8_t key[32] = {0};
-uint8_t iv[16] = {0};
-uint8_t input[32] = {1,2,3};
-uint8_t output[64];
+auto err = aes_encrypt_aot(
+  plain.data(), (int)plain.size(),
+  key.data(), (int)key.size(),
+  associat.data(), (int)associat.size(),
+  &cipher_ptr, &cipher_len);
+assert_error(err);
 
-cabi_aes_cbc_encrypt(key, 32, iv, input, 32, output, 64);
+if (!cipher_ptr)
+  throw std::runtime_error("Null pointer returned");
+
+free_buffer_aot(cipher_ptr);
 ```
 
 ## 17. Example: C# Usage
