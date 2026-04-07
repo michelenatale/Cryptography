@@ -272,10 +272,6 @@ This project inherits the license of the parent repository Cryptography.
 - NativeAOT, C ABI and Cryptography Engineering   
 - Concept, API design, C-ABI architecture, documentation, implementation
 
-**AI-Assisted Design & Documentation Support**  
-
-- Support with architecture review, Support documentation structure, and Support harmonization of sample code across programming languages
-
 **Maintainer**  
 
 Michele Natale 2026  
