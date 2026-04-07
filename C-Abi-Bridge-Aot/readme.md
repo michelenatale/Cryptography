@@ -274,12 +274,12 @@ This project inherits the license of the parent repository Cryptography.
 
 **AI-Assisted Design & Documentation Support**  
 
-– Support with architecture review, Support documentation structure, and Support harmonization of sample code across programming languages
+- Support with architecture review, Support documentation structure, and Support harmonization of sample code across programming languages
 
 **Maintainer**  
 
 Michele Natale 2026  
-– Maintenance, further development, bug fixing, release management
+- Maintenance, further development, bug fixing, release management
 
 GitHub: [https://github.com/michelenatale](https://github.com/michelenatale)
 
