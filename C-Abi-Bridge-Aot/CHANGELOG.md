@@ -76,6 +76,7 @@ and this project adheres to **Semantic Versioning (SemVer)**.
 - Extended documentation (API reference, diagrams).
 - Continuous Integration (CI) pipeline.
 - Performance benchmarks and comparison charts.
+- Optimization and refinement of the C++ project so that, in the end, there is no longer any dependency on OpenSSL.
 ```
 
 ---
