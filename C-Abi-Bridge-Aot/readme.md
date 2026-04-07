@@ -29,7 +29,7 @@ It provides a stable, minimal, and allocation‑safe API surface for:
 - Hashing e.g. (SHA‑2, SHA‑3, BLAKE2)
 - HMAC
 - Random number generation
-- Post‑quantum cryptography (ML‑KEM, ML‑DSA, SLH‑DSA, XMSS, LMS)
+- Post‑quantum cryptography e.g. (ML‑KEM, ML‑DSA, SLH‑DSA, XMSS, LMS)
 - Encoding utilities (Base64, Hex)
 - File and stream encryption
 - Secure memory utilities
