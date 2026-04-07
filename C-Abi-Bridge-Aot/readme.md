@@ -285,6 +285,18 @@ GitHub: [https://github.com/michelenatale](https://github.com/michelenatale)
 
 ---
 
+## 🤝 Invitation to Fork
+
+I started this project with a clear vision — but good ideas, and especially continuous improvement, often emerge over time.
+
+If you believe that something can be solved or designed in a better way:
+
+**Feel free to fork the repository, build your own version, and mention your fork if you like.**
+
+I appreciate every contribution, every piece of feedback, and every improvement.
+
+---
+
 ## 🎬 Video Demonstration - Video Mp4 - Downloads
 
 There are 3 videos available:
