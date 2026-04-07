@@ -53,7 +53,7 @@ This gives you a complete end‑to‑end view of how the C‑ABI bridge is built
 
 ---
 
-# 🚀 Features
+## 🚀 Features
 
 - NativeAOT single‑file DLL (~3 MB)
 - C ABI stable interface
@@ -66,7 +66,7 @@ This gives you a complete end‑to‑end view of how the C‑ABI bridge is built
 
 ---
 
-# 🧩 Architecture Overview
+## 🧩 Architecture Overview
 
 ```
 C-Abi-Bridge-Aot/
@@ -90,11 +90,11 @@ C-Abi-Bridge-Aot/
 
 ---
 
-# 🔧 Build Pipeline
+## 🔧 Build Pipeline
 
 The build pipeline is fully automated and consists of three stages:
 
-## 1. NativeAOT Publish (DLL generation)
+### 1. NativeAOT Publish (DLL generation)
 
 Run:
 
@@ -109,7 +109,7 @@ Src/CAbiBridge.Aot/Build/net10.0/publish/C-Abi-Bridge.Aot.dll
 
 This DLL is the single‑file NativeAOT binary.
 
-## 2. Automatic DEF + LIB generation
+### 2. Automatic DEF + LIB generation
 
 After publishing, MSBuild automatically:
 
@@ -128,7 +128,7 @@ Build/Artifacts/
 
 These files are stable, versioned artifacts used by C++.
 
-## 3. Consumer Projects Copy the DLL
+### 3. Consumer Projects Copy the DLL
 
 Each test project (C#, VB.NET, C++) contains a CopyAotDllAfterBuild target:
 - C# and VB.NET copy the DLL into their OutDir and rename it to C-Abi-Bridge.Aot.N.dll
@@ -140,7 +140,7 @@ This ensures all consumers always use the latest build.
 
 ---
 
-# 🧪 Tests
+## 🧪 Tests
 
 The repository includes a full test suite:
 
@@ -160,9 +160,9 @@ All cryptographic operations
 
 ---
 
-# 🔌 Using the Library
+## 🔌 Using the Library
 
-## C++
+### C++
 
 Link against the generated .lib:
 
@@ -180,7 +180,7 @@ auto result = cabi_crypto_random_bytes(buffer, size);
 
 ---
 
-## C# / VB.NET
+### C# / VB.NET
 
 Use P/Invoke:
 
@@ -191,7 +191,7 @@ public static extern int cabi_crypto_random_bytes(byte[] buffer, int size);
 
 --- 
 
-# 📦 Artifacts
+## 📦 Artifacts
 
 The following files are generated and stored in:
 
@@ -207,19 +207,19 @@ Build/Artifacts/
 
 ---
 
-# 🛠 Development Guide
+## 🛠 Development Guide
 
-## Rebuild everything:
+### Rebuild everything:
 
 ```
 dotnet publish -c Release -r win-x64
 ```
 
-## Regenerate DEF + LIB:
+### Regenerate DEF + LIB:
 
 Automatically done after publish.
 
-## Run C++ tests:
+### Run C++ tests:
 
 Build and run:
 
@@ -227,7 +227,7 @@ Build and run:
 Tests/C-Abi-Bridge.Aot.Cpp.Tests
 ```
 
-## Run .NET tests:
+### Run .NET tests:
 
 ```
 dotnet test
@@ -235,7 +235,7 @@ dotnet test
 
 ---
 
-# ➡️ Documentation
+## ➡️ Documentation
 
 Two documentation series are available:
 
@@ -246,14 +246,14 @@ The updated documentation series provides a more structured and detailed view of
 
 ---
 
-## 📌 Changelog
+### 📌 Changelog
 
 The full version history is available in  
 [CHANGELOG.md](CHANGELOG.md).
 
 ---
 
-# 📄 License
+## 📄 License
 
 GPL-3.0 License
 
@@ -264,16 +264,28 @@ This project inherits the license of the parent repository Cryptography.
 
 ---
 
-# 🙌 Credits
+## 🙌 Credits
 
-Developed by Michele Natale  
-NativeAOT, C ABI and Cryptography Engineering.
+**Author & Lead Architect**  
+
+*Developed by Michele Natale 2026*  
+- NativeAOT, C ABI and Cryptography Engineering   
+- Concept, API design, C-ABI architecture, documentation, implementation
+
+**AI-Assisted Design & Documentation Support**  
+
+– Support with architecture review, Support documentation structure, and Support harmonization of sample code across programming languages
+
+**Maintainer**  
+
+Michele Natale 2026  
+– Maintenance, further development, bug fixing, release management
 
 GitHub: [https://github.com/michelenatale](https://github.com/michelenatale)
 
 ---
 
-# 🎬 Video Demonstration - Video Mp4 - Downloads
+## 🎬 Video Demonstration - Video Mp4 - Downloads
 
 There are 3 videos available:
 
