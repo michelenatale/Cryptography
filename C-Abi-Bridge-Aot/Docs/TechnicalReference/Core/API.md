@@ -43,7 +43,7 @@ All functions follow a stable, language‑agnostic ABI and can be consumed from 
 - All buffers must be allocated by the **caller**.
 - The library never frees memory allocated by the caller.
 - Functions that allocate memory explicitly document this behavior.
-- Use `cabi_free_buffer` to free memory allocated by the library.
+- Use `free_buffer_aot` to free memory allocated by the library.
 
 ---
 
