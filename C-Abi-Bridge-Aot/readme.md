@@ -24,9 +24,9 @@ C‑Abi‑Bridge‑Aot is a **NativeAOT‑compiled, cross‑language, C‑ABI‑
 
 It provides a stable, minimal, and allocation‑safe API surface for:
 
-- AES (ECB, CBC, GCM)
+- AES (CBC-AEAD, GCM)
 - ChaCha20‑Poly1305
-- Hashing (SHA‑2, SHA‑3, BLAKE2)
+- Hashing e.g. (SHA‑2, SHA‑3, BLAKE2)
 - HMAC
 - Random number generation
 - Post‑quantum cryptography (ML‑KEM, ML‑DSA, SLH‑DSA, XMSS, LMS)
