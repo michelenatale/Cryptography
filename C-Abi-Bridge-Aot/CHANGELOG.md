@@ -72,7 +72,7 @@ and this project adheres to **Semantic Versioning (SemVer)**.
 ## [Unreleased]
 ### Planned
 - Rust, Go, Zig, and Python interop examples.
-- Additional PQC algorithms.
+- Additional PQC algorithms, ML-DSA.
 - Extended documentation (API reference, diagrams).
 - Continuous Integration (CI) pipeline.
 - Performance benchmarks and comparison charts.
