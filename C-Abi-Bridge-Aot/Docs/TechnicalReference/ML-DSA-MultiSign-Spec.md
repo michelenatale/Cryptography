@@ -138,10 +138,10 @@ DOMAIN = "PQC-MULTISIGN-HANDSHAKE-V1"
 To ensure determinism:
 
 ```text   
-Signers MUST be sorted lexicographically by signer_id.
+Signers MUST be sorted lexicographically by signer_id or signature.
 ```    
 
-### 6.3 Hash Input Format
+### 6.3 Hash Input Format (approximately)
 
 ```text   
 input =
