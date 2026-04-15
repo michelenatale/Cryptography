@@ -1,4 +1,4 @@
-# MultiSign Specification for PQC Signature Schemes  
+# 📘 MultiSign Specification for PQC Signature Schemes  
 
 **Version:** 0.1‑draft  
 **Status:** Experimental  
@@ -50,71 +50,74 @@ It is a pure meta‑layer that works with:
 
 Each signer is represented as:
 
+```text   
 SignerInfo:
-signer_id        : 16 bytes (GUID or fixed identifier)
-scheme_id        : 1 byte  (0x01 = ML‑DSA, 0x02 = SLH‑DSA, 0x03 = LMS, 0x04 = XMSS, ...)
-param_id         : 1 byte  (scheme‑specific parameter set)
-reserved         : 2 bytes (alignment / future use)
+  signer_id        : 16 bytes (GUID or fixed identifier)
+  scheme_id        : 1 byte  (0x01 = ML‑DSA, 0x02 = SLH‑DSA, 0x03 = LMS, 0x04 = XMSS, ...)
+  param_id         : 1 byte  (scheme‑specific parameter set)
+  reserved         : 2 bytes (alignment / future use)
 
-public_key_len   : 4 bytes (big endian)
-public_key       : public_key_len bytes
+  public_key_len   : 4 bytes (big endian)
+  public_key       : public_key_len bytes
 
-signature_len    : 4 bytes (big endian)
-signature        : signature_len bytes
-
+  signature_len    : 4 bytes (big endian)
+  signature        : signature_len bytes
+```   
 
 ### 4.2 MultiSignInfo
 
+```text   
 MultiSignInfo:
-message_len      : 4 bytes (big endian)
-message          : message_len bytes
+  message_len      : 4 bytes (big endian)
+  message          : message_len bytes
 
-signer_count     : 4 bytes (big endian)
-signers          : signer_count × SignerInfo
+  signer_count     : 4 bytes (big endian)
+  signers          : signer_count × SignerInfo
+```
 
----
+---   
 
 ## 5. ASCII Layout
 
 ### 5.1 MultiSignInfo
 
 ```
-+-------------------------------+
-| message_len (4)              |
-+-------------------------------+
-| message (message_len)        |
-+-------------------------------+
-| signer_count (4)             |
-+-------------------------------+
++------------------------------+
+| message_len(4)               |
++------------------------------+
+| message(message_len)         |
++------------------------------+
+| signer_count(4)              |
++------------------------------+
 | SignerInfo[0]                |
-+-------------------------------+
++------------------------------+
 | SignerInfo[1]                |
-+-------------------------------+
++------------------------------+
 | ...                          |
-+-------------------------------+
-| SignerInfo[N-1]              |
-+-------------------------------+
++------------------------------+
+| SignerInfo[N - 1]            |
++------------------------------+
 ```
 
 ### 5.2 SignerInfo
 
-```
+```text
 +-------------------------------+
-| signer_id (16)               |
+| signer_id (16)                |
 +-------------------------------+
-| scheme_id (1)                |
+| scheme_id (1)                 |
 +-------------------------------+
-| param_id (1)                 |
+| param_id (1)                  |
 +-------------------------------+
-| reserved (2)                 |
+| reserved (2)                  |
 +-------------------------------+
-| public_key_len (4)           |
+| public_key_len (4)            |
 +-------------------------------+
-| public_key (...)             |
+| public_key (...)              |
 +-------------------------------+
-| signature_len (4)            |
+| signature_len (4)             |
 +-------------------------------+
-| signature (...)              |
+| signature (...)               |
 +-------------------------------+
 ```
 
@@ -126,31 +129,35 @@ signers          : signer_count × SignerInfo
 
 A fixed domain tag prevents cross‑protocol collisions:
 
+```code   
 DOMAIN = "PQC-MULTISIGN-HANDSHAKE-V1"
+```
 
 ### 6.2 Signer Ordering
 
 To ensure determinism:
 
+```code   
 Signers MUST be sorted lexicographically by signer_id.
+```    
 
 ### 6.3 Hash Input Format
 
 ```
 input =
-DOMAIN
-|| message_len (4)
-|| message
-|| signer_count (4)
-|| for each signer in sorted(signers):
-signer_id (16)
-scheme_id (1)
-param_id (1)
-reserved (2)
-public_key_len (4)
-public_key
-signature_len (4)
-signature
+  DOMAIN
+  || message_len (4)
+  || message
+  || signer_count (4)
+  || for each signer in sorted(signers):
+       signer_id (16)
+       scheme_id (1)
+       param_id (1)
+       reserved (2)
+       public_key_len (4)
+       public_key
+       signature_len (4)
+       signature
 ```
 
 ### 6.4 Hash Function
@@ -160,7 +167,9 @@ Recommended:
 - SHA3‑256 (32 bytes), or  
 - SHAKE256 (32 bytes output)
 
+```code   
 handshake_hash = H(input)
+```
 
 ---
 
@@ -168,13 +177,16 @@ handshake_hash = H(input)
 
 The handshake hash can be used to derive a deterministic PQC keypair:
 
+```code   
 meta_seed = handshake_hash
 (meta_sk, meta_pk) = ImportPrivateSeed(param_id_meta, meta_seed)
-
+```
 
 The meta‑signature finalizes the multi‑sign state:
 
+```code   
 meta_signature = Sign(meta_sk, handshake_hash)
+```
 
 ### Verification
 
@@ -186,8 +198,9 @@ A verifier:
 4. Derives (meta_sk, meta_pk) from handshake_hash.
 5. Verifies:
 
+```code   
 Verify(meta_pk, handshake_hash, meta_signature)
-
+```   
 
 If all steps succeed, the MultiSign structure is valid and complete.
 
@@ -197,55 +210,51 @@ If all steps succeed, the MultiSign structure is valid and complete.
 
 ### 8.1 Signing Phase
 
-```
+```text
 Signer A        Signer B        ...        Signer N
-|               |                         |
-| Sign(msg)     | Sign(msg)               | Sign(msg)
-|--> sig_A      |--> sig_B                |--> sig_N
-|               |                         |
-+---------------+----------- ... ----------+
-|
-v
-MultiSignInfo Builder
-|
-sort signers by signer_id
-|
-serialize MultiSignInfo
-|
-handshake_hash = H(...)
-|
-meta_seed = handshake_hash
-meta_keypair = ImportPrivateSeed(...)
-|
-meta_signature = Sign(meta_sk, handshake_hash)
-|
+   |               |                         |
+   | Sign(msg)     | Sign(msg)               | Sign(msg)
+   |--> sig_A      |--> sig_B                |--> sig_N
+   |               |                         |
+   +---------------+----------- ... ----------+
+                   |
+                   v
+        MultiSignInfo Builder
+                   |
+        sort signers by signer_id
+                   |
+        serialize MultiSignInfo
+                   |
+        handshake_hash = H(...)
+                   |
+        meta_seed = handshake_hash
+        meta_keypair = ImportPrivateSeed(...)
+                   |
+        meta_signature = Sign(meta_sk, handshake_hash)
+                   |
+        store MultiSignInfo + meta_signature
 ```
-
-store:
-- MultiSignInfo
-- meta_pk
-- meta_signature
 
 ### 8.2 Verification Phase
 
-```
-Verifier
-|
-| load MultiSignInfo + meta_signature
-v
-verify all individual signatures
-|
-v
-recompute handshake_hash
-|
-v
-derive meta_pk from handshake_hash
-|
-v
-verify meta_signature
-|
-v
-MultiSign structure is valid
+```text
+    Verifier
+        |
+        | load MultiSignInfo + meta_signature
+        v
+    verify all individual signatures
+        |
+        v
+    recompute handshake_hash
+        |
+        v
+    derive meta_pk from handshake_hash
+        |
+        v
+    verify meta_signature
+        |
+        v
+    MultiSign structure is valid
 ```
 
 ---
