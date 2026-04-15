@@ -81,7 +81,7 @@ MultiSignInfo:
 
 ### 5.1 MultiSignInfo
 
-```
+```text
 +------------------------------+
 | message_len(4)               |
 +------------------------------+
@@ -129,7 +129,7 @@ MultiSignInfo:
 
 A fixed domain tag prevents cross‑protocol collisions:
 
-```code   
+```text   
 DOMAIN = "PQC-MULTISIGN-HANDSHAKE-V1"
 ```
 
@@ -137,13 +137,13 @@ DOMAIN = "PQC-MULTISIGN-HANDSHAKE-V1"
 
 To ensure determinism:
 
-```code   
+```text   
 Signers MUST be sorted lexicographically by signer_id.
 ```    
 
 ### 6.3 Hash Input Format
 
-```
+```text   
 input =
   DOMAIN
   || message_len (4)
@@ -167,7 +167,7 @@ Recommended:
 - SHA3‑256 (32 bytes), or  
 - SHAKE256 (32 bytes output)
 
-```code   
+```text   
 handshake_hash = H(input)
 ```
 
@@ -177,14 +177,14 @@ handshake_hash = H(input)
 
 The handshake hash can be used to derive a deterministic PQC keypair:
 
-```code   
+```text   
 meta_seed = handshake_hash
 (meta_sk, meta_pk) = ImportPrivateSeed(param_id_meta, meta_seed)
 ```
 
 The meta‑signature finalizes the multi‑sign state:
 
-```code   
+```text   
 meta_signature = Sign(meta_sk, handshake_hash)
 ```
 
@@ -198,7 +198,7 @@ A verifier:
 4. Derives (meta_sk, meta_pk) from handshake_hash.
 5. Verifies:
 
-```code   
+```text   
 Verify(meta_pk, handshake_hash, meta_signature)
 ```   
 
