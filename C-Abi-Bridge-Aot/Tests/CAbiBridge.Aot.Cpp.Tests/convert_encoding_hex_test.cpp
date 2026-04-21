@@ -7,9 +7,9 @@
 #include <cstring>
 #include <stdexcept>
 
-#include "bright.h"
+#include "bridge.h"
 #include "crypto_utils_test.h"
-#include "convert_encoding_test.h"
+#include "convert_encoding_test_start.h"
 #include "convert_encoding_utils_test.h"
 
 

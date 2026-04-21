@@ -4,12 +4,8 @@
 #include <string>
 #include <chrono>
 #include <iostream>
-#include <random>
-#include <stdexcept>
-#include <cstring>
 
-
-#include "bright.h"
+#include "bridge.h"
 #include "cerror.h"
 #include "usi_ptr_t.h"
 #include "variables.h"
@@ -50,8 +46,7 @@ namespace michele::natale::Tests
     {
       // random file length
       int max = (1 << 21) + 1024;
-      int flength = rand_int(0, max);
-
+      int flength = rng_int(1, max);
       set_rng_file_data(src, flength);
 
       // --- Alice creates keypair ---
@@ -96,11 +91,11 @@ namespace michele::natale::Tests
 
       // associated data
       using namespace michele::natale::Cpp::Services;
-      int size = rand_int(PQC_ML_KEM_MIN_PLAIN_SIZE, 64);
+      int size = rng_int(PQC_ML_KEM_MIN_PLAIN_SIZE, 64);
       std::vector<uint8_t> associated;
-      if (rand_even())
+      if (rng_even())
         associated.assign(str_t, str_t + sizeof(str_t) - 1);
-      else associated = rng_bytes(size); 
+      else associated = rng_bytes(size);
 
       // --- Alice encrypts file ---
       err = pqc_mlkem_encryption_file_aot(
@@ -120,8 +115,11 @@ namespace michele::natale::Tests
         associated.data(), (int)associated.size());
       assert_error(err);
 
-      if (!file_equals(src, srcr))
+      if (!equal_files_aot(
+        reinterpret_cast<const uint8_t*>(src.data()), (int)src.length(),
+        reinterpret_cast<const uint8_t*>(srcr.data()), (int)srcr.length(), &err))
         throw std::runtime_error("file mismatch");
+      assert_error(err);
 
       if (i % (rounds / 10) == 0)
         std::cout << ".";
@@ -149,7 +147,7 @@ namespace michele::natale::Tests
     for (int i = 0; i < rounds; ++i)
     {
       int max = (1 << 21) + 1024;
-      int flength = rand_int(0, max);
+      int flength = rng_int(0, max);
       set_rng_file_data(src, flength);
 
       // load Alice keypair
@@ -161,11 +159,11 @@ namespace michele::natale::Tests
 
       // associated
       using namespace michele::natale::Cpp::Services;
-      int size = rand_int(PQC_ML_KEM_MIN_PLAIN_SIZE, 64);
+      int size = rng_int(PQC_ML_KEM_MIN_PLAIN_SIZE, 64);
       std::vector<uint8_t> associated;
-      if (rand_even())
+      if (rng_even())
         associated.assign(str_t, str_t + sizeof(str_t) - 1);
-      else associated = rng_bytes(size); 
+      else associated = rng_bytes(size);
 
       // Bob derives shared key + capsulation
       uint8_t* bob_shared_key_ptr = nullptr, * bob_capsulation_ptr = nullptr;
@@ -203,8 +201,11 @@ namespace michele::natale::Tests
         associated.data(), (int)associated.size());
       assert_error(err);
 
-      if (!file_equals(src, srcr))
-        throw std::runtime_error("file mismatch");
+      if (!equal_files_aot(
+        reinterpret_cast<const uint8_t*>(src.data()), (int)src.length(),
+        reinterpret_cast<const uint8_t*>(srcr.data()), (int)srcr.length(), &err))
+      throw std::runtime_error("file mismatch");
+      assert_error(err);
 
       if (i % (rounds / 10) == 0)
         std::cout << ".";

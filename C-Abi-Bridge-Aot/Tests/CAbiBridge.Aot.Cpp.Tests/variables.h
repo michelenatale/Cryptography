@@ -1,6 +1,9 @@
 #pragma once
 
 
+#ifndef __VARIABLES_SERVICES__BRIDGE_AOT_H__
+#define __VARIABLES_SERVICES__BRIDGE_AOT_H__
+
 namespace michele::natale::Cpp::Services
 {
   //General
@@ -45,3 +48,5 @@ namespace michele::natale::Cpp::Services
   const int PQC_ML_KEM_MIN_PLAIN_SIZE = 8;
   const int PQC_ML_KEM_MAX_PLAIN_SIZE = 1024 * 1024;
 }
+
+#endif

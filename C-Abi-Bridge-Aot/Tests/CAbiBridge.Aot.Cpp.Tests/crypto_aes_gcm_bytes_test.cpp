@@ -7,7 +7,7 @@
 #include <cstring>
 #include <stdexcept>
 
-#include "bright.h"
+#include "bridge.h"
 #include "variables.h"
 #include "crypto_aes_gcm_test.h"
 
@@ -21,20 +21,12 @@ namespace michele::natale::Tests
 
     std::cout << "test_aes_gcm_bytes_aot: ";
 
-    std::mt19937 rng(std::random_device{}());
-    std::uniform_int_distribution<int> pw_dist(Services::MIN_PW_SIZE, 16);
-    std::uniform_int_distribution<int> salt_dist(Services::MIN_SALT_SIZE, Services::MAX_SALT_SIZE);
-    std::uniform_int_distribution<int> plain_dist(Services::AES_GCM_MIN_PLAIN_SIZE, Services::AES_GCM_MAX_PLAIN_SIZE);
-
     auto start = high_resolution_clock::now();
 
     for (int i = 0; i < rounds; i++)
     {
-      int pw_size = pw_dist(rng);
-      auto pw = rng_bytes(pw_size);
-
-      int salt_size = salt_dist(rng);
-      auto salt = rng_bytes(salt_size);
+      auto pw = rng_bytes(rng_int(Services::MIN_PW_SIZE, 16));
+      auto salt = rng_bytes(rng_int(Services::MIN_SALT_SIZE, Services::MAX_SALT_SIZE));
 
       std::vector<uint8_t> key(Services::AES_GCM_MAX_KEY_SIZE);
       auto err = pbkdf2_aot(
@@ -49,8 +41,7 @@ namespace michele::natale::Tests
         reinterpret_cast<const uint8_t*>("© Michele Natale 2021"),
         reinterpret_cast<const uint8_t*>("© Michele Natale 2021") + strlen("© Michele Natale 2021"));
 
-      int plain_size = plain_dist(rng);
-      auto plain = rng_bytes(plain_size);
+      auto plain = rng_bytes(rng_int(Services::AES_GCM_MIN_PLAIN_SIZE, Services::AES_GCM_MAX_PLAIN_SIZE));
 
       // --- Encrypt ---
       void* cipher_ptr = nullptr;
@@ -111,17 +102,9 @@ namespace michele::natale::Tests
 
     std::cout << "test_aes_gcm_bytes_stress_aot: ";
 
-    std::mt19937 rng(std::random_device{}());
-    std::uniform_int_distribution<int> pw_dist(Services::MIN_PW_SIZE, 16);
-    std::uniform_int_distribution<int> salt_dist(Services::MIN_SALT_SIZE, Services::MAX_SALT_SIZE);
-
     auto start = high_resolution_clock::now();
-
-    int pw_size = pw_dist(rng);
-    auto pw = rng_bytes(pw_size);
-
-    int salt_size = salt_dist(rng);
-    auto salt = rng_bytes(salt_size);
+    auto pw = rng_bytes(rng_int(Services::MIN_PW_SIZE, 16));
+    auto salt = rng_bytes(rng_int(Services::MIN_SALT_SIZE, Services::MAX_SALT_SIZE));
 
     std::vector<uint8_t> key(Services::AES_GCM_MAX_KEY_SIZE);
     auto err = pbkdf2_aot(

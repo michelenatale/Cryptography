@@ -1,5 +1,7 @@
 #pragma once
 
+#ifndef __CRYPTO_PQC_ML_KEM_BYTES_FILE_H__
+#define __CRYPTO_PQC_ML_KEM_BYTES_FILE_H__
 
 namespace michele::natale::Tests
 {
@@ -24,23 +26,10 @@ namespace michele::natale::Tests
     CHACHA20_POLY1305,
   };
 
-  // Platzhalter – in deinem Code sind das echte Mapping-Funktionen.
   static MLKemParam to_ml_kem_algorithm(MLKemParam p) { return p; }
   static MLKemParam to_ml_kem_algorithm() { return MLKemParam::Ml_Kem_512; }
   static MLKemParam from_ml_kem_algorithm(MLKemParam p) { return p; }
-
-  // RandomNumberGenerator.GetInt32(min,max)
-  inline int rand_int(int min_inclusive, int max_exclusive)
-  {
-    static thread_local std::mt19937 rng{ std::random_device{}() };
-    std::uniform_int_distribution<int> dist(min_inclusive, max_exclusive - 1);
-    return dist(rng);
-  }
-
-  // int.IsEvenInteger(rand.Next())
-  static bool rand_even()
-  {
-    static thread_local std::mt19937 rng{ std::random_device{}() };
-    return (rng() & 1) == 0;
-  }
 }
+
+
+#endif

@@ -9,10 +9,13 @@
 #include "convert_encoding_test.h"
 #include "crypto_hash_hmac_test.h"
 #include "crypto_pqc_ml_kem_test.h"
+#include "crypto_pqc_ml_dsa_test.h"
 #include "crypto_chacha_poly_test.h"
 
-static void Tests(int rounds)
+static void tests(int rounds)
 {
+  std::cout << "C-Abi-Bridge.Aot.Tests C++\n\n";
+
   using namespace michele::natale::Tests;
 
   start_crypto_random_native(rounds * 1000);
@@ -30,12 +33,9 @@ static void Tests(int rounds)
 
 int main()
 {
-
   int rounds = 10;
-  Tests(rounds);
-
+  tests(rounds);
 
   std::cout << "\n\n";
   std::cout << "Finish\n";
-
 }

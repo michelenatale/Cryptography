@@ -121,6 +121,18 @@
     <Filter Include="Quelldateien\test_convert_encoding">
       <UniqueIdentifier>{0c60ab5e-0010-4096-8e7a-bdbb5c69e645}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Quelldateien\test_services">
+      <UniqueIdentifier>{1866683f-f895-4119-a5d7-0c6bc040750c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien\test_services">
+      <UniqueIdentifier>{db3e8969-59a1-4892-983c-68d4fd801b14}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien\test_crypto\test_crypto_pqc\test_crypto_pqc_signature\test_crypto_pqc_signature_stateless\test_crypto_pqc_ml_dsa\structs_enums">
+      <UniqueIdentifier>{3dcc9be8-a020-4c51-bd17-3975be364a0d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quelldateien\test_crypto\test_crypto_pqc\test_crypto_pqc_signature\test_crypto_pqc_signature_stateless\test_crypto_pqc_ml_dsa\structs_enums">
+      <UniqueIdentifier>{bc6ccd4a-3578-419a-9690-0eb5b7f33457}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="program.cpp">
@@ -201,12 +213,39 @@
     <ClCompile Include="crypto_pqc_ml_kem_file_test.cpp">
       <Filter>Quelldateien\test_crypto\test_crypto_pqc\test_crypto_pqc_cryption\test_crypto_pqc_ml_kem</Filter>
     </ClCompile>
+    <ClCompile Include="convert_encoding_base_x_test.cpp">
+      <Filter>Quelldateien\test_convert_encoding</Filter>
+    </ClCompile>
+    <ClCompile Include="test_services_base_x.cpp">
+      <Filter>Quelldateien\test_services</Filter>
+    </ClCompile>
+    <ClCompile Include="test_services_random.cpp">
+      <Filter>Quelldateien\test_services</Filter>
+    </ClCompile>
+    <ClCompile Include="test_services_utils.cpp">
+      <Filter>Quelldateien\test_services</Filter>
+    </ClCompile>
+    <ClCompile Include="crypto_pqc_ml_dsa_test.cpp">
+      <Filter>Quelldateien\test_crypto\test_crypto_pqc\test_crypto_pqc_signature\test_crypto_pqc_signature_stateless\test_crypto_pqc_ml_dsa</Filter>
+    </ClCompile>
+    <ClCompile Include="crypto_pqc_ml_dsa_bytes_test.cpp">
+      <Filter>Quelldateien\test_crypto\test_crypto_pqc\test_crypto_pqc_signature\test_crypto_pqc_signature_stateless\test_crypto_pqc_ml_dsa</Filter>
+    </ClCompile>
+    <ClCompile Include="crypto_pqc_ml_dsa_file_test.cpp">
+      <Filter>Quelldateien\test_crypto\test_crypto_pqc\test_crypto_pqc_signature\test_crypto_pqc_signature_stateless\test_crypto_pqc_ml_dsa</Filter>
+    </ClCompile>
+    <ClCompile Include="crypto_pqc_ml_dsa_multi_sign_test.cpp">
+      <Filter>Quelldateien\test_crypto\test_crypto_pqc\test_crypto_pqc_signature\test_crypto_pqc_signature_stateless\test_crypto_pqc_ml_dsa</Filter>
+    </ClCompile>
+    <ClCompile Include="crypto_pqc_ml_dsa_utils_test.cpp">
+      <Filter>Quelldateien\test_crypto\test_crypto_pqc\test_crypto_pqc_signature\test_crypto_pqc_signature_stateless\test_crypto_pqc_ml_dsa</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
-    <ClInclude Include="bright.h">
+    <ClInclude Include="bridge.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
     <ClInclude Include="cabi_exp_imp.h">
@@ -262,6 +301,45 @@
     </ClInclude>
     <ClInclude Include="usi_ptr_t.h">
       <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="test_servises.h">
+      <Filter>Headerdateien\test_services</Filter>
+    </ClInclude>
+    <ClInclude Include="test_servises_const.h">
+      <Filter>Headerdateien\test_services</Filter>
+    </ClInclude>
+    <ClInclude Include="convert_encoding_test_start.h">
+      <Filter>Headerdateien\test_convert_encoding</Filter>
+    </ClInclude>
+    <ClInclude Include="crypto_pqc_ml_dsa_test.h">
+      <Filter>Headerdateien\test_crypto\test_crypto_pqc\test_crypto_pqc_signature\test_crypto_pqc_signature_stateless\test_crypto_pqc_ml_dsa</Filter>
+    </ClInclude>
+    <ClInclude Include="crypto_pqc_ml_dsa_bytes_test.h">
+      <Filter>Headerdateien\test_crypto\test_crypto_pqc\test_crypto_pqc_signature\test_crypto_pqc_signature_stateless\test_crypto_pqc_ml_dsa</Filter>
+    </ClInclude>
+    <ClInclude Include="crypto_pqc_ml_dsa_file_test.h">
+      <Filter>Headerdateien\test_crypto\test_crypto_pqc\test_crypto_pqc_signature\test_crypto_pqc_signature_stateless\test_crypto_pqc_ml_dsa</Filter>
+    </ClInclude>
+    <ClInclude Include="crypto_pqc_ml_dsa_multi_sign_test.h">
+      <Filter>Headerdateien\test_crypto\test_crypto_pqc\test_crypto_pqc_signature\test_crypto_pqc_signature_stateless\test_crypto_pqc_ml_dsa</Filter>
+    </ClInclude>
+    <ClInclude Include="ml_dsa_param.h">
+      <Filter>Headerdateien\test_crypto\test_crypto_pqc\test_crypto_pqc_signature\test_crypto_pqc_signature_stateless\test_crypto_pqc_ml_dsa\structs_enums</Filter>
+    </ClInclude>
+    <ClInclude Include="crypto_pqc_ml_dsa_utils_test.h">
+      <Filter>Headerdateien\test_crypto\test_crypto_pqc\test_crypto_pqc_signature\test_crypto_pqc_signature_stateless\test_crypto_pqc_ml_dsa</Filter>
+    </ClInclude>
+    <ClInclude Include="native_array_builder.h">
+      <Filter>Headerdateien\test_crypto\test_crypto_pqc\test_crypto_pqc_signature\test_crypto_pqc_signature_stateless\test_crypto_pqc_ml_dsa\structs_enums</Filter>
+    </ClInclude>
+    <ClInclude Include="native_buffer.h">
+      <Filter>Headerdateien\test_crypto\test_crypto_pqc\test_crypto_pqc_signature\test_crypto_pqc_signature_stateless\test_crypto_pqc_ml_dsa\structs_enums</Filter>
+    </ClInclude>
+    <ClInclude Include="ml_dsa_signer_info.h">
+      <Filter>Headerdateien\test_crypto\test_crypto_pqc\test_crypto_pqc_signature\test_crypto_pqc_signature_stateless\test_crypto_pqc_ml_dsa\structs_enums</Filter>
+    </ClInclude>
+    <ClInclude Include="crypto_pqc_ml_dsa_param_test.h">
+      <Filter>Headerdateien\test_crypto\test_crypto_pqc\test_crypto_pqc_signature\test_crypto_pqc_signature_stateless\test_crypto_pqc_ml_dsa</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

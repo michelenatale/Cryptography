@@ -2,14 +2,11 @@
 
 #include <vector>
 #include <string> 
-#include <random>
 #include <fstream>
 #include <chrono>
 #include <iostream>
-#include <cstring>
-#include <stdexcept>
 
-#include "bright.h"
+#include "bridge.h"
 #include "variables.h"
 #include "crypto_chacha_poly_test.h"
 
@@ -31,20 +28,15 @@ namespace michele::natale::Tests
     auto start = high_resolution_clock::now();
 
     int max = (1 << 21) + 1024;
-    std::mt19937 rng(std::random_device{}());
-    std::uniform_int_distribution<int> dist(0, max);
-    std::uniform_int_distribution<int> dist_assoc(1, 64);
 
     for (int i = 0; i < rounds; i++)
     {
       // Datei mit Zufallsgröße erzeugen
-      int flength = dist(rng);
-
+      int flength = rng_int(1, max);
       set_rng_file_data(src, flength);
 
       // Associated Data
-      int assoc_len = dist_assoc(rng);
-      auto associated = rng_bytes(assoc_len);
+      auto associated = rng_bytes(rng_int(1, 64));
 
       // Key
       std::vector<uint8_t> key(Services::CHACHA_POLY_MAX_KEY_SIZE);
@@ -68,8 +60,11 @@ namespace michele::natale::Tests
       assert_error(err);
 
       // Vergleich
-      if (!file_equals(src, srcr))
+      if (!equal_files_aot(
+        reinterpret_cast<const uint8_t*>(src.data()), (int)src.length(),
+        reinterpret_cast<const uint8_t*>(srcr.data()), (int)srcr.length(), &err))
         throw std::runtime_error("ChaCha20Poly1305 file mismatch");
+      assert_error(err);
 
       if (i % (rounds / 10) == 0)
         std::cout << ".";

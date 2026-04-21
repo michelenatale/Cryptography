@@ -7,7 +7,7 @@
 #include <cstring>
 #include <stdexcept>
 
-#include "bright.h"
+#include "bridge.h"
 #include "crypto_utils_test.h"
 #include "convert_encoding_test.h"
 #include "convert_encoding_utils_test.h"
@@ -78,7 +78,7 @@ namespace michele::natale::Tests
 
 
     std::cout << " rounds = " << rounds
-      << "; t = " << ms << "ms; td = " << (ms / rounds) << "ms\n";
+      << "; t = " << ms << "ms; td = " << (ms / rounds) << "ms\n\n";
   }
 
 

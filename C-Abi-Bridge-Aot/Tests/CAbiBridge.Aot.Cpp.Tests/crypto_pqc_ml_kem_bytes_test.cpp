@@ -3,16 +3,14 @@
 #include <vector>
 #include <string>
 #include <chrono>
-#include <iostream>
-#include <random>
-#include <stdexcept>
-#include <cstring>
+#include <iostream> 
 
 
-#include "bright.h"
+#include "bridge.h"
 #include "cerror.h"
 #include "variables.h"
 #include "usi_ptr_t.h"
+#include "crypto_utils_test.h"
 #include "convert_encoding_test.h"
 #include "crypto_pqc_ml_kem_bytes_test.h"
 #include "crypto_pqc_ml_kem_bytes_file_test.h"
@@ -90,7 +88,7 @@ namespace michele::natale::Tests
         MLKemParam::Ml_Kem_768,
         MLKemParam::Ml_Kem_1024,
       };
-      int idx = rand_int(0, 3);
+      int idx = rng_int(0, 3);
       uint8_t param = static_cast<uint8_t>(
         from_ml_kem_algorithm(mlkem_param_arr[idx]));
 
@@ -102,7 +100,7 @@ namespace michele::natale::Tests
         CryptionAlgorithm::CHACHA20_POLY1305,
       };
 
-      idx = rand_int(0, 3);
+      idx = rng_int(0, 3);
       uint8_t cryptoalgo = static_cast<uint8_t>(cas[idx]);
 
       int pub_key_length = 0;
@@ -142,7 +140,7 @@ namespace michele::natale::Tests
   void test_pqc_ml_kem_safe_load_key_pairs(int rounds)
   {
     using namespace std::chrono;
-    std::cout << "test_pqc_ml_kem_safe_load_key_pairs_Aot: ";
+    std::cout << "test_pqc_ml_kem_safe_load_key_pairs_aot: ";
 
     auto start = high_resolution_clock::now();
     static const uint8_t kpfile[] = "mlkem_keypair.key";
@@ -179,7 +177,7 @@ namespace michele::natale::Tests
       CryptionAlgorithm cryptoalgo = static_cast<CryptionAlgorithm>(crypto_algo);
       MLKemParam param = to_ml_kem_algorithm(static_cast<MLKemParam>(mlkem_param));
 
-      bool with_priv_key = rand_even();
+      bool with_priv_key = rng_even();
 
       err = save_pqc_mlkem_key_pair_aot(
         kpfile, sizeof(kpfile) - 1,
@@ -247,7 +245,7 @@ namespace michele::natale::Tests
     auto end = high_resolution_clock::now();
     double t = (double)duration_cast<milliseconds>(end - start).count();
     std::cout << " rounds = " << rounds << "; t = " << t
-      << "ms; td = " << (t / rounds) << "ms\n\n";
+      << "ms; td = " << (t / rounds) << "ms\n";
   }
 
   void test_pqc_ml_kem_capsulation_shared_key_with_public_key(int rounds)
@@ -405,7 +403,7 @@ namespace michele::natale::Tests
     auto end = high_resolution_clock::now();
     double t = (double)duration_cast<milliseconds>(end - start).count();
     std::cout << " rounds = " << rounds << "; t = " << t
-      << "ms; td = " << (t / rounds) << "ms\n\n";
+      << "ms; td = " << (t / rounds) << "ms\n";
   }
 
   void test_pqc_ml_kem_enc_decryption_bytes(int rounds)
@@ -466,17 +464,17 @@ namespace michele::natale::Tests
       free_buffer_aot(bob_capsulation_ptr);
 
       using namespace michele::natale::Cpp::Services;
-      int size = rand_int(PQC_ML_KEM_MIN_PLAIN_SIZE, 128);
+      int size = rng_int(PQC_ML_KEM_MIN_PLAIN_SIZE, 128);
       auto message = rng_bytes(size);
 
-      size = rand_int(PQC_ML_KEM_MIN_PLAIN_SIZE, 64);
+      size = rng_int(PQC_ML_KEM_MIN_PLAIN_SIZE, 64);
       std::vector<uint8_t> associated;
-      if (rand_even())
+      if (rng_even())
         associated.assign(str_t, str_t + sizeof(str_t) - 1);
       else associated = rng_bytes(size);
 
-      uint8_t* cipher_ptr = nullptr;
       int cipher_length = 0;
+      uint8_t* cipher_ptr = nullptr;
 
       err = pqc_mlkem_encryption_aot(
         message.data(), (int)(message.size()),
@@ -580,9 +578,9 @@ namespace michele::natale::Tests
     int msize = PQC_ML_KEM_MAX_PLAIN_SIZE; //2^20
     auto message = rng_bytes(msize);
 
-    int size = rand_int(PQC_ML_KEM_MIN_PLAIN_SIZE, 64);
+    int size = rng_int(PQC_ML_KEM_MIN_PLAIN_SIZE, 64);
     std::vector<uint8_t> associated;
-    if (rand_even())
+    if (rng_even())
       associated.assign(str_t, str_t + sizeof(str_t) - 1);
     else associated = rng_bytes(size);
 
@@ -625,6 +623,6 @@ namespace michele::natale::Tests
     std::cout << " cryptoalgo = " << (int)(cryptoalgo)
       << "; mlkemparam = " << (int)(param)
       << "; size = " << msize
-      << "; t = " << t << "ms\n\n";
+      << "; t = " << t << "ms\n";
   }
 }

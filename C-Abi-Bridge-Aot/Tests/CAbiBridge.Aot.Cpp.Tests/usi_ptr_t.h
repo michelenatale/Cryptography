@@ -3,6 +3,10 @@
 #include <vector>
 #include <iostream>
 
+
+#ifndef __USI_PTR_BRIDGE_AOT_H__
+#define __USI_PTR_BRIDGE_AOT_H__
+
 struct usi_ptr_t
 {
   std::vector<uint8_t> buf;
@@ -22,3 +26,4 @@ struct usi_ptr_t
       std::equal(buf.begin(), buf.end(), other.buf.begin());
   }
 };
+#endif

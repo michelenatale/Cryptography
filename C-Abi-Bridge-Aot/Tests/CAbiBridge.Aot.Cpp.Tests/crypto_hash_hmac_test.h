@@ -1,6 +1,9 @@
 #pragma once
 
 
+#ifndef __CRYPTO_HASH_HMAC_TEST_H__
+#define __CRYPTO_HASH_HMAC_TEST_H__
+
 namespace michele::natale::Tests
 {
 
@@ -10,3 +13,5 @@ namespace michele::natale::Tests
   void start_crypto_hash_hmac_native(int rounds);
 
 }
+
+#endif

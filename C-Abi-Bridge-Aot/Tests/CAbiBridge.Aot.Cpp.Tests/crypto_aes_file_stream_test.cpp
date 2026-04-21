@@ -2,11 +2,10 @@
 
 #include <iostream>
 #include <vector> 
-#include <string>
-#include <random>     //random wird ersetzt
-#include <chrono>     //chrono wird ersetzt
+#include <string> 
+#include <chrono>      
 #include <fstream>
-#include "bright.h"
+#include "bridge.h"
 
 #include "crypto_aes_test.h"
 #include "crypto_utils_test.h"
@@ -24,25 +23,25 @@ namespace michele::natale::Tests {
     const std::string srcr = "datar";
 
     auto start = std::chrono::high_resolution_clock::now();
-    static thread_local std::mt19937 rng(std::random_device{}());
+
+    int max = (1 << 21) + 1024;
 
     for (int i = 0; i < rounds; i++)
     {
       // zufällige Dateigröße
-      int max = (1 << 21) + 1024;
-      int flength = std::uniform_int_distribution<int>(0, max)(rng);
+      int flength = rng_int(1, max);
 
       // Datei mit Zufallsdaten erzeugen
       set_rng_file_data(src, flength);
 
-      // Associated Data
-      auto associated = rng_bytes(std::uniform_int_distribution<int>(1, 64)(rng));
-
+      // Associated Data 
+      auto associated = rng_bytes(rng_int(1, 64));
+      
       // Key
       auto key = rng_bytes(32); // AES-256
 
       // --- Encrypt ---
-      cerror_t err = aes_encrypt_file_aot(
+      auto err = aes_encrypt_file_aot(
         reinterpret_cast<const uint8_t*>(src.data()), (int)src.size(),
         reinterpret_cast<const uint8_t*>(dest.data()), (int)dest.size(),
         key.data(), (int)key.size(),
@@ -58,11 +57,14 @@ namespace michele::natale::Tests {
       assert_error(err);
 
       // Dateien vergleichen
-      if (!file_equals(src, srcr))
+      if (!equal_files_aot(
+        reinterpret_cast<const uint8_t*>(src.data()), (int)src.length(),
+        reinterpret_cast<const uint8_t*>(srcr.data()), (int)srcr.length(), &err))
       {
         std::cerr << "AES file mismatch\n";
         std::abort();
       }
+      assert_error(err);
 
       if (i % (rounds / 10) == 0)
         std::cout << ".";
