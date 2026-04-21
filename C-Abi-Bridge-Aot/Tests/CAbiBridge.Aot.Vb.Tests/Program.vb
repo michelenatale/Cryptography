@@ -18,6 +18,9 @@ Namespace michele.natale.Tests
 
     Private Sub Tests(rounds As Int32)
 
+      Console.WriteLine($"C-Abi-Bridge.Aot.Tests Vb.Net")
+      Console.WriteLine()
+
       CryptoRandomTest.Start(rounds * 1000)
 
       CryptoAesTest.StartNative(rounds)
@@ -26,6 +29,7 @@ Namespace michele.natale.Tests
 
       CryptoHashHmacTest.StartNative(rounds * 1000)
       CryptoPqcMlKemTest.StartNative(rounds)
+      CryptoPqcMlDsaTest.StartNative(rounds)
 
       ConvertEncodingTest.StartNative(rounds * 1000)
 

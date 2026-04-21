@@ -1,6 +1,7 @@
 ﻿
 namespace michele.natale.Tests;
 
+
 internal sealed partial class CryptoPqcMlKemTest
 {
   public static void StartNative(int rounds)
@@ -23,6 +24,6 @@ internal sealed partial class CryptoPqcMlKemTest
     TestPqcMlKemEnDecryptionBytesStress();
 
     TestPqcMlKemEnDecryptionFile(rounds);
-    TestPqcMlKemEnDecryptionKpfFile(rounds);
+    TestPqcMlKemEnDecryptionKpfFile(rounds); //kpf = key-pair-file
   }
 }

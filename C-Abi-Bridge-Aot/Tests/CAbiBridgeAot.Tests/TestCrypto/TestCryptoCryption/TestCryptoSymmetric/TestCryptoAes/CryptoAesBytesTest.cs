@@ -1,13 +1,13 @@
 ﻿
 
+using System.Text;
 using System.Diagnostics;
 using System.Security.Cryptography;
-using System.Text;
 
 namespace michele.natale.Tests;
 
-using CAbiBridge;
 using Pointers;
+using CAbiBridge;
 using static CryptoTestUtils;
 
 partial class CryptoAesTest

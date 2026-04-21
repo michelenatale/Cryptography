@@ -16,6 +16,8 @@ public class Program
     await TestCryptoAsync(rounds);
 
     Console.WriteLine();
+    Console.WriteLine();
+    Console.WriteLine();
     Console.WriteLine("Finish");
     Console.ReadLine();
   }

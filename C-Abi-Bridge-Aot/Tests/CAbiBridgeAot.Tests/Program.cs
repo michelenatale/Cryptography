@@ -17,6 +17,8 @@ public class Program
 
   private static void Tests(int rounds)
   {
+    Console.WriteLine($"C-Abi-Bridge.Aot.Tests C#\n");
+
     CryptoRandomTest.StartNative(rounds * 1000);
     CryptoHashHmacTest.StartNative(rounds * 1000);
 
@@ -25,6 +27,7 @@ public class Program
     CryptoChaCha20Poly1305Test.StartNative(rounds);
 
     CryptoPqcMlKemTest.StartNative(rounds);
+    CryptoPqcMlDsaTest.StartNative(rounds);
 
     ConvertEncodingTest.StartNative(rounds * 1000);
 

@@ -12,12 +12,15 @@ Namespace michele.natale.Tests
       TestPqcMlKemCreateKeyPairs(rounds * 10)
       TestPqcMlKemCreateKeyPairsParam(rounds * 10)
       TestPqcMlKemSafeLoadKeyPairs(rounds * 10)
+
       TestCapsulationSharedKeyWithPublicKey(rounds * 10)
       TestPqcMlKemSharedKeyFromCapsualtionPrivateKey(rounds * 10)
+
       TestPqcMlKemEnDecryptionBytes(rounds)
       TestPqcMlKemEnDecryptionBytesStress()
+
       TestPqcMlKemEnDecryptionFile(rounds)
-      TestPqcMlKemEnDecryptionKpfFile(rounds)
+      TestPqcMlKemEnDecryptionKpfFile(rounds) 'kpf = key-pair-file
     End Sub
   End Class
 End Namespace

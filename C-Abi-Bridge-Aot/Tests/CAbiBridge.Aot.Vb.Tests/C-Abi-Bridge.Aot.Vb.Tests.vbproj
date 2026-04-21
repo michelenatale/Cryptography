@@ -22,17 +22,25 @@
 
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="TestCrypto\TestCryptoPqc\TestCryptoPqcSignature\TestCryptoPqcSignatureStateless\NativeArrayBuilder.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="TestCrypto\TestCryptoPqc\TestCryptoPqcSignature\TestCryptoPqcSignatureStateless\NativeArrayBuilder.cs" />
+  </ItemGroup>
+
 
   <ItemGroup>
     <Folder Include="TestCrypto\TestCryptoSignatur\" />
     <Folder Include="TestCrypto\TestCryptoCryption\TestCryptoAsymmetric\" />
-    <Folder Include="TestCrypto\TestCryptoPqc\TestCryptoPqcSignature\TestCryptoPqcSignatureStateless\" />
     <Folder Include="TestSerialize\" />
     <Folder Include="TestCompress\" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\Src\CAbiBridge.Aot\C-Abi-Bridge.Aot.csproj" />
+    <ProjectReference Include="..\CAbiBridgeAot.Tests\C-Abi-Bridge.Aot.Tests.csproj" />
   </ItemGroup>
 
 

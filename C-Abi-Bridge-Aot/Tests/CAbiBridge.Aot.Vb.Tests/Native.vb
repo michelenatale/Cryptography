@@ -1,6 +1,15 @@
 ﻿Option Strict On
 Option Explicit On
 
+'  | C / C# unsafe  | VB.NET                        |
+'  | -------------- | ----------------------------- |
+'  | byte*          | IntPtr                        |
+'  | byte**         | IntPtr (Pointer auf Pointer)  |
+'  | int*           | IntPtr                        |
+'  | out IntPtr     | ByRef IntPtr                  |
+'  | out int        | ByRef Integer                 |
+
+
 Imports michele.natale
 Imports System.Runtime.InteropServices
 
@@ -327,6 +336,45 @@ Namespace michele.natale.Tests
        <Out> ByRef output_length As Int32) As CError
     End Function
 
+    <DllImport(DllName, EntryPoint:="sha3_256_hash_data_aot")>
+    Public Function Sha3256HashDataAot(
+       bytes As Byte(),
+       bytes_length As Int32,
+       <Out> ByRef output As IntPtr,
+       <Out> ByRef output_length As Int32) As CError
+    End Function
+
+    <DllImport(DllName, EntryPoint:="sha3_384_hash_data_aot")>
+    Public Function Sha3384HashDataAot(
+       bytes As Byte(),
+       bytes_length As Int32,
+       <Out> ByRef output As IntPtr,
+       <Out> ByRef output_length As Int32) As CError
+    End Function
+
+    <DllImport(DllName, EntryPoint:="sha3_512_hash_data_aot")>
+    Public Function Sha3512HashDataAot(
+       bytes As Byte(),
+       bytes_length As Int32,
+       <Out> ByRef output As IntPtr,
+       <Out> ByRef output_length As Int32) As CError
+    End Function
+
+
+    <DllImport(DllName, EntryPoint:="shake_128_hash_data_aot")>
+    Public Function Shake128HashDataAot(
+       bytes As Byte(), bytes_length As Int32,
+       output_length As Int32,
+       <Out> ByRef output As IntPtr) As CError
+    End Function
+
+    <DllImport(DllName, EntryPoint:="shake_256_hash_data_aot")>
+    Public Function Shake256HashDataAot(
+       bytes As Byte(), bytes_length As Int32,
+       output_length As Int32,
+       <Out> ByRef output As IntPtr) As CError
+    End Function
+
 #End Region
 
 #Region " Crypto Hmac"
@@ -381,6 +429,29 @@ Namespace michele.natale.Tests
        <Out> ByRef output_length As Int32) As CError
     End Function
 
+    <DllImport(DllName, EntryPoint:="hmac_sha3_256_hash_data_aot")>
+    Public Function HmacSha3256HashDataAot(
+      bytes As Byte(), bytes_length As Int32,
+      key As Byte(), key_length As Int32,
+      <Out> ByRef output As IntPtr,
+      <Out> ByRef output_length As Int32) As CError
+    End Function
+
+    <DllImport(DllName, EntryPoint:="hmac_sha3_384_hash_data_aot")>
+    Public Function HmacSha3384HashDataAot(
+      bytes As Byte(), bytes_length As Int32,
+      key As Byte(), key_length As Int32,
+      <Out> ByRef output As IntPtr,
+      <Out> ByRef output_length As Int32) As CError
+    End Function
+
+    <DllImport(DllName, EntryPoint:="hmac_sha3_512_hash_data_aot")>
+    Public Function HmacSha3512HashDataAot(
+      bytes As Byte(), bytes_length As Int32,
+      key As Byte(), key_length As Int32,
+      <Out> ByRef output As IntPtr,
+      <Out> ByRef output_length As Int32) As CError
+    End Function
 #End Region
 
 #End Region
@@ -490,6 +561,128 @@ Namespace michele.natale.Tests
 
 #Region "Crypto PQC Signature"
 
+#Region "Crypto PQC Signatur Stateless"
+
+#Region "Crypto PQC Signatur ML-DSA"
+
+#Region "Crypto PQC Signatur ML-DSA Bytes"
+
+    <DllImport(DllName, EntryPoint:="create_mldsa_key_pair_aot")>
+    Public Function CreateMlDsaKeyPairAot(
+        ByRef priv_key_ptr As IntPtr, ByRef priv_key_length As Int32,
+        ByRef pub_key_ptr As IntPtr, ByRef pub_key_length As Int32,
+        ByRef guid_id_ptr As IntPtr, ByRef guid_id_length As Int32,
+        ByRef mldsa_param As Byte
+    ) As CError
+    End Function
+
+    <DllImport(DllName, EntryPoint:="create_mldsa_key_pair_param_aot")>
+    Public Function CreateMlDsaKeyPairParamAot(
+        mldsa_param As Byte,
+        ByRef priv_key_ptr As IntPtr, ByRef priv_key_length As Int32,
+        ByRef pub_key_ptr As IntPtr, ByRef pub_key_length As Int32,
+        ByRef guid_id_ptr As IntPtr, ByRef guid_id_length As Int32
+    ) As CError
+    End Function
+
+    <DllImport(DllName, EntryPoint:="save_pqc_mldsa_key_pair_aot")>
+    Public Function SavePqcMlDsaKeyPairAot(
+        src As IntPtr, src_length As Int32,
+        priv_key As IntPtr, priv_key_length As Int32,
+        pub_key As IntPtr, pub_key_length As Int32,
+        guid_id As IntPtr, guid_id_length As Int32,
+        mldsa_param As Byte,
+        <MarshalAs(UnmanagedType.U1)> save_private_key As Boolean
+    ) As CError
+    End Function
+
+    <DllImport(DllName, EntryPoint:="load_pqc_mldsa_key_pair_aot")>
+    Public Function LoadPqcMlDsaKeyPairAot(
+        src As IntPtr, src_length As Int32,
+        ByRef priv_key_ptr As IntPtr, ByRef priv_key_length As Int32,
+        ByRef pub_key_ptr As IntPtr, ByRef pub_key_length As Int32,
+        ByRef guid_id_ptr As IntPtr, ByRef guid_id_length As Int32,
+        ByRef mldsa_param As Byte
+    ) As CError
+    End Function
+
+    <DllImport(DllName, EntryPoint:="pqc_mldsa_sign_aot")>
+    Public Function PqcMlDsaSignAot(
+        message_ptr As IntPtr, message_length As Int32,
+        priv_key_ptr As IntPtr, priv_key_length As Int32,
+        mldsa_param As Byte,
+        ByRef sign_ptr As IntPtr, ByRef sign_length As Int32
+    ) As CError
+    End Function
+
+    <DllImport(DllName, EntryPoint:="pqc_mldsa_verify_aot")>
+    Public Function PqcMlDsaVerifyAot(
+        message_ptr As IntPtr, message_length As Int32,
+        public_key_ptr As IntPtr, public_key_length As Int32,
+        signature_ptr As IntPtr, signature_length As Int32,
+        ByRef cerror As CError
+    ) As Boolean
+    End Function
+#End Region
+
+#Region "Crypto PQC Signatur ML-DSA Files"
+    <DllImport(DllName, EntryPoint:="pqc_mldsa_sign_file_aot")>
+    Public Function PqcMlDsaSignFileAot(
+        src_file_ptr As IntPtr, src_file_length As Int32,
+        private_key_ptr As IntPtr, private_key_length As Int32,
+        mldsa_param As Byte,
+        ByRef sign_ptr As IntPtr, ByRef sign_length As Int32
+    ) As CError
+    End Function
+
+    <DllImport(DllName, EntryPoint:="pqc_mldsa_verify_file_aot")>
+    Public Function PqcMlDsaVerifyFileAot(
+        src_file_ptr As IntPtr, src_file_length As Int32,
+        public_key_ptr As IntPtr, public_key_length As Int32,
+        signature_ptr As IntPtr, signature_length As Int32,
+        ByRef cerror As CError
+    ) As Boolean
+    End Function
+#End Region
+
+#Region "Crypto PQC Multi Signatur ML-DSA"
+
+    <DllImport(DllName, EntryPoint:="pqc_mldsa_multi_sign_aot")>
+    Public Function PqcMlDsaMultiSignAot(
+      message_ptr As IntPtr, message_length As Int32,
+      guid_ptr As IntPtr, guid_length As IntPtr, guid_count As Int32,
+      sign_ptr As IntPtr, sign_length As IntPtr, sign_count As Int32,
+      public_key_ptr As IntPtr, public_key_length As IntPtr, public_key_count As Int32,
+      signer_name_ptr As IntPtr, signer_name_length As IntPtr, signer_name_count As Int32,
+      project_name_ptr As IntPtr, project_name_length As IntPtr, project_name_count As Int32,
+      sign_algo_ptr As IntPtr, sign_algo_count As Int32,
+      mldsa_param_ptr As IntPtr, mldsa_param_count As Int32,
+      ByRef multi_sign_ptr As IntPtr, ByRef multi_sign_length As Int32,
+      ByRef multi_private_key_ptr As IntPtr, ByRef multi_private_key_length As Int32,
+      ByRef multi_public_key_ptr As IntPtr, ByRef multi_public_key_length As Int32) As CError
+    End Function
+
+    <DllImport(DllName, EntryPoint:="pqc_mldsa_multi_sign_file_aot")>
+    Public Function PqcMlDsaMultiSignFileAot(
+      src_file_ptr As IntPtr, src_file_length As Int32,
+      guid_ptr As IntPtr, guid_length As IntPtr, guid_count As Int32,
+      sign_ptr As IntPtr, sign_length As IntPtr, sign_count As Int32,
+      public_key_ptr As IntPtr, public_key_length As IntPtr, public_key_count As Int32,
+      signer_name_ptr As IntPtr, signer_name_length As IntPtr, signer_name_count As Int32,
+      project_name_ptr As IntPtr, project_name_length As IntPtr, project_name_count As Int32,
+      sign_algo_ptr As IntPtr, sign_algo_count As Int32,
+      mldsa_param_ptr As IntPtr, mldsa_param_count As Int32,
+      ByRef multi_sign_ptr As IntPtr, ByRef multi_sign_length As Int32,
+      ByRef multi_private_key_ptr As IntPtr, ByRef multi_private_key_length As Int32,
+      ByRef multi_public_key_ptr As IntPtr, ByRef multi_public_key_length As Int32) As CError
+    End Function
+
+#End Region
+
+#End Region
+
+#End Region
+
 #End Region
 
 #End Region
@@ -527,6 +720,37 @@ Namespace michele.natale.Tests
       <Out> ByRef output As IntPtr, <Out> ByRef output_length As Int32) As CError
     End Function
 
+#End Region
+
+#Region "BaseX"
+
+    <DllImport(DllName, EntryPoint:="converter_2_256_le_aot")>
+    Public Function Converter_2_256_LE_Aot(
+      base_x_le As Byte(), base_x_length As Int32,
+      start_base As Int32, target_base As Int32,
+      <Out> ByRef output As IntPtr, <Out> ByRef output_length As Int32) As CError
+    End Function
+
+    <DllImport(DllName, EntryPoint:="to_base_x_2_256_le_aot")>
+    Public Function ToBaseX_2_256_LE_Aot(
+      bytes_base10_le As Byte(), bytes_length As Int32,
+      target_base As Int32,
+      <Out> ByRef output As IntPtr, <Out> ByRef output_length As Int32) As CError
+    End Function
+
+    <DllImport(DllName, EntryPoint:="to_base_x_utf8_2_256_le_aot")>
+    Public Function ToBaseXUtf8_2_256_LE_Aot(
+      bytes_base10_utf8_le As Byte(), bytes_utf8_length As Int32,
+      target_base As Int32,
+      <Out> ByRef output As IntPtr, <Out> ByRef output_length As Int32) As CError
+    End Function
+
+    <DllImport(DllName, EntryPoint:="from_base_x_2_256_le_aot")>
+    Public Function FromBaseX_2_256_LE_Aot(
+      bytes_basex_le As Byte(), bytes_length As Int32,
+      from_base_x As Int32,
+      <Out> ByRef output As IntPtr, <Out> ByRef output_length As Int32) As CError
+    End Function
 #End Region
 
 #End Region
