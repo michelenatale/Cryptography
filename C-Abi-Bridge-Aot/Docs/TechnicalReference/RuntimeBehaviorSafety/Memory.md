@@ -7,7 +7,6 @@
 ---
 
 This document describes how memory is allocated, passed, and freed when using the **C‑Abi‑Bridge‑Aot** NativeAOT library.  
-
 Correct memory handling is essential for safe and predictable cross‑language interop.
 
 ---
@@ -36,7 +35,7 @@ These rules ensure:
 Most functions follow this pattern:
 
 ```c
-int function_aot(
+int cabi_function(
     const uint8_t* input,
     int32_t input_len,
     uint8_t* output,

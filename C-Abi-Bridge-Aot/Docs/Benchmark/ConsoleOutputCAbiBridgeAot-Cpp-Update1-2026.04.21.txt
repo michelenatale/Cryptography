@@ -1,0 +1,100 @@
+C-Abi-Bridge.Aot.Tests C++
+
+test_rng_crypto_bool_aot: .......... rounds = 10000; t = 36.0734ms; td = 0.00360734ms
+test_next_crypto_bool_aot: .......... rounds = 10000; t = 1.618ms; td = 0.0001618ms
+
+test_rng_crypto_bytes_aot: .......... rounds = 10000; t = 13.3543ms; td = 0.00133543ms
+test_fill_crypto_bytes_aot: .......... rounds = 10000; t = 11.2314ms; td = 0.00112314ms
+
+test_next_crypto_int32_aot: .......... rounds = 10000; t = 1.9245ms; td = 0.00019245ms
+test_next_crypto_int32_max_aot: .......... rounds = 10000; t = 1.739ms; td = 0.0001739ms
+test_next_crypto_int32_min_max_aot: .......... rounds = 10000; t = 2.1336ms; td = 0.00021336ms
+
+test_rng_crypto_int32_aot: .......... rounds = 10000; t = 354.589ms; td = 0.0354589ms
+test_rng_crypto_int32_max_aot: .......... rounds = 10000; t = 348.655ms; td = 0.0348655ms
+test_rng_crypto_int32_min_max_aot: .......... rounds = 10000; t = 353.763ms; td = 0.0353763ms
+
+test_next_crypto_int64_aot: .......... rounds = 10000; t = 1.6355ms; td = 0.00016355ms
+test_next_crypto_int64_max_aot: .......... rounds = 10000; t = 1.9046ms; td = 0.00019046ms
+test_next_crypto_int64_min_max_aot: .......... rounds = 10000; t = 1.8572ms; td = 0.00018572ms
+
+test_rng_crypto_int64_aot: .......... rounds = 10000; t = 385.877ms; td = 0.0385877ms
+test_rng_crypto_int64_max_aot: .......... rounds = 10000; t = 390.448ms; td = 0.0390448ms
+test_rng_crypto_int64_min_max_aot: .......... rounds = 10000; t = 387.104ms; td = 0.0387104ms
+
+test_next_crypto_double_aot: .......... rounds = 10000; t = 1.925ms; td = 0.0001925ms
+test_next_crypto_double_max_aot: .......... rounds = 10000; t = 1.9718ms; td = 0.00019718ms
+test_next_crypto_double_min_max_aot: .......... rounds = 10000; t = 1.8853ms; td = 0.00018853ms
+
+test_rng_crypto_double_aot: .......... rounds = 10000; t = 393.377ms; td = 0.0393377ms
+test_rng_crypto_double_max_aot: .......... rounds = 10000; t = 398.185ms; td = 0.0398185ms
+test_rng_crypto_double_min_max_aot: .......... rounds = 10000; t = 393.919ms; td = 0.0393919ms
+
+test_next_crypto_single_aot: .......... rounds = 10000; t = 2.1706ms; td = 0.00021706ms
+test_next_crypto_single_max_aot: .......... rounds = 10000; t = 2.2967ms; td = 0.00022967ms
+test_next_crypto_single_min_max_aot: .......... rounds = 10000; t = 1.9303ms; td = 0.00019303ms
+
+test_rng_crypto_single_aot: .......... rounds = 10000; t = 394.03ms; td = 0.039403ms
+test_rng_crypto_single_max_aot: .......... rounds = 10000; t = 395.581ms; td = 0.0395581ms
+test_rng_crypto_single_min_max_aot: .......... rounds = 10000; t = 394.708ms; td = 0.0394708ms
+
+test_md5_hash_aot: .......... rounds = 10000; t = 25.7567ms; td = 0.00257567ms
+test_sha1_hash_aot: .......... rounds = 10000; t = 24.9331ms; td = 0.00249331ms
+test_sha256_hash_aot: .......... rounds = 10000; t = 28.4143ms; td = 0.00284143ms
+test_sha384_hash_aot: .......... rounds = 10000; t = 28.3304ms; td = 0.00283304ms
+test_sha512_hash_aot: .......... rounds = 10000; t = 27.6104ms; td = 0.00276104ms
+test_sha3_256_hash_aot: .......... rounds = 10000; t = 31.499ms; td = 0.0031499ms
+test_sha3_384_hash_aot: .......... rounds = 10000; t = 33.3855ms; td = 0.00333855ms
+test_sha3_512_hash_aot: .......... rounds = 10000; t = 36.6426ms; td = 0.00366426ms
+test_shake_128_hash_aot: .......... rounds = 10000; t = 33.2111ms; td = 0.00332111ms
+test_shake_256_hash_aot: .......... rounds = 10000; t = 33.9816ms; td = 0.00339816ms
+
+test_md5_hmac_aot: .......... rounds = 10000; t = 61.1633ms; td = 0.00611633ms
+test_sha1_hmac_aot: .......... rounds = 10000; t = 60.7406ms; td = 0.00607406ms
+test_sha256_hmac_aot: .......... rounds = 10000; t = 69.9242ms; td = 0.00699242ms
+test_sha384_hmac_aot: .......... rounds = 10000; t = 72.2707ms; td = 0.00722707ms
+test_sha512_hmac_aot: .......... rounds = 10000; t = 73.2997ms; td = 0.00732997ms
+test_sha3_256_hmac_aot: .......... rounds = 10000; t = 94.4604ms; td = 0.00944604ms
+test_sha3_384_hmac_aot: .......... rounds = 10000; t = 115.32ms; td = 0.011532ms
+test_sha3_512_hmac_aot: .......... rounds = 10000; t = 108.677ms; td = 0.0108677ms
+
+test_aes_file_aot: .......... rounds = 10, t = 1920ms, td = 192ms
+test_aes_bytes_aot: .......... rounds = 10; t = 1437ms; td = 143ms
+test_aes_bytes_stress_aot: t = 137ms
+
+test_aes_gcm_file_aot: .......... rounds = 10, t = 382ms, td = 38ms
+test_aes_gcm_bytes_aot: .......... rounds = 10; t = 32ms; td = 3ms
+test_aes_gcm_bytes_stress_aot: t = 4ms
+
+test_chacha_poly_file_aot: .......... rounds = 10, t = 499ms, td = 49ms
+test_chacha_poly_bytes_aot: .......... rounds = 10; t = 44ms; td = 4ms
+test_chacha_poly_bytes_stress_aot: t = 10ms
+
+test_pqc_ml_kem_create_key_pairs_aot: .......... rounds = 100; t = 14ms; td = 0.14ms
+test_pqc_ml_kem_create_key_pairs_param_aot: .......... rounds = 100; t = 15ms; td = 0.15ms
+test_pqc_ml_kem_safe_load_key_pairs_aot: .......... rounds = 100; t = 866ms; td = 8.66ms
+test_pqc_ml_kem_capsulation_shared_key_with_public_key_aot: .......... rounds = 100; t = 23ms; td = 0.23ms
+test_pqc_ml_kem_sharedKey_from_capsualtion_private_key_aot: .......... rounds = 100; t = 32ms; td = 0.32ms
+test_pqc_ml_kem_enc_decryption_bytes_aot: .......... rounds = 10; t = 778ms; td = 77.8ms
+test_pqc_ml_kem_enc_decryption_bytes_stress_aot:  cryptoalgo = 2; mlkemparam = 0; size = 1048576; t = 23ms
+test_pqc_ml_kem_enc_decryption_file_aot: .......... rounds = 10, t = 1748.67ms, td = 174.867ms
+test_pqc_ml_kem_enc_decryption_kpf_file_aot: .......... rounds = 10, t = 3282.46ms, td = 328.246ms
+
+test_pqc_ml_dsa_create_key_pairs_aot: .......... rounds = 100; t = 166ms; td = 1.66ms
+test_pqc_ml_dsa_create_key_pairs_param_aot: .......... rounds = 100; t = 146ms; td = 1.46ms
+test_pqc_ml_dsa_safe_load_key_pairs_aot: .......... rounds = 100; t = 1033ms; td = 10.33ms
+test_pqc_ml_dsa_single_signature_aot: .......... rounds = 10; t = 29ms; td = 2.9ms
+test_pqc_ml_dsa_single_signature_kpi_sve_load_aot: .......... rounds = 10; t = 120ms; td = 12ms
+test_pqc_ml_dsa_single_signature_file_aot: .......... rounds = 10; t = 200ms; td = 20ms
+test_pqc_ml_dsa_single_signature_kpi_save_load_file_aot: .......... rounds = 10; t = 138ms; td = 13.8ms
+test_pqc_ml_dsa_multi_sign_kpf_aot: .......... rounds = 10; signers = 8.5; size = 63.6; t = 510ms; td = 51ms
+test_pqc_ml_dsa_multi_sign_file_kpf_aot: .......... rounds = 10; signers = 8.6; filesize = 16.3248kb; t = 645ms; td = 64.5ms
+
+test_hex_aot: .......... rounds = 10000; t = 25.9084ms; td = 0.00259084ms
+test_base64_aot: .......... rounds = 10000; t = 18.8247ms; td = 0.00188247ms
+
+test_base_converter_2_256_aot: .......... rounds = 10000; t = 247.14ms; td = 0.024714ms
+test_base_converter_2_256_stress_aot: startbase = 172; targetbase = 147; size = 1024; t = 22.9901 ms
+
+
+Finish

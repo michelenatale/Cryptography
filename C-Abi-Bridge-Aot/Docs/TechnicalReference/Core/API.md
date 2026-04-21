@@ -43,7 +43,7 @@ All functions follow a stable, language‑agnostic ABI and can be consumed from 
 - All buffers must be allocated by the **caller**.
 - The library never frees memory allocated by the caller.
 - Functions that allocate memory explicitly document this behavior.
-- Use `free_buffer_aot` to free memory allocated by the library.
+- Use `cabi_free_buffer` to free memory allocated by the library.
 
 ---
 
@@ -301,21 +301,14 @@ C++ uses the .lib from Build/Artifacts
 ## 16. Example: C++ Usage
 
 ```
-// --- Encrypt ---
-int cipher_len = 0;
-void* cipher_ptr = nullptr;
+#include "cabi_exp_imp.h"
 
-auto err = aes_encrypt_aot(
-  plain.data(), (int)plain.size(),
-  key.data(), (int)key.size(),
-  associat.data(), (int)associat.size(),
-  &cipher_ptr, &cipher_len);
-assert_error(err);
+uint8_t key[32] = {0};
+uint8_t iv[16] = {0};
+uint8_t input[32] = {1,2,3};
+uint8_t output[64];
 
-if (!cipher_ptr)
-  throw std::runtime_error("Null pointer returned");
-
-free_buffer_aot(cipher_ptr);
+cabi_aes_cbc_encrypt(key, 32, iv, input, 32, output, 64);
 ```
 
 ## 17. Example: C# Usage
