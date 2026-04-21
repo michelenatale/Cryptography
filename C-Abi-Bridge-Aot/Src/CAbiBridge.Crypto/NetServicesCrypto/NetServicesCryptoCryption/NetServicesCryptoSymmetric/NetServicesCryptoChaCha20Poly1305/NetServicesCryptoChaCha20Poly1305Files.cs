@@ -12,18 +12,18 @@ public partial class NetServicesCrypto
 
   public static async Task EncryptionFileChaCha20Poly1305Async(
     string src, string dest, UsIPtr<byte> key,
-    ReadOnlyMemory<byte> associated)
+    ReadOnlyMemory<byte> associated, CancellationToken ct = default)
   {
     AssertChaChaPolyEnc(src, dest, key);
     var associat = ToAssociated(associated, key);
     var buffer = new byte[CHACHA_POLY_MAX_PLAIN_SIZE];
 
-    using var fsin = new FileStream(src, FileMode.Open, FileAccess.Read, FileShare.Read, 8192, useAsync: true);
-    using var fsout = new FileStream(dest, FileMode.Create, FileAccess.ReadWrite, FileShare.None, 8192, useAsync: true);
+    await using var fsin = new FileStream(src, FileMode.Open, FileAccess.Read, FileShare.Read, 8192, useAsync: true);
+    await using var fsout = new FileStream(dest, FileMode.Create, FileAccess.ReadWrite, FileShare.None, 8192, useAsync: true);
 
     int readbytes;
     fsout.Position = 0;
-    while ((readbytes = await fsin.ReadAsync(buffer.AsMemory(0, buffer.Length))) > 0)
+    while ((readbytes = await fsin.ReadAsync(buffer.AsMemory(0, buffer.Length), ct)) > 0)
     {
       var memo = buffer.AsMemory(0, readbytes);
 
@@ -32,9 +32,9 @@ public partial class NetServicesCrypto
       var cipher = EncChaCha20Poly1305Single(
           memo.Span, key, associat, out var tag, out var nonce);
 
-      await fsout.WriteAsync(tag);
-      await fsout.WriteAsync(nonce);
-      await fsout.WriteAsync(cipher);
+      await fsout.WriteAsync(tag, ct);
+      await fsout.WriteAsync(nonce, ct);
+      await fsout.WriteAsync(cipher, ct);
 
       memo.Span.Clear();
     }
@@ -42,7 +42,7 @@ public partial class NetServicesCrypto
 
   public static async Task DecryptionFileChaCha20Poly1305Async(
       string src, string dest, UsIPtr<byte> key,
-      ReadOnlyMemory<byte> associated)
+      ReadOnlyMemory<byte> associated, CancellationToken ct = default)
   {
     AssertChaChaPolyDec(src, dest, key);
 
@@ -55,7 +55,7 @@ public partial class NetServicesCrypto
 
     while (true)
     {
-      var read = await fsin.ReadAsync(buffer);
+      var read = await fsin.ReadAsync(buffer, ct);
       if (read == 0) break;
 
       var memo = buffer[..read];
@@ -69,7 +69,7 @@ public partial class NetServicesCrypto
       //es ist kein async-await für DecChaCha20Poly1305Single
       //nöting, da diese Methode cpu-komform ist.
       var decipher = DecChaCha20Poly1305Single(cipher.Span, key, associat, tag.Span, nonce.Span);
-      await fsout.WriteAsync(decipher);
+      await fsout.WriteAsync(decipher, ct);
 
       memo.Span.Clear();
     }
@@ -80,7 +80,8 @@ public partial class NetServicesCrypto
   public static async Task EncryptionFileChaCha20Poly1305Async(
     FileStream fsin, FileStream fsout,
     int startin, int lengthin, int startout,
-    UsIPtr<byte> key, ReadOnlyMemory<byte> associated)
+    UsIPtr<byte> key, ReadOnlyMemory<byte> associated,
+    CancellationToken ct = default)
   {
     AssertChaChaPolyEnc(fsin, fsout, key, startin, lengthin, startout);
     var associat = ToAssociated(associated, key);
@@ -90,7 +91,7 @@ public partial class NetServicesCrypto
     fsout.Position = startout;
 
     int readbytes;
-    while ((readbytes = await fsin.ReadAsync(buffer.AsMemory(0, buffer.Length))) > 0)
+    while ((readbytes = await fsin.ReadAsync(buffer.AsMemory(0, buffer.Length), ct)) > 0)
     {
       var memo = buffer.AsMemory(0, readbytes);
 
@@ -99,9 +100,9 @@ public partial class NetServicesCrypto
       var cipher = EncChaCha20Poly1305Single(
           memo.Span, key, associat, out var tag, out var nonce);
 
-      await fsout.WriteAsync(tag);
-      await fsout.WriteAsync(nonce);
-      await fsout.WriteAsync(cipher);
+      await fsout.WriteAsync(tag, ct);
+      await fsout.WriteAsync(nonce, ct);
+      await fsout.WriteAsync(cipher, ct);
 
       memo.Span.Clear();
     }
@@ -110,7 +111,8 @@ public partial class NetServicesCrypto
   public static async Task DecryptionFileChaCha20Poly1305Async(
       FileStream fsin, FileStream fsout,
       int startin, int lengthin, int startout,
-      UsIPtr<byte> key, ReadOnlyMemory<byte> associated)
+      UsIPtr<byte> key, ReadOnlyMemory<byte> associated, 
+      CancellationToken ct = default)
   {
     AssertChaChaPolyDec(fsin, fsout, key, startin, lengthin, startout);
     var associat = ToAssociated(associated, key);
@@ -123,7 +125,7 @@ public partial class NetServicesCrypto
 
     while (true)
     {
-      var read = await fsin.ReadAsync(buffer);
+      var read = await fsin.ReadAsync(buffer,ct);
       if (read == 0)
         break;
 
@@ -138,7 +140,7 @@ public partial class NetServicesCrypto
       //es ist kein async-await für DecChaCha20Poly1305Single, da
       //diese Methode cpu-komform ist.
       var decipher = DecChaCha20Poly1305Single(cipher.Span, key, associat, tag.Span, nonce.Span);
-      await fsout.WriteAsync(decipher);
+      await fsout.WriteAsync(decipher, ct);
 
       span.Span.Clear();
     }

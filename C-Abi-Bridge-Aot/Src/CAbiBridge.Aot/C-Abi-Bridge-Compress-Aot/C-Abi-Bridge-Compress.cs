@@ -1,11 +1,8 @@
 ﻿
- 
 
 namespace michele.natale.CAbiBridge;
- 
 
-partial class UtilsBridge
+public sealed partial class CompressBridge
 {
- 
 
 }

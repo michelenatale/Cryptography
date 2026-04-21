@@ -44,7 +44,7 @@ public interface IMlKemEx
   /// <param name="associated">Desired Associated</param>
   static abstract Task MlKemEncryptionFileAsync(
      string src, string dest, string keypairfile,
-     ReadOnlyMemory<byte> associated);
+     ReadOnlyMemory<byte> associated, CancellationToken ct = default);
 
   /// <summary> 
   /// Decrypts the cipher informations from file with the ML-KEM algorithm.
@@ -55,7 +55,7 @@ public interface IMlKemEx
   /// <param name="associated">Desired Associated</param>
   static abstract Task MlKemDecryptionFileAsync(
       string src, string dest, string keypairfile,
-      ReadOnlyMemory<byte> associated);
+      ReadOnlyMemory<byte> associated, CancellationToken ct = default);
 
   /// <summary>
   /// Creates a KeyPair based on the entered parameters.

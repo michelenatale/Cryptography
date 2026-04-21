@@ -60,7 +60,7 @@ partial class NetServicesCrypto
     catch { ResetBytes(associat, tag, iv, cipher); }
     finally { ResetBytes(associat, tag, iv, cipher); }
 
-    throw new CryptographicException($"Verifiy {nameof(DecryptionAes)} failed!");
+    throw new CryptographicException($"Verify {nameof(DecryptionAes)} failed!");
   }
   #endregion AES En- & Decryption
 

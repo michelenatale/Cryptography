@@ -48,26 +48,27 @@ partial class NetServicesCrypto
   public async static Task EncryptionFileWithCryptionAlgoAsync(
     string srcfile, string destfile,
     UsIPtr<byte> key, ReadOnlyMemory<byte> associated,
-    CryptionAlgorithm crypt_algo)
+    CryptionAlgorithm crypt_algo, CancellationToken ct = default)
   {
     switch (crypt_algo)
     {
-      case CryptionAlgorithm.AES: await EncryptionFileAesAsync(srcfile, destfile, key, associated); break;
-      case CryptionAlgorithm.AES_GCM: await EncryptionFileAesGcmAsync(srcfile, destfile, key, associated); break;
-      case CryptionAlgorithm.CHACHA20_POLY1305: await EncryptionFileChaCha20Poly1305Async(srcfile, destfile, key, associated); break;
+      case CryptionAlgorithm.AES: await EncryptionFileAesAsync(srcfile, destfile, key, associated, ct); break;
+      case CryptionAlgorithm.AES_GCM: await EncryptionFileAesGcmAsync(srcfile, destfile, key, associated, ct); break;
+      case CryptionAlgorithm.CHACHA20_POLY1305: await EncryptionFileChaCha20Poly1305Async(srcfile, destfile, key, associated, ct); break;
       default: throw new ArgumentException($"{nameof(crypt_algo)} has failed!", nameof(crypt_algo));
     }
   }
 
   public async static Task DecryptionFileWithCryptionAlgoAsync(
     string srcfile, string destfile, UsIPtr<byte> key,
-    ReadOnlyMemory<byte> associated, CryptionAlgorithm crypt_algo)
+    ReadOnlyMemory<byte> associated, CryptionAlgorithm crypt_algo,
+    CancellationToken ct)
   {
     switch (crypt_algo)
     {
-      case CryptionAlgorithm.AES: await DecryptionFileAesAsync(srcfile, destfile, key, associated); break;
-      case CryptionAlgorithm.AES_GCM: await DecryptionFileAesGcmAsync(srcfile, destfile, key, associated); break;
-      case CryptionAlgorithm.CHACHA20_POLY1305: await DecryptionFileChaCha20Poly1305Async(srcfile, destfile, key, associated); break;
+      case CryptionAlgorithm.AES: await DecryptionFileAesAsync(srcfile, destfile, key, associated, ct); break;
+      case CryptionAlgorithm.AES_GCM: await DecryptionFileAesGcmAsync(srcfile, destfile, key, associated, ct); break;
+      case CryptionAlgorithm.CHACHA20_POLY1305: await DecryptionFileChaCha20Poly1305Async(srcfile, destfile, key, associated, ct); break;
       default: throw new ArgumentException($"{nameof(crypt_algo)} has failed!", nameof(crypt_algo));
     }
   }
@@ -77,13 +78,13 @@ partial class NetServicesCrypto
     FileStream fsin, FileStream fsout,
     int startin, int lengthin, int startout,
     UsIPtr<byte> key, ReadOnlyMemory<byte> associated,
-    CryptionAlgorithm crypt_algo)
+    CryptionAlgorithm crypt_algo, CancellationToken ct = default)
   {
     switch (crypt_algo)
     {
-      case CryptionAlgorithm.AES: await EncryptionFileAesAsync(fsin, fsout, startin, lengthin, startout, key, associated); break;
-      case CryptionAlgorithm.AES_GCM: await EncryptionFileAesGcmAsync(fsin, fsout, startin, lengthin, startout, key, associated); break;
-      case CryptionAlgorithm.CHACHA20_POLY1305: await EncryptionFileChaCha20Poly1305Async(fsin, fsout, startin, lengthin, startout, key, associated); break;
+      case CryptionAlgorithm.AES: await EncryptionFileAesAsync(fsin, fsout, startin, lengthin, startout, key, associated, ct); break;
+      case CryptionAlgorithm.AES_GCM: await EncryptionFileAesGcmAsync(fsin, fsout, startin, lengthin, startout, key, associated, ct); break;
+      case CryptionAlgorithm.CHACHA20_POLY1305: await EncryptionFileChaCha20Poly1305Async(fsin, fsout, startin, lengthin, startout, key, associated, ct); break;
       default: throw new ArgumentException($"{nameof(crypt_algo)} has failed!", nameof(crypt_algo));
     }
   }
@@ -92,15 +93,14 @@ partial class NetServicesCrypto
     FileStream fsin, FileStream fsout,
     int startin, int lengthin, int startout,
     UsIPtr<byte> key, ReadOnlyMemory<byte> associated,
-    CryptionAlgorithm crypt_algo)
+    CryptionAlgorithm crypt_algo, CancellationToken ct = default)
   {
     switch (crypt_algo)
     {
-      case CryptionAlgorithm.AES: await DecryptionFileAesAsync(fsin, fsout, startin, lengthin, startout, key, associated); break;
-      case CryptionAlgorithm.AES_GCM: await DecryptionFileAesGcmAsync(fsin, fsout, startin, lengthin, startout, key, associated); break;
-      case CryptionAlgorithm.CHACHA20_POLY1305: await DecryptionFileChaCha20Poly1305Async(fsin, fsout, startin, lengthin, startout, key, associated); break;
+      case CryptionAlgorithm.AES: await DecryptionFileAesAsync(fsin, fsout, startin, lengthin, startout, key, associated, ct); break;
+      case CryptionAlgorithm.AES_GCM: await DecryptionFileAesGcmAsync(fsin, fsout, startin, lengthin, startout, key, associated, ct); break;
+      case CryptionAlgorithm.CHACHA20_POLY1305: await DecryptionFileChaCha20Poly1305Async(fsin, fsout, startin, lengthin, startout, key, associated, ct); break;
       default: throw new ArgumentException($"{nameof(crypt_algo)} has failed!", nameof(crypt_algo));
     }
   }
-
 }

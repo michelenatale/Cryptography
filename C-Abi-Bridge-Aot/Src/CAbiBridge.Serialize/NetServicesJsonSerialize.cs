@@ -1,9 +1,7 @@
 ﻿namespace michele.natale;
 
+ 
+public sealed partial class NetServicesSerialize
+{
 
-//[JsonSerializable(typeof(MyType))]
-//[JsonSerializable(typeof(MyOtherType))]
-//public partial class NetServicesSerialize : JsonSerializerContext
-//{
-
-//}
+}

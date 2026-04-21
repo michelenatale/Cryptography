@@ -14,47 +14,46 @@ using Pointers;
 
 partial class NetServicesCrypto
 {
+  //public async static Task PqcMlKemEncryptionKpiFileAsync(
+  //  string src_file, string dest_file,
+  //  string keypairfile, ReadOnlyMemory<byte> associated)
+  //{
+  //  AssertPqcMlKemEncryptionFile(src_file, dest_file, keypairfile);
+  //  await MlKemEncryptionFileAsync(src_file, dest_file, keypairfile, associated);
+  //}
 
-  public async static Task PqcMlKemEncryptionKpiFile(
-    string src_file, string dest_file,
-    string keypairfile, ReadOnlyMemory<byte> associated)
-  {
-    AssertPqcMlKemEncryptionFile(src_file, dest_file, keypairfile);
-    await MlKemEncryptionFileAsync(src_file, dest_file, keypairfile, associated);
-  }
-
-  public async static Task PqcMlKemEncryptionFile(
+  public async static Task PqcMlKemEncryptionFileAsync(
     string src_file, string dest_file,
     UsIPtr<byte> private_key, ReadOnlyMemory<byte> capsulation,
     ReadOnlyMemory<byte> associated, MLKemAlgorithm mlkem_param,
-    CryptionAlgorithm crypto_algo)
+    CryptionAlgorithm crypto_algo, CancellationToken ct = default)
   {
     AssertPqcMlKemEncryptionFile(src_file, dest_file, private_key, capsulation);
 
-    var kem = MLKem.ImportDecapsulationKey(mlkem_param, private_key.ToArray());
-    var pubkey = kem.ExportEncapsulationKey();
+    //var kem = MLKem.ImportDecapsulationKey(mlkem_param, private_key.ToArray());
+    //var pubkey = kem.ExportEncapsulationKey();
 
     await MlKemEncryptionFileAsync(
       src_file, dest_file, private_key, capsulation,
-      associated, mlkem_param, crypto_algo);
+      associated, mlkem_param, crypto_algo, ct);
   }
 
-  public async static Task PqcMlKemDecryptionKpiFile(
-    string src_file, string dest_file, string key_pair_file,
-    ReadOnlyMemory<byte> associated)
-  {
-    AssertPqcMlKemDecryptionFile(src_file, dest_file, key_pair_file);
-    await MlKemDecryptionFileAsync(src_file, dest_file, key_pair_file, associated);
-  }
+  //public async static Task PqcMlKemDecryptionKpiFileAsync(
+  //  string src_file, string dest_file, string key_pair_file,
+  //  ReadOnlyMemory<byte> associated)
+  //{
+  //  AssertPqcMlKemDecryptionFile(src_file, dest_file, key_pair_file);
+  //  await MlKemDecryptionFileAsync(src_file, dest_file, key_pair_file, associated);
+  //}
 
-  public async static Task PqcMlKemDecryptionFile(
+  public async static Task PqcMlKemDecryptionFileAsync(
     string src_file, string dest_file,
-    UsIPtr<byte> shared_key, ReadOnlyMemory<byte> associated)
+    UsIPtr<byte> shared_key, ReadOnlyMemory<byte> associated,
+    CancellationToken ct = default)
   {
     AssertPqcMlKemDecryptionFile(src_file, dest_file, shared_key);
-    await MlKemDecryptionFileAsync(src_file, dest_file, shared_key, associated);
+    await MlKemDecryptionFileAsync(src_file, dest_file, shared_key, associated, ct);
   }
-
 
   private static void AssertPqcMlKemEncryptionFile(
    string src_file, string dest_file, string key_pair_file)

@@ -3,6 +3,7 @@
   <PropertyGroup>
     <Nullable>enable</Nullable>
     <PublishAot>true</PublishAot>
+    <NativeLib>Shared</NativeLib>
     <OutputType>Library</OutputType>
     <Platforms>AnyCPU;x64</Platforms>
     <StripSymbols>true</StripSymbols>
@@ -31,19 +32,15 @@
   <ItemGroup>
     <ProjectReference Include="..\CAbiBridge.Compress\C-Abi-Bridge.Compress.csproj" />
     <ProjectReference Include="..\CAbiBridge.Crypto\C-Abi-Bridge.Crypto.csproj" />
-    <ProjectReference Include="..\CAbiBridge.Serialize\C-Abi-Bridge.Serialize.csproj" />
     <ProjectReference Include="..\CAbiBridge.Utils\C-Abi-Bridge.Utils.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="C-Abi-Bridge-Serialize-Aot\" />
     <Folder Include="C-Abi-Bridge-Crypto-Aot\C-Abi-Bridge-Crypto-Cryption-Aot\C-Abi-Bridge-Crypto-Asymmetric-Aot\" />
     <Folder Include="C-Abi-Bridge-Crypto-Aot\C-Abi-Bridge-Crypto-Pqc-Aot\C-Abi-Bridge-Crypto-Pqc-Signature-Aot\C-Abi-Bridge-Pqc-Signature-Stateful-Aot\C-Abi-Bridge-Pqc-Stateful-Lms-Aot\" />
     <Folder Include="C-Abi-Bridge-Crypto-Aot\C-Abi-Bridge-Crypto-Pqc-Aot\C-Abi-Bridge-Crypto-Pqc-Signature-Aot\C-Abi-Bridge-Pqc-Signature-Stateful-Aot\C-Abi-Bridge-Pqc-Stateful-Xmss-Aot\" />
-    <Folder Include="C-Abi-Bridge-Crypto-Aot\C-Abi-Bridge-Crypto-Pqc-Aot\C-Abi-Bridge-Crypto-Pqc-Signature-Aot\C-Abi-Bridge-Pqc-Signature-Stateless-Aot\C-Abi-Bridge-Pqc-Stateless-MlDsa-Aot\" />
     <Folder Include="C-Abi-Bridge-Crypto-Aot\C-Abi-Bridge-Crypto-Pqc-Aot\C-Abi-Bridge-Crypto-Pqc-Signature-Aot\C-Abi-Bridge-Pqc-Signature-Stateless-Aot\C-Abi-Bridge-Pqc-Stateless-SlhDsa-Aot\" />
     <Folder Include="C-Abi-Bridge-Crypto-Aot\C-Abi-Bridge-Crypto-Signature-Aot\" />
-    <Folder Include="C-Abi-Bridge-Compress-Aot\" />
   </ItemGroup>
 
   <PropertyGroup>

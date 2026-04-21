@@ -9,7 +9,6 @@ using static NetServicesUtils;
 
 unsafe partial class CryptoBridge
 {
-
   [UnmanagedCallersOnly(EntryPoint = "free_buffer_aot")]
   public static void FreeBuffer(void* buffer)
   {
@@ -44,6 +43,4 @@ unsafe partial class CryptoBridge
     key.CopyTo(new Span<byte>(output, outputLen));
     return new CError { error_code = (int)CErrorCode.Ok };
   }
-
-
 }

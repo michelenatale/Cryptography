@@ -33,8 +33,7 @@
     <Folder Include="NetServicesCrypto\NetServicesCryptoSignature\" />
     <Folder Include="NetServicesCrypto\NetServicesCryptoPqc\NetServicesCryptoPqcSignatur\NetServicesCryptoPqcStateful\NetServicesCryptoPqcStatefulLms\" />
     <Folder Include="NetServicesCrypto\NetServicesCryptoPqc\NetServicesCryptoPqcSignatur\NetServicesCryptoPqcStateful\NetServicesCryptoPqcStatefulXmss\" />
-    <Folder Include="NetServicesCrypto\NetServicesCryptoPqc\NetServicesCryptoPqcSignatur\NetServicesCryptoPqcStateless\NetServicesCryptoPqcStatelessML-DSA\" />
-    <Folder Include="NetServicesCrypto\NetServicesCryptoPqc\NetServicesCryptoPqcSignatur\NetServicesCryptoPqcStateless\NetServicesCryptoPqcStatelessSLH-DSA\" />
+    <Folder Include="NetServicesCrypto\NetServicesCryptoPqc\NetServicesCryptoPqcSignatur\NetServicesCryptoPqcStateless\NetServicesCryptoPqcStatelessSlhDsa\" />
   </ItemGroup>
 
   <ItemGroup>

@@ -53,7 +53,9 @@ partial class CryptoBridge
       var ssrc = Encoding.UTF8.GetString(src);
       var sdest = Encoding.UTF8.GetString(dest);
 
-      EncryptionFileChaCha20Poly1305Async(ssrc, sdest, key, associated.ToArray())
+      var cts = new CancellationTokenSource();
+      EncryptionFileChaCha20Poly1305Async(ssrc, sdest, key, 
+        associated.ToArray(), cts.Token)
           .GetAwaiter().GetResult();
 
       return new CError { error_code = (int)CErrorCode.Ok };
@@ -113,7 +115,9 @@ partial class CryptoBridge
       var ssrc = Encoding.UTF8.GetString(src);
       var sdest = Encoding.UTF8.GetString(dest);
 
-      DecryptionFileChaCha20Poly1305Async(ssrc, sdest, key, associated.ToArray())
+      var cts = new CancellationTokenSource();
+      DecryptionFileChaCha20Poly1305Async(ssrc, sdest, key, 
+        associated.ToArray(), cts.Token)
           .GetAwaiter().GetResult();
 
       return new CError { error_code = (int)CErrorCode.Ok };

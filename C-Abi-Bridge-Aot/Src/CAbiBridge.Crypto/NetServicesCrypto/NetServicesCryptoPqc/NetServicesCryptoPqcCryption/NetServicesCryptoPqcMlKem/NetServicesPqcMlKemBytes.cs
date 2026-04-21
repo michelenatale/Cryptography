@@ -1,5 +1,4 @@
-﻿
-//ML-KEM (Kyber)
+﻿//ML-KEM (Kyber)
 //Module-Lattice-Based
 //FIPS PUB 203
 //https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.203.ipd.pdf
@@ -177,6 +176,14 @@ partial class NetServicesCrypto
   {
     if (message.IsEmpty || message.Length == 0)
       throw new ArgumentNullException(nameof(message));
+
+    if (message.Length < ML_KEM_MIN_PLAIN_SIZE)
+      throw new ArgumentNullException(nameof(message),
+        $"mlkem-message.Length >= {ML_KEM_MIN_PLAIN_SIZE} <= {ML_KEM_MAX_PLAIN_SIZE}");
+
+    if (message.Length > ML_KEM_MAX_PLAIN_SIZE)
+      throw new ArgumentNullException(nameof(message),
+        $"mlkem-message.Length >= {ML_KEM_MIN_PLAIN_SIZE} <= {ML_KEM_MAX_PLAIN_SIZE}");
 
     if (privatekey.IsEmpty || privatekey.Length == 0)
       throw new ArgumentNullException(nameof(privatekey));

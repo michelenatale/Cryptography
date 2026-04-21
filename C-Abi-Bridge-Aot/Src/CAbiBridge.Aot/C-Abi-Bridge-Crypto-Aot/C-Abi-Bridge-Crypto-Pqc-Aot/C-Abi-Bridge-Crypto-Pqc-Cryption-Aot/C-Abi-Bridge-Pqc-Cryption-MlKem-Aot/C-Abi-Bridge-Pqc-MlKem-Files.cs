@@ -31,25 +31,16 @@ partial class CryptoBridge
     try
     {
       var mlkemalgo = ToMLKemAlgorithm(mlkem_param);
+      var srcfile = ToStringUtf8Safe(src_file_ptr, src_file_length);
+      var associated = ToMemSafe(associated_ptr, associated_length);
+      var capsulation = ToMemSafe(capsulation_ptr, capsulation_length);
+      var destfile = ToStringUtf8Safe(dest_file_ptr, dest_file_length);
+      var privatekey = ToUsIPtrSafe(private_key_ptr, private_key_length);
 
-      var srcfile = Encoding.UTF8.GetString(
-        ToSpanSafe(src_file_ptr, src_file_length));
-
-      var destfile = Encoding.UTF8.GetString(
-        ToSpanSafe(dest_file_ptr, dest_file_length));
-
-      var privatekey = new UsIPtr<byte>(
-        ToSpanSafe(private_key_ptr, private_key_length));
-
-      ReadOnlyMemory<byte> capsulation =
-        ToSpanSafe(capsulation_ptr, capsulation_length).ToArray();
-
-      ReadOnlyMemory<byte> associated =
-        ToSpanSafe(associated_ptr, associated_length).ToArray();
-
-      PqcMlKemEncryptionFile(srcfile, destfile, privatekey,
+      var cts = new CancellationTokenSource();
+      PqcMlKemEncryptionFileAsync(srcfile, destfile, privatekey,
         capsulation, associated, mlkemalgo,
-        (CryptionAlgorithm)crypto_algo)
+        (CryptionAlgorithm)crypto_algo, cts.Token)
           .GetAwaiter().GetResult();
 
       return new CError { error_code = (int)CErrorCode.Ok };
@@ -69,19 +60,14 @@ partial class CryptoBridge
   {
     try
     {
-      var srcfile = Encoding.UTF8.GetString(
-        ToSpanSafe(src_file_ptr, src_file_length));
+      var srcfile = ToStringUtf8Safe(src_file_ptr, src_file_length);
+      var associated = ToMemSafe(associated_ptr, associated_length);
+      var sharedkey = ToUsIPtrSafe(shared_key_ptr, shared_key_length);
+      var destfile = ToStringUtf8Safe(dest_file_ptr, dest_file_length);
 
-      var destfile = Encoding.UTF8.GetString(
-        ToSpanSafe(dest_file_ptr, dest_file_length));
-
-      var sharedkey = new UsIPtr<byte>(
-        ToSpanSafe(shared_key_ptr, shared_key_length).ToArray());
-
-      ReadOnlyMemory<byte> associated =
-        ToSpanSafe(associated_ptr, associated_length).ToArray();
-
-      PqcMlKemDecryptionFile(srcfile, destfile, sharedkey, associated)
+      var cts = new CancellationTokenSource();
+      PqcMlKemDecryptionFileAsync(srcfile, destfile, 
+        sharedkey, associated, cts.Token)
         .GetAwaiter().GetResult();
 
       return new CError { error_code = (int)CErrorCode.Ok };

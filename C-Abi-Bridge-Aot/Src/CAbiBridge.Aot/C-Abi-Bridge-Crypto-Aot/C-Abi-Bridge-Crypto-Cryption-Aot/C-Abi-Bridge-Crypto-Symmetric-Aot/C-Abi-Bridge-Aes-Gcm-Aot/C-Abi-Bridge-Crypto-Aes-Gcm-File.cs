@@ -51,7 +51,9 @@ partial class CryptoBridge
       var ssrc = Encoding.UTF8.GetString(src);
       var sdest = Encoding.UTF8.GetString(dest);
 
-      EncryptionFileAesGcmAsync(ssrc, sdest, key, associated.ToArray())
+      var cts = new CancellationTokenSource();
+      EncryptionFileAesGcmAsync(ssrc, sdest, key,
+        associated.ToArray(), cts.Token)
           .GetAwaiter().GetResult();
 
       return new CError { error_code = (int)CErrorCode.Ok };
@@ -111,7 +113,9 @@ partial class CryptoBridge
       var ssrc = Encoding.UTF8.GetString(src);
       var sdest = Encoding.UTF8.GetString(dest);
 
-      DecryptionFileAesGcmAsync(ssrc, sdest, key, associated.ToArray())
+      var cts = new CancellationTokenSource();
+      DecryptionFileAesGcmAsync(ssrc, sdest, key,
+        associated.ToArray(), cts.Token)
           .GetAwaiter().GetResult();
 
       return new CError { error_code = (int)CErrorCode.Ok };

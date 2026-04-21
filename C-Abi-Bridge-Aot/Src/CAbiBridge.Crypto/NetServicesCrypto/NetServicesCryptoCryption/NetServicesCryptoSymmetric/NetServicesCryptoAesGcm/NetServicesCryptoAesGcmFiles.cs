@@ -10,7 +10,7 @@ public partial class NetServicesCrypto
 
   public static async Task EncryptionFileAesGcmAsync(
     string src, string dest, UsIPtr<byte> key,
-    ReadOnlyMemory<byte> associated)
+    ReadOnlyMemory<byte> associated, CancellationToken ct = default)
   {
     AssertAesGcmEnc(src, dest, key);
     var associat = ToAssociated(associated, key);
@@ -21,16 +21,16 @@ public partial class NetServicesCrypto
 
     int readbytes;
     fsout.Position = 0;
-    while ((readbytes = await fsin.ReadAsync(buffer.AsMemory(0, buffer.Length))) > 0)
+    while ((readbytes = await fsin.ReadAsync(buffer.AsMemory(0, buffer.Length), ct)) > 0)
     {
       if (readbytes != buffer.Length)
         buffer = buffer[..readbytes].ToArray();
 
       var cipher = EncAesGcmSingle(buffer.AsSpan(0, readbytes), key, associat, out var tag, out var nonce);
 
-      await fsout.WriteAsync(tag);
-      await fsout.WriteAsync(nonce);
-      await fsout.WriteAsync(cipher);
+      await fsout.WriteAsync(tag, ct);
+      await fsout.WriteAsync(nonce, ct);
+      await fsout.WriteAsync(cipher, ct);
 
       Array.Clear(buffer);
     }
@@ -38,7 +38,8 @@ public partial class NetServicesCrypto
 
   public static async Task DecryptionFileAesGcmAsync(
       string src, string dest,
-      UsIPtr<byte> key, ReadOnlyMemory<byte> associated)
+      UsIPtr<byte> key, ReadOnlyMemory<byte> associated,
+      CancellationToken ct = default)
   {
     AssertAesGcmDec(src, dest, key);
 
@@ -51,7 +52,7 @@ public partial class NetServicesCrypto
 
     while (true)
     {
-      var read = await fsin.ReadAsync(buffer);
+      var read = await fsin.ReadAsync(buffer, ct);
       if (read == 0)
         break;
 
@@ -65,7 +66,7 @@ public partial class NetServicesCrypto
       var cipher = memo[headerSize..];
 
       var decipher = DecAesGcmSingle(cipher.Span, key, associat, tag.Span, nonce.Span);
-      await fsout.WriteAsync(decipher);
+      await fsout.WriteAsync(decipher, ct);
       memo.Span.Clear();
     }
   }
@@ -74,7 +75,8 @@ public partial class NetServicesCrypto
   public static async Task EncryptionFileAesGcmAsync(
     FileStream fsin, FileStream fsout,
     int startin, int lengthin, int startout,
-    UsIPtr<byte> key, ReadOnlyMemory<byte> associated)
+    UsIPtr<byte> key, ReadOnlyMemory<byte> associated,
+    CancellationToken ct = default)
   {
     AssertAesGcmEnc(fsin, fsout, key, startin, lengthin, startout);
     var associat = ToAssociated(associated, key);
@@ -84,16 +86,16 @@ public partial class NetServicesCrypto
     fsout.Position = startout;
 
     int readbytes;
-    while ((readbytes = await fsin.ReadAsync(buffer.AsMemory(0, buffer.Length))) > 0)
+    while ((readbytes = await fsin.ReadAsync(buffer.AsMemory(0, buffer.Length), ct)) > 0)
     {
       if (readbytes != buffer.Length)
         buffer = buffer[..readbytes].ToArray();
 
       var cipher = EncAesGcmSingle(buffer.AsSpan(0, readbytes), key, associat, out var tag, out var nonce);
 
-      await fsout.WriteAsync(tag);
-      await fsout.WriteAsync(nonce);
-      await fsout.WriteAsync(cipher);
+      await fsout.WriteAsync(tag, ct);
+      await fsout.WriteAsync(nonce, ct);
+      await fsout.WriteAsync(cipher, ct);
 
       Array.Clear(buffer);
     }
@@ -102,7 +104,8 @@ public partial class NetServicesCrypto
   public static async Task DecryptionFileAesGcmAsync(
       FileStream fsin, FileStream fsout,
       int startin, int lengthin, int startout,
-      UsIPtr<byte> key, ReadOnlyMemory<byte> associated)
+      UsIPtr<byte> key, ReadOnlyMemory<byte> associated,
+      CancellationToken ct = default)
   {
     AssertAesGcmDec(fsin, fsout, key, startin, lengthin, startout);
     var associat = ToAssociated(associated, key);
@@ -115,7 +118,7 @@ public partial class NetServicesCrypto
 
     while (true)
     {
-      var read = await fsin.ReadAsync(buffer);
+      var read = await fsin.ReadAsync(buffer, ct);
       if (read == 0)
         break;
 
@@ -129,7 +132,7 @@ public partial class NetServicesCrypto
       var cipher = memo[headerSize..];
 
       var decipher = DecAesGcmSingle(cipher.Span, key, associat, tag.Span, nonce.Span);
-      await fsout.WriteAsync(decipher);
+      await fsout.WriteAsync(decipher, ct);
 
       memo.Span.Clear();
     }

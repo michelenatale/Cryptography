@@ -1,7 +1,7 @@
 ﻿
-using System.Runtime.InteropServices;
-using System.Security.Cryptography;
 using System.Text;
+using System.Security.Cryptography;
+using System.Runtime.InteropServices;
 
 namespace michele.natale.CAbiBridge;
 
@@ -51,7 +51,9 @@ partial class CryptoBridge
       var ssrc = Encoding.UTF8.GetString(src);
       var sdest = Encoding.UTF8.GetString(dest);
 
-      EncryptionFileAesAsync(ssrc, sdest, key, associated.ToArray())
+      var cts = new CancellationTokenSource();
+      EncryptionFileAesAsync(ssrc, sdest, key, 
+        associated.ToArray(), cts.Token)
           .GetAwaiter().GetResult();
 
       return new CError { error_code = (int)CErrorCode.Ok };
@@ -112,7 +114,9 @@ partial class CryptoBridge
       var ssrc = Encoding.UTF8.GetString(src);
       var sdest = Encoding.UTF8.GetString(dest);
 
-      DecryptionFileAesAsync(ssrc, sdest, key, associated.ToArray())
+      var cts = new CancellationTokenSource();
+      DecryptionFileAesAsync(ssrc, sdest, key, 
+        associated.ToArray(), cts.Token)
           .GetAwaiter().GetResult();
 
       return new CError { error_code = (int)CErrorCode.Ok };

@@ -71,7 +71,8 @@ partial class NetServicesCrypto : IMlKemEx
   public async static Task MlKemEncryptionFileAsync(
     string src, string dest, UsIPtr<byte> private_key,
     ReadOnlyMemory<byte> capsulation, ReadOnlyMemory<byte> associated,
-    MLKemAlgorithm mlkem_param, CryptionAlgorithm crypto_algo)
+    MLKemAlgorithm mlkem_param, CryptionAlgorithm crypto_algo,
+    CancellationToken ct = default)
   {
     //ML-KEM Encapsulation
     var kem = MLKem.ImportDecapsulationKey(mlkem_param, private_key.ToBytes());
@@ -90,12 +91,12 @@ partial class NetServicesCrypto : IMlKemEx
     //ML-KEM Symmetric Encryption
     await EncryptionFileWithCryptionAlgoAsync(
       fsin, fsout, 0, (int)fsin.Length, (int)fsout.Position,
-      sharedkey, associated, crypto_algo);
+      sharedkey, associated, crypto_algo, ct);
   }
 
   public async static Task MlKemEncryptionFileAsync(
     string src, string dest, string keypairfile,
-    ReadOnlyMemory<byte> associated)
+    ReadOnlyMemory<byte> associated, CancellationToken ct = default)
   {
     using var info = MlKemKeyPairInfo.Load_KeyPair(keypairfile);
 
@@ -116,14 +117,14 @@ partial class NetServicesCrypto : IMlKemEx
     //ML-KEM Symmetric Encryption
     await EncryptionFileWithCryptionAlgoAsync(
       fsin, fsout, 0, (int)fsin.Length, (int)fsout.Position,
-      sharedkey, associated, info.CryptAlgo);
+      sharedkey, associated, info.CryptAlgo, ct);
   }
 
 
 
   public async static Task MlKemDecryptionFileAsync(
-    string src, string dest,
-    UsIPtr<byte> sharedkey, ReadOnlyMemory<byte> associated)
+    string src, string dest, UsIPtr<byte> sharedkey,
+    ReadOnlyMemory<byte> associated, CancellationToken ct = default)
   {
 
     await using var fsin = new FileStream(src, FileMode.Open, FileAccess.Read);
@@ -145,12 +146,13 @@ partial class NetServicesCrypto : IMlKemEx
     //ML-KEM Decryption
     var startout = 0;
     await DecryptionFileWithCryptionAlgoAsync(
-      fsin, fsout, startin, lengthin, startout, sharedkey, associated, calgo);
+      fsin, fsout, startin, lengthin, startout,
+      sharedkey, associated, calgo, ct);
   }
 
   public async static Task MlKemDecryptionFileAsync(
     string src, string dest, string keypairfile,
-    ReadOnlyMemory<byte> associated)
+    ReadOnlyMemory<byte> associated, CancellationToken ct = default)
   {
     await using var fsin = new FileStream(src, FileMode.Open, FileAccess.Read);
     await using var fsout = new FileStream(dest, FileMode.Create, FileAccess.Write);
@@ -176,7 +178,8 @@ partial class NetServicesCrypto : IMlKemEx
     //ML-KEM Decryption
     var startout = 0;
     await DecryptionFileWithCryptionAlgoAsync(
-      fsin, fsout, startin, lengthin, startout, sharedkey, associated, info.CryptAlgo);
+      fsin, fsout, startin, lengthin, startout, 
+      sharedkey, associated, info.CryptAlgo, ct);
   }
   #endregion ML-KEM-Single-Cryption File
 

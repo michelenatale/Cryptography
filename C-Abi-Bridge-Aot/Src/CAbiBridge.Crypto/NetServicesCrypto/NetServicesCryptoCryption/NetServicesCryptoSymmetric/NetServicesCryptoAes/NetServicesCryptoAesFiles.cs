@@ -15,7 +15,8 @@ partial class NetServicesCrypto
 
   public static async Task EncryptionFileAesAsync(
     string src, string dest, UsIPtr<byte> key,
-    ReadOnlyMemory<byte> associated)
+    ReadOnlyMemory<byte> associated,
+    CancellationToken ct = default)
   {
     AssertAesEnc(src, dest, key);
 
@@ -30,7 +31,7 @@ partial class NetServicesCrypto
     fsout.Position = AES_TAG_SIZE + AES_IV_SIZE;
 
     int readbytes;
-    while ((readbytes = await fsin.ReadAsync(buffer.AsMemory(0, buffer.Length))) > 0)
+    while ((readbytes = await fsin.ReadAsync(buffer.AsMemory(0, buffer.Length), ct)) > 0)
     {
       var chunk = buffer.AsSpan(0, readbytes).ToArray();
       var cipher = EncryptionAesSingle(chunk, key.ToArray(), iv, associat);
@@ -58,7 +59,8 @@ partial class NetServicesCrypto
 
   public static async Task DecryptionFileAesAsync(
     string src, string dest, UsIPtr<byte> key,
-    ReadOnlyMemory<byte> associated)
+    ReadOnlyMemory<byte> associated,
+    CancellationToken ct = default)
   {
     AssertAesDec(src, dest, key);
 
@@ -68,7 +70,7 @@ partial class NetServicesCrypto
     await using var fsin = new FileStream(src, FileMode.Open, FileAccess.Read, FileShare.Read, 8192, true);
     await using var fsout = new FileStream(dest, FileMode.Create, FileAccess.Write, FileShare.None, 8192, true);
 
-    var cnt = await fsin.ReadAsync(tag); cnt += await fsin.ReadAsync(iv);
+    var cnt = await fsin.ReadAsync(tag, ct); cnt += await fsin.ReadAsync(iv, ct);
 
     try
     {
@@ -79,11 +81,11 @@ partial class NetServicesCrypto
         int readbytes;
         fsin.Position = AES_TAG_SIZE + AES_IV_SIZE;
         var buffer = new byte[AES_MAX_PLAIN_SIZE + 16];
-        while ((readbytes = await fsin.ReadAsync(buffer.AsMemory(0, buffer.Length))) > 0)
+        while ((readbytes = await fsin.ReadAsync(buffer.AsMemory(0, buffer.Length), ct)) > 0)
         {
           var chunk = buffer.AsSpan(0, readbytes).ToArray();
           var decipher = DecryptionAesSingle(chunk, key.ToArray(), iv, associat);
-          await fsout.WriteAsync(decipher);
+          await fsout.WriteAsync(decipher, ct);
           Array.Clear(buffer);
         }
         return;
@@ -102,7 +104,8 @@ partial class NetServicesCrypto
   public static async Task EncryptionFileAesAsync(
     FileStream fsin, FileStream fsout,
     int startin, int lengthin, int startout,
-    UsIPtr<byte> key, ReadOnlyMemory<byte> associated)
+    UsIPtr<byte> key, ReadOnlyMemory<byte> associated,
+    CancellationToken ct = default)
   {
     AssertAesEnc(fsin, fsout, key, startin, lengthin, startout);
     fsin.Position = startin; fsout.Position = startout;
@@ -114,7 +117,7 @@ partial class NetServicesCrypto
     var sw = Stopwatch.StartNew();
     int readbytes, length = buffer.Length;
     fsout.Position = startout + AES_TAG_SIZE + AES_IV_SIZE;
-    while ((readbytes = await fsin.ReadAsync(buffer)) > 0)
+    while ((readbytes = await fsin.ReadAsync(buffer, ct)) > 0)
     {
       if (readbytes != length)
         Array.Resize(ref buffer, readbytes);
@@ -122,7 +125,7 @@ partial class NetServicesCrypto
       var cipher = EncryptionAesSingle(
         buffer, key.ToArray(), iv, associat);
 
-      await fsout.WriteAsync(cipher);
+      await fsout.WriteAsync(cipher, ct);
       Array.Clear(buffer);
     }
 
@@ -131,7 +134,7 @@ partial class NetServicesCrypto
     var tag = await ToTagAsync(fsout, key.ToArray(), associat, pos);
 
     fsout.Position = startout;
-    await fsout.WriteAsync(tag); await fsout.WriteAsync(iv);
+    await fsout.WriteAsync(tag, ct); await fsout.WriteAsync(iv, ct);
     MemoryClear(tag, iv, associat);
 
     var deltatime = (int)(TimeSleep - sw.ElapsedMilliseconds);
@@ -143,14 +146,15 @@ partial class NetServicesCrypto
   public static async Task DecryptionFileAesAsync(
     FileStream fsin, FileStream fsout,
     int startin, int lengthin, int startout,
-    UsIPtr<byte> key, ReadOnlyMemory<byte> associated)
+    UsIPtr<byte> key, ReadOnlyMemory<byte> associated,
+    CancellationToken ct)
   {
     AssertAesDec(fsin, fsout, key, startin, lengthin, startout);
 
     var sw = Stopwatch.StartNew();
     var associat = ToAssociated(associated, key);
     byte[] tag = new byte[AES_TAG_SIZE], iv = new byte[AES_IV_SIZE];
-    var cnt = await fsin.ReadAsync(tag); cnt += await fsin.ReadAsync(iv);
+    var cnt = await fsin.ReadAsync(tag, ct); cnt += await fsin.ReadAsync(iv, ct);
 
     try
     {
@@ -160,7 +164,7 @@ partial class NetServicesCrypto
         fsin.Position = pos; fsout.Position = startout;
         var buffer = new byte[AES_MAX_PLAIN_SIZE + 16];
         int readbytes = 0, length = AES_MAX_PLAIN_SIZE + 16;
-        while ((readbytes = await fsin.ReadAsync(buffer)) > 0)
+        while ((readbytes = await fsin.ReadAsync(buffer, ct)) > 0)
         {
           if (readbytes != length)
             Array.Resize(ref buffer, readbytes);
@@ -168,7 +172,7 @@ partial class NetServicesCrypto
           var decipher = DecryptionAesSingle(
             buffer, key.ToArray(), iv, associat);
 
-          await fsout.WriteAsync(decipher);
+          await fsout.WriteAsync(decipher, ct);
           Array.Clear(buffer);
 
           if (buffer.Length != length)
@@ -186,7 +190,7 @@ partial class NetServicesCrypto
     catch { MemoryClear(associat, tag, iv); }
     finally { MemoryClear(associat, tag, iv); }
 
-    throw new CryptographicException($"Verifiy {nameof(DecryptionAes)} failed!");
+    throw new CryptographicException($"Verify {nameof(DecryptionAes)} failed!");
   }
 
   #endregion AES Transfer File Stream En- & Decryption
