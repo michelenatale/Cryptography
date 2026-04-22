@@ -12,6 +12,7 @@
 
 namespace michele::natale::Tests
 {
+  int rng_int();
   bool rng_even(); 
   int rng_int(int min, int max);
   void assert_error(cerror_t err);

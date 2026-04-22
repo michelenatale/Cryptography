@@ -103,7 +103,6 @@ namespace michele::natale::Tests
       << "; t = " << ms << "ms; td = " << (ms / rounds) << "ms\n";
   }
 
-
   void start_crypto_hash_native(int rounds)
   {
     test_hash("test_md5", rounds, md5_hash_data_aot, ref_md5_hash);

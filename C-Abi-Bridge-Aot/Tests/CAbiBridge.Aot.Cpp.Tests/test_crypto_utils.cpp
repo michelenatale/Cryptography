@@ -95,6 +95,15 @@ namespace michele::natale::Tests
     return bytes;
   }
 
+  int rng_int()
+  {
+    cerror_t err{};
+    int result = next_crypto_int32_aot(&err);
+    assert_error(err);
+
+    return result;
+  }
+
   int rng_int(int min, int max)
   {
     cerror_t err{};

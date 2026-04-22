@@ -41,8 +41,8 @@ namespace michele::natale::Tests
       auto algo = algos[idx];
 
       key_pair_param_info kpip;
-      int rnum = rand();
-      if ((rnum & 1) == 0)
+      bool tf = rng_even();
+      if (tf)
       {
         kpip = create_native_ml_dsa_key_pair();
         algo = kpip.algo;
@@ -111,15 +111,15 @@ namespace michele::natale::Tests
     for (int i = 0; i < rounds; ++i)
     {
       int max = (1 << 21) + 1024;
-      int size = rand() % max;
+      int size = rng_int(1000, max);
       set_rng_file_data(srcfile, size);
 
-      int idx = rand() % algos.size();
+      auto idx = rng_int(0, algos.size());
       auto algo = algos[idx];
 
       key_pair_param_info kppi;
-      int rnum = rand();
-      if ((rnum & 1) == 0)
+      auto tf = rng_even();
+      if (tf)
       {
         kppi = create_native_ml_dsa_key_pair();
         algo = kppi.algo;
@@ -132,7 +132,6 @@ namespace michele::natale::Tests
       auto& pubk = kppi.pub_key;
       auto& privk = kppi.priv_key;
       save_native_ml_dsa_key_pair(kppi, kpfile, true);
-      //auto info = load_native_ml_dsa_key_pair(kpfile);
       auto info = load_native_ml_dsa_key_pair(kpfile);
       if (!kppi.Equals(info))
         throw std::runtime_error("KeyPairInfo mismatch (file)");
