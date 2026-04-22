@@ -168,7 +168,7 @@ namespace michele::natale::Tests
 
     std::cout << " rounds = " << rounds
       << "; signers = " << avg_signers
-      << "; size = " << avg_kb 
+      << "; size = " << avg_kb
       << "; t = " << ms << "ms"
       << "; td = " << (ms / (double)rounds) << "ms\n";
   }
@@ -193,7 +193,7 @@ namespace michele::natale::Tests
     for (int r = 0; r < rounds; ++r)
     {
       // Anzahl Signer
-      int signers = 3 + rand() % 13;
+      int signers = rng_int(3, 16);
       signercounttotal += signers;
 
       // Signer-Namen
@@ -203,7 +203,7 @@ namespace michele::natale::Tests
 
       // RNG-Testfile erzeugen
       int max = (1 << 20) + 1024;
-      int size = 1000 + rand() % (max - 1000);
+      int size = rng_int(1000, max);
       set_rng_file_data(srcfile, size);
       filesizetotal += size;
 
