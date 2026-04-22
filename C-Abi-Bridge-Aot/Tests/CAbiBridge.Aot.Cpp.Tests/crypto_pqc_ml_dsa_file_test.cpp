@@ -114,7 +114,7 @@ namespace michele::natale::Tests
       int size = rng_int(1000, max);
       set_rng_file_data(srcfile, size);
 
-      auto idx = rng_int(0, algos.size());
+      auto idx = rng_int(0, (int)algos.size());
       auto algo = algos[idx];
 
       key_pair_param_info kppi;
