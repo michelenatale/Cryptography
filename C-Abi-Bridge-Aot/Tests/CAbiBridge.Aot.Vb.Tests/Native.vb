@@ -687,6 +687,51 @@ Namespace michele.natale.Tests
 
 #End Region
 
+#Region "Crypto Primes"
+
+    <DllImport(DllName, EntryPoint:="next_crypto_primes_min_max_uint64_aot")>
+    Public Function NextCryptoPrimesMinMaxUInt64Aot(
+      miller_rabin_rounds As Int32,
+      min As UInt64, max As UInt64,
+      <Out> ByRef err As CError) As UInt64
+    End Function
+
+    <DllImport(DllName, EntryPoint:="next_crypto_primes_min_max_aot")>
+    Public Function NextCryptoPrimesMinMaxAot(
+      miller_rabin_rounds As Int32,
+      min As Byte(), min_length As Int32,
+      max As Byte(), max_length As Int32,
+      <Out> ByRef output As IntPtr, <Out> ByRef output_length As Int32) As CError
+    End Function
+
+    <DllImport(DllName, EntryPoint:="next_crypto_primes_aot")>
+    Public Function NextCryptoPrimesAot(
+      miller_rabin_rounds As Int32, bit_prime_length As Int32,
+      <Out> ByRef output As IntPtr, <Out> ByRef output_length As Int32) As CError
+    End Function
+
+    <DllImport(DllName, EntryPoint:="rng_crypto_primes_min_max_uint64_aot")>
+    Public Function RngCryptoPrimesMinMaxUInt64Aot(
+      miller_rabin_rounds As Int32, counts As Int32,
+      min As UInt64, max As UInt64, <Out> ByRef output As IntPtr) As CError
+    End Function
+
+    <DllImport(DllName, EntryPoint:="rng_crypto_primes_min_max_aot")>
+    Public Function RngCryptoPrimesMinMaxAot(
+      miller_rabin_rounds As Int32, counts As Int32,
+      min As Byte(), min_length As Int32,
+      max As Byte(), max_length As Int32,
+      <Out> ByRef output As IntPtr, <Out> ByRef output_lengths As IntPtr) As CError
+    End Function
+
+    <DllImport(DllName, EntryPoint:="rng_crypto_primes_aot")>
+    Public Function RngCryptoPrimesAot(
+      miller_rabin_rounds As Int32, bit_prime_length As Int32, counts As Int32,
+      <Out> ByRef output As IntPtr, <Out> ByRef output_length As IntPtr) As CError
+    End Function
+
+#End Region
+
 #Region "Convert - Encoding"
 
 #Region "Base646"

@@ -29,8 +29,9 @@ public class Program
     CryptoPqcMlKemTest.StartNative(rounds);
     CryptoPqcMlDsaTest.StartNative(rounds);
 
-    ConvertEncodingTest.StartNative(rounds * 1000);
+    CryptoRandomPrimesTest.StartNative(rounds);
 
+    ConvertEncodingTest.StartNative(rounds * 1000);
 
     ////Kann für die Tests der Nativen
     ////dekommentiert werden.

@@ -31,6 +31,8 @@ Namespace michele.natale.Tests
       CryptoPqcMlKemTest.StartNative(rounds)
       CryptoPqcMlDsaTest.StartNative(rounds)
 
+      CryptoPrimesTest.StartNative(rounds)
+
       ConvertEncodingTest.StartNative(rounds * 1000)
 
     End Sub

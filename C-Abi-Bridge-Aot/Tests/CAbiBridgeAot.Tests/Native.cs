@@ -608,6 +608,44 @@ internal static partial class Native
 
   #endregion Crypto PQC
 
+  #region Crypto Primes
+
+  [LibraryImport(DllName, EntryPoint = "next_crypto_primes_min_max_uint64_aot")]
+  internal static partial ulong NextCryptoPrimesMinMaxUInt64Aot(
+    int miller_rabin_rounds, ulong min, ulong max, out CError err);
+
+  [LibraryImport(DllName, EntryPoint = "next_crypto_primes_min_max_aot")]
+  internal static partial CError NextCryptoPrimesMinMaxAot(
+    int miller_rabin_rounds, 
+    ReadOnlySpan<byte> min, int min_length,
+    ReadOnlySpan<byte> max, int max_length,
+    out IntPtr output, out int output_length); // output = 1 biginteger als bytes
+
+  [LibraryImport(DllName, EntryPoint = "next_crypto_primes_aot")]
+  internal static partial CError NextCryptoPrimesAot(
+    int miller_rabin_rounds, int bit_prime_length,
+    out IntPtr output, out int output_length);// output = 1 biginteger als bytes
+
+  [LibraryImport(DllName, EntryPoint = "rng_crypto_primes_min_max_uint64_aot")]
+  internal static partial CError RngCryptoPrimesMinMaxUInt64Aot(
+    int miller_rabin_rounds, int counts,
+    ulong min, ulong max, out IntPtr output); // output = pointer to array of ulongs
+
+  [LibraryImport(DllName, EntryPoint = "rng_crypto_primes_min_max_aot")]
+  internal static partial CError RngCryptoPrimesMinMaxAot(
+    int miller_rabin_rounds, int counts,
+    ReadOnlySpan<byte> min, int min_length,
+    ReadOnlySpan<byte> max, int max_length,
+    out IntPtr output,            // pointer to all bytes
+    out IntPtr output_lengths);   // pointer to int[counts]
+
+  [LibraryImport(DllName, EntryPoint = "rng_crypto_primes_aot")]
+  internal static partial CError RngCryptoPrimesAot(
+    int miller_rabin_rounds, int bit_prime_length, int counts,
+    out IntPtr output, out IntPtr output_length);
+
+  #endregion Crypto Primes
+
   #region Convert - Encoding
 
   #region Base64
