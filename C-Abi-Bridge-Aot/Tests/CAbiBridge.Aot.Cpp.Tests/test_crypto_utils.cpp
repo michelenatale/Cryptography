@@ -101,7 +101,7 @@ namespace michele::natale::Tests
     int result = next_crypto_int32_aot(&err);
     assert_error(err);
 
-    return result;
+    return  result;
   }
 
   int rng_int(int min, int max)

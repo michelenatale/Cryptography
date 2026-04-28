@@ -158,6 +158,8 @@
     <ClCompile Include="crypto_pqc_ml_dsa_file_test.cpp" />
     <ClCompile Include="crypto_pqc_ml_dsa_multi_sign_test.cpp" />
     <ClCompile Include="crypto_pqc_ml_dsa_test.cpp" />
+    <ClCompile Include="crypto_primes.cpp" />
+    <ClCompile Include="crypto_primes_test.cpp" />
     <ClCompile Include="program.cpp" />
     <ClCompile Include="crypto_aes_bytes_test.cpp" />
     <ClCompile Include="crypto_aes_file_stream_test.cpp" />
@@ -194,6 +196,7 @@
     <ClCompile Include="convert_encoding_utils_test.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="bn_prime_wrapper.h" />
     <ClInclude Include="bridge.h" />
     <ClInclude Include="cabi_exp_imp.h" />
     <ClInclude Include="cerror.h" />
@@ -206,6 +209,7 @@
     <ClInclude Include="crypto_pqc_ml_dsa_multi_sign_test.h" />
     <ClInclude Include="crypto_pqc_ml_dsa_test.h" />
     <ClInclude Include="crypto_pqc_ml_dsa_utils_test.h" />
+    <ClInclude Include="crypto_primes.h" />
     <ClInclude Include="crypto_random_test.h" />
     <ClInclude Include="convert_encoding_test.h" />
     <ClInclude Include="convert_encoding_utils_test.h" />
@@ -216,6 +220,10 @@
     <ClInclude Include="crypto_pqc_ml_kem_bytes_test.h" />
     <ClInclude Include="crypto_pqc_ml_kem_bytes_file_test.h" />
     <ClInclude Include="convert_encoding_test_start.h" />
+    <ClInclude Include="bit_prime_length.h" />
+    <ClInclude Include="crypto_primes_test.h" />
+    <ClInclude Include="bn_ctx_x.h" />
+    <ClInclude Include="primality_confidence.h" />
     <ClInclude Include="ml_dsa_signer_info.h" />
     <ClInclude Include="native_buffer.h" />
     <ClInclude Include="native_array_builder.h" />

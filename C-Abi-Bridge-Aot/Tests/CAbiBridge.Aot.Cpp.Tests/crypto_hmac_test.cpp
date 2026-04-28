@@ -28,6 +28,7 @@ namespace michele::natale::Tests
 
     for (int i = 0; i < rounds; i++)
     {
+      //int size = ;
       auto key = rng_bytes(rng_int(1, 128));
       auto bytes = rng_bytes(rng_int(1, 128));
 

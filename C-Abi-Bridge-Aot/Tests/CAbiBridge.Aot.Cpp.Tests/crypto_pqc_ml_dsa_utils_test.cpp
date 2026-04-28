@@ -113,9 +113,7 @@ namespace michele::natale::Tests
   {
     if (guid.empty()) throw std::runtime_error("save_native_ml_dsa_key_pair: guid is empty");
     if (pub_key.empty()) throw std::runtime_error("save_native_ml_dsa_key_pair: pub_key is empty");
-
-    if (with_priv_key)
-      if (priv_key.empty()) throw std::runtime_error("save_native_ml_dsa_key_pair: priv_key is empty");
+    //if (priv_key.empty()) throw std::runtime_error("save_native_ml_dsa_key_pair: priv_key is empty");
 
     key_pair_param_info info;
     info.guid = guid; info.algo = param;
@@ -126,11 +124,12 @@ namespace michele::natale::Tests
 
   key_pair_param_info load_native_ml_dsa_key_pair(const std::string& filename)
   {
+
     std::vector<uint8_t> fname(filename.begin(), filename.end());
 
-    uint8_t algo_byte = 0;
-    int priv_len = 0, pub_len = 0, guid_len = 0;
     uint8_t* priv_ptr = nullptr, * pub_ptr = nullptr, * guid_ptr = nullptr;
+    int priv_len = 0, pub_len = 0, guid_len = 0;
+    uint8_t algo_byte = 0;
 
     cerror_t err = load_pqc_mldsa_key_pair_aot(
       fname.data(), (int)fname.size(),
@@ -138,6 +137,7 @@ namespace michele::natale::Tests
       &pub_ptr, &pub_len,
       &guid_ptr, &guid_len,
       &algo_byte);
+
     assert_error(err);
 
     key_pair_param_info result;
@@ -156,8 +156,7 @@ namespace michele::natale::Tests
     return result;
   }
 
-  std::vector<key_pair_param_info> 
-    load_native_ml_dsa_key_pair_all(const std::string& folder)
+  std::vector<key_pair_param_info> load_native_ml_dsa_key_pair_all(const std::string& folder)
   {
     std::vector<key_pair_param_info> result;
 
@@ -176,9 +175,9 @@ namespace michele::natale::Tests
       // UTF‑8 Filename → Bytes
       std::vector<uint8_t> filename(fname.begin(), fname.end());
 
-      uint8_t algo_byte = 0;
-      int priv_len = 0, pub_len = 0, guid_len = 0;
       uint8_t* priv_ptr = nullptr, * pub_ptr = nullptr, * guid_ptr = nullptr;
+      int priv_len = 0, pub_len = 0, guid_len = 0;
+      uint8_t algo_byte = 0;
 
       cerror_t err = load_pqc_mldsa_key_pair_aot(
         filename.data(), (int)filename.size(),
@@ -186,9 +185,10 @@ namespace michele::natale::Tests
         &pub_ptr, &pub_len,
         &guid_ptr, &guid_len,
         &algo_byte);
+
       assert_error(err);
 
-      key_pair_param_info kppi;
+      key_pair_param_info kppi; 
 
       kppi.priv_key.assign(priv_ptr, priv_ptr + priv_len);
       free_buffer_aot(priv_ptr);
@@ -208,8 +208,7 @@ namespace michele::natale::Tests
   }
 
   std::unordered_map<std::string, std::string>
-    create_ml_dsa_key_pair_and_save(
-      const std::vector<std::string>& signernames,
+    create_ml_dsa_key_pair_and_save(const std::vector<std::string>& signernames,
       const std::string& folder)
   {
     // Ordner löschen + neu erstellen
@@ -259,9 +258,9 @@ namespace michele::natale::Tests
 
     std::sort(list.begin(), list.end(),
       [](auto& a, auto& b)
-    {
-      return a.signature < b.signature;
-    });
+        {
+          return a.signature < b.signature;
+        });
 
     return list;
   }

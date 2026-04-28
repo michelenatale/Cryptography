@@ -133,6 +133,15 @@
     <Filter Include="Quelldateien\test_crypto\test_crypto_pqc\test_crypto_pqc_signature\test_crypto_pqc_signature_stateless\test_crypto_pqc_ml_dsa\structs_enums">
       <UniqueIdentifier>{bc6ccd4a-3578-419a-9690-0eb5b7f33457}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Headerdateien\test_crypto\test_crypto_primes">
+      <UniqueIdentifier>{8ba9f893-013d-446d-942d-b535ac12824d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quelldateien\test_crypto\test_crypto_primes">
+      <UniqueIdentifier>{f9c60831-8b51-44de-a7e9-f0770dfc6954}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien\test_crypto\test_crypto_primes\enums_struct">
+      <UniqueIdentifier>{dfe5066e-c430-4242-b291-593d0fcdaf51}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="program.cpp">
@@ -240,6 +249,12 @@
     <ClCompile Include="crypto_pqc_ml_dsa_utils_test.cpp">
       <Filter>Quelldateien\test_crypto\test_crypto_pqc\test_crypto_pqc_signature\test_crypto_pqc_signature_stateless\test_crypto_pqc_ml_dsa</Filter>
     </ClCompile>
+    <ClCompile Include="crypto_primes_test.cpp">
+      <Filter>Quelldateien\test_crypto\test_crypto_primes</Filter>
+    </ClCompile>
+    <ClCompile Include="crypto_primes.cpp">
+      <Filter>Quelldateien\test_crypto\test_crypto_primes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -340,6 +355,24 @@
     </ClInclude>
     <ClInclude Include="crypto_pqc_ml_dsa_param_test.h">
       <Filter>Headerdateien\test_crypto\test_crypto_pqc\test_crypto_pqc_signature\test_crypto_pqc_signature_stateless\test_crypto_pqc_ml_dsa</Filter>
+    </ClInclude>
+    <ClInclude Include="bit_prime_length.h">
+      <Filter>Headerdateien\test_crypto\test_crypto_primes\enums_struct</Filter>
+    </ClInclude>
+    <ClInclude Include="primality_confidence.h">
+      <Filter>Headerdateien\test_crypto\test_crypto_primes\enums_struct</Filter>
+    </ClInclude>
+    <ClInclude Include="crypto_primes_test.h">
+      <Filter>Headerdateien\test_crypto\test_crypto_primes</Filter>
+    </ClInclude>
+    <ClInclude Include="crypto_primes.h">
+      <Filter>Headerdateien\test_crypto\test_crypto_primes</Filter>
+    </ClInclude>
+    <ClInclude Include="bn_ctx_x.h">
+      <Filter>Headerdateien\test_crypto\test_crypto_primes\enums_struct</Filter>
+    </ClInclude>
+    <ClInclude Include="bn_prime_wrapper.h">
+      <Filter>Headerdateien\test_crypto\test_crypto_primes</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

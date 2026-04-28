@@ -390,4 +390,42 @@ CABI_IMPORT cerror_t pqc_mldsa_multi_sign_file_aot(
   uint8_t** multi_public_key_ptr, int* multi_public_key_length);
 
 
+// ---------------------------------------------------------
+// Crypto Primes
+// ---------------------------------------------------------
+
+CABI_IMPORT uint64_t next_crypto_primes_min_max_uint64_aot(
+  int32_t miller_rabin_rounds,
+  uint64_t min, uint64_t max,
+  cerror_t* err);
+
+CABI_IMPORT cerror_t next_crypto_primes_min_max_aot(
+  int32_t miller_rabin_rounds,
+  uint8_t* min, int32_t min_length,
+  uint8_t* max, int32_t max_length,
+  uint8_t** output, int32_t* output_length);
+
+CABI_IMPORT cerror_t next_crypto_primes_aot(
+  int32_t miller_rabin_rounds,
+  int32_t bit_prime_length,
+  uint8_t** output, int32_t* output_length);
+
+CABI_IMPORT cerror_t rng_crypto_primes_min_max_uint64_aot(
+  int32_t miller_rabin_rounds, int32_t counts,
+  uint64_t min, uint64_t max,
+  uint64_t** output);
+
+CABI_IMPORT cerror_t rng_crypto_primes_min_max_aot(
+  int32_t miller_rabin_rounds, int32_t counts,
+  uint8_t* min, int32_t min_length,
+  uint8_t* max, int32_t max_length,
+  uint8_t** output,
+  int32_t** output_lengths);
+
+CABI_IMPORT cerror_t rng_crypto_primes_aot(
+  int32_t miller_rabin_rounds,
+  int32_t bit_prime_length, int32_t counts,
+  uint8_t** output, int32_t** output_length);
+
+
 #endif

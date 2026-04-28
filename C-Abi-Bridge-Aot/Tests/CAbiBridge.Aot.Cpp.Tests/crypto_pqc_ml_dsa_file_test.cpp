@@ -41,7 +41,7 @@ namespace michele::natale::Tests
       auto algo = algos[idx];
 
       key_pair_param_info kpip;
-      bool tf = rng_even();
+      auto tf = rng_even();
       if (tf)
       {
         kpip = create_native_ml_dsa_key_pair();
@@ -114,7 +114,7 @@ namespace michele::natale::Tests
       int size = rng_int(1000, max);
       set_rng_file_data(srcfile, size);
 
-      auto idx = rng_int(0, (int)algos.size());
+      int idx = rng_int(0, (int)algos.size());
       auto algo = algos[idx];
 
       key_pair_param_info kppi;
@@ -132,6 +132,7 @@ namespace michele::natale::Tests
       auto& pubk = kppi.pub_key;
       auto& privk = kppi.priv_key;
       save_native_ml_dsa_key_pair(kppi, kpfile, true);
+      //auto info = load_native_ml_dsa_key_pair(kpfile);
       auto info = load_native_ml_dsa_key_pair(kpfile);
       if (!kppi.Equals(info))
         throw std::runtime_error("KeyPairInfo mismatch (file)");
@@ -139,8 +140,8 @@ namespace michele::natale::Tests
       std::vector<uint8_t> filenameBytes(strlen(srcfile));
       std::memcpy(filenameBytes.data(), srcfile, filenameBytes.size());
 
-      uint8_t* sign_ptr = nullptr;
       int sign_length = 0;
+      uint8_t* sign_ptr = nullptr;
 
       cerror_t err = pqc_mldsa_sign_file_aot(
         filenameBytes.data(), static_cast<int>(filenameBytes.size()),

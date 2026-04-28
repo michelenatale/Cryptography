@@ -4,6 +4,7 @@
 
 #include "crypto_aes_test.h"
 #include "crypto_pqc_test.h"
+#include "crypto_primes_test.h"
 #include "crypto_random_test.h"
 #include "crypto_aes_gcm_test.h"
 #include "convert_encoding_test.h"
@@ -26,6 +27,8 @@ static void tests(int rounds)
   start_chacha_poly_native(rounds);
 
   start_pqc_native(rounds);
+
+  start_crypto_primes_native(rounds);
 
   start_convert_encoding_native(rounds * 1000);
 }

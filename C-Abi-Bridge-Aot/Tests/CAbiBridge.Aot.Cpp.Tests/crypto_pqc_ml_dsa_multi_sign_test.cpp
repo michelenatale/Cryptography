@@ -243,8 +243,8 @@ namespace michele::natale::Tests
       native_buffer file_name(fname);
 
       // MultiSignFile
-      uint8_t* multi_sign_ptr, * multi_priv_ptr, * multi_pub_ptr;
       int multi_sign_len, multi_priv_len, multi_pub_len;
+      uint8_t* multi_sign_ptr, * multi_priv_ptr, * multi_pub_ptr;
 
       cerror_t err = pqc_mldsa_multi_sign_file_aot(
         file_name.ptr(), file_name.len(),
@@ -266,9 +266,9 @@ namespace michele::natale::Tests
       std::vector<uint8_t> multi_sign(multi_sign_ptr, multi_sign_ptr + multi_sign_len);
       std::vector<uint8_t> multi_pub(multi_pub_ptr, multi_pub_ptr + multi_pub_len);
 
+      free_buffer_aot(multi_pub_ptr);
       free_buffer_aot(multi_sign_ptr);
       free_buffer_aot(multi_priv_ptr);
-      free_buffer_aot(multi_pub_ptr);
       free(sign_algo); free(sign_algo_param);
 
       // VerifyFile 
