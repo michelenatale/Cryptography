@@ -1,0 +1,127 @@
+﻿
+
+using System.Text;
+using System.IO.Compression;
+using System.Runtime.InteropServices;
+using System.Runtime.CompilerServices;
+
+namespace michele.natale.Compresses;
+
+
+using Services;
+
+
+partial class FileCompressPackage
+{
+
+  /// <summary>
+  /// Creates an archive from all files in a source folder and writes it
+  /// to the specified archive file. This overload allows using a compression
+  /// type as a byte value.
+  /// </summary>
+  /// <param name="srcfolder">
+  /// The source folder whose files will be recursively added to the archive.
+  /// </param>
+  /// <param name="archivepath">
+  /// The target path of the archive file. The file extension is validated
+  /// by <see cref="ServicesCompress.CheckFCPFileExtensionAsync"/>.
+  /// </param>
+  /// <param name="compressiontype">
+  /// The desired compression type as a byte value.
+  /// </param>
+  /// <param name="buffersize">
+  /// Size of the buffer in bytes used for stream copy operations.
+  /// Default: 81920.
+  /// </param>
+  /// <param name="compresslevel">
+  /// Compression level, e.g. <see cref="CompressionLevel.Optimal"/>.
+  /// </param>
+  /// <returns>
+  /// A Task<(long TotalFileSize, double TotalRatio)> representing the asynchronous archiving operation.
+  /// </returns>
+  /// <exception cref="DirectoryNotFoundException">
+  /// Thrown if the source folder does not exist.
+  /// </exception>
+  public async static Task<(long TotalFileSize, long TotalCompressSize)> PackArchivAsync(
+     string srcfolder, string archivepath, byte compressiontype,
+     int buffersize = 81920, CompressionLevel compresslevel = CompressionLevel.Optimal)
+  {
+    if (!new DirectoryInfo(srcfolder).Exists)
+      throw new DirectoryNotFoundException(nameof(srcfolder));
+
+    var archiv = await ServicesCompress.CheckFCPFileExtensionAsync(archivepath);
+    await using var fsout = new FileStream(archiv.FullName, FileMode.Create, FileAccess.Write);
+    Console.WriteLine($"© FileCompressPackage 2025 - ARCHIV PACKAGE - Created by © Michele Natale 2025");
+
+    var filesizesum = 0L;
+    foreach (var fisrc in new DirectoryInfo(srcfolder).GetFiles("*.*", SearchOption.AllDirectories))
+    {
+      filesizesum += fisrc.Length;
+      var idx = fisrc.FullName.IndexOf(srcfolder);
+      var fpath = fisrc.FullName.Substring(idx);
+      await using var fsin = new FileStream(fisrc.FullName, FileMode.Open, FileAccess.Read);
+      await WriteArchivAsync(fsin, fsout, fpath, compressiontype, buffersize, compresslevel);
+    }
+
+    await fsout.FlushAsync();
+
+    var destlength = fsout.Length;
+    return (filesizesum, destlength);
+  }
+
+  private async static Task WriteArchivAsync(
+  Stream input, Stream output, string filepath, byte compresstype,
+  int buffersize = 81920, CompressionLevel compresslevel = CompressionLevel.Optimal)
+  {
+    await output.FlushAsync();
+
+    var pos = output.Position;
+    var fileinfos = new FileInfo(filepath);
+    var namebytes = Encoding.UTF8.GetBytes(filepath);
+    var headerbuffer = new byte[Unsafe.SizeOf<FileInfosHeader>()];
+
+    var ct = (CompressionType)compresstype;
+    output.Position = pos + headerbuffer.Length + namebytes.LongLength;
+
+    var compresslength = ct switch
+    {
+      CompressionType.None => await ServicesCompress.CopyChunkAsync(input, output, 0, input.Length, buffersize),
+      CompressionType.GZip => await NetServicesCompresses // CompressedNet
+        .CompressGZipAsyncSpec(input, output, buffersize, compresslevel),
+      CompressionType.Brotli => await NetServicesCompresses
+        .CompressBrotliAsyncSpec(input, output, buffersize, compresslevel),
+      _ => throw new InvalidOperationException(),
+    };
+
+    var header = new FileInfosHeader
+    {
+      CompressionType = compresstype,
+      Version = FCP_VERSION.ToLong(),
+      FCP_Type = (byte)FcpType.Archiv,
+      OriginalLength = fileinfos.Length,
+      CompressedLength = compresslength,
+      NameLength = (byte)namebytes.Length,
+      CreationTimeUtcTicks = fileinfos.CreationTimeUtc.Ticks,
+      LastWriteTimeUtcTicks = fileinfos.LastWriteTimeUtc.Ticks,
+      LastAccessTimeUtcTicks = fileinfos.LastAccessTimeUtc.Ticks,
+    };
+
+    await output.FlushAsync();
+
+    output.Position = pos;
+    MemoryMarshal.Write(headerbuffer, in header);
+    output.Write(headerbuffer);
+    output.Write(namebytes, 0, namebytes.Length);
+
+    var newlength = pos + headerbuffer.LongLength + namebytes.LongLength + compresslength;
+    output.Position = newlength;
+    output.SetLength(newlength);
+
+    //Console.WriteLine($"CompressType = {(CompressionType)header.CompressionType}, " +
+    //$"PACK ARCHIV: {fileinfos} ({header.OriginalLength} Bytes), " +
+    //$"Created: {fileinfos.CreationTimeUtc}, Last Accessed: {fileinfos.LastAccessTimeUtc}, " +
+    //$"Last Updated: {fileinfos.LastWriteTimeUtc}, Compression Ratio = {header.CompressedLength / (double)header.OriginalLength}");
+  }
+}
+
+
