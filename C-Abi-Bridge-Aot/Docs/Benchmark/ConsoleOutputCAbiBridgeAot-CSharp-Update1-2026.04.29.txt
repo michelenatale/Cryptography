@@ -1,0 +1,160 @@
+C-Abi-Bridge.Aot.Tests C#
+
+TestRngCryptoBoolAot: .......... rounds = 10000; t = 119ms; td = 0.0119ms
+TestNextCryptoBoolAot: .......... rounds = 10000; t = 2ms; td = 0.0002ms
+
+TestRngCryptoBytesAot: .......... rounds = 10000; t = 23ms; td = 0.0023ms
+TestFillCryptoBytesAot: .......... rounds = 10000; t = 179ms; td = 0.0179ms
+
+TestNextCryptoInt32Aot: .......... rounds = 10000; t = 20ms; td = 0.002ms
+TestNextCryptoInt32MaxAot: .......... rounds = 10000; t = 2ms; td = 0.0002ms
+TestNextCryptoInt32MinMaxAot: .......... rounds = 10000; t = 2ms; td = 0.0002ms
+
+TestRngCryptoInt32Aot: .......... rounds = 10000; t = 403ms; td = 0.0403ms
+TestRngCryptoInt32MaxAot: .......... rounds = 10000; t = 481ms; td = 0.0481ms
+TestRngCryptoInt32MinMaxAot: .......... rounds = 10000; t = 383ms; td = 0.0383ms
+
+TestNextCryptoInt64Aot: .......... rounds = 10000; t = 16ms; td = 0.0016ms
+TestNextCryptoInt64MaxAot: .......... rounds = 10000; t = 3ms; td = 0.0003ms
+TestNextCryptoInt64MinMaxAot: .......... rounds = 10000; t = 2ms; td = 0.0002ms
+
+TestRngCryptoInt64Aot: .......... rounds = 10000; t = 421ms; td = 0.0421ms
+TestRngCryptoInt64MaxAot: .......... rounds = 10000; t = 533ms; td = 0.0533ms
+TestRngCryptoInt64MinMaxAot: .......... rounds = 10000; t = 428ms; td = 0.0428ms
+
+TestNextCryptoDoubleAot: .......... rounds = 10000; t = 16ms; td = 0.0016ms
+TestNextCryptoDoubleMaxAot: .......... rounds = 10000; t = 2ms; td = 0.0002ms
+TestNextCryptoDoubleMinMaxAot: .......... rounds = 10000; t = 2ms; td = 0.0002ms
+
+TestRngCryptoDoubleAot: .......... rounds = 10000; t = 434ms; td = 0.0434ms
+TestRngCryptoDoubleMaxAot: .......... rounds = 10000; t = 525ms; td = 0.0525ms
+TestRngCryptoDoubleMinMaxAot: .......... rounds = 10000; t = 442ms; td = 0.0442ms
+
+TestNextCryptoSingleAot: .......... rounds = 10000; t = 16ms; td = 0.0016ms
+TestNextCryptoSingleMaxAot: .......... rounds = 10000; t = 3ms; td = 0.0003ms
+TestNextCryptoSingleMinMaxAot: .......... rounds = 10000; t = 2ms; td = 0.0002ms
+
+TestRngCryptoSingleAot: .......... rounds = 10000; t = 425ms; td = 0.0425ms
+TestRngCryptoSingleMaxAot: .......... rounds = 10000; t = 515ms; td = 0.0515ms
+TestRngCryptoSingleMinMaxAot: .......... rounds = 10000; t = 436ms; td = 0.0436ms
+
+TestNextCryptoDecimalAot: .......... rounds = 10000; t = 18ms; td = 0.0018ms
+TestNextCryptoDecimalMaxAot: .......... rounds = 10000; t = 3ms; td = 0.0003ms
+TestNextCryptoDecimalMinMaxAot: .......... rounds = 10000; t = 3ms; td = 0.0003ms
+
+TestRngCryptoDecimalAot: .......... rounds = 10000; t = 775ms; td = 0.0775ms
+TestRngCryptoDecimalMaxAot: .......... rounds = 10000; t = 803ms; td = 0.0803ms
+TestRngCryptoDecimalMinMaxAot: .......... rounds = 10000; t = 871ms; td = 0.0871ms
+
+TestMd5Aot: .......... rounds = 10000; t = 27ms; td = 0.0027ms
+TestSha1Aot: .......... rounds = 10000; t = 25ms; td = 0.0025ms
+
+TestSha256Aot: .......... rounds = 10000; t = 31ms; td = 0.0031ms
+TestSha384Aot: .......... rounds = 10000; t = 30ms; td = 0.003ms
+TestSha512Aot: .......... rounds = 10000; t = 30ms; td = 0.003ms
+
+TestSha3256Aot: .......... rounds = 10000; t = 39ms; td = 0.0039ms
+TestSha3384Aot: .......... rounds = 10000; t = 36ms; td = 0.0036ms
+TestSha3512Aot: .......... rounds = 10000; t = 38ms; td = 0.0038ms
+
+TestShake128Aot: .......... rounds = 10000; length = 39; t = 33ms; td = 0.0033ms
+TestShake256Aot: .......... rounds = 10000; length = 76; t = 35ms; td = 0.0035ms
+
+TestMd5HmacAot: .......... rounds = 10000; t = 38ms; td = 0.0038ms
+TestSha1HmacAot: .......... rounds = 10000; t = 38ms; td = 0.0038ms
+
+TestSha256HmacAot: .......... rounds = 10000; t = 46ms; td = 0.0046ms
+TestSha384HmacAot: .......... rounds = 10000; t = 52ms; td = 0.0052ms
+TestSha512HmacAot: .......... rounds = 10000; t = 54ms; td = 0.0054ms
+
+TestSha3256HmacAot: .......... rounds = 10000; t = 72ms; td = 0.0072ms
+TestSha3384HmacAot: .......... rounds = 10000; t = 78ms; td = 0.0078ms
+TestSha3512HmacAot: .......... rounds = 10000; t = 86ms; td = 0.0086ms
+
+TestAesFileAot: .......... rounds = 10, t = 1846ms, td = 184ms
+TestAesBytesAot: .......... rounds = 10; t = 1408ms; td = 140ms
+TestAesBytesStressAot: t = 147ms
+
+TestAesGcmFileAot: .......... rounds = 10, t = 360ms, td = 36ms
+TestAesGcmBytesAot: .......... rounds = 10; t = 36ms; td = 3ms
+TestAesGcmBytesStressAot: t = 3ms
+
+TestChaCha20Poly1305FileAot: .......... rounds = 10, t = 576ms, td = 57ms
+TestChaCha20Poly1305BytesAot: .......... rounds = 10; t = 73ms; td = 7ms
+TestChaCha20Poly1305BytesStressAot: t = 10ms
+
+TestPqcMlKemCreateKeyPairsAot: .......... rounds = 100; t = 17ms; td = 0.17ms
+TestPqcMlKemCreateKeyPairsParamAot: .......... rounds = 100; t = 17ms; td = 0.17ms
+TestPqcMlKemSafeLoadKeyPairsAot: .......... rounds = 100; t = 916ms; td = 9ms
+TestPqcMlKemCapsulationSharedKeyWithPublicKeyAot: .......... rounds = 100; t = 23ms; td = 0.23ms
+TestPqcMlKemSharedKeyFromCapsualtionPrivateKeyAot: .......... rounds = 100; t = 9ms; td = 0.09ms
+TestPqcMlKemEnDecryptionBytesAot: .......... rounds = 10; t = 272ms; td = 27ms
+TestPqcMlKemEnDecryptionBytesStressAot:  cryptoalgo = CHACHA20_POLY1305; mlkemparam = ML-KEM-512; size = 1048576; t = 18ms
+TestPqcMlKemEnDecryptionFileAot: .......... rounds = 10, t = 2191ms, td = 219ms
+TestPqcMlKemEnDecryptionKpfFileAot: .......... rounds = 10, t = 409ms, td = 40ms
+
+TestPqcMlDsaCreateKeyPairsAot: .......... rounds = 100; t = 159ms; td = 1.59ms
+TestPqcMlDsaCreateKeyPairsParamAot: .......... rounds = 100; t = 162ms; td = 1.62ms
+TestPqcMlDsaSaveLoadKeyPairsAot: .......... rounds = 100; t = 1044ms; td = 10.44ms
+TestPqcMlDsaSingleSignature: .......... rounds = 10; t = 41ms; td = 4.1ms
+TestPqcMlDsaSingleSignatureKpiSaveLoad: .......... rounds = 10; t = 187ms; td = 18.7ms
+TestPqcMlDsaSingleSignatureFile: .......... rounds = 10; t = 211ms; td = 21.1ms
+TestPqcMlDsaSingleSignatureKpiSaveLoadFile: .......... rounds = 10; t = 229ms; td = 22.9ms
+TestPqcMlDsaMultiSignKpfAot: .......... rounds = 10; signers = 10; t = 311ms; td = 31.1ms
+TestPqcMlDsaMultiSignFileKpfAsyncAot: .......... rounds = 10; signers = 10; filesize = 622.466kb; t = 1484ms; td = 148.4ms
+
+TestNextCryptoPrimesMinMaxUInt64Aot: .......... rounds = 100; t = 78ms; td = 0.78ms
+TestNextCryptoPrimesMinMaxBigIntegerAot: .......... rounds = 10; t = 100ms; td = 10ms
+TestNextCryptoPrimesBitsBigIntegerAot: .......... rounds = 10; t = 1376ms; td = 137ms
+TestRngCryptoPrimesMinMaxUInt64Aot: .......... rounds = 10; t = 281ms; td = 28ms
+TestRngCryptoPrimesMinMaxBigIntegerAot: .......... rounds = 10; counts = 61; bi-byte-length = 9; t = 1233ms; td = 123ms
+TestRngCryptoPrimesBitsBigIntegerAot: .......... rounds = 10; counts = 30; bi-bits = 58; t = 2492ms; td = 249ms
+
+TestBase64Aot: .......... rounds = 10000; t = 41ms; td = 0.0041ms
+TestHexAot: .......... rounds = 10000; t = 53ms; td = 0.0053ms
+
+TestBaseConverter_2_256Aot: .......... rounds = 10000; t = 274ms; td = 0.0274ms
+TestBaseConverter_2_256_StressAot: startbase = 106; targetbase = 103; size = 1024; t = 19 ms
+TestCompressGzipAot: .......... rounds = 10; t = 337ms; td = 33.7ms
+TestCompressFileGzipAot: .......... rounds = 10; t = 845ms; td = 84.5ms
+TestCompressFileBsGzipAot: .......... rounds = 10; t = 675ms; td = 67.5ms
+TestCompressBrotliAot: .......... rounds = 10; t = 648ms; td = 64.8ms
+TestCompressFileBrotliAot: .......... rounds = 10; t = 1128ms; td = 112.8ms
+TestCompressFileBsBrotliAot: .......... rounds = 10; t = 973ms; td = 97.3ms
+
+© FileCompressPackage 2025 - FILE PACKAGE - Created by © Michele Natale 2025
+© FileCompressPackage 2025 - FILE PACKAGE - Created by © Michele Natale 2025
+TestPackNoneFileAot:  t = 159ms; file_count = 4; file_sizes = 7306796; compress_size = 7307048
+
+© FileCompressPackage 2025 - FILE PACKAGE - Created by © Michele Natale 2025
+© FileCompressPackage 2025 - FILE PACKAGE - Created by © Michele Natale 2025
+TestPackNoneBsFileAot:  t = 119ms; file_count = 4; file_sizes = 7306796; compress_size = 7307048
+
+© FileCompressPackage 2025 - FILE PACKAGE - Created by © Michele Natale 2025
+© FileCompressPackage 2025 - FILE PACKAGE - Created by © Michele Natale 2025
+TestPackGZipFileAot:  t = 115ms; file_count = 4; file_sizes = 7306796; compress_size = 203160
+
+© FileCompressPackage 2025 - FILE PACKAGE - Created by © Michele Natale 2025
+© FileCompressPackage 2025 - FILE PACKAGE - Created by © Michele Natale 2025
+TestPackBrotliFileAot:  t = 135ms; file_count = 4; file_sizes = 7306796; compress_size = 10628
+
+
+A SourceFolder with many files and directories is created.
+
+© FileCompressPackage 2025 - ARCHIV PACKAGE - Created by © Michele Natale 2025
+© FileCompressPackage 2025 - ARCHIV PACKAGE - Created by © Michele Natale 2025
+TestPackNoneArchivAot:  t = 609ms; file_count = 19; file_sizes = 53711141; compress_size = 53712994
+
+© FileCompressPackage 2025 - ARCHIV PACKAGE - Created by © Michele Natale 2025
+© FileCompressPackage 2025 - ARCHIV PACKAGE - Created by © Michele Natale 2025
+TestPackGZipArchivAot:  t = 629ms; file_count = 19; file_sizes = 53711141; compress_size = 1482919
+
+© FileCompressPackage 2025 - ARCHIV PACKAGE - Created by © Michele Natale 2025
+© FileCompressPackage 2025 - ARCHIV PACKAGE - Created by © Michele Natale 2025
+TestPackBrotliArchivAot:  t = 745ms; file_count = 19; file_sizes = 53711141; compress_size = 51139
+
+The source directory is deleted again.
+
+
+
+Finish

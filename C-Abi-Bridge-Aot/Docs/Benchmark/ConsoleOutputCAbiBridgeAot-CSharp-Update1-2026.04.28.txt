@@ -1,0 +1,119 @@
+C-Abi-Bridge.Aot.Tests C#
+
+TestRngCryptoBoolAot: .......... rounds = 10000; t = 59ms; td = 0.0059ms
+TestNextCryptoBoolAot: .......... rounds = 10000; t = 3ms; td = 0.0003ms
+
+TestRngCryptoBytesAot: .......... rounds = 10000; t = 24ms; td = 0.0024ms
+TestFillCryptoBytesAot: .......... rounds = 10000; t = 188ms; td = 0.0188ms
+
+TestNextCryptoInt32Aot: .......... rounds = 10000; t = 16ms; td = 0.0016ms
+TestNextCryptoInt32MaxAot: .......... rounds = 10000; t = 2ms; td = 0.0002ms
+TestNextCryptoInt32MinMaxAot: .......... rounds = 10000; t = 2ms; td = 0.0002ms
+
+TestRngCryptoInt32Aot: .......... rounds = 10000; t = 374ms; td = 0.0374ms
+TestRngCryptoInt32MaxAot: .......... rounds = 10000; t = 471ms; td = 0.0471ms
+TestRngCryptoInt32MinMaxAot: .......... rounds = 10000; t = 374ms; td = 0.0374ms
+
+TestNextCryptoInt64Aot: .......... rounds = 10000; t = 16ms; td = 0.0016ms
+TestNextCryptoInt64MaxAot: .......... rounds = 10000; t = 3ms; td = 0.0003ms
+TestNextCryptoInt64MinMaxAot: .......... rounds = 10000; t = 2ms; td = 0.0002ms
+
+TestRngCryptoInt64Aot: .......... rounds = 10000; t = 436ms; td = 0.0436ms
+TestRngCryptoInt64MaxAot: .......... rounds = 10000; t = 510ms; td = 0.051ms
+TestRngCryptoInt64MinMaxAot: .......... rounds = 10000; t = 421ms; td = 0.0421ms
+
+TestNextCryptoDoubleAot: .......... rounds = 10000; t = 16ms; td = 0.0016ms
+TestNextCryptoDoubleMaxAot: .......... rounds = 10000; t = 2ms; td = 0.0002ms
+TestNextCryptoDoubleMinMaxAot: .......... rounds = 10000; t = 2ms; td = 0.0002ms
+
+TestRngCryptoDoubleAot: .......... rounds = 10000; t = 430ms; td = 0.043ms
+TestRngCryptoDoubleMaxAot: .......... rounds = 10000; t = 517ms; td = 0.0517ms
+TestRngCryptoDoubleMinMaxAot: .......... rounds = 10000; t = 435ms; td = 0.0435ms
+
+TestNextCryptoSingleAot: .......... rounds = 10000; t = 16ms; td = 0.0016ms
+TestNextCryptoSingleMaxAot: .......... rounds = 10000; t = 2ms; td = 0.0002ms
+TestNextCryptoSingleMinMaxAot: .......... rounds = 10000; t = 2ms; td = 0.0002ms
+
+TestRngCryptoSingleAot: .......... rounds = 10000; t = 422ms; td = 0.0422ms
+TestRngCryptoSingleMaxAot: .......... rounds = 10000; t = 511ms; td = 0.0511ms
+TestRngCryptoSingleMinMaxAot: .......... rounds = 10000; t = 427ms; td = 0.0427ms
+
+TestNextCryptoDecimalAot: .......... rounds = 10000; t = 18ms; td = 0.0018ms
+TestNextCryptoDecimalMaxAot: .......... rounds = 10000; t = 3ms; td = 0.0003ms
+TestNextCryptoDecimalMinMaxAot: .......... rounds = 10000; t = 4ms; td = 0.0004ms
+
+TestRngCryptoDecimalAot: .......... rounds = 10000; t = 759ms; td = 0.0759ms
+TestRngCryptoDecimalMaxAot: .......... rounds = 10000; t = 795ms; td = 0.0795ms
+TestRngCryptoDecimalMinMaxAot: .......... rounds = 10000; t = 867ms; td = 0.0867ms
+
+TestMd5Aot: .......... rounds = 10000; t = 28ms; td = 0.0028ms
+TestSha1Aot: .......... rounds = 10000; t = 26ms; td = 0.0026ms
+
+TestSha256Aot: .......... rounds = 10000; t = 28ms; td = 0.0028ms
+TestSha384Aot: .......... rounds = 10000; t = 28ms; td = 0.0028ms
+TestSha512Aot: .......... rounds = 10000; t = 29ms; td = 0.0029ms
+
+TestSha3256Aot: .......... rounds = 10000; t = 40ms; td = 0.004ms
+TestSha3384Aot: .......... rounds = 10000; t = 36ms; td = 0.0036ms
+TestSha3512Aot: .......... rounds = 10000; t = 38ms; td = 0.0038ms
+
+TestShake128Aot: .......... rounds = 10000; length = 58; t = 33ms; td = 0.0033ms
+TestShake256Aot: .......... rounds = 10000; length = 127; t = 33ms; td = 0.0033ms
+
+TestMd5HmacAot: .......... rounds = 10000; t = 39ms; td = 0.0039ms
+TestSha1HmacAot: .......... rounds = 10000; t = 39ms; td = 0.0039ms
+
+TestSha256HmacAot: .......... rounds = 10000; t = 46ms; td = 0.0046ms
+TestSha384HmacAot: .......... rounds = 10000; t = 52ms; td = 0.0052ms
+TestSha512HmacAot: .......... rounds = 10000; t = 52ms; td = 0.0052ms
+
+TestSha3256HmacAot: .......... rounds = 10000; t = 72ms; td = 0.0072ms
+TestSha3384HmacAot: .......... rounds = 10000; t = 79ms; td = 0.0079ms
+TestSha3512HmacAot: .......... rounds = 10000; t = 85ms; td = 0.0085ms
+
+TestAesFileAot: .......... rounds = 10, t = 1795ms, td = 179ms
+TestAesBytesAot: .......... rounds = 10; t = 1362ms; td = 136ms
+TestAesBytesStressAot: t = 145ms
+
+TestAesGcmFileAot: .......... rounds = 10, t = 413ms, td = 41ms
+TestAesGcmBytesAot: .......... rounds = 10; t = 23ms; td = 2ms
+TestAesGcmBytesStressAot: t = 6ms
+
+TestChaCha20Poly1305FileAot: .......... rounds = 10, t = 456ms, td = 45ms
+TestChaCha20Poly1305BytesAot: .......... rounds = 10; t = 42ms; td = 4ms
+TestChaCha20Poly1305BytesStressAot: t = 10ms
+
+TestPqcMlKemCreateKeyPairsAot: .......... rounds = 100; t = 16ms; td = 0.16ms
+TestPqcMlKemCreateKeyPairsParamAot: .......... rounds = 100; t = 17ms; td = 0.17ms
+TestPqcMlKemSafeLoadKeyPairsAot: .......... rounds = 100; t = 1009ms; td = 10ms
+TestPqcMlKemCapsulationSharedKeyWithPublicKeyAot: .......... rounds = 100; t = 22ms; td = 0.22ms
+TestPqcMlKemSharedKeyFromCapsualtionPrivateKeyAot: .......... rounds = 100; t = 9ms; td = 0.09ms
+TestPqcMlKemEnDecryptionBytesAot: .......... rounds = 10; t = 525ms; td = 52ms
+TestPqcMlKemEnDecryptionBytesStressAot:  cryptoalgo = AES; mlkemparam = ML-KEM-1024; size = 1048576; t = 155ms
+TestPqcMlKemEnDecryptionFileAot: .......... rounds = 10, t = 1598ms, td = 159ms
+TestPqcMlKemEnDecryptionKpfFileAot: .......... rounds = 10, t = 383ms, td = 38ms
+
+TestPqcMlDsaCreateKeyPairsAot: .......... rounds = 100; t = 144ms; td = 1.44ms
+TestPqcMlDsaCreateKeyPairsParamAot: .......... rounds = 100; t = 153ms; td = 1.53ms
+TestPqcMlDsaSaveLoadKeyPairsAot: .......... rounds = 100; t = 1168ms; td = 11.68ms
+TestPqcMlDsaSingleSignature: .......... rounds = 10; t = 35ms; td = 3.5ms
+TestPqcMlDsaSingleSignatureKpiSaveLoad: .......... rounds = 10; t = 201ms; td = 20.1ms
+TestPqcMlDsaSingleSignatureFile: .......... rounds = 10; t = 225ms; td = 22.5ms
+TestPqcMlDsaSingleSignatureKpiSaveLoadFile: .......... rounds = 10; t = 283ms; td = 28.3ms
+TestPqcMlDsaMultiSignKpfAot: .......... rounds = 10; signers = 6; t = 253ms; td = 25.3ms
+TestPqcMlDsaMultiSignFileKpfAsyncAot: .......... rounds = 10; signers = 6; filesize = 376.429kb; t = 688ms; td = 68.8ms
+
+TestNextCryptoPrimesMinMaxUInt64Aot: .......... rounds = 100; t = 113ms; td = 1.13ms
+TestNextCryptoPrimesMinMaxBigIntegerAot: .......... rounds = 10; t = 165ms; td = 16.5ms
+TestNextCryptoPrimesBitsBigIntegerAot: .......... rounds = 10; t = 610ms; td = 61ms
+TestRngCryptoPrimesMinMaxUInt64Aot: .......... rounds = 10; t = 216ms; td = 21ms
+TestRngCryptoPrimesMinMaxBigIntegerAot: .......... rounds = 10; counts = 58; bi-byte-length = 9; t = 1113ms; td = 111ms
+TestRngCryptoPrimesBitsBigIntegerAot: .......... rounds = 10; counts = 32; bi-bits = 75; t = 2571ms; td = 257ms
+
+TestBase64Aot: .......... rounds = 10000; t = 34ms; td = 0.0034ms
+TestHexAot: .......... rounds = 10000; t = 49ms; td = 0.0049ms
+
+TestBaseConverter_2_256Aot: .......... rounds = 10000; t = 269ms; td = 0.0269ms
+TestBaseConverter_2_256_StressAot: startbase = 2; targetbase = 109; size = 1024; t = 2 ms
+
+Finish
