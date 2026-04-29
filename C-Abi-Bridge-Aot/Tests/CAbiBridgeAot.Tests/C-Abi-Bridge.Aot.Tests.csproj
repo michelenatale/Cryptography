@@ -30,11 +30,22 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="TestCompress\" />
     <Folder Include="TestCrypto\TestCryptoPqc\TestCryptoPqcSignature\TestCryptoPqcSignatureStateless\TestCryptoPqcSignatureSlhDsa\" />
     <Folder Include="TestCrypto\TestCryptoSignature\" />
     <Folder Include="TestCrypto\TestCryptoCryption\TestCryptoAsymmetric\" />
     <Folder Include="TestSerialize\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="data.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="data2.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="data3.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
   <Target Name="CopyAotDllAfterBuild" AfterTargets="Build">

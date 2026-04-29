@@ -11,10 +11,20 @@ internal static partial class Native
 {
   const string DllName = "C-Abi-Bridge.Aot.N.dll";
 
-  #region Allocation - Free
+  #region Allocation - Utils
   [LibraryImport(DllName, EntryPoint = "free_buffer_aot")]
   internal static partial void FreeBuffer(IntPtr ptr);
-  #endregion Allocation - Free
+
+  [LibraryImport(DllName, EntryPoint = "equal_files_aot")]
+  [return: MarshalAs(UnmanagedType.U1)]
+  internal static partial bool EqualFilesAot(
+      ReadOnlySpan<byte> file_path_left_ptr, int file_path_left_length,
+      ReadOnlySpan<byte> file_path_right_ptr, int file_path_right_length,
+      out CError cerror);
+
+  #endregion Allocation - Utils
+
+
 
   #region Crypto Symmetric
 
@@ -616,7 +626,7 @@ internal static partial class Native
 
   [LibraryImport(DllName, EntryPoint = "next_crypto_primes_min_max_aot")]
   internal static partial CError NextCryptoPrimesMinMaxAot(
-    int miller_rabin_rounds, 
+    int miller_rabin_rounds,
     ReadOnlySpan<byte> min, int min_length,
     ReadOnlySpan<byte> max, int max_length,
     out IntPtr output, out int output_length); // output = 1 biginteger als bytes
@@ -705,6 +715,127 @@ internal static partial class Native
   #endregion Convert - Encoding
 
   #region Compress
+
+  #region Compress GZip
+
+  [LibraryImport(DllName, EntryPoint = "compress_message_gzip_aot")]
+  internal static partial CError CompressMessageGZipAot(
+    ReadOnlySpan<byte> bytes_ptr, int bytes_length,
+    byte compresslevel,
+    out IntPtr out_ptr, out int out_length);
+
+  [LibraryImport(DllName, EntryPoint = "decompress_message_gzip_aot")]
+  internal static partial CError DecompressMessageGZipAot(
+      ReadOnlySpan<byte> bytes_ptr, int length,
+      out IntPtr out_ptr, out int out_length);
+
+  [LibraryImport(DllName, EntryPoint = "compress_file_gzip_aot")]
+  internal static partial CError CompressFileGZipAot(
+    ReadOnlySpan<byte> src_utf8_ptr, int src_length,
+    ReadOnlySpan<byte> dest_utf8_ptr, int dest_length,
+    byte compresslevel);
+
+  [LibraryImport(DllName, EntryPoint = "compress_file_buffer_size_gzip_aot")]
+  internal static partial CError CompressFileBufferSizeGZipAot(
+    ReadOnlySpan<byte> src_utf8_ptr, int src_length,
+    ReadOnlySpan<byte> dest_utf8_ptr, int dest_length,
+    int buffersize, byte compresslevel);
+
+  [LibraryImport(DllName, EntryPoint = "decompress_file_gzip_aot")]
+  internal static partial CError DecompressFileGZipAot(
+    ReadOnlySpan<byte> src_utf8_ptr, int src_length,
+    ReadOnlySpan<byte> dest_utf8_ptr, int dest_length);
+
+  [LibraryImport(DllName, EntryPoint = "decompress_file_buffer_size_gzip_aot")]
+  internal static partial CError DecompressFileBufferSizeGZipAot(
+    ReadOnlySpan<byte> src_utf8_ptr, int src_length,
+    ReadOnlySpan<byte> dest_utf8_ptr, int dest_length,
+    int buffersize);
+
+  #endregion Compress GZip
+
+  #region Compress Brotli
+
+  [LibraryImport(DllName, EntryPoint = "compress_message_brotli_aot")]
+  internal static partial CError CompressMessageBrotliAot(
+    ReadOnlySpan<byte> bytes_ptr, int bytes_length,
+    byte compresslevel,
+    out IntPtr out_ptr, out int out_length);
+
+  [LibraryImport(DllName, EntryPoint = "decompress_message_brotli_aot")]
+  internal static partial CError DecompressMessageBrotliAot(
+    ReadOnlySpan<byte> bytes_ptr, int length,
+    out IntPtr out_ptr, out int out_length);
+
+  [LibraryImport(DllName, EntryPoint = "compress_file_brotli_aot")]
+  internal static partial CError CompressFileBrotliAot(
+    ReadOnlySpan<byte> src_utf8_ptr, int src_length,
+    ReadOnlySpan<byte> dest_utf8_ptr, int dest_length,
+    byte compresslevel);
+
+  [LibraryImport(DllName, EntryPoint = "compress_file_buffer_size_brotli_aot")]
+  internal static partial CError CompressFileBufferSizeBrotliAot(
+    ReadOnlySpan<byte> src_utf8_ptr, int src_length,
+    ReadOnlySpan<byte> dest_utf8_ptr, int dest_length,
+    int buffersize, byte compresslevel);
+
+  [LibraryImport(DllName, EntryPoint = "decompress_file_brotli_aot")]
+  internal static partial CError DecompressFileBrotliAot(
+    ReadOnlySpan<byte> src_utf8_ptr, int src_length,
+    ReadOnlySpan<byte> dest_utf8_ptr, int dest_length);
+
+  [LibraryImport(DllName, EntryPoint = "decompress_file_buffer_size_brotli_aot")]
+  internal static partial CError DecompressFileBufferSizeBrotliAot(
+    ReadOnlySpan<byte> src_utf8_ptr, int src_length,
+    ReadOnlySpan<byte> dest_utf8_ptr, int dest_length,
+    int buffersize);
+
+  #endregion Compress Brotli
+
+  #region File Compress Package
+
+  [LibraryImport(DllName, EntryPoint = "pack_file_aot")]
+  internal static partial CError PackFileAot(
+    IntPtr pack_list_utf8_ptr, IntPtr pack_list_length, int pack_list_count,
+    ReadOnlySpan<byte> archiv_path_utf8_ptr, int archiv_path_length,
+    byte compresstype,
+    out long total_file_size, out long total_compress_size);
+
+  [LibraryImport(DllName, EntryPoint = "pack_file_bs_cl_aot")]
+  internal static partial CError PackFileBsCLAot(
+    IntPtr pack_list_utf8_ptr, IntPtr pack_list_length, int pack_list_count,
+    ReadOnlySpan<byte> archiv_path_utf8_ptr, int archiv_path_length,
+    byte compresstype, int buffersize, byte compresslevel,
+    out long total_file_size, out long total_compress_size);
+
+  [LibraryImport(DllName, EntryPoint = "pack_archiv_aot")]
+  internal static partial CError PackArchivAot(
+    ReadOnlySpan<byte> src_folder_utf8_ptr, int src_folder_length,
+    ReadOnlySpan<byte> dest_folder_utf8_ptr, int dest_folder_length,
+    byte compresstype,
+    out long total_file_size, out long total_compress_size);
+
+  [LibraryImport(DllName, EntryPoint = "pack_archiv_bs_cl_aot")]
+  internal static partial CError PackArchivBsCLAot(
+    ReadOnlySpan<byte> src_folder_utf8_ptr, int src_folder_length,
+    ReadOnlySpan<byte> dest_folder_utf8_ptr, int dest_folder_length,
+    byte compresstype, int buffersize, byte compresslevel,
+    out long total_file_size, out long total_compress_size);
+  
+  [LibraryImport(DllName, EntryPoint = "unpack_file_archiv_aot")]
+  internal static partial CError UnPackFileArchivAot(
+    ReadOnlySpan<byte> archiv_path_ptr, int archiv_path_length,
+    ReadOnlySpan<byte> output_folder_ptr, int output_folder_length);
+
+  [LibraryImport(DllName, EntryPoint = "unpack_file_archiv_bs_aot")]
+  internal static partial CError UnPackFileArchivBsAot(
+      ReadOnlySpan<byte> archiv_path_ptr, int archiv_path_length,
+      ReadOnlySpan<byte> output_folder_ptr, int output_folder_length,
+      int buffersize);
+
+
+
+  #endregion File Compress Package
 
 
   #endregion Compress

@@ -33,6 +33,8 @@ public class Program
 
     ConvertEncodingTest.StartNative(rounds * 1000);
 
+    CompressesTest.StartNative(rounds);
+
     ////Kann für die Tests der Nativen
     ////dekommentiert werden.
     //CryptoAesTest.StartManaged(rounds);
