@@ -35,12 +35,23 @@
     <Folder Include="TestCrypto\TestCryptoSignatur\" />
     <Folder Include="TestCrypto\TestCryptoCryption\TestCryptoAsymmetric\" />
     <Folder Include="TestSerialize\" />
-    <Folder Include="TestCompress\" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\Src\CAbiBridge.Aot\C-Abi-Bridge.Aot.csproj" />
     <ProjectReference Include="..\CAbiBridgeAot.Tests\C-Abi-Bridge.Aot.Tests.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="data.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="data2.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="data3.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 

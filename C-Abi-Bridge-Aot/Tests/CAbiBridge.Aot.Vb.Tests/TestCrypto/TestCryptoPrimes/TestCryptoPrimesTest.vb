@@ -160,7 +160,7 @@ Namespace michele.natale.Tests
         AssertError(err)
 
         ' output: pointer to array of UInt64
-        Dim primes(count - 1) As ULong
+        Dim primes(count - 1) As UInt64
         For j = 0 To count - 1
           Dim bytes(7) As Byte
           Marshal.Copy(IntPtr.Add(output, j * 8), bytes, 0, 8)

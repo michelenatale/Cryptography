@@ -51,7 +51,8 @@ Namespace michele.natale.Tests
     Public Shared Function ToBaseXUtf8_2_256_LE_S(bytes As Byte(), target_base As Int32) As Byte()
       Dim out_ptr As IntPtr = IntPtr.Zero, out_length As Int32 = Nothing
       Dim err = Native.ToBaseXUtf8_2_256_LE_Aot(
-      bytes, bytes.Length, target_base, out_ptr, out_length) 'base 10
+      bytes, bytes.Length, target_base,
+      out_ptr, out_length) 'base 10
       AssertError(err)
 
       Dim result = ToBytes(out_ptr, out_length)

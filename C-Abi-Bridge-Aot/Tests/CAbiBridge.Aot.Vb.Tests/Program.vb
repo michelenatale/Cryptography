@@ -35,6 +35,8 @@ Namespace michele.natale.Tests
 
       ConvertEncodingTest.StartNative(rounds * 1000)
 
+      CompressesTest.StartNative(rounds)
+
     End Sub
   End Module
 End Namespace

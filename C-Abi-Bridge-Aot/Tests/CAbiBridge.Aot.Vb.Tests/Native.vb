@@ -22,6 +22,12 @@ Namespace michele.natale.Tests
     Public Sub FreeBuffer(ptr As IntPtr)
     End Sub
 
+    <DllImport(DllName, EntryPoint:="equal_files_aot")>
+    Public Function EqualFilesAot(
+      file_path_left_ptr As Byte(), file_path_left_length As Int32,
+      file_path_right_ptr As Byte(), file_path_right_length As Int32,
+      <Out> ByRef cerror As CError) As Boolean
+    End Function
 
 #Region "Crypto"
 
@@ -801,6 +807,141 @@ Namespace michele.natale.Tests
 #End Region
 
 #Region "Compress"
+
+#Region "Compress GZip"
+
+    <DllImport(DllName, EntryPoint:="compress_message_gzip_aot")>
+    Public Function CompressMessageGZipAot(
+      bytes_ptr As Byte(), bytes_length As Int32,
+      compresslevel As Byte,
+      <Out> ByRef out_ptr As IntPtr, <Out> ByRef out_length As Int32) As CError
+    End Function
+
+    <DllImport(DllName, EntryPoint:="decompress_message_gzip_aot")>
+    Public Function DecompressMessageGZipAot(
+      bytes_ptr As Byte(), length As Int32,
+      <Out> ByRef out_ptr As IntPtr, <Out> ByRef out_length As Int32) As CError
+    End Function
+
+    <DllImport(DllName, EntryPoint:="compress_file_gzip_aot")>
+    Public Function CompressFileGZipAot(
+      src_utf8_ptr As Byte(), src_length As Int32,
+      dest_utf8_ptr As Byte(), dest_length As Int32,
+      compresslevel As Byte) As CError
+    End Function
+
+    <DllImport(DllName, EntryPoint:="compress_file_buffer_size_gzip_aot")>
+    Public Function CompressFileBufferSizeGZipAot(
+      src_utf8_ptr As Byte(), src_length As Int32,
+      dest_utf8_ptr As Byte(), dest_length As Int32,
+      buffersize As Int32, compresslevel As Byte) As CError
+    End Function
+
+    <DllImport(DllName, EntryPoint:="decompress_file_gzip_aot")>
+    Public Function DecompressFileGZipAot(
+      src_utf8_ptr As Byte(), src_length As Int32,
+      dest_utf8_ptr As Byte(), dest_length As Int32) As CError
+    End Function
+
+    <DllImport(DllName, EntryPoint:="decompress_file_buffer_size_gzip_aot")>
+    Public Function DecompressFileBufferSizeGZipAot(
+      src_utf8_ptr As Byte(), src_length As Int32,
+      dest_utf8_ptr As Byte(), dest_length As Int32,
+      buffersize As Int32) As CError
+    End Function
+#End Region
+
+#Region "Compress Brotli"
+
+    <DllImport(DllName, EntryPoint:="compress_message_brotli_aot")>
+    Public Function CompressMessageBrotliAot(
+      bytes_ptr As Byte(), bytes_length As Int32,
+      compresslevel As Byte,
+      <Out> ByRef out_ptr As IntPtr, <Out> ByRef out_length As Int32) As CError
+    End Function
+    <DllImport(DllName, EntryPoint:="decompress_message_brotli_aot")>
+    Public Function DecompressMessageBrotliAot(
+      bytes_ptr As Byte(), length As Int32,
+      <Out> ByRef out_ptr As IntPtr, <Out> ByRef out_length As Int32) As CError
+    End Function
+
+    <DllImport(DllName, EntryPoint:="compress_file_brotli_aot")>
+    Public Function CompressFileBrotliAot(
+      src_utf8_ptr As Byte(), src_length As Int32,
+      dest_utf8_ptr As Byte(), dest_length As Int32,
+      compresslevel As Byte) As CError
+    End Function
+
+    <DllImport(DllName, EntryPoint:="compress_file_buffer_size_brotli_aot")>
+    Public Function CompressFileBufferSizeBrotliAot(
+      src_utf8_ptr As Byte(), src_length As Int32,
+      dest_utf8_ptr As Byte(), dest_length As Int32,
+      buffersize As Int32, compresslevel As Byte) As CError
+    End Function
+
+    <DllImport(DllName, EntryPoint:="decompress_file_brotli_aot")>
+    Public Function DecompressFileBrotliAot(
+      src_utf8_ptr As Byte(), src_length As Int32,
+      dest_utf8_ptr As Byte(), dest_length As Int32) As CError
+    End Function
+
+    <DllImport(DllName, EntryPoint:="decompress_file_buffer_size_brotli_aot")>
+    Public Function DecompressFileBufferSizeBrotliAot(
+      src_utf8_ptr As Byte(), src_length As Int32,
+      dest_utf8_ptr As Byte(), dest_length As Int32,
+      buffersize As Int32) As CError
+    End Function
+
+#End Region
+
+#Region "File Compress Package"
+
+    <DllImport(DllName, EntryPoint:="pack_file_aot")>
+    Public Function PackFileAot(
+      pack_list_utf8_ptr As IntPtr, pack_list_length_ptr As IntPtr, pack_list_count As Int32,
+      archiv_path_utf8_ptr As Byte(), archiv_path_length As Int32,
+      compresstype As Byte,
+      ByRef total_file_size As Int64, ByRef total_compress_size As Int64) As CError
+    End Function
+
+    <DllImport(DllName, EntryPoint:="pack_file_bs_cl_aot")>
+    Public Function PackFileBsCLAot(
+      pack_list_utf8_ptr As IntPtr, pack_list_length As IntPtr, pack_list_count As Int32,
+      archiv_path_utf8_ptr As Byte(), archiv_path_length As Int32,
+      compresstype As Byte, buffersize As Int32, compresslevel As Byte,
+      <Out> ByRef total_file_size As Int64, <Out> ByRef total_compress_size As Int64) As CError
+    End Function
+
+    <DllImport(DllName, EntryPoint:="pack_archiv_aot")>
+    Public Function PackArchivAot(
+      src_folder_utf8_ptr As Byte(), src_folder_length As Int32,
+      dest_folder_utf8_ptr As Byte(), dest_folder_length As Int32,
+      compresstype As Byte,
+      <Out> ByRef total_file_size As Int64, <Out> ByRef total_compress_size As Int64) As CError
+    End Function
+
+    <DllImport(DllName, EntryPoint:="pack_archiv_bs_cl_aot")>
+    Public Function PackArchivBsCLAot(
+      src_folder_utf8_ptr As Byte(), src_folder_length As Int32,
+      dest_folder_utf8_ptr As Byte(), dest_folder_length As Int32,
+      compresstype As Byte, buffersize As Int32, compresslevel As Byte,
+      <Out> ByRef total_file_size As Int64, <Out> ByRef total_compress_size As Int64) As CError
+    End Function
+
+    <DllImport(DllName, EntryPoint:="unpack_file_archiv_aot")>
+    Public Function UnPackFileArchivAot(
+      archiv_path_ptr As Byte(), archiv_path_length As Int32,
+      output_folder_ptr As Byte(), output_folder_length As Int32) As CError
+    End Function
+
+    <DllImport(DllName, EntryPoint:="unpack_file_archiv_bs_aot")>
+    Public Function UnPackFileArchivBsAot(
+      archiv_path_ptr As Byte(), archiv_path_length As Int32,
+      output_folder_ptr As Byte(), output_folder_length As Int32,
+      buffersize As Int32) As CError
+    End Function
+
+#End Region
 
 #End Region
 
