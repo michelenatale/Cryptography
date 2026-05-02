@@ -427,5 +427,98 @@ CABI_IMPORT cerror_t rng_crypto_primes_aot(
   int32_t bit_prime_length, int32_t counts,
   uint8_t** output, int32_t** output_length);
 
+// ---------------------------------------------------------
+// Compression
+// ---------------------------------------------------------
+
+  CABI_IMPORT cerror_t compress_message_gzip_aot(
+    const uint8_t* bytes_ptr, int32_t bytes_length,
+    uint8_t compresslevel,
+    uint8_t** out_ptr, int32_t* out_length);
+
+  CABI_IMPORT cerror_t decompress_message_gzip_aot(
+    const uint8_t* bytes_ptr, int32_t length,
+    uint8_t** out_ptr, int32_t* out_length);
+
+  CABI_IMPORT cerror_t compress_file_gzip_aot(
+    const uint8_t* src_utf8_ptr, int32_t src_length,
+    const uint8_t* dest_utf8_ptr, int32_t dest_length,
+    uint8_t compresslevel);
+
+  CABI_IMPORT cerror_t compress_file_buffer_size_gzip_aot(
+    const uint8_t* src_utf8_ptr, int32_t src_length,
+    const uint8_t* dest_utf8_ptr, int32_t dest_length,
+    int32_t buffersize, uint8_t compresslevel);
+
+  CABI_IMPORT cerror_t decompress_file_gzip_aot(
+    const uint8_t* src_utf8_ptr, int32_t src_length,
+    const uint8_t* dest_utf8_ptr, int32_t dest_length);
+
+  CABI_IMPORT cerror_t decompress_file_buffer_size_gzip_aot(
+    const uint8_t* src_utf8_ptr, int32_t src_length,
+    const uint8_t* dest_utf8_ptr, int32_t dest_length,
+    int32_t buffersize);
+
+  CABI_IMPORT cerror_t compress_message_brotli_aot(
+    const uint8_t* bytes_ptr, int32_t bytes_length,
+    uint8_t compresslevel,
+    uint8_t** out_ptr, int32_t* out_length);
+
+  CABI_IMPORT cerror_t decompress_message_brotli_aot(
+    const uint8_t* bytes_ptr, int32_t length,
+    uint8_t** out_ptr, int32_t* out_length);
+
+  CABI_IMPORT cerror_t compress_file_brotli_aot(
+    const uint8_t* src_utf8_ptr, int32_t src_length,
+    const uint8_t* dest_utf8_ptr, int32_t dest_length,
+    uint8_t compresslevel);
+
+  CABI_IMPORT cerror_t compress_file_buffer_size_brotli_aot(
+    const uint8_t* src_utf8_ptr, int32_t src_length,
+    const uint8_t* dest_utf8_ptr, int32_t dest_length,
+    int32_t buffersize, uint8_t compresslevel);
+
+  CABI_IMPORT cerror_t decompress_file_brotli_aot(
+    const uint8_t* src_utf8_ptr, int32_t src_length,
+    const uint8_t* dest_utf8_ptr, int32_t dest_length);
+
+  CABI_IMPORT cerror_t decompress_file_buffer_size_brotli_aot(
+    const uint8_t* src_utf8_ptr, int32_t src_length,
+    const uint8_t* dest_utf8_ptr, int32_t dest_length,
+    int32_t buffersize);
+
+  CABI_IMPORT cerror_t pack_file_aot(
+    const uint8_t** pack_list_utf8_ptr, const int32_t* pack_list_length, int32_t pack_list_count,
+    const uint8_t* archiv_path_utf8_ptr, int32_t archiv_path_length,
+    uint8_t compresstype,
+    int64_t* total_file_size, int64_t* total_compress_size);
+
+  CABI_IMPORT cerror_t pack_file_bs_cl_aot(
+    const uint8_t** pack_list_utf8_ptr, const int32_t* pack_list_length, int32_t pack_list_count,
+    const uint8_t* archiv_path_utf8_ptr, int32_t archiv_path_length,
+    uint8_t compresstype, int32_t buffersize, uint8_t compresslevel,
+    int64_t* total_file_size, int64_t* total_compress_size);
+
+  CABI_IMPORT cerror_t pack_archiv_aot(
+    const uint8_t* src_folder_utf8_ptr, int32_t src_folder_length,
+    const uint8_t* dest_folder_utf8_ptr, int32_t dest_folder_length,
+    uint8_t compresstype,
+    int64_t* total_file_size, int64_t* total_compress_size);
+
+  CABI_IMPORT cerror_t pack_archiv_bs_cl_aot(
+    const uint8_t* src_folder_utf8_ptr, int32_t src_folder_length,
+    const uint8_t* dest_folder_utf8_ptr, int32_t dest_folder_length,
+    uint8_t compresstype, int32_t buffersize, uint8_t compresslevel,
+    int64_t* total_file_size, int64_t* total_compress_size);
+
+  CABI_IMPORT cerror_t unpack_file_archiv_aot(
+    const uint8_t* archiv_path_ptr, int32_t archiv_path_length,
+    const uint8_t* output_folder_ptr, int32_t output_folder_length);
+
+  CABI_IMPORT cerror_t unpack_file_archiv_bs_aot(
+    const uint8_t* archiv_path_ptr, int32_t archiv_path_length,
+    const uint8_t* output_folder_ptr, int32_t output_folder_length,
+    int32_t buffersize);
+
 
 #endif

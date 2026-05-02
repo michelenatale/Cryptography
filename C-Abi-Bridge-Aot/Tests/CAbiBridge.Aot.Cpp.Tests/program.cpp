@@ -2,6 +2,7 @@
 #include "pch.h"
 #include <iostream>
 
+#include "compress_test.h"
 #include "crypto_aes_test.h"
 #include "crypto_pqc_test.h"
 #include "crypto_primes_test.h"
@@ -31,6 +32,8 @@ static void tests(int rounds)
   start_crypto_primes_native(rounds);
 
   start_convert_encoding_native(rounds * 1000);
+
+  start_compress_native(rounds);
 }
 
 

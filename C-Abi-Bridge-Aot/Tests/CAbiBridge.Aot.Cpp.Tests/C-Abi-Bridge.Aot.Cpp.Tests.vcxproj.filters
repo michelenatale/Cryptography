@@ -142,6 +142,12 @@
     <Filter Include="Headerdateien\test_crypto\test_crypto_primes\enums_struct">
       <UniqueIdentifier>{dfe5066e-c430-4242-b291-593d0fcdaf51}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Headerdateien\test_compress">
+      <UniqueIdentifier>{8391a6ff-4764-4a0c-abde-49b91efcd2be}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quelldateien\test_compress">
+      <UniqueIdentifier>{62fdfa93-f0dc-412d-b703-3a588b6921a9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="program.cpp">
@@ -254,6 +260,24 @@
     </ClCompile>
     <ClCompile Include="crypto_primes.cpp">
       <Filter>Quelldateien\test_crypto\test_crypto_primes</Filter>
+    </ClCompile>
+    <ClCompile Include="compress_gzip_brotli_test.cpp">
+      <Filter>Quelldateien\test_compress</Filter>
+    </ClCompile>
+    <ClCompile Include="file_compress_package_test.cpp">
+      <Filter>Quelldateien\test_compress</Filter>
+    </ClCompile>
+    <ClCompile Include="compress_test.cpp">
+      <Filter>Quelldateien\test_compress</Filter>
+    </ClCompile>
+    <ClCompile Include="compression_type.cpp">
+      <Filter>Quelldateien\test_compress</Filter>
+    </ClCompile>
+    <ClCompile Include="compression_level.cpp">
+      <Filter>Quelldateien\test_compress</Filter>
+    </ClCompile>
+    <ClCompile Include="fcp_type.cpp">
+      <Filter>Quelldateien\test_compress</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -374,5 +398,31 @@
     <ClInclude Include="bn_prime_wrapper.h">
       <Filter>Headerdateien\test_crypto\test_crypto_primes</Filter>
     </ClInclude>
+    <ClInclude Include="compress_gzip_brotli_test.h">
+      <Filter>Headerdateien\test_compress</Filter>
+    </ClInclude>
+    <ClInclude Include="file_compress_package_test.h">
+      <Filter>Headerdateien\test_compress</Filter>
+    </ClInclude>
+    <ClInclude Include="compress_test.h">
+      <Filter>Headerdateien\test_compress</Filter>
+    </ClInclude>
+    <ClInclude Include="compression_type.h">
+      <Filter>Headerdateien\test_compress</Filter>
+    </ClInclude>
+    <ClInclude Include="fcp_type.h">
+      <Filter>Headerdateien\test_compress</Filter>
+    </ClInclude>
+    <ClInclude Include="compression_level.h">
+      <Filter>Headerdateien\test_compress</Filter>
+    </ClInclude>
+    <ClInclude Include="compress_variables.h">
+      <Filter>Headerdateien\test_compress</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="data.txt" />
+    <CopyFileToFolders Include="data2.txt" />
+    <CopyFileToFolders Include="data3.txt" />
   </ItemGroup>
 </Project>

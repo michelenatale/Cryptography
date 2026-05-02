@@ -152,6 +152,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="compression_level.cpp" />
+    <ClCompile Include="compression_type.cpp" />
+    <ClCompile Include="compress_gzip_brotli_test.cpp" />
+    <ClCompile Include="compress_test.cpp" />
     <ClCompile Include="convert_encoding_hex_test.cpp" />
     <ClCompile Include="crypto_hash_test.cpp" />
     <ClCompile Include="crypto_hmac_test.cpp" />
@@ -160,6 +164,8 @@
     <ClCompile Include="crypto_pqc_ml_dsa_test.cpp" />
     <ClCompile Include="crypto_primes.cpp" />
     <ClCompile Include="crypto_primes_test.cpp" />
+    <ClCompile Include="fcp_type.cpp" />
+    <ClCompile Include="file_compress_package_test.cpp" />
     <ClCompile Include="program.cpp" />
     <ClCompile Include="crypto_aes_bytes_test.cpp" />
     <ClCompile Include="crypto_aes_file_stream_test.cpp" />
@@ -200,6 +206,8 @@
     <ClInclude Include="bridge.h" />
     <ClInclude Include="cabi_exp_imp.h" />
     <ClInclude Include="cerror.h" />
+    <ClInclude Include="compress_gzip_brotli_test.h" />
+    <ClInclude Include="compression_level.h" />
     <ClInclude Include="crypto_aes_gcm_test.h" />
     <ClInclude Include="crypto_aes_test.h" />
     <ClInclude Include="crypto_chacha_poly_test.h" />
@@ -223,6 +231,11 @@
     <ClInclude Include="bit_prime_length.h" />
     <ClInclude Include="crypto_primes_test.h" />
     <ClInclude Include="bn_ctx_x.h" />
+    <ClInclude Include="file_compress_package_test.h" />
+    <ClInclude Include="compress_test.h" />
+    <ClInclude Include="compression_type.h" />
+    <ClInclude Include="fcp_type.h" />
+    <ClInclude Include="compress_variables.h" />
     <ClInclude Include="primality_confidence.h" />
     <ClInclude Include="ml_dsa_signer_info.h" />
     <ClInclude Include="native_buffer.h" />
@@ -240,6 +253,26 @@
     <ProjectReference Include="..\..\Src\CAbiBridge.Aot\C-Abi-Bridge.Aot.csproj">
       <Project>{fa3ed49d-d282-edbd-dcad-633e2f12f660}</Project>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="data.txt">
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</DeploymentContent>
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</DeploymentContent>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data2.txt">
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</DeploymentContent>
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</DeploymentContent>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data3.txt">
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</DeploymentContent>
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</DeploymentContent>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
+    </CopyFileToFolders>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -122,4 +122,49 @@ namespace michele::natale::Tests
     return (result & 1) == 0;
   }
 
+
+  // ******** ******** ******** ******** ******** ******** ******** 
+  // ******** ******** ******** ******** ******** ******** ******** 
+
+  int64_t file_size_fs(const char* path)
+  {
+    return (int64_t)std::filesystem::file_size(path);
+  }
+
+  std::pair<int64_t, int> sum_file_sizes(const char* files[], int count)
+  {
+    int64_t result = 0;
+
+    for (int i = 0; i < count; i++)
+    {
+      const char* fname = files[i];
+
+      std::ifstream f(fname, std::ios::binary | std::ios::ate);
+      if (!f)
+        throw std::runtime_error("file not found");
+
+      result += f.tellg();
+    }
+
+    return { result, count };
+  }
+
+  std::pair<int64_t, int> sum_file_sizes_folder(const char* foldername)
+  {
+    std::vector<std::string> files;
+
+    for (auto& p : std::filesystem::recursive_directory_iterator(foldername))
+      if (p.is_regular_file())
+        files.push_back(p.path().string());
+
+    std::vector<const char*> file_ptrs;
+    file_ptrs.reserve(files.size());
+    for (auto& s : files)
+      file_ptrs.push_back(s.c_str());
+
+    return sum_file_sizes(file_ptrs.data(), (int)file_ptrs.size());
+  }
+
+
+
 }
