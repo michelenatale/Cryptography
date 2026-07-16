@@ -218,143 +218,132 @@ Die C‑ABI‑Bridge‑AOT‑Technologie eröffnet vielfältige Möglichkeiten f
 ### 6.1 Bachelor / HF / Techniker (praxisorientiert)
 
 Arbeiten auf diesem Niveau konzentrieren sich auf:
-
-praktische Implementierung
-
-grundlegende Architekturverständnis
-
-einfache Interoperabilitätsbeispiele
-
-funktionale Demonstrationen
-
-technische Dokumentation
-
-erste Sicherheitsüberlegungen
+- praktische Implementierung
+- grundlegende Architekturverständnis
+- einfache Interoperabilitätsbeispiele
+- funktionale Demonstrationen
+- technische Dokumentation
+- erste Sicherheitsüberlegungen
 
 Diese Arbeiten sind wertvoll, da sie die Technologie zugänglich machen und praktische Grundlagen schaffen, auf denen weiterführende Forschung aufbauen kann.
 
-6.2 Master (wissenschaftlich‑technisch)
+### 6.2 Master (wissenschaftlich‑technisch)
+
 Masterarbeiten vertiefen die wissenschaftliche Analyse und verbinden Theorie mit Praxis:
-
-detaillierte Architekturstudien
-
-normative Bewertung (z. B. FIPS‑140‑3)
-
-Interop‑Analyse über mehrere Sprachen
-
-Sicherheitsanalyse und Threat‑Modeling
-
-wissenschaftliche Argumentation
-
-Evaluierung der Reproduzierbarkeit
-
-Roadmaps für Zertifizierbarkeit
+- detaillierte Architekturstudien
+- normative Bewertung (z. B. FIPS‑140‑3)
+- Interop‑Analyse über mehrere Sprachen
+- Sicherheitsanalyse und Threat‑Modeling
+- wissenschaftliche Argumentation
+- Evaluierung der Reproduzierbarkeit
+- Roadmaps für Zertifizierbarkeit
 
 Dieses Niveau eignet sich ideal für die wissenschaftliche Weiterentwicklung der Technologie.
 
-6.3 PhD / Doktorat (wissenschaftlich‑theoretisch)
+### 6.3 PhD / Doktorat (wissenschaftlich‑theoretisch)
+
 Doktorarbeiten befassen sich mit formalen, mathematischen und theoretischen Fragestellungen:
-
-formale Modellierung der ABI‑Boundary
-
-mathematische Sicherheitsbeweise
-
-normative Proofs für FIPS‑140‑3
-
-Compiler‑Theorie und deterministische Build‑Modelle
-
-formale Verifikation (Coq, Dafny, Lean, TLA+, Z3)
-
-wissenschaftliche Publikationen
-
-theoretische Erweiterungen der Kryptographie‑Architektur
+- formale Modellierung der ABI‑Boundary
+- mathematische Sicherheitsbeweise
+- normative Proofs für FIPS‑140‑3
+- Compiler‑Theorie und deterministische Build‑Modelle
+- formale Verifikation (Coq, Dafny, Lean, TLA+, Z3)
+- wissenschaftliche Publikationen
+- theoretische Erweiterungen der Kryptographie‑Architektur
 
 Dieses Niveau ist für tiefgehende Forschung geeignet, die neue wissenschaftliche Erkenntnisse schafft.
 
-6.4 Motivation statt Ausschluss
+### 6.4 Motivation statt Ausschluss
+
 Alle Niveaus tragen wertvolle Beiträge bei:
-
-HF / Bachelor schaffen praktische Grundlagen
-
-Master liefern wissenschaftliche Analysen
-
-PhD erweitern die Theorie
+- **HF / Bachelor** schaffen praktische Grundlagen
+- **Master** liefern wissenschaftliche Analysen
+- **PhD** erweitern die Theorie
 
 Damit wird niemand ausgeschlossen — im Gegenteil: Die Technologie lädt alle ein, auf ihrem Niveau mitzuwirken.
 
-7. Bedeutung für Behörden, Banken, Militär, Allgemeinheit
+
+## 7. Bedeutung für Behörden, Banken, Militär, Allgemeinheit
+
 Die C‑ABI‑Bridge‑AOT‑Technologie besitzt besondere Relevanz für sicherheitskritische Bereiche, in denen kryptographische Module höchsten Anforderungen genügen müssen. Die Architektur adressiert zentrale Bedürfnisse dieser Akteure und bietet eine wissenschaftlich fundierte Grundlage für zukünftige Entwicklungen.
 
-7.1 Behörden und staatliche Institutionen
+### 7.1 Behörden und staatliche Institutionen
+
 Behörden benötigen:
-
-auditierbare Kryptographie
-
-reproduzierbare Builds
-
-klare Modul‑Boundaries
-
-deterministische Ausführung
-
-langfristige Zertifizierbarkeit
+- auditierbare Kryptographie
+- reproduzierbare Builds
+- klare Modul‑Boundaries
+- deterministische Ausführung
+- langfristige Zertifizierbarkeit
 
 Die minimalistische ABI‑Bridge erleichtert Audits und reduziert die Komplexität staatlicher Sicherheitsprüfungen.
 
-7.2 Banken und Finanzinfrastruktur
+### 7.2 Banken und Finanzinfrastruktur
+
 Finanzsysteme verlangen:
-
-regulatorische Konformität
-
-stabile Schnittstellen
-
-sichere Interoperabilität
-
-kontrollierbare Build‑Pipelines
-
-minimierte Angriffsflächen
+- regulatorische Konformität
+- stabile Schnittstellen
+- sichere Interoperabilität
+- kontrollierbare Build‑Pipelines
+- minimierte Angriffsflächen
 
 Die Architektur unterstützt diese Anforderungen durch reproduzierbare Module und klare API‑Strukturen.
 
-7.3 Militär und sicherheitskritische Einsatzbereiche
+### 7.3 Militär und sicherheitskritische Einsatzbereiche
+
 Militärische Systeme benötigen:
-
-AOT‑kompatible Kryptographie
-
-deterministische Module ohne dynamische Code‑Pfadrisiken
-
-reproduzierbare Builds für Einsatzszenarien
-
-minimalistische Angriffsflächen
-
-formale Sicherheitsmodelle
+- AOT‑kompatible Kryptographie
+- deterministische Module ohne dynamische Code‑Pfadrisiken
+- reproduzierbare Builds für Einsatzszenarien
+- minimalistische Angriffsflächen
+- formale Sicherheitsmodelle
 
 Die Technologie bietet eine Basis für Module, die unter extremen Bedingungen zuverlässig funktionieren müssen.
 
-7.4 Öffentliche Infrastruktur und Allgemeinheit
+### 7.4 Öffentliche Infrastruktur und Allgemeinheit
+
 Für die Allgemeinheit ist relevant:
-
-transparente Open‑Source‑Kryptographie
-
-interoperable Sicherheitsmodule
-
-sichere digitale Dienste
-
-nachvollziehbare Architektur
-
-gesellschaftliche Diskussion über Kryptographie
+- transparente Open‑Source‑Kryptographie
+- interoperable Sicherheitsmodule
+- sichere digitale Dienste
+- nachvollziehbare Architektur
+- gesellschaftliche Diskussion über Kryptographie
 
 Die Offenlegung der Technologie ermöglicht es, Vertrauen in digitale Systeme zu stärken und Forschung zugänglich zu machen.
 
-7.5 Zusammenführung der Interessen
+### 7.5 Zusammenführung der Interessen
+
 Die Technologie verbindet die Anforderungen aller Akteure:
-
-Behörden → Auditierbarkeit
-
-Banken → Stabilität und Compliance
-
-Militär → Determinismus und Reproduzierbarkeit
-
-Allgemeinheit → Transparenz und Sicherheit
+- Behörden → Auditierbarkeit
+- Banken → Stabilität und Compliance
+- Militär → Determinismus und Reproduzierbarkeit
+- Allgemeinheit → Transparenz und Sicherheit
 
 Damit entsteht ein wissenschaftlich und gesellschaftlich relevantes Projekt, das weit über die reine Implementierung hinausgeht.
+
+
+## 8. Einladung zur Mitarbeit
+
+Die C‑ABI‑Bridge‑AOT‑Technologie ist bewusst als offenes, transparentes und kollaboratives Projekt gestaltet. Sie soll nicht nur als technische Grundlage dienen, sondern als wissenschaftliche Plattform, die Studierende, Forschende, Entwicklerinnen und Entwickler sowie Institutionen dazu einlädt, eigene Ideen einzubringen, bestehende Konzepte zu hinterfragen und neue Ansätze zu entwickeln. Die Offenheit des Projekts ermöglicht es, unterschiedliche Perspektiven zusammenzuführen und die Technologie gemeinsam weiterzuentwickeln.
+
+Diese Einladung richtet sich ausdrücklich an Personen aller Ausbildungsstufen.
+Studierende auf Bachelor‑ oder HF‑Niveau können praktische Implementierungen, Tests und Dokumentationen beitragen.
+Master‑Studierende können wissenschaftliche Analysen, normative Bewertungen und Architekturstudien durchführen.
+PhD‑Studierende und Forschende können formale Modelle, mathematische Verifikationen und theoretische Erweiterungen entwickeln.
+
+Auch Organisationen wie Behörden, Banken, militärische Einrichtungen und Unternehmen der kritischen Infrastruktur sind eingeladen, ihre Anforderungen, Erfahrungen und Perspektiven einzubringen. Die Zusammenarbeit zwischen akademischer Forschung und praktischer Anwendung ist entscheidend, um robuste, auditierbare und langfristig vertrauenswürdige Kryptographie‑Module zu schaffen.
+
+Das Projekt versteht sich als offene Forschungsplattform, die Innovation fördert, wissenschaftlichen Austausch ermöglicht und die Grundlage für zukünftige sicherheitskritische Systeme bildet. Jede Mitarbeit – unabhängig vom Niveau – ist willkommen und trägt dazu bei, die Technologie weiter zu stärken und ihre Einsatzmöglichkeiten zu erweitern.
+
+
+## 9. Schlusswort / Vision
+
+Die C‑ABI‑Bridge‑AOT‑Technologie ist mehr als eine technische Implementierung. Sie ist ein Konzept, eine Idee und eine Vision für die Zukunft sicherer, reproduzierbarer und interoperabler Kryptographie‑Module. In einer Zeit, in der digitale Sicherheit immer wichtiger wird und die Komplexität moderner Software‑Systeme stetig zunimmt, bietet diese Architektur einen klaren, strukturierten und wissenschaftlich fundierten Ansatz, um kryptographische Funktionen zuverlässig und langfristig auditierbar bereitzustellen.
+
+Die Vision dieses Projekts besteht darin, eine Grundlage zu schaffen, die sowohl technisch als auch wissenschaftlich tragfähig ist. Eine Grundlage, die es ermöglicht, kryptographische Module über Sprachgrenzen hinweg sicher zu nutzen, reproduzierbar zu bauen und normativ zu bewerten. Eine Grundlage, die Behörden, Banken, militärische Einrichtungen und die Allgemeinheit gleichermaßen unterstützt. Und eine Grundlage, die offen genug ist, um zukünftige Entwicklungen, wissenschaftliche Erkenntnisse und technologische Innovationen aufzunehmen.
+
+Dieses Dokument soll dazu beitragen, die Idee in einen akademischen Kontext zu stellen und den Weg für weiterführende Forschung zu ebnen. Die Technologie ist bewusst nicht als fertiges Produkt konzipiert, sondern als Ausgangspunkt für wissenschaftliche Arbeiten, Diskussionen und Weiterentwicklungen. Die Vision ist, dass aus dieser Basis langfristig robuste, zertifizierbare und vertrauenswürdige Kryptographie‑Module entstehen, die einen Beitrag zur digitalen Sicherheit unserer Gesellschaft leisten.
+
+Die Zukunft sicherer Kryptographie beginnt oft mit einfachen, klaren und gut strukturierten Ideen. Dieses Projekt ist eine solche Idee – und es lädt alle ein, sie weiterzuführen.
+
 
