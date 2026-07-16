@@ -139,3 +139,10 @@ The *AcademicProposal* folder provides the complete scientific foundation for th
 
 It is clearly structured, institution‑ready, and covers all relevant areas:
 architecture, scientific analysis, normative standards, research planning, security considerations, and societal impact.
+
+---
+
+**Prepared by:**  
+© Michele Natale 2026
+Architect & Engineering – Cryptographie, NativeAOT / C‑ABI Interoperability  
+Switzerland
