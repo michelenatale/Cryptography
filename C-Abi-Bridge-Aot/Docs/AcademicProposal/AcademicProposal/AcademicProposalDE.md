@@ -349,3 +349,11 @@ Die Vision dieses Projekts besteht darin, eine Grundlage zu schaffen, die sowohl
 Dieses Dokument soll dazu beitragen, die Idee in einen akademischen Kontext zu stellen und den Weg für weiterführende Forschung zu ebnen. Die Technologie ist bewusst nicht als fertiges Produkt konzipiert, sondern als Ausgangspunkt für wissenschaftliche Arbeiten, Diskussionen und Weiterentwicklungen. Die Vision ist, dass aus dieser Basis langfristig robuste, zertifizierbare und vertrauenswürdige Kryptographie‑Module entstehen, die einen Beitrag zur digitalen Sicherheit unserer Gesellschaft leisten.
 
 Die Zukunft sicherer Kryptographie beginnt oft mit einfachen, klaren und gut strukturierten Ideen. Dieses Projekt ist eine solche Idee – und es lädt alle ein, sie weiterzuführen.
+
+---
+
+**Prepared by:**  
+
+© Michele Natale 2026   
+Architect & Engineering – Cryptographie, NativeAOT / C‑ABI Interoperability  
+Switzerland
