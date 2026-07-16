@@ -263,7 +263,7 @@ The Academic Proposal contains:
 
 You can find all documents here:
 
-**➡️ `[C-Abi-Bridge-Aot/Docs/AcademicProposal](https://github.com/michelenatale/Cryptography/tree/main/C-Abi-Bridge-Aot/Docs/AcademicProposal)`**
+➡️ **[C-Abi-Bridge-Aot/Docs/AcademicProposal](https://github.com/michelenatale/Cryptography/tree/main/C-Abi-Bridge-Aot/Docs/AcademicProposal)**
 
 ---
 
