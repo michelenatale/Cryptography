@@ -4,7 +4,7 @@ Der Ordner *AcademicProposal* enthält alle wissenschaftlichen Dokumente, die di
 
 ---
 
-## 1. ExecutiveSummary.md
+## 1. [ExecutiveSummary.md](ExecutiveSummary.md)
 
 **Zweck:**  
 Kurze, institutionstaugliche Zusammenfassung des gesamten Projekts.  
@@ -21,7 +21,7 @@ Ideal für Professoren, Behörden, Banken, Militär, Forschungsgruppen.
 
 ---
 
-## 2. AcademicProposalDE.md
+## 2. [AcademicProposalDE.md](AcademicProposal/AcademicProposalDE.md)
 
 **Zweck:**  
 Vollständige wissenschaftliche Darstellung in deutscher Sprache.
@@ -39,7 +39,7 @@ Vollständige wissenschaftliche Darstellung in deutscher Sprache.
 
 ---
 
-## 3. AcademicProposalEN.md
+## 3. [AcademicProposalEN.md](AcademicProposal/AcademicProposalEN.md)
 
 **Zweck:**  
 Internationale Version für Universitäten, Institute, Behörden und Unternehmen.
@@ -57,7 +57,7 @@ Internationale Version für Universitäten, Institute, Behörden und Unternehmen
 
 ---
 
-## 4. ResearchRoadmap_Master.md
+## 4. [ResearchRoadmap_Master.md](Roadmap/StructuredResearchRoadmap-MasterLevel-EN.md)
 
 **Zweck:**  
 Strukturierte Forschungs‑Roadmap für Masterarbeiten.
@@ -76,7 +76,7 @@ Strukturierte Forschungs‑Roadmap für Masterarbeiten.
 
 ---
 
-## 5. ResearchRoadmap_PhD.md
+## 5. [ResearchRoadmap_PhD.md](Roadmap/StructuredResearchRoadmap-PhDLevel-EN.md)
 
 **Zweck:**  
 Strukturierte Forschungs‑Roadmap für Doktorarbeiten.
@@ -95,7 +95,7 @@ Strukturierte Forschungs‑Roadmap für Doktorarbeiten.
 
 ---
 
-## 6. Roadmap_ASCII.md
+## 6. [Roadmap_ASCII.md](Roadmap/StructuredResearchRoadmap-Overview-EN.md) and [Roadmap-C-ABI-Bridge-Aot](Roadmap/Roadmap-C%E2%80%91ABI%E2%80%91BRIDGE%E2%80%91AOT)
 
 **Zweck:**  
 Visuelle ASCII‑Darstellung der gesamten Roadmap.  
