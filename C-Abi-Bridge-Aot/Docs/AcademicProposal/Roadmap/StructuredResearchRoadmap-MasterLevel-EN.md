@@ -108,3 +108,11 @@
 
 - Foundation for secure, reproducible, certifiable cryptographic modules.
 - Contribution to academic research and critical infrastructure security.
+
+---
+
+**Prepared by:**  
+
+© Michele Natale 2026   
+Architect & Engineering – Cryptographie, NativeAOT / C‑ABI Interoperability  
+Switzerland
