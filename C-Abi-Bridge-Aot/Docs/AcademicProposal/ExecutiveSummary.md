@@ -162,6 +162,8 @@ The project represents a **forward‑looking investment** in digital security, s
 ---
 
 **Prepared by:**  
-© Michele Natale 2026
+
+© Michele Natale 2026   
 Architect & Engineering – Cryptographie, NativeAOT / C‑ABI Interoperability  
 Switzerland
+
