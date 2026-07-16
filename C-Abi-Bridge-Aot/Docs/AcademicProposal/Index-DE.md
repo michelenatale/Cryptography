@@ -10,6 +10,12 @@ Der Ordner *AcademicProposal* enthält alle wissenschaftlichen Dokumente, die di
 
 ---
 
+## FH / Bachelor / HF Relevance
+
+Die C‑ABI‑Bridge‑AOT‑Technologie eignet sich hervorragend für praxisorientierte FH‑Studiengänge sowie Bachelor- und HF‑Abschlussarbeiten. Studierende können konkrete Implementierungen, Interoperabilitätsanalysen, Sicherheitsbewertungen oder reproduzierbare Build‑Pipelines entwickeln. Die Architektur bietet einen klaren technischen Rahmen, der sowohl praxisnah als auch wissenschaftlich fundiert ist.
+
+---
+
 ## 1. [ExecutiveSummary.md](ExecutiveSummary.md)
 
 **Zweck:**  
