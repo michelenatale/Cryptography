@@ -128,3 +128,11 @@
 - Establishment of a formally verified, certifiable cryptographic module architecture.
 - Contribution to international research in cryptography and formal verification.
 - Foundation for secure digital infrastructure in government, finance, military, and public sectors.
+
+---
+
+**Prepared by:**  
+
+© Michele Natale 2026   
+Architect & Engineering – Cryptographie, NativeAOT / C‑ABI Interoperability  
+Switzerland
