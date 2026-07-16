@@ -54,6 +54,4 @@
 | modules for critical    | crypto architecture for critical  |
 | sectors & public infra  | sectors & global research         |
 +-------------------------------------------------------------+
-
-
 ```
