@@ -4,7 +4,7 @@ The *AcademicProposal* folder contains all scientific and institutional document
 
 ---
 
-## [1. ExecutiveSummary.md](ExecutiveSummary.md)
+## 1. [ExecutiveSummary.md](ExecutiveSummary.md)
 
 **Purpose:**  
 Concise, institution-ready summary of the entire project.  
@@ -21,7 +21,7 @@ Suitable for professors, research groups, government agencies, financial institu
 
 ---
 
-## [2. AcademicProposalDE.md](AcademicProposal/AcademicProposalDE.md)
+## 2. [AcademicProposalDE.md](AcademicProposal/AcademicProposalDE.md)
 
 **Purpose:**  
 Full scientific description in German.
