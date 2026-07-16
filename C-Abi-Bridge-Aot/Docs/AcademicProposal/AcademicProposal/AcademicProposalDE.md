@@ -10,7 +10,7 @@ Die moderne Kryptographie steht vor der Herausforderung, gleichzeitig sicher, in
 
 Die hier vorgestellte Technologie – eine reproduzierbare, minimalistische und sprachübergreifende C‑ABI‑Bridge für kryptographische Funktionen – bildet eine innovative Grundlage für die Entwicklung solcher Module. Sie verbindet technische Pragmatik mit wissenschaftlicher Tiefe und eröffnet neue Perspektiven für Forschung, Normierung und praktische Implementierung. Die Architektur ist bewusst einfach gehalten, um Interoperabilität und Sicherheit zu maximieren, und gleichzeitig offen genug, um als Basis für weiterführende wissenschaftliche Arbeiten zu dienen.
 
-Dieses Dokument stellt einen wissenschaftlichen Vorschlag („Academic Proposal“) dar, der die Technologie in einen akademischen Kontext einordnet und mögliche Forschungsrichtungen aufzeigt. Die Idee ist nicht als fertiges Produkt zu verstehen, sondern als Ausgangspunkt für Master‑ und Doktorarbeiten, die sich mit Architekturdesign, Sicherheitsanalyse, formaler Verifikation, normativen Anforderungen und der praktischen Umsetzung sicherer kryptographischer Module befassen. Gleichzeitig bleibt die Technologie für Studierende aller Niveaus zugänglich: Bachelor‑ und HF‑Arbeiten können sich auf Implementierung und Grundlagen konzentrieren, während Master‑ und PhD‑Arbeiten die wissenschaftliche Tiefe und normative Komplexität ausschöpfen.
+Dieses Dokument stellt einen wissenschaftlichen Vorschlag („Academic Proposal“) dar, der die Technologie in einen akademischen Kontext einordnet und mögliche Forschungsrichtungen aufzeigt. Die Idee ist nicht als fertiges Produkt zu verstehen, sondern als Ausgangspunkt für Master‑ und Doktorarbeiten, die sich mit Architekturdesign, Sicherheitsanalyse, formaler Verifikation, normativen Anforderungen und der praktischen Umsetzung sicherer kryptographischer Module befassen. Gleichzeitig bleibt die Technologie für Studierende aller Niveaus zugänglich: Bachelor-, FH- und HF‑Arbeiten können sich auf Implementierung und Grundlagen konzentrieren, während Master‑ und PhD‑Arbeiten die wissenschaftliche Tiefe und normative Komplexität ausschöpfen.
 
 Die Offenlegung des Projekts ermöglicht es der Allgemeinheit, der Forschungsgemeinschaft und der Industrie, die Idee weiterzuentwickeln, kritisch zu hinterfragen und für reale Anwendungen zu adaptieren. Innovation entsteht oft aus einfachen, aber klar strukturierten Konzepten – und dieses Projekt soll genau diese Art von Weiterentwicklung fördern.
 
@@ -23,7 +23,7 @@ Die vorgestellte C‑ABI‑Bridge‑AOT‑Architektur adressiert diese Herausfor
 
 Ein weiterer Motivationsfaktor liegt in der zunehmenden Bedeutung reproduzierbarer Builds und deterministischer Ausführung. Sicherheitsvorfälle der letzten Jahre haben gezeigt, dass komplexe Build‑Pipelines und dynamische Laufzeitverhalten erhebliche Risiken darstellen können. Eine klar definierte ABI‑Boundary reduziert diese Risiken, indem sie die kryptographische Logik in einen kontrollierten, stabilen und überprüfbaren Bereich verlagert. Dies ist insbesondere für FIPS‑140‑3‑konforme Module relevant, da normative Standards reproduzierbare, deterministische und auditierbare Implementierungen verlangen.
 
-Die wissenschaftliche Motivation ergibt sich zudem aus der Interdisziplinarität des Themas. Die Technologie berührt Bereiche wie Kryptographie, Compiler‑Theorie, Software‑Architektur, Interoperabilität, Sicherheitsanalyse und normative Standardisierung. Diese Vielfalt macht das Projekt zu einem idealen Ausgangspunkt für Master‑ und Doktorarbeiten, die sowohl technische als auch theoretische Fragestellungen untersuchen können. Gleichzeitig bleibt die Technologie zugänglich: Studierende auf Bachelor‑ oder HF‑Niveau können praktische Implementierungen und Grundlagen erforschen, während Master‑ und PhD‑Studierende die wissenschaftliche Tiefe und normative Komplexität ausschöpfen.
+Die wissenschaftliche Motivation ergibt sich zudem aus der Interdisziplinarität des Themas. Die Technologie berührt Bereiche wie Kryptographie, Compiler‑Theorie, Software‑Architektur, Interoperabilität, Sicherheitsanalyse und normative Standardisierung. Diese Vielfalt macht das Projekt zu einem idealen Ausgangspunkt für Master‑ und Doktorarbeiten, die sowohl technische als auch theoretische Fragestellungen untersuchen können. Gleichzeitig bleibt die Technologie zugänglich: Studierende auf Bachelor‑, FH- oder HF‑Niveau können praktische Implementierungen und Grundlagen erforschen, während Master‑ und PhD‑Studierende die wissenschaftliche Tiefe und normative Komplexität ausschöpfen.
 
 Schließlich besteht die Motivation darin, einen offenen Beitrag zur Forschungsgemeinschaft und zur Allgemeinheit zu leisten. Durch die Veröffentlichung der Technologie und der wissenschaftlichen Fragestellungen entsteht ein Raum für Zusammenarbeit, Kritik, Weiterentwicklung und Innovation. Die C‑ABI‑Bridge‑AOT‑Architektur soll nicht als fertiges Produkt verstanden werden, sondern als Ausgangspunkt für eine wissenschaftliche Diskussion, die langfristig zu sichereren, interoperableren und zertifizierbaren Kryptographie‑Modulen führen kann.
 
@@ -215,11 +215,11 @@ Das Doktoratsprojekt soll die C‑ABI‑Bridge‑AOT‑Technologie formal modell
 - Dissertation mit langfristiger Relevanz für kritische Infrastruktur
 
 
-## 6. Abgrenzung Bachelor / HF / Master / PhD
+## 6. Abgrenzung Bachelor / FH / HF / Master / PhD
 
 Die C‑ABI‑Bridge‑AOT‑Technologie eröffnet vielfältige Möglichkeiten für wissenschaftliche und technische Arbeiten auf unterschiedlichen Ausbildungsniveaus. Eine klare Abgrenzung der Niveaus ist notwendig, um die wissenschaftliche Tiefe korrekt einzuordnen, ohne Studierende oder Fachpersonen zu demotivieren. Die folgenden Definitionen beschreiben nicht den Wert einer Person, sondern die **Tiefe der Analyse**, die für die jeweiligen akademischen Stufen üblich ist.
 
-### 6.1 Bachelor / HF / Techniker (praxisorientiert)
+### 6.1 Bachelor / FH / HF / Techniker (praxisorientiert)
 
 Arbeiten auf diesem Niveau konzentrieren sich auf:
 - praktische Implementierung
@@ -260,7 +260,7 @@ Dieses Niveau ist für tiefgehende Forschung geeignet, die neue wissenschaftlich
 ### 6.4 Motivation statt Ausschluss
 
 Alle Niveaus tragen wertvolle Beiträge bei:
-- **HF / Bachelor** schaffen praktische Grundlagen
+- **HF / FH / Bachelor** schaffen praktische Grundlagen
 - **Master** liefern wissenschaftliche Analysen
 - **PhD** erweitern die Theorie
 
@@ -331,7 +331,7 @@ Damit entsteht ein wissenschaftlich und gesellschaftlich relevantes Projekt, das
 Die C‑ABI‑Bridge‑AOT‑Technologie ist bewusst als offenes, transparentes und kollaboratives Projekt gestaltet. Sie soll nicht nur als technische Grundlage dienen, sondern als wissenschaftliche Plattform, die Studierende, Forschende, Entwicklerinnen und Entwickler sowie Institutionen dazu einlädt, eigene Ideen einzubringen, bestehende Konzepte zu hinterfragen und neue Ansätze zu entwickeln. Die Offenheit des Projekts ermöglicht es, unterschiedliche Perspektiven zusammenzuführen und die Technologie gemeinsam weiterzuentwickeln.
 
 Diese Einladung richtet sich ausdrücklich an Personen aller Ausbildungsstufen.
-Studierende auf Bachelor‑ oder HF‑Niveau können praktische Implementierungen, Tests und Dokumentationen beitragen.
+Studierende auf Bachelor‑, FH- oder HF‑Niveau können praktische Implementierungen, Tests und Dokumentationen beitragen.
 Master‑Studierende können wissenschaftliche Analysen, normative Bewertungen und Architekturstudien durchführen.
 PhD‑Studierende und Forschende können formale Modelle, mathematische Verifikationen und theoretische Erweiterungen entwickeln.
 
@@ -349,5 +349,3 @@ Die Vision dieses Projekts besteht darin, eine Grundlage zu schaffen, die sowohl
 Dieses Dokument soll dazu beitragen, die Idee in einen akademischen Kontext zu stellen und den Weg für weiterführende Forschung zu ebnen. Die Technologie ist bewusst nicht als fertiges Produkt konzipiert, sondern als Ausgangspunkt für wissenschaftliche Arbeiten, Diskussionen und Weiterentwicklungen. Die Vision ist, dass aus dieser Basis langfristig robuste, zertifizierbare und vertrauenswürdige Kryptographie‑Module entstehen, die einen Beitrag zur digitalen Sicherheit unserer Gesellschaft leisten.
 
 Die Zukunft sicherer Kryptographie beginnt oft mit einfachen, klaren und gut strukturierten Ideen. Dieses Projekt ist eine solche Idee – und es lädt alle ein, sie weiterzuführen.
-
-
