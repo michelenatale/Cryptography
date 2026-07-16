@@ -1,5 +1,9 @@
 # Academic Proposal – Wissenschaftliche Weiterentwicklung der C ABI Bridge AOT Technologie
 
+**Status**: ✅   
+**Version**: 0.2.1   
+**Last Updated**: 2026.07.16
+
 ## 1. Einleitung
 
 Die moderne Kryptographie steht vor der Herausforderung, gleichzeitig sicher, interoperabel, reproduzierbar und langfristig auditierbar zu sein. In sicherheitskritischen Bereichen wie staatlichen Behörden, Banken, militärischen Systemen und der öffentlichen digitalen Infrastruktur steigt der Bedarf nach kryptographischen Modulen, die über klare Schnittstellen verfügen, deterministisch arbeiten und über Sprachgrenzen hinweg zuverlässig eingesetzt werden können.
