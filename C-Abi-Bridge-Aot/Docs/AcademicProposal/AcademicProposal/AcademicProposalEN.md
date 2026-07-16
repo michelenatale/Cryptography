@@ -12,7 +12,7 @@ Modern cryptographic systems face increasing demands for security, reproducibili
 
 The C‑ABI‑Bridge‑AOT technology presented here introduces an innovative architectural approach for providing cryptographic functionality through a minimalistic, reproducible, and language‑agnostic C Application Binary Interface (ABI). By separating cryptographic core logic from language‑specific runtime environments, the architecture enables stable, auditable, and interoperable modules that can be used across diverse ecosystems.
 
-This document serves as an academic proposal outlining the scientific relevance of the technology and presenting potential research directions. The project is not intended as a finished product but as a foundation for Master’s theses, doctoral dissertations, and interdisciplinary research in cryptography, software architecture, compiler theory, interoperability, and normative security standards. At the same time, the technology remains accessible to students and practitioners at all levels: Bachelor and HF students can explore practical implementations, while Master’s and PhD candidates can investigate deeper scientific and normative aspects.
+This document serves as an academic proposal outlining the scientific relevance of the technology and presenting potential research directions. The project is not intended as a finished product but as a foundation for Master’s theses, doctoral dissertations, and interdisciplinary research in cryptography, software architecture, compiler theory, interoperability, and normative security standards. At the same time, the technology remains accessible to students and practitioners at all levels: Bachelor, FH and HF students can explore practical implementations, while Master’s and PhD candidates can investigate deeper scientific and normative aspects.
 
 By openly publishing the technology and its academic context, this proposal invites collaboration, critical analysis, and further development. Innovation often begins with simple, well‑structured ideas — and this project aims to provide exactly such a starting point.
 
@@ -147,9 +147,9 @@ Formal Modeling, Verification, and Normative Analysis of a Reproducible C‑ABI�
 - Peer‑reviewed publications
 
 
-## 6. Academic Level Distinction (Bachelor / HF / Master / PhD)
+## 6. Academic Level Distinction (Bachelor / FH / HF / Master / PhD)
 
-### Bachelor / HF
+### Bachelor / FH / HF
 
 - Practical implementation
 - Basic architectural understanding
