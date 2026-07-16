@@ -77,6 +77,8 @@ It provides a stable, unmanaged‑friendly API that can be consumed from any lan
 
 This module is part of the larger Cryptography repository but is released as a standalone component.
 
+Please note: 🎓 [Academic Proposal Folder](https://github.com/michelenatale/Cryptography/blob/main/C-Abi-Bridge-Aot/readme.md#-academic-proposal)
+
 https://github.com/michelenatale/Cryptography/tree/main/C-Abi-Bridge-Aot
 
 ---
