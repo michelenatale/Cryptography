@@ -205,3 +205,12 @@ This project welcomes contributions from students, researchers, institutions, an
 ## 9. Conclusion / Vision
 
 The C‑ABI‑Bridge‑AOT technology represents a vision for secure, reproducible, and interoperable cryptographic modules. By providing a clear and scientifically grounded foundation, it invites further research, innovation, and collaboration. The long‑term goal is to support the development of trustworthy cryptographic systems that serve critical sectors and the broader public.
+
+---
+
+**Prepared by:**  
+
+© Michele Natale 2026   
+Architect & Engineering – Cryptographie, NativeAOT / C‑ABI Interoperability  
+Switzerland
+
