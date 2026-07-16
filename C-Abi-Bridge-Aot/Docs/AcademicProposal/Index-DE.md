@@ -140,3 +140,9 @@ Der Ordner *AcademicProposal* bildet die vollständige wissenschaftliche Grundla
 Er ist klar strukturiert, institutionstauglich und deckt alle relevanten Bereiche ab:
 Architektur, Wissenschaft, Normen, Forschung, Sicherheit und gesellschaftliche Bedeutung.
 
+---
+
+**Prepared by:**  
+© Michele Natale 2026
+Architect & Engineering – Cryptographie, NativeAOT / C‑ABI Interoperability  
+Switzerland
