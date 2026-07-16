@@ -1,5 +1,11 @@
 # AcademicProposal – Content Overview
 
+**Status**: ✅   
+**Version**: 0.2.1   
+**Last Updated**: 2026.07.16
+
+---
+
 The *AcademicProposal* folder contains all scientific and institutional documents describing the C‑ABI‑Bridge‑AOT technology in an academic, research-oriented, and security‑critical context. The structure is designed to give readers a clear and immediate overview of motivation, scientific relevance, research directions, and sector-specific impact.
 
 ---
