@@ -1,8 +1,8 @@
 # 📘 C‑Abi‑Bridge‑Aot
 
 **Status**: ✅   
-**Version**: 0.2.0   
-**Last Updated**: 2026.04.07
+**Version**: 0.2.1   
+**Last Updated**: 2026.07.16
 
 ---
 
@@ -243,6 +243,27 @@ Two documentation series are available:
 - [**TechnicalReference.Update1.md**](Docs/TechnicalReference.Update1.md) – the updated and expanded technical reference (introduced with version 0.2.0)
 
 The updated documentation series provides a more structured and detailed view of the architecture, runtime behavior, memory model, and cross‑language integration.
+
+---
+
+## 🎓 Academic Proposal
+
+The C‑ABI‑Bridge‑AOT project includes a dedicated **Academic Proposal** section that provides the full scientific foundation behind the architecture.  
+
+It is designed for universities, research institutes, government agencies, financial institutions, military organizations, and industry stakeholders who require a deeper understanding of the theoretical, normative, and security‑related aspects of the technology.
+
+The Academic Proposal contains:
+- Executive Summary (institution‑ready overview)
+- Full proposal in German and English
+- Structured research roadmaps (Master & PhD)
+- Scientific domains and research questions
+- Sector relevance (government, finance, military, public infrastructure)
+- Formal modeling and verification directions
+- ASCII diagrams and content index
+
+You can find all documents here:
+
+**➡️ `[C-Abi-Bridge-Aot/Docs/AcademicProposal](https://github.com/michelenatale/Cryptography/tree/main/C-Abi-Bridge-Aot/Docs/AcademicProposal)`**
 
 ---
 
