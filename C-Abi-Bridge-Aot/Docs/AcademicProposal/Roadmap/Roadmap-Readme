@@ -1,9 +1,9 @@
-```
 +=========================================================================+
 |                 C‑ABI‑BRIDGE‑AOT — STRUCTURED RESEARCH ROADMAP          |
 +=========================================================================+
 
  MASTER LEVEL ROADMAP                                   PhD LEVEL ROADMAP
+```
 +-------------------------------------------+--------------------------------+
 | 1. OBJECTIVES                             | 1. OBJECTIVES                  |
 | - Architecture evaluation                 | - Formal ABI model             |
@@ -57,5 +57,4 @@
 | cryptographic modules for critical        | certifiable cryptographic      |
 | infrastructure & public digital systems   | architecture for critical infra|
 +=========================================================================+
-
 ```
