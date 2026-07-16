@@ -143,6 +143,7 @@ architecture, scientific analysis, normative standards, research planning, secur
 ---
 
 **Prepared by:**  
-© Michele Natale 2026
+
+© Michele Natale 2026   
 Architect & Engineering – Cryptographie, NativeAOT / C‑ABI Interoperability  
 Switzerland
