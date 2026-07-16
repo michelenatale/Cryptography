@@ -2,58 +2,58 @@
 |                 C‑ABI‑BRIDGE‑AOT — STRUCTURED RESEARCH ROADMAP          |
 +=========================================================================+
 
- MASTER LEVEL ROADMAP                                   PhD LEVEL ROADMAP
-+-------------------------------------------+--------------------------------+
-| 1. OBJECTIVES                             | 1. OBJECTIVES                  |
-| - Architecture evaluation                 | - Formal ABI model             |
-| - Security analysis                       | - Mathematical verification    |
-| - Interoperability assessment             | - Normative formal analysis    |
-| - Normative mapping (FIPS/NIST)           | - Compiler/build theory        |
-| - Certification readiness                 | - Peer‑reviewed publications   |
-+-------------------------------------------+--------------------------------+
-| 2. RESEARCH QUESTIONS                     | 2. RESEARCH QUESTIONS          |
-| - Minimal ABI & auditability              | - Formal ABI modeling          |
-| - FIPS coverage                           | - Deterministic execution      |
-| - Interop risks                           | - Memory‑safety proofs         |
-| - Reproducible builds                     | - Formal FIPS verification     |
-|                                           | - Interop formal constraints   |
-+-------------------------------------------+--------------------------------+
-| 3. DOMAINS                                | 3. DOMAINS                     |
-| - Cryptography & architecture             | - Formal verification          |
-| - ABI design & interop                    | - Mathematical modeling        |
-| - Compiler behavior                       | - Compiler theory              |
-| - Normative standards                     | - Normative security           |
-| - Threat modeling                         | - Reproducible systems         |
-+-------------------------------------------+--------------------------------+
-| 4. METHODS                                | 4. METHODS                     |
-| - ABI inspection                          | - Coq, Dafny, Lean, TLA+, Z3   |
-| - Interop tests                           | - Formal semantics             |
-| - Compiler comparison                     | - Proof construction           |
-| - Threat modeling                         | - Theoretical FIPS/NIST mapping|
-+-------------------------------------------+--------------------------------+
-| 5. MILESTONES                             | 5. MILESTONES                  |
-| M1 Architecture documented                | M1 Formal ABI model defined    |
-| M2 Interop suite implemented              | M2 Determinism proven          |
-| M3 Normative analysis completed           | M3 Memory‑safety proofs done   |
-| M4 Security evaluation completed          | M4 Normative formal mapping    |
-| M5 Certification roadmap drafted          | M5 Compiler behavior model     |
-| M6 Final thesis delivered                 | M6 Publications submitted      |
-+-------------------------------------------+--------------------------------+
-| 6. TIMELINE                               | 6. TIMELINE                    |
-| 0–6m: Architecture, interop               | 0–12m: Modeling & initial proofs|
-| 6–12m: Security, compiler                 | 12–24m: Extended verification  |
-| 12–18m: Certification roadmap             | 24–36m+: Full proofs, thesis   |
-+-------------------------------------------+--------------------------------+
-| 7. OUTCOMES                               | 7. OUTCOMES                    |
-| - Architecture evaluation                 | - Formal mathematical models   |
-| - Security & interop analysis             | - Verified security properties |
-| - Normative compliance assessment         | - Normative compliance proofs  |
-| - Certification roadmap                   | - Publications & dissertation  |
-| - Recommendations for critical sectors    | - Long‑term scientific impact  |
-+-------------------------------------------+--------------------------------+
-| 8. VISION                                 | 8. VISION                      |
-| Secure, reproducible, certifiable         | Formally verified, globally    |
-| cryptographic modules for critical        | certifiable cryptographic      |
-| infrastructure & public digital systems   | architecture for critical infra|
-+=========================================================================+
+  MASTER LEVEL ROADMAP                        PhD LEVEL ROADMAP
++-------------------------------------------+------------------------------------------+
+| 1. OBJECTIVES                             | 1. OBJECTIVES                            |
+| - Architecture evaluation                 | - Formal ABI model                       |
+| - Security analysis                       | - Mathematical verification              |
+| - Interoperability assessment             | - Normative formal analysis              |
+| - Normative mapping (FIPS/NIST)           | - Compiler/build theory                  |
+| - Certification readiness                 | - Peer‑reviewed publications             |
++-------------------------------------------+------------------------------------------+
+| 2. RESEARCH QUESTIONS                     | 2. RESEARCH QUESTIONS                    |
+| - Minimal ABI & auditability              | - Formal ABI modeling                    |
+| - FIPS coverage                           | - Deterministic execution                |
+| - Interop risks                           | - Memory‑safety proofs                   |
+| - Reproducible builds                     | - Formal FIPS verification               |
+|                                           | - Interop formal constraints             |
++-------------------------------------------+------------------------------------------+
+| 3. DOMAINS                                | 3. DOMAINS                               |
+| - Cryptography & architecture             | - Formal verification                    |
+| - ABI design & interop                    | - Mathematical modeling                  |
+| - Compiler behavior                       | - Compiler theory                        |
+| - Normative standards                     | - Normative security                     |
+| - Threat modeling                         | - Reproducible systems                   |
++-------------------------------------------+------------------------------------------+
+| 4. METHODS                                | 4. METHODS                               |
+| - ABI inspection                          | - Coq, Dafny, Lean, TLA+, Z3             |
+| - Interop tests                           | - Formal semantics                       |
+| - Compiler comparison                     | - Proof construction                     |
+| - Threat modeling                         | - Theoretical FIPS/NIST mapping          |
++-------------------------------------------+------------------------------------------+
+| 5. MILESTONES                             | 5. MILESTONES                            |
+| M1 Architecture documented                | M1 Formal ABI model defined              |
+| M2 Interop suite implemented              | M2 Determinism proven                    |
+| M3 Normative analysis completed           | M3 Memory‑safety proofs done             |
+| M4 Security evaluation completed          | M4 Normative formal mapping              |
+| M5 Certification roadmap drafted          | M5 Compiler behavior model               |
+| M6 Final thesis delivered                 | M6 Publications submitted                |
++-------------------------------------------+------------------------------------------+
+| 6. TIMELINE                               | 6. TIMELINE                              |
+| 0–6m: Architecture, interop               | 0–12m: Modeling & initial proofs         |
+| 6–12m: Security, compiler                 | 12–24m: Extended verification            |
+| 12–18m: Certification roadmap             | 24–36m+: Full proofs, thesis             |
++-------------------------------------------+------------------------------------------+
+| 7. OUTCOMES                               | 7. OUTCOMES                              |
+| - Architecture evaluation                 | - Formal mathematical models             |
+| - Security & interop analysis             | - Verified security properties           |
+| - Normative compliance assessment         | - Normative compliance proofs            |
+| - Certification roadmap                   | - Publications & dissertation            |
+| - Recommendations for critical sectors    | - Long‑term scientific impact            |
++-------------------------------------------+------------------------------------------+
+| 8. VISION                                 | 8. VISION                                |
+| Secure, reproducible, certifiable         | Formally verified, globally              |
+| cryptographic modules for critical        | certifiable cryptographic                |
+| infrastructure & public digital systems   | architecture for critical infrastructure |
++======================================================================================+
 
