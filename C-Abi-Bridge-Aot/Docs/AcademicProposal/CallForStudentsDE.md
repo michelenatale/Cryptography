@@ -58,3 +58,9 @@ Sie eignet sich ideal für Studierende, die ein anspruchsvolles, modernes und re
 - **ResearchRoadmap_Master.md** – Master‑Roadmap  
 - **ResearchRoadmap_PhD.md** – PhD‑Roadmap  
 
+---
+
+**Prepared by:**  
+© Michele Natale 2026
+Architect & Engineering – Cryptographie, NativeAOT / C‑ABI Interoperability  
+Switzerland
