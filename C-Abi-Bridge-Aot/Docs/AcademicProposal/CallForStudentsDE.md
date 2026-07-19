@@ -47,9 +47,10 @@ Sie eignet sich ideal für Studierende, die ein anspruchsvolles, modernes und re
 ## Wie gehst du vor?
 
 1. Lies die [Executive Summary](ExecutiveSummary.md)
-2. Wähle ein Thema aus den [Roadmaps](Roadmap)  
-3. Besprich es mit deinem Professor oder deiner Professorin  
-4. Starte deine Abschlussarbeit mit klaren Zielen und wissenschaftlicher Grundlage
+2. Check die Academic Proposal ([EN](AcademicProposal/AcademicProposalEN.md)/[DE](AcademicProposal/AcademicProposalDE.md)) oder ETH/EPFL ([EN](AcademicProposal/AcademicProposal_ETH_EPFL_EN.md)/[DE](AcademicProposal/AcademicProposal_ETH_EPFL_DE.md)))
+3. Wähle ein Thema aus den [Roadmaps](Roadmap)  
+4. Besprich es mit deinem Professor oder deiner Professorin  
+5. Starte deine Abschlussarbeit mit klaren Zielen und wissenschaftlicher Grundlage
 
 ## Dokumente
 
