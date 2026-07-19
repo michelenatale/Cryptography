@@ -10,8 +10,12 @@ Die C‑ABI‑Bridge‑AOT‑Technologie adressiert ein zentrales Problem modern
 
 ### 1.1 Hinweis auf die Executive Summary
 
-Für eine institutionelle, komprimierte Übersicht des Projekts steht zusätzlich die Datei [**ExecutiveSummary.md**](./../ExecutiveSummary.md) zur Verfügung. Sie fasst die wichtigsten architektonischen, sicherheitstechnischen und organisatorischen Aspekte zusammen und dient als Einstiegspunkt für Professorinnen und Professoren sowie für akademische Entscheidungsträger, bevor die vertieften wissenschaftlichen Inhalte
-dieser ETH/EPFL‑Edition betrachtet werden..
+Für eine institutionelle, komprimierte Übersicht des Projekts steht zusätzlich die Datei [**ExecutiveSummary.md**](./../ExecutiveSummary.md) zur Verfügung. Sie fasst die wichtigsten architektonischen, sicherheitstechnischen und organisatorischen Aspekte zusammen und dient als Einstiegspunkt für Professorinnen und Professoren sowie für akademische Entscheidungsträger, bevor die vertieften wissenschaftlichen Inhalte dieser ETH/EPFL‑Edition betrachtet werden..
+
+
+### 1.2 Hinweis auf die Haupt‑Academic‑Proposals (DE/EN)
+
+Für eine vollständige und allgemeine akademische Beschreibung der C‑ABI‑Bridge‑AOT‑Architektur stehen die Hauptdokumente [**AcademicProposalDE.md**](AcademicProposalDE.md) und [**AcademicProposalEN.md**](AcademicProposalEN.md) zur Verfügung. Diese Dokumente bilden die architektonische, interoperabilitätsbezogene und kryptographische Grundlage, auf der diese ETH/EPFL‑Edition aufbaut. Sie dienen als primäre Referenz für Studierende und Forschende, bevor die erweiterten wissenschaftlichen Inhalte dieser Edition betrachtet werden.
 
 
 ## 2. Architektonische Grundlagen
