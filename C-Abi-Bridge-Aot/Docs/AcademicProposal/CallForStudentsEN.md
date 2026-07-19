@@ -53,10 +53,13 @@ The C‑ABI‑Bridge‑AOT technology offers a unique combination of practical s
 
 ## Available Documents
 
-- **ExecutiveSummary.md** – institutional overview  
-- **AcademicProposalEN.md / AcademicProposalDE.md** – full scientific description  
-- **ResearchRoadmap_Master.md** – Master‑level roadmap  
-- **ResearchRoadmap_PhD.md** – PhD‑level roadmap  
+- [**ExecutiveSummary.md**](ExecutiveSummary.md) – institutional overview    
+- [**ResearchRoadmap-PhDLevel-EN.md**](Roadmap/StructuredResearchRoadmap-PhDLevel-EN.md) – PhD-level‑Roadmap   
+- [**ResearchRoadmap-MasterLevel-EN.md**](Roadmap/StructuredResearchRoadmap-MasterLevel-EN.md) – Master-level‑Roadmap   
+- [**AcademicProposalDE.md**](AcademicProposal/AcademicProposalDE.md) **/** [**AcademicProposalEN.md**](AcademicProposal/AcademicProposalEN.md) – full scientific description  
+- [**AcademicProposal_ETH_EPFL_DE.md**](AcademicProposal/AcademicProposal_ETH_EPFL_DE.md) **/** [**AcademicProposal_ETH_EPFL_EN.md**](AcademicProposal/AcademicProposal_ETH_EPFL_EN.md) - scientific description for ETH / EPFL
+
+---
 
 ## Why professors appreciate this topic
 
