@@ -145,7 +145,7 @@ These files can be added later to extend the AcademicProposal folder:
 
 For ETH/EPFL students and researchers, a dedicated academic version of the proposal is available. It highlights the scientific motivation, formal modeling options, deterministic execution, normative context, and advanced Master/PhD research directions relevant to high‑level academic work.
 
-See: [**AcademicProposal_ETH_EPFL_EN.md**](AcademicProposal_ETH_EPFL_EN.md)
+See: [**AcademicProposal_ETH_EPFL_EN.md**](AcademicProposal/AcademicProposal_ETH_EPFL_EN.md)
 
 ---
 
