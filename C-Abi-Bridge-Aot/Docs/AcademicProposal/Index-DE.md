@@ -114,8 +114,8 @@ Visuelle ASCII‑Darstellung der gesamten Roadmap.
 Ideal für README, Präsentationen oder schnelle Übersicht.
 
 **Inhalt:**  
-- [Master‑Roadmap ASCII](StructuredResearchRoadmap-MasterLevel-EN.md)  
-- [PhD‑Roadmap ASCII](StructuredResearchRoadmap-PhDLevel-EN.md)  
+- [Master‑Roadmap ASCII](Roadmap/StructuredResearchRoadmap-MasterLevel-EN.md)  
+- [PhD‑Roadmap ASCII](Roadmap/StructuredResearchRoadmap-PhDLevel-EN.md)  
 - Vergleich Master vs. PhD  
 - Kompakte Übersicht aller Meilensteine  
 
