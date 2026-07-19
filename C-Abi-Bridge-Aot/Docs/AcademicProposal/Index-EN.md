@@ -121,13 +121,15 @@ Useful for README files, presentations, and quick orientation.
 
 ---
 
-### Optional Security-Attacks Context
+## 7. Optional Security-Attacks Context
 
-While the C‑ABI‑Bridge‑AOT Academic Proposal focuses primarily on architecture, interoperability, reproducibility, and cryptographic module design, it is important to acknowledge that security‑attack analysis represents a significant and independent research domain. A full exploration of attack vectors, threat models, and adversarial strategies can easily constitute an entire thesis or diploma project on its own. For this reason, security‑attacks are referenced as an optional extension rather than a core component of this document. Students or researchers who wish to pursue deeper security analysis may integrate attack‑focused methodologies, formal threat modeling, or cryptographic vulnerability studies as part of their thesis work.
+While the C‑ABI‑Bridge‑AOT Academic Proposal focuses primarily on architecture, interoperability, reproducibility, and cryptographic module design, it is important to acknowledge that security‑attack analysis represents a significant and independent research domain. A full exploration of attack vectors, threat models, and adversarial strategies can easily constitute an entire thesis or diploma project on its own. For this reason, security‑attacks are referenced as an optional extension rather than a core component of this document. 
+
+Students or researchers who wish to pursue deeper security analysis may integrate attack‑focused methodologies, formal threat modeling, or cryptographic vulnerability studies as part of their thesis work.
 
 ---
 
-## 7. Additional Optional Files
+## 8. Additional Optional Files
 
 These files can be added later to extend the AcademicProposal folder:
 
