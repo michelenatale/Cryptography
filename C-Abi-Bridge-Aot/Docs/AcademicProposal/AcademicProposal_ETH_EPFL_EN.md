@@ -10,7 +10,7 @@ The C‑ABI‑Bridge‑AOT technology addresses a central challenge in modern sy
 
 ### 1.1 Reference to the Executive Summary
 
-A concise institutional overview of the project is available in the file [**ExecutiveSummary.md**](ExecutiveSummary.md). It summarizes the key architectural, security‑related, and organizational aspects and serves as an entry point for professors and academic decision‑makers.
+A concise institutional overview of the project is available in the file [**ExecutiveSummary.md**](ExecutiveSummary.md). It summarizes the key architectural, security‑related, and organizational aspects and serves as a high‑level entry point for professors and academic decision‑makers before engaging with the deeper scientific content of this ETH/EPFL edition.
 
 
 ## 2. Architectural Foundations
