@@ -91,6 +91,6 @@ Diese Normen können als Grundlage für weiterführende akademische Arbeiten die
 ---
 
 **Prepared by:**  
-© Michele Natale 2026
+© Michele Natale 2026   
 Architect & Engineering – Cryptographie, NativeAOT / C‑ABI Interoperability  
 Switzerland
