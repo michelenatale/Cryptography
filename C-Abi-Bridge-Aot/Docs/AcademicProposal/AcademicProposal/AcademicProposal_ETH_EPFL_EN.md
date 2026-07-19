@@ -13,6 +13,11 @@ The C‑ABI‑Bridge‑AOT technology addresses a central challenge in modern sy
 A concise institutional overview of the project is available in the file [**ExecutiveSummary.md**](./../ExecutiveSummary.md). It summarizes the key architectural, security‑related, and organizational aspects and serves as a high‑level entry point for professors and academic decision‑makers before engaging with the deeper scientific content of this ETH/EPFL edition.
 
 
+### 1.2 Reference to the Main Academic Proposals (DE/EN)
+
+For a complete and general academic description of the C‑ABI‑Bridge‑AOT architecture, the main proposals [**AcademicProposalDE.md**](AcademicProposalDE.md) and [**AcademicProposalEN.md**](AcademicProposalEN.md) are available. These documents provide the foundational architectural, interoperability, and cryptographic context upon which this ETH/EPFL edition builds. They serve as the primary reference for students and researchers before engaging with the advanced scientific extensions presented here.
+
+
 ## 2. Architectural Foundations
 
 The architecture defines a deterministic and strictly bounded C‑ABI interface independent of runtime environments. This enables:
