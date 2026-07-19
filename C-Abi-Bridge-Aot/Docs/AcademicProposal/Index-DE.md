@@ -156,6 +156,8 @@ Der Ordner *AcademicProposal* bildet die vollständige wissenschaftliche Grundla
 Er ist klar strukturiert, institutionstauglich und deckt alle relevanten Bereiche ab:
 Architektur, Wissenschaft, Normen, Forschung, Sicherheit und gesellschaftliche Bedeutung.
 
+**Download pdf**: [Academic-Proposal-Overview-DE.pdf](pdf/Academic-Proposal-Overview-DE.pdf)
+
 ---
 
 **Prepared by:**  
