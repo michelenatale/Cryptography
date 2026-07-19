@@ -8,6 +8,11 @@ C‑ABI‑Bridge‑AOT – Architektur, Interoperabilität & Kryptographie
 Die C‑ABI‑Bridge‑AOT‑Technologie adressiert ein zentrales Problem moderner Systemarchitektur: reproduzierbare, deterministische und sicherheitskritische Interop‑Schnittstellen zwischen Ahead‑Of‑Time kompilierten Modulen und nativen C‑Bibliotheken. Diese Fragestellung ist sowohl theoretisch als auch praktisch hochrelevant und berührt Bereiche wie Compiler‑Design, Kryptographie, Systemsicherheit und formale Modellierung.
 
 
+### 1.1 Hinweis auf die Executive Summary
+
+Für eine institutionelle, komprimierte Übersicht des Projekts steht zusätzlich die Datei [**ExecutiveSummary.md**](ExecutiveSummary.md) zur Verfügung. Sie fasst die wichtigsten architektonischen, sicherheitstechnischen und organisatorischen Aspekte zusammen und dient als Einstiegspunkt für Professorinnen und Professoren sowie für akademische Entscheidungsträger.
+
+
 ## 2. Architektonische Grundlagen
 
 Die Architektur definiert eine klar abgegrenzte, deterministische C‑ABI‑Boundary, die unabhängig von Laufzeitumgebungen funktioniert. Dies ermöglicht:
