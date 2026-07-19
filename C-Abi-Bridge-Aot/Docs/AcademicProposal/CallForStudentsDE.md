@@ -53,10 +53,11 @@ Sie eignet sich ideal für Studierende, die ein anspruchsvolles, modernes und re
 
 ## Dokumente
 
-- **ExecutiveSummary.md** – institutionelle Übersicht  
-- **AcademicProposalDE.md / AcademicProposalEN.md** – vollständige wissenschaftliche Beschreibung  
-- **ResearchRoadmap_Master.md** – Master‑Roadmap  
-- **ResearchRoadmap_PhD.md** – PhD‑Roadmap  
+- [**ExecutiveSummary.md**](ExecutiveSummary.md) – institutionelle Übersicht   
+- [**ResearchRoadmap-PhDLevel-EN.md**](Roadmap/StructuredResearchRoadmap-PhDLevel-EN.md) – PhD‑Roadmap   
+- [**ResearchRoadmap-MasterLevel-EN.md**](Roadmap/StructuredResearchRoadmap-MasterLevel-EN.md) – Master‑Roadmap   
+- [**AcademicProposalDE.md**](AcademicProposal/AcademicProposalDE.md) **/** [**AcademicProposalEN.md**](AcademicProposal/AcademicProposalEN.md) – vollständige wissenschaftliche Beschreibung  
+- [**AcademicProposal_ETH_EPFL_DE.md**](AcademicProposal/AcademicProposal_ETH_EPFL_DE.md) **/** [**AcademicProposal_ETH_EPFL_EN.md**](AcademicProposal/AcademicProposal_ETH_EPFL_EN.md) - Wissenschaftliche Beschreibung für die ETH / EPFL
 
 ---
 
