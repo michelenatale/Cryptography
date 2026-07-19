@@ -141,6 +141,14 @@ Diese Dateien können später ergänzt werden:
 
 ---
 
+## 9. ETH/EPFL Akademische Edition
+
+Für ETH/EPFL‑Studierende und Forschende steht eine eigene akademische Version des Proposals zur Verfügung. Sie behandelt wissenschaftliche Motivation, formale Modellierung, deterministische Ausführung, normative Standards sowie erweiterte Master‑/PhD‑Forschungsrichtungen auf hohem akademischem Niveau.
+
+Siehe: [**AcademicProposal_ETH_EPFL_DE.md**](AcademicProposal_ETH_EPFL_DE.md)
+
+---
+
 # Zusammenfassung
 
 Der Ordner *AcademicProposal* bildet die vollständige wissenschaftliche Grundlage für die Weiterentwicklung der C‑ABI‑Bridge‑AOT‑Technologie.
