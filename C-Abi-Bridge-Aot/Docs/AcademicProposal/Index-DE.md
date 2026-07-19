@@ -123,17 +123,9 @@ Ideal für README, Präsentationen oder schnelle Übersicht.
 
 ## 7. Optionaler Kontext zu Security-Attacks
 
-Das Academic Proposal der C‑ABI‑Bridge‑AOT-Technologie konzentriert sich
-primär auf Architektur, Interoperabilität, Reproduzierbarkeit und
-kryptographische Modulgestaltung. Es ist jedoch wichtig anzuerkennen, dass die
-Analyse von Security‑Attacks ein eigenständiges und umfangreiches
-Forschungsgebiet darstellt. Eine vollständige Untersuchung von Angriffsvektoren,
-Threat‑Modelling und adversarialen Strategien kann problemlos eine gesamte
-Diplomarbeit füllen. Aus diesem Grund werden Security‑Attacks hier als
-optionale Erweiterung erwähnt und nicht als zentraler Bestandteil des Dokuments.
-Studierende oder Forschende, die eine tiefere sicherheitstechnische Analyse
-verfolgen möchten, können entsprechende Methoden und Modelle in ihre Arbeit
-integrieren.
+Das Academic Proposal der C‑ABI‑Bridge‑AOT-Technologie konzentriert sich primär auf Architektur, Interoperabilität, Reproduzierbarkeit und kryptographische Modulgestaltung. Es ist jedoch wichtig anzuerkennen, dass die Analyse von Security‑Attacks ein eigenständiges und umfangreiches Forschungsgebiet darstellt. Eine vollständige Untersuchung von Angriffsvektoren, Threat‑Modelling und adversarialen Strategien kann problemlos eine gesamte Diplomarbeit füllen. Aus diesem Grund werden Security‑Attacks hier als optionale Erweiterung erwähnt und nicht als zentraler Bestandteil des Dokuments.
+
+Studierende oder Forschende, die eine tiefere sicherheitstechnische Analyse verfolgen möchten, können entsprechende Methoden und Modelle in ihre Arbeit integrieren.
 
 ---
 
