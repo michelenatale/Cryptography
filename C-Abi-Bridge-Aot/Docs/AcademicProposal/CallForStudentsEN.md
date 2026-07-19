@@ -45,9 +45,9 @@ The C‑ABI‑Bridge‑AOT technology offers a unique combination of practical s
 
 ## How to get started
 
-1. Read the Executive Summary  
-2. Explore the Academic Proposal (EN/DE)  
-3. Choose a topic from the Master or PhD research roadmaps  
+1. Read the [Executive Summary](ExecutiveSummary.md)  
+2. Explore the Academic Proposal ([EN](AcademicProposal/AcademicProposalEN.md)/[DE](AcademicProposal/AcademicProposalDE.md)) or ETH/EPFL ([EN](AcademicProposal/AcademicProposal_ETH_EPFL_EN.md)/[DE](AcademicProposal/AcademicProposal_ETH_EPFL_DE.md))   
+3. Choose a topic from the [Master](Roadmap/StructuredResearchRoadmap-MasterLevel-EN.md) or [PhD](Roadmap/StructuredResearchRoadmap-PhDLevel-EN.md) research roadmaps  
 4. Present the topic to your professor or supervisor  
 5. Begin your thesis with a clear scientific foundation and well‑defined goals
 
