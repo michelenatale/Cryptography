@@ -145,7 +145,7 @@ Diese Dateien können später ergänzt werden:
 
 Für ETH/EPFL‑Studierende und Forschende steht eine eigene akademische Version des Proposals zur Verfügung. Sie behandelt wissenschaftliche Motivation, formale Modellierung, deterministische Ausführung, normative Standards sowie erweiterte Master‑/PhD‑Forschungsrichtungen auf hohem akademischem Niveau.
 
-Siehe: [**AcademicProposal_ETH_EPFL_DE.md**](AcademicProposal_ETH_EPFL_DE.md)
+Siehe: [**AcademicProposal_ETH_EPFL_DE.md**](AcademicProposal/AcademicProposal_ETH_EPFL_DE.md)
 
 ---
 
