@@ -141,6 +141,14 @@ These files can be added later to extend the AcademicProposal folder:
 
 ---
 
+## 9. ETH/EPFL Academic Edition
+
+For ETH/EPFL students and researchers, a dedicated academic version of the proposal is available. It highlights the scientific motivation, formal modeling options, deterministic execution, normative context, and advanced Master/PhD research directions relevant to high‑level academic work.
+
+See: [**AcademicProposal_ETH_EPFL_EN.md**](AcademicProposal_ETH_EPFL_EN.md)
+
+---
+
 # Summary
 
 The *AcademicProposal* folder provides the complete scientific foundation for the development and evaluation of the C‑ABI‑Bridge‑AOT technology.  
