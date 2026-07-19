@@ -47,7 +47,7 @@ Sie eignet sich ideal für Studierende, die ein anspruchsvolles, modernes und re
 ## Wie gehst du vor?
 
 1. Lies die [Executive Summary](ExecutiveSummary.md)
-2. Wähle ein Thema aus den Roadmaps  
+2. Wähle ein Thema aus den [Roadmaps](Roadmap)  
 3. Besprich es mit deinem Professor oder deiner Professorin  
 4. Starte deine Abschlussarbeit mit klaren Zielen und wissenschaftlicher Grundlage
 
