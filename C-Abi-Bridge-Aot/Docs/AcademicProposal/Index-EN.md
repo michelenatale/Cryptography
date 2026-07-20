@@ -153,7 +153,7 @@ See: [**AcademicProposal_ETH_EPFL_EN.md**](AcademicProposal/AcademicProposal_ETH
 
 Recent developments, such as the decision by the Swiss Army's Cyber Command to reduce reliance on proprietary cloud services, highlight the importance of open, transparent, and sovereign architectures.
 
-**See the article (in German):** [Mutiger Schritt: Wie die IT-Cracks der Schweizer Armee Microsoft den Rücken kehren](https://www.msn.com/de-ch/nachrichten/other/mutiger-schritt-wie-die-it-cracks-der-schweizer-armee-microsoft-den-r%C3%BCcken-kehren/ar-AA28i8uy)
+**See the article (in German):** [Mutiger Schritt: Wie die IT-Cracks der Schweizer Armee Microsoft den Rücken kehren](https://www.msn.com/de-ch/nachrichten/other/mutiger-schritt-wie-die-it-cracks-der-schweizer-armee-microsoft-den-r%C3%BCcken-kehren/ar-AA28i8uy)    
 **Download pdf:** [Mutiger Schritt: Wie die IT-Cracks der Schweizer Armee Microsoft den Rücken kehren](pdf/Mutiger%20Schritt%20-%20Wie%20die%20IT-Cracks%20der%20Schweizer%20Armee%20Microsoft%20den%20R%C3%BCcken%20kehren.pdf))
 
 ---
