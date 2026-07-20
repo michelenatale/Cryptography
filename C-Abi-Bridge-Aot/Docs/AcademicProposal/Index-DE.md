@@ -149,6 +149,14 @@ Siehe: [**AcademicProposal_ETH_EPFL_DE.md**](AcademicProposal/AcademicProposal_E
 
 ---
 
+## 10. Bezug zur digitalen Souveränität der Schweiz
+
+„Aktuelle Entwicklungen, wie der Entscheid des Kommandos Cyber der Schweizer Armee, proprietäre Cloud‑Abhängigkeiten zu reduzieren, zeigen die Relevanz offener, nachvollziehbarer und souveräner Architekturen.“
+
+Hier der Artikel (auf deutsch): [Mutiger Schritt: Wie die IT-Cracks der Schweizer Armee Microsoft den Rücken kehren](https://www.msn.com/de-ch/nachrichten/other/mutiger-schritt-wie-die-it-cracks-der-schweizer-armee-microsoft-den-r%C3%BCcken-kehren/ar-AA28i8uy)
+
+---
+
 # Zusammenfassung
 
 Der Ordner *AcademicProposal* bildet die vollständige wissenschaftliche Grundlage für die Weiterentwicklung der C‑ABI‑Bridge‑AOT‑Technologie.
