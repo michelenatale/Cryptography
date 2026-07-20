@@ -149,6 +149,14 @@ See: [**AcademicProposal_ETH_EPFL_EN.md**](AcademicProposal/AcademicProposal_ETH
 
 ---
 
+## 10. Relevance for Swiss and European Digital Sovereignty
+
+Recent developments, such as the decision by the Swiss Army's Cyber Command to reduce reliance on proprietary cloud services, highlight the importance of open, transparent, and sovereign architectures.
+
+See the article (in German): [Mutiger Schritt: Wie die IT-Cracks der Schweizer Armee Microsoft den Rücken kehren](https://www.msn.com/de-ch/nachrichten/other/mutiger-schritt-wie-die-it-cracks-der-schweizer-armee-microsoft-den-r%C3%BCcken-kehren/ar-AA28i8uy)
+
+---
+
 # Summary
 
 The *AcademicProposal* folder provides the complete scientific foundation for the development and evaluation of the C‑ABI‑Bridge‑AOT technology.  
